@@ -1,0 +1,15 @@
+id = "minimax/minimax-m3"
+name = "MiniMax M3"
+family = "minimax-m"
+lab = "minimax"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Controllable adaptive thinking; disabled skips thinking."
+aliases = ["MiniMax-M3"]
+[modalities]
+input = ["text"]
+output = ["text"]

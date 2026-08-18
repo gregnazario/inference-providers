@@ -1,0 +1,15 @@
+id = "anthropic/claude-sonnet-4-5"
+name = "Claude Sonnet 4.5"
+family = "claude"
+lab = "anthropic"
+release_date = "2025-09-29"
+retired_date = ""
+knowledge_cutoff = "2025-07-31"
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Thinking-on Sonnet; budget_tokens caps thinking, output is summarized."
+aliases = ["claude-sonnet-4-5-20250929"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

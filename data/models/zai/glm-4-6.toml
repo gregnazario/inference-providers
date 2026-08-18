@@ -1,0 +1,15 @@
+id = "zai/glm-4-6"
+name = "GLM-4.6"
+family = "glm"
+lab = "zai"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "zai-org/GLM-4.6"
+license = ""
+description = "Hybrid thinking, on by default, disableable via thinking.type."
+aliases = []
+[modalities]
+input = ["text", "image"]
+output = ["text"]

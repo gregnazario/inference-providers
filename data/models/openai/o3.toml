@@ -1,0 +1,15 @@
+id = "openai/o3"
+name = "o3"
+family = "o"
+lab = "openai"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "o-series reasoning model; effort low/medium/high."
+aliases = []
+[modalities]
+input = ["text", "image"]
+output = ["text"]

@@ -1,0 +1,15 @@
+id = "anthropic/claude-haiku-4-5"
+name = "Claude Haiku 4.5"
+family = "claude"
+lab = "anthropic"
+release_date = "2025-10-01"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Fast Claude; supports extended thinking but not interleaved thinking."
+aliases = ["claude-haiku-4-5-20251001"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

@@ -23,7 +23,13 @@ export function loadRaw(dataDir: string) {
   const providerFiles: RawDoc[] = []
   const offeringFiles: RawOfferingDoc[] = []
   const providersDir = join(dataDir, "providers")
-  for (const p of readdirSync(providersDir).filter((d) => statSync(join(providersDir, d)).isDirectory()).sort()) {
+  let providerDirs: string[] = []
+  try {
+    providerDirs = readdirSync(providersDir).filter((d) => statSync(join(providersDir, d)).isDirectory()).sort()
+  } catch {
+    providerDirs = []
+  }
+  for (const p of providerDirs) {
     const providerToml = join(providersDir, p, "provider.toml")
     providerFiles.push({ path: join("providers", p, "provider.toml"), data: readToml(providerToml) })
     for (const f of listToml(join(providersDir, p, "offerings"))) {

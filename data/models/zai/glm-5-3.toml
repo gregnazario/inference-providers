@@ -1,0 +1,15 @@
+id = "zai/glm-5-3"
+name = "GLM-5.3"
+family = "glm"
+lab = "zai"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Flagship GLM; forced thinking — thinking.type enabled/disabled both error."
+aliases = []
+[modalities]
+input = ["text", "image"]
+output = ["text"]

@@ -1,0 +1,15 @@
+id = "anthropic/claude-opus-4-6"
+name = "Claude Opus 4.6"
+family = "claude"
+lab = "anthropic"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Opus with adaptive thinking; no manual interleaved thinking mode."
+aliases = []
+[modalities]
+input = ["text", "image"]
+output = ["text"]

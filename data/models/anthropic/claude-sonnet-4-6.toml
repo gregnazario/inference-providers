@@ -1,0 +1,15 @@
+id = "anthropic/claude-sonnet-4-6"
+name = "Claude Sonnet 4.6"
+family = "claude"
+lab = "anthropic"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Manual budget thinking deprecated in favor of adaptive thinking."
+aliases = []
+[modalities]
+input = ["text", "image"]
+output = ["text"]
