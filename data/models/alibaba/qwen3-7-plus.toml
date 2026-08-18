@@ -1,0 +1,15 @@
+id = "alibaba/qwen3-7-plus"
+name = "Qwen3.7 Plus"
+family = "qwen3"
+lab = "alibaba"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Qwen3.7 series; thinking ON by default; preserve_thinking carries reasoning_content across turns."
+aliases = ["qwen3.7-plus"]
+[modalities]
+input = ["text"]
+output = ["text"]

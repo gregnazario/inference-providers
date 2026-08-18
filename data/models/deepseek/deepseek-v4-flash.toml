@@ -1,0 +1,15 @@
+id = "deepseek/deepseek-v4-flash"
+name = "DeepSeek V4 Flash"
+family = "deepseek-v4"
+lab = "deepseek"
+release_date = "2026-07-31"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Hybrid thinking on by default (V4-Flash-0731); 1M context, 384K max output shared with CoT."
+aliases = ["deepseek-v4-flash-0731"]
+[modalities]
+input = ["text"]
+output = ["text"]

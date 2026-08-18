@@ -1,0 +1,15 @@
+id = "mistral/mistral-medium-3-5"
+name = "Mistral Medium 3.5"
+family = "mistral-medium"
+lab = "mistral"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Supports reasoning_effort high/none; Magistral reasoning models are deprecated."
+aliases = ["mistral-medium-3.5"]
+[modalities]
+input = ["text"]
+output = ["text"]

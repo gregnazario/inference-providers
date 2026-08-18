@@ -1,0 +1,15 @@
+id = "xai/grok-4-5"
+name = "Grok 4.5"
+family = "grok"
+lab = "xai"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Reasoning model; effort low/medium/high default high, cannot disable. xhigh silently treated as high."
+aliases = ["grok-4.5"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

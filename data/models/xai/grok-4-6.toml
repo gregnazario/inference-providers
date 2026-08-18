@@ -1,0 +1,15 @@
+id = "xai/grok-4-6"
+name = "Grok 4.6"
+family = "grok"
+lab = "xai"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Reasoning model; adds xhigh over 4.5; returns summarized reasoning via streamed reasoning_content deltas."
+aliases = ["grok-4.6"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]
