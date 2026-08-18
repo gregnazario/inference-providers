@@ -1,0 +1,21 @@
+model = "xai/grok-4-6"
+wire_id = "grok-4.6"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high", "xhigh"]
+default = "high"
+
+[reasoning.source]
+url = "https://docs.x.ai/docs/guides/reasoning"
+verified = "2026-08-18"

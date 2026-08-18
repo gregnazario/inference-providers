@@ -1,0 +1,21 @@
+model = "xai/grok-4-5"
+wire_id = "grok-4.5"
+endpoint = "v1-responses"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+returns = "hidden"
+must_round_trip = "encrypted_content"
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://docs.x.ai/docs/guides/reasoning"
+verified = "2026-08-18"

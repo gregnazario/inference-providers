@@ -1,0 +1,22 @@
+model = "xai/grok-4-5"
+wire_id = "grok-4.5"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "xhigh is silently treated as high on 4.5."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://docs.x.ai/docs/guides/reasoning"
+verified = "2026-08-18"
