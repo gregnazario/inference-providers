@@ -10,8 +10,8 @@ export const ModelSchema = z.object({
   release_date: dateOrUnknown,
   retired_date: dateOrUnknown,
   knowledge_cutoff: dateOrUnknown,
-  open_weights: z.boolean(),
-  hf_repo: z.string(),
+  open_weights: z.boolean().optional(),
+  hf_repo: z.string().optional(),
   license: z.string(),
   modalities: z.object({
     input: z.array(z.enum(["text", "image", "audio", "video"])).min(1),
