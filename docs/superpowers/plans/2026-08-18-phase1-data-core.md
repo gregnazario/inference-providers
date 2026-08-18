@@ -1614,6 +1614,7 @@ docs = "https://platform.claude.com/docs/en/manage-claude/authentication"
 id = "oauth"
 type = "oauth"
 flow = "authorization_code_pkce"
+transport = "header"
 token_transport = "header"
 header = "x-api-key"
 extra_headers = { anthropic-beta = "oauth-2025-04-20", anthropic-version = "2023-06-01" }
