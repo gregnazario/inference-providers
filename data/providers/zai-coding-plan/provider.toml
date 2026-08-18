@@ -1,0 +1,47 @@
+id = "zai-coding-plan"
+name = "Z.ai GLM Coding Plan"
+kind = "subscription"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://docs.z.ai/devpack/overview"
+console = "https://z.ai/subscribe"
+
+[plan]
+price_usd = 18.0
+period = "monthly"
+quota = "Lite ~2000 credits/5h, 10000/week; Pro ~12000/5h; Max ~28000/5h"
+notes = "Credits-based since 2026-07-30. Includes GLM-5.3, GLM-5-Turbo, GLM-4.7; GLM-5.2/5.1 auto-route to GLM-5.3."
+docs = "https://docs.z.ai/devpack/overview"
+
+[[auth]]
+id = "plan-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["ZAI_CODING_PLAN_API_KEY"]
+key_prefix = ""
+getting_credentials = "Subscribe at z.ai/subscribe; plan keys are distinct from normal API keys and only work on coding-plan endpoints."
+docs = "https://docs.z.ai/devpack/quick-start"
+
+[[endpoints]]
+id = "coding-chat-completions"
+base_url = "https://api.z.ai"
+path = "/api/coding/paas/v4/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "coding-anthropic"
+base_url = "https://api.z.ai"
+path = "/api/anthropic"
+protocol = "anthropic-messages"
+
+[[endpoints]]
+id = "coding-responses"
+base_url = "https://api.z.ai"
+path = "/api/v1"
+protocol = "openai-responses"
+
+[[quirks]]
+text = "Preserved Thinking is enabled by default on coding-plan endpoints (opposite of the standard API). For Claude Code: ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic, ANTHROPIC_AUTH_TOKEN=<plan key>."
+docs = "https://docs.z.ai/devpack/quick-start"

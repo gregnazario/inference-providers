@@ -1,0 +1,33 @@
+id = "minimax"
+name = "MiniMax"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://platform.minimax.io/docs/api-reference/api-overview"
+console = "https://platform.minimax.io"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["MINIMAX_API_KEY"]
+getting_credentials = "platform.minimax.io → API Keys. Subscription Keys are a separate credential type issued under Billing → Token Plan."
+docs = "https://platform.minimax.io/docs/api-reference/api-overview"
+
+[[endpoints]]
+id = "chat-completions"
+base_url = "https://api.minimax.io"
+path = "/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "anthropic"
+base_url = "https://api.minimax.io"
+path = "/anthropic"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "reasoning_split: true splits thinking into message.reasoning_content; without it thinking arrives inline as <think>...</think> inside content. China base: api.minimaxi.com."
+docs = "https://platform.minimax.io/docs/api-reference/text-chat-openai"

@@ -1,0 +1,28 @@
+id = "zai"
+name = "Z.ai"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://docs.z.ai/guides/llm/glm-5.3"
+console = "https://z.ai/manage-apikey/apikey-list"
+pricing = "https://docs.z.ai/guides/develop/http/introduction"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["ZAI_API_KEY"]
+getting_credentials = "z.ai console → API Keys. Key format id.secret; JWT HS256 derivation also supported."
+docs = "https://docs.z.ai/guides/develop/http/introduction"
+
+[[endpoints]]
+id = "chat-completions"
+base_url = "https://api.z.ai"
+path = "/api/paas/v4/chat/completions"
+protocol = "openai-chat"
+
+[[quirks]]
+text = "clear_thinking: false preserves reasoning_content across turns (Preserved Thinking); disabled by default on this endpoint."
+docs = "https://docs.z.ai/guides/capabilities/thinking-mode"

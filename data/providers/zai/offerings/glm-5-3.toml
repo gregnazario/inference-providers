@@ -1,0 +1,17 @@
+model = "zai/glm-5-3"
+wire_id = "glm-5.3"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "always_on"
+mandatory = true
+default = "on"
+notes = "Forced thinking: thinking.type enabled and disabled both return 400."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.source]
+url = "https://docs.z.ai/guides/llm/glm-5.3"
+verified = "2026-08-18"

@@ -1,0 +1,22 @@
+model = "zai/glm-4-6"
+wire_id = "glm-4.6"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+notes = "Hybrid thinking on by default."
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = "disabled"
+
+[reasoning.source]
+url = "https://docs.z.ai/guides/llm/glm-4.6"
+verified = "2026-08-18"

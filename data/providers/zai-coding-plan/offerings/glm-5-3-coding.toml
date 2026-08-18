@@ -1,0 +1,16 @@
+model = "zai/glm-5-3"
+wire_id = "glm-5.3"
+endpoint = "coding-chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "always_on"
+mandatory = true
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.source]
+url = "https://docs.z.ai/devpack/overview"
+verified = "2026-08-18"
