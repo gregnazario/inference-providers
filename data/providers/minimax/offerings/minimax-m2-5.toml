@@ -1,0 +1,17 @@
+model = "minimax/minimax-m2-5"
+wire_id = "MiniMax-M2.5"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "always_on"
+mandatory = true
+default = "on"
+notes = "thinking: {type: \"disabled\"} has no effect on M2.x — thinking cannot be turned off."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.source]
+url = "https://platform.minimaxi.com/docs/api-reference/text-chat-openai"
+verified = "2026-08-18"

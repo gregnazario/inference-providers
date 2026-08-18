@@ -1,0 +1,15 @@
+id = "google/gemini-2-5-flash"
+name = "Gemini 2.5 Flash"
+family = "gemini"
+lab = "google"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Hybrid thinking; budget 0 disables, -1 is dynamic."
+aliases = ["gemini-2.5-flash"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

@@ -1,0 +1,29 @@
+model = "openai/gpt-5"
+wire_id = "gpt-5"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 1.25
+output = 10.0
+cache_read = 0.13
+free = false
+source = { url = "https://developers.openai.com/api/docs/guides/latest-model", verified = "2026-08-18" }
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "No 'none': reasoning cannot be fully disabled. minimal-low-medium-high; default medium."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["minimal", "low", "medium", "high"]
+default = "medium"
+
+[reasoning.source]
+url = "https://developers.openai.com/api/docs/guides/reasoning"
+verified = "2026-08-18"

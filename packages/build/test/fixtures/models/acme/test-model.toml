@@ -1,0 +1,15 @@
+id = "acme/test-model"
+name = "Test Model"
+family = "test"
+lab = "acme"
+release_date = "2026-01-01"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Fixture model."
+
+[modalities]
+input = ["text"]
+output = ["text"]

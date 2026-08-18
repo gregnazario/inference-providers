@@ -1,0 +1,23 @@
+id = "google-vertex"
+name = "Google Vertex AI"
+kind = "cloud_hosted"
+api_surfaces = ["text", "streaming", "embeddings", "batch", "count_tokens", "prompt_caching"]
+
+[urls]
+docs = "https://docs.cloud.google.com/vertex-ai"
+console = "https://console.cloud.google.com"
+
+[[auth]]
+id = "adc"
+type = "adc"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["GOOGLE_APPLICATION_CREDENTIALS"]
+getting_credentials = "gcloud auth application-default login; classic endpoints reject API keys (express mode adds API-key auth for some endpoints)."
+docs = "https://ai.google.dev/gemini-api/docs/migrate-to-cloud"
+
+[[endpoints]]
+id = "generate-content"
+base_url = "https://{region}-aiplatform.googleapis.com"
+path = "/v1/projects/{project}/locations/{region}/publishers/google/models/{model}:generateContent"
+protocol = "google-generate-content"

@@ -1,0 +1,41 @@
+id = "azure-foundry"
+name = "Azure AI Foundry"
+kind = "cloud_hosted"
+api_surfaces = ["text", "streaming", "embeddings", "files", "batch", "fine_tuning"]
+
+[urls]
+docs = "https://learn.microsoft.com/en-us/azure/foundry/openai/api-version-lifecycle"
+console = "https://ai.azure.com"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "api-key"
+env = ["AZURE_OPENAI_API_KEY"]
+getting_credentials = "Foundry resource → Keys and Endpoint. 32-char hex keys."
+docs = "https://learn.microsoft.com/en-us/azure/foundry/openai/api-version-lifecycle"
+
+[[auth]]
+id = "entra"
+type = "entra_bearer"
+transport = "header"
+header = "Authorization: Bearer"
+getting_credentials = "Microsoft Entra token with scope https://ai.azure.com/.default; SDKs refresh automatically. Roles like 'Cognitive Services OpenAI User'."
+docs = "https://learn.microsoft.com/en-us/azure/foundry/openai/api-version-lifecycle"
+
+[[endpoints]]
+id = "v1-responses"
+base_url = "https://{resource}.openai.azure.com"
+path = "/openai/v1/responses"
+protocol = "openai-responses"
+
+[[endpoints]]
+id = "v1-chat-completions"
+base_url = "https://{resource}.openai.azure.com"
+path = "/openai/v1/chat/completions"
+protocol = "openai-chat"
+
+[[quirks]]
+text = "The v1 route needs no api-version query param and works with unmodified OpenAI SDKs (set OPENAI_BASE_URL). Classic route uses deployment names + api-version; responses include content_filter_results."
+docs = "https://learn.microsoft.com/en-us/azure/foundry/openai/api-version-lifecycle"

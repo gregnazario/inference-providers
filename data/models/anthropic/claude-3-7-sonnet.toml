@@ -1,0 +1,15 @@
+id = "anthropic/claude-3-7-sonnet"
+name = "Claude 3.7 Sonnet"
+family = "claude"
+lab = "anthropic"
+release_date = "2025-02-19"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "First Claude model with toggleable extended thinking; returns full thinking."
+aliases = ["claude-3-7-sonnet-20250219"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

@@ -1,0 +1,15 @@
+id = "google/gemini-3-pro"
+name = "Gemini 3 Pro"
+family = "gemini"
+lab = "google"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Uses thinkingLevel (low/high); cannot disable thinking."
+aliases = ["gemini-3-pro-preview"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

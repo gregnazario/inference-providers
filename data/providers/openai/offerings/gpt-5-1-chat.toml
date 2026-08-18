@@ -1,0 +1,22 @@
+model = "openai/gpt-5-1"
+wire_id = "gpt-5.1"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "off"
+notes = "Defaults to none; tool calls supported at all efforts."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["none", "low", "medium", "high"]
+default = "none"
+
+[reasoning.source]
+url = "https://developers.openai.com/api/docs/guides/reasoning"
+verified = "2026-08-18"

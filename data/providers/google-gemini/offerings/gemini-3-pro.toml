@@ -1,0 +1,22 @@
+model = "google/gemini-3-pro"
+wire_id = "gemini-3-pro-preview"
+endpoint = "generate-content"
+status = "preview"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "thinkingLevel replaces thinkingBudget on Gemini 3; specifying both errors. Cannot disable thinking."
+returns = "thought_parts"
+must_round_trip = "thought_signature"
+
+[reasoning.effort]
+param = "generationConfig.thinkingConfig.thinkingLevel"
+values = ["low", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/thinking"
+verified = "2026-08-18"

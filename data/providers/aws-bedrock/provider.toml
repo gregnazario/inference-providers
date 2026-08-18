@@ -1,0 +1,43 @@
+id = "aws-bedrock"
+name = "AWS Bedrock"
+kind = "cloud_hosted"
+api_surfaces = ["text", "streaming", "batch", "embeddings"]
+
+[urls]
+docs = "https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys.html"
+console = "https://console.aws.amazon.com/bedrock"
+
+[[auth]]
+id = "bearer-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["AWS_BEARER_TOKEN_BEDROCK"]
+getting_credentials = "Bedrock console → API keys. Short-term (<=12h) or long-lived; governed by bedrock:CallWithBearerToken. Not valid for bidirectional streaming, Agents, or Data Automation."
+docs = "https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys.html"
+
+[[auth]]
+id = "sigv4"
+type = "sigv4"
+transport = "request_signing"
+env = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN"]
+getting_credentials = "Standard AWS credentials chain (IAM user, role, SSO). Signs the request with SigV4; service 'bedrock'."
+docs = "https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam.html"
+
+[[endpoints]]
+id = "converse"
+base_url = "https://bedrock-runtime.{region}.amazonaws.com"
+path = "/model/{modelId}/converse"
+protocol = "bedrock-converse"
+auth = "sigv4"
+
+[[endpoints]]
+id = "invoke-anthropic"
+base_url = "https://bedrock-runtime.{region}.amazonaws.com"
+path = "/model/{modelId}/invoke"
+protocol = "anthropic-messages"
+auth = "sigv4"
+
+[[quirks]]
+text = "Cross-region inference profiles prefix model IDs with us./eu./apac./global. — e.g. us.anthropic.claude-sonnet-4-6. Streaming required when max_tokens > 21,333 with thinking."
+docs = "https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html"

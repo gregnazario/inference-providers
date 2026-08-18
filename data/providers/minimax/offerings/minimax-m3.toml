@@ -1,0 +1,22 @@
+model = "minimax/minimax-m3"
+wire_id = "MiniMax-M3"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "adaptive"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+notes = "thinking.type is adaptive|disabled (no 'enabled'); adaptive lets the model decide."
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "adaptive"
+off = "disabled"
+
+[reasoning.source]
+url = "https://platform.minimaxi.com/docs/api-reference/text-chat-openai"
+verified = "2026-08-18"
