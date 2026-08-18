@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { buildReasoningParam, ReasoningParamError } from "../src/reasoning.js"
+import type { EffortValue } from "../src/index.js"
 import type { Offering, Reasoning } from "@ai-providers/schema"
 
 /**
@@ -251,6 +252,29 @@ const noReasoningOffering = offering("acme/test-model", "test-model", "chat", {
   source: { url: "https://acme.example.com/docs", verified: "2026-08-18" },
 })
 
+// Malicious param paths (not from seed data — these must never shape the wire fragment).
+const protoToggleOffering = offering("acme/evil-toggle", "evil-toggle", "chat", {
+  style: "toggle",
+  mandatory: false,
+  default: "off",
+  returns: "hidden",
+  must_round_trip: "",
+  incompatible_with: [],
+  toggle: { param: "__proto__.polluted", on: "true", off: "false" },
+  source: { url: "https://acme.example.com/docs", verified: "2026-08-18" },
+})
+
+const constructorPathOffering = offering("acme/evil-effort", "evil-effort", "chat", {
+  style: "effort",
+  mandatory: false,
+  default: "on",
+  returns: "hidden",
+  must_round_trip: "",
+  incompatible_with: [],
+  effort: { param: "constructor.prototype.x", values: ["low", "high"], default: "high" },
+  source: { url: "https://acme.example.com/docs", verified: "2026-08-18" },
+})
+
 describe("buildReasoningParam — effort", () => {
   it("effort, chat protocol, top-level param", () => {
     expect(buildReasoningParam(openaiGpt5ChatOffering, { kind: "effort", effort: "high" })).toEqual({
@@ -364,5 +388,32 @@ describe("buildReasoningParam — style none", () => {
     expectError(() => buildReasoningParam(noReasoningOffering, { kind: "budget", budget: 4096 }), "unsupported")
     expectError(() => buildReasoningParam(noReasoningOffering, { kind: "enabled", enabled: true }), "unsupported")
     expectError(() => buildReasoningParam(noReasoningOffering, { kind: "enabled", enabled: false }), "unsupported")
+  })
+})
+
+describe("buildReasoningParam — prototype pollution hardening", () => {
+  it("rejects a __proto__ param path without touching Object.prototype", () => {
+    const err = expectError(
+      () => buildReasoningParam(protoToggleOffering, { kind: "enabled", enabled: true }),
+      "unsupported",
+    )
+    expect(err.message).toContain('invalid param path "__proto__.polluted"')
+    expect((Object.prototype as Record<string, unknown>).polluted).toBeUndefined()
+  })
+
+  it("rejects a constructor.prototype param path without touching Object.prototype", () => {
+    const err = expectError(
+      () => buildReasoningParam(constructorPathOffering, { kind: "effort", effort: "high" }),
+      "unsupported",
+    )
+    expect(err.message).toContain('invalid param path "constructor.prototype.x"')
+    expect((Object.prototype as Record<string, unknown>).x).toBeUndefined()
+  })
+})
+
+describe("package entry exports", () => {
+  it("EffortValue is exported from the package entry", () => {
+    const effort: EffortValue = "xhigh"
+    expect(["none", "minimal", "low", "medium", "high", "xhigh", "max"]).toContain(effort)
   })
 })

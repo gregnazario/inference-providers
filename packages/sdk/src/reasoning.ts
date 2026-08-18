@@ -21,13 +21,21 @@ export class ReasoningParamError extends Error {
   }
 }
 
+/** Path segments that would traverse or mutate object prototypes — rejected outright. */
+const FORBIDDEN_PATH_SEGMENTS = new Set(["__proto__", "constructor", "prototype"])
+
 /**
  * Generic dotted-path setter — the ONLY wire-shaping mechanism.
  * `setPath(o, "a.b.c", v)` mutates `o` so that `o.a.b.c === v`, creating
  * intermediate objects as needed (e.g. gemini's generationConfig.thinkingConfig).
+ * Paths containing "__proto__", "constructor", or "prototype" are rejected
+ * before any mutation to prevent prototype pollution.
  */
 function setPath(obj: Record<string, unknown>, path: string, value: unknown): void {
   const keys = path.split(".")
+  if (keys.some((key) => FORBIDDEN_PATH_SEGMENTS.has(key))) {
+    throw new ReasoningParamError("unsupported", `invalid param path "${path}"`)
+  }
   let cursor = obj
   for (const key of keys.slice(0, -1)) {
     const next = cursor[key]
