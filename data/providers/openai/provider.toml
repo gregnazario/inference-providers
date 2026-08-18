@@ -1,0 +1,36 @@
+id = "openai"
+name = "OpenAI"
+kind = "first_party"
+api_surfaces = ["text", "streaming", "embeddings", "files", "batch", "fine_tuning", "realtime", "image_gen", "audio"]
+
+[urls]
+docs = "https://developers.openai.com/api/reference/overview/"
+console = "https://platform.openai.com"
+status = "https://status.openai.com"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["OPENAI_API_KEY"]
+key_prefix = "sk-"
+extra_headers = { }
+getting_credentials = "platform.openai.com → API Keys. Project keys (sk-proj-) scope to a project; send OpenAI-Organization / OpenAI-Project when a key spans orgs/projects."
+docs = "https://developers.openai.com/api/reference/overview/"
+
+[[endpoints]]
+id = "v1-chat-completions"
+base_url = "https://api.openai.com"
+path = "/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "v1-responses"
+base_url = "https://api.openai.com"
+path = "/v1/responses"
+protocol = "openai-responses"
+
+[[quirks]]
+text = "Assistants API sunsets 2026-08-26; migrate to Responses. Reasoning models require max_completion_tokens (chat) instead of max_tokens."
+docs = "https://developers.openai.com/api/docs/guides/migrate-to-responses"

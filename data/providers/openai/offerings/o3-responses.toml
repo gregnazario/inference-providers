@@ -1,0 +1,22 @@
+model = "openai/o3"
+wire_id = "o3"
+endpoint = "v1-responses"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+returns = "hidden"
+must_round_trip = "encrypted_content"
+incompatible_with = ["temperature", "top_p"]
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high"]
+default = "medium"
+
+[reasoning.source]
+url = "https://developers.openai.com/api/docs/guides/reasoning"
+verified = "2026-08-18"
