@@ -63,15 +63,14 @@ export function validateData(
     seen.add(o.wire_id)
     wireIds.set(seenKey, seen)
 
-    const checkSource = (label: string, url: string, verified: string) => {
+    const checkSource = (label: string, verified: string) => {
       const age = daysBetween(verified, today)
       if (age > 180) issues.push(`${f.path}: stale provenance for ${label} (${verified}, ${age} days old) — re-verify`)
       else if (age > 90) warnings.push(`${f.path}: ${label} provenance unverified for ${age} days (over 90 days)`)
-      void url
     }
-    checkSource("cost", o.cost?.source.url ?? "", o.cost?.source.verified ?? today)
-    checkSource("limits", o.limits?.source.url ?? "", o.limits?.source.verified ?? today)
-    checkSource("reasoning", o.reasoning.source.url, o.reasoning.source.verified)
+    checkSource("cost", o.cost?.source.verified ?? today)
+    checkSource("limits", o.limits?.source.verified ?? today)
+    checkSource("reasoning", o.reasoning.source.verified)
 
     offerings.push({ providerId: f.providerId, data: o })
   }

@@ -8,9 +8,9 @@ const fixtures = join(import.meta.dirname, "fixtures")
 
 describe("buildCatalog", () => {
   it("embeds offerings in providers and reverse-refs in models", () => {
-    const c = buildCatalog(validateData(loadRaw(fixtures)))
+    const c = buildCatalog(validateData(loadRaw(fixtures), { today: "2026-08-18" }))
     expect(c.providers[0]!.id).toBe("acme")
     expect(c.providers[0]!.offerings[0]!.wire_id).toBe("test-model")
-    expect(c.models[0]!.offered_via).toEqual([{ provider: "acme", wire_id: "test-model" }])
+    expect(c.models[0]!.offered_via).toEqual([{ provider: "acme", wire_id: "test-model", endpoint: "chat" }])
   })
 })

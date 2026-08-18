@@ -23,7 +23,7 @@ function withFixture(mutate: (dir: string) => void, fn: (dir: string) => void) {
 
 describe("validateData", () => {
   it("passes on the clean fixture", () => {
-    const r = validateData(loadRaw(fixtures))
+    const r = validateData(loadRaw(fixtures), { today: "2026-08-18" })
     expect(r.models).toHaveLength(1)
     expect(r.offerings).toHaveLength(1)
   })
@@ -103,7 +103,7 @@ describe("validateData", () => {
         )
       },
       (d) => {
-        const r = validateData(loadRaw(d))
+        const r = validateData(loadRaw(d), { today: "2026-08-18" })
         expect(r.offerings).toHaveLength(2)
       },
     )

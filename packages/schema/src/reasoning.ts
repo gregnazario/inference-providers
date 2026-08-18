@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { EffortValue, Returns, RoundTrip, SourceSchema } from "./common.js"
+import { EffortValue, Returns, SourceSchema } from "./common.js"
 
 const effortBlock = z.object({
   param: z.string().min(1),

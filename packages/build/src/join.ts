@@ -2,7 +2,7 @@ import type { Model, Offering, Provider } from "@ai-providers/schema"
 
 export type Catalog = {
   providers: (Provider & { offerings: Offering[] })[]
-  models: (Model & { offered_via: { provider: string; wire_id: string }[] })[]
+  models: (Model & { offered_via: { provider: string; wire_id: string; endpoint: string }[] })[]
 }
 
 export function buildCatalog(v: {
@@ -21,7 +21,7 @@ export function buildCatalog(v: {
     ...m,
     offered_via: v.offerings
       .filter((o) => o.data.model === m.id)
-      .map((o) => ({ provider: o.providerId, wire_id: o.data.wire_id })),
+      .map((o) => ({ provider: o.providerId, wire_id: o.data.wire_id, endpoint: o.data.endpoint })),
   }))
   return { providers, models }
 }
