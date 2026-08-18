@@ -1,0 +1,22 @@
+model = "mistral/mistral-medium-3-5"
+wire_id = "mistral-medium-3.5"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "off"
+notes = "Default effort not documented; verify at docs.mistral.ai/capabilities/reasoning. With high, content is ThinkChunk + TextChunk blocks; replay ThinkChunk in multi-turn."
+returns = "thinking_blocks"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["none", "high"]
+default = "none"
+
+[reasoning.source]
+url = "https://docs.mistral.ai/capabilities/reasoning/"
+verified = "2026-08-18"

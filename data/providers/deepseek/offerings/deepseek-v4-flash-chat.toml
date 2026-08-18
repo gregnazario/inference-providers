@@ -1,0 +1,32 @@
+model = "deepseek/deepseek-v4-flash"
+wire_id = "deepseek-v4-flash"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 1_000_000
+output = 384_000
+source = { url = "https://api-docs.deepseek.com/quick_start/pricing", verified = "2026-08-18" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Thinking enabled by default, default effort high. OpenAI-style reasoning_effort values map low->low, medium->high, high->high, xhigh->high, max->max; native values low/high/max."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "high", "max"]
+default = "high"
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = "disabled"
+
+[reasoning.source]
+url = "https://api-docs.deepseek.com/guides/thinking_mode"
+verified = "2026-08-18"
