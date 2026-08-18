@@ -1,0 +1,41 @@
+id = "qwen-coding-plan"
+name = "Qwen Coding Plan"
+kind = "subscription"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://www.alibabacloud.com/help/en/model-studio/coding-plan"
+console = "https://modelstudio.console.alibabacloud.com"
+
+[plan]
+price_usd = 50.0
+period = "monthly"
+quota = "Pro plan; Lite tier discontinued 2026-03"
+notes = "Strict model allowlist: qwen3.7-plus, qwen3.6-plus, qwen3.5-plus, qwen3-max-2026-01-23, qwen3-coder-next, qwen3-coder-plus, glm-5, glm-4.7, kimi-k2.5, MiniMax-M2.5. Interactive coding-tool use only."
+docs = "https://www.alibabacloud.com/help/en/model-studio/coding-plan"
+
+[[auth]]
+id = "plan-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["BAILIAN_CODING_PLAN_API_KEY"]
+key_prefix = "sk-sp-"
+getting_credentials = "Subscribe in Model Studio; plan keys (sk-sp-...) are separate from normal DASHSCOPE_API_KEY and only work on coding-plan endpoints. Configure tools via OPENAI_BASE_URL=https://coding-intl.dashscope.aliyuncs.com/v1 or the Anthropic-compatible /apps/anthropic route. The older Qwen OAuth free tier was discontinued 2026-04-15."
+docs = "https://qwenlm.github.io/qwen-code-docs/en/users/configuration/auth/"
+
+[[endpoints]]
+id = "coding-chat"
+base_url = "https://coding-intl.dashscope.aliyuncs.com"
+path = "/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "coding-anthropic"
+base_url = "https://coding-intl.dashscope.aliyuncs.com"
+path = "/apps/anthropic"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "China base: https://coding.dashscope.aliyuncs.com/v1. Third-party models on the allowlist (glm-5, glm-4.7, kimi-k2.5, MiniMax-M2.5) are served through the same endpoints; their reasoning parameters follow the upstream models' conventions — offerings seeded only where wire behavior is verified."
+docs = "https://www.alibabacloud.com/help/en/model-studio/coding-plan"

@@ -1,0 +1,28 @@
+id = "alibaba-dashscope"
+name = "Alibaba Model Studio (DashScope)"
+kind = "first_party"
+api_surfaces = ["text", "streaming", "embeddings", "batch"]
+
+[urls]
+docs = "https://www.alibabacloud.com/help/en/model-studio/compatibility-of-openai-with-dashscope"
+console = "https://modelstudio.console.alibabacloud.com"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["DASHSCOPE_API_KEY"]
+key_prefix = "sk-"
+getting_credentials = "Model Studio console → API Keys. Keys are region-bound: international dashscope-intl vs China dashscope endpoints."
+docs = "https://www.alibabacloud.com/help/en/model-studio/first-api-call-to-qwen"
+
+[[endpoints]]
+id = "compatible-mode-chat"
+base_url = "https://dashscope-intl.aliyuncs.com"
+path = "/compatible-mode/v1/chat/completions"
+protocol = "openai-chat"
+
+[[quirks]]
+text = "China base: https://dashscope.aliyuncs.com/compatible-mode/v1. Soft switches /think and /no_think appended to prompts work on open-source hybrid Qwen3 models and qwen-plus-2025-04-28+ (most recent instruction wins). Open-source hybrid models (qwen3-235b-a22b, qwen3-32b) support streaming only when enable_thinking=true — non-streaming calls error. Thinking-only variants (qwen3-next-80b-a3b-thinking, qwq-plus, kimi-k2-thinking) cannot disable. Regional OpenAI-compatible bases like https://{workspace}.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1 also exist; native DashScope endpoint .../api/v1/services/aigc/text-generation/generation with X-DashScope-SSE: enable."
+docs = "https://www.alibabacloud.com/help/en/model-studio/deep-thinking"
