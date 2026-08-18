@@ -1,0 +1,28 @@
+model = "anthropic/claude-sonnet-4-6"
+wire_id = "anthropic/claude-sonnet-4.6"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+notes = "Effort or reasoning.max_tokens (budget, clamped 1024-128000); request max_tokens must exceed the reasoning budget. thinking.display defaults summarized."
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "minimal", "low", "medium", "high", "xhigh", "max"]
+default = "high"
+
+[reasoning.budget]
+param = "reasoning.max_tokens"
+min = 1024
+max = 128_000
+zero_means_off = false
+
+[reasoning.source]
+url = "https://openrouter.ai/docs/use-cases/reasoning-tokens"
+verified = "2026-08-18"

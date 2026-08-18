@@ -1,0 +1,28 @@
+id = "openrouter"
+name = "OpenRouter"
+kind = "aggregator"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://openrouter.ai/docs/api-reference/overview"
+console = "https://openrouter.ai/credits"
+pricing = "https://openrouter.ai/models"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["OPENROUTER_API_KEY"]
+getting_credentials = "openrouter.ai → Keys. Prepaid credits (5.5% purchase fee); optional HTTP-Referer and X-Title attribution headers."
+docs = "https://openrouter.ai/docs/api-reference/overview"
+
+[[endpoints]]
+id = "chat-completions"
+base_url = "https://openrouter.ai"
+path = "/api/v1/chat/completions"
+protocol = "openai-chat"
+
+[[quirks]]
+text = "Unified reasoning object: {effort | max_tokens, exclude, enabled}. Effort converts to a token budget where needed (Anthropic clamped min 1024 / max 128000). reasoning.exclude strips reasoning from responses. Routing: provider.order/allow_fallbacks/sort/require_parameters/max_price; :nitro and :floor model suffixes."
+docs = "https://openrouter.ai/docs/use-cases/reasoning-tokens"
