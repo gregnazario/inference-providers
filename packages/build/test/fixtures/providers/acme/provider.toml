@@ -1,0 +1,21 @@
+id = "acme"
+name = "Acme"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://acme.example.com/docs"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+getting_credentials = "Get a key at acme.example.com."
+docs = "https://acme.example.com/docs/auth"
+
+[[endpoints]]
+id = "chat"
+base_url = "https://api.acme.example.com"
+path = "/v1/chat/completions"
+protocol = "openai-chat"

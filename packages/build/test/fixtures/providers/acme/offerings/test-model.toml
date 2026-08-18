@@ -1,0 +1,16 @@
+model = "acme/test-model"
+wire_id = "test-model"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "none"
+mandatory = false
+default = "off"
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://acme.example.com/docs"
+verified = "2026-08-18"
