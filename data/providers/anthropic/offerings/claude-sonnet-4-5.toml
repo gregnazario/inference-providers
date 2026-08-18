@@ -1,0 +1,43 @@
+model = "anthropic/claude-sonnet-4-5"
+wire_id = "claude-sonnet-4-5"
+endpoint = "v1-messages"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 3.0
+output = 15.0
+cache_read = 0.3
+cache_write = 3.75
+free = false
+source = { url = "https://platform.claude.com/docs/en/docs/about-claude/models", verified = "2026-08-18" }
+
+[limits]
+context = 200_000
+output = 64_000
+source = { url = "https://platform.claude.com/docs/en/docs/about-claude/models", verified = "2026-08-18" }
+
+[reasoning]
+style = "budget"
+mandatory = false
+default = "on"
+notes = "Thinking-on model; budget caps thinking; output summarized but billed at full internal tokens."
+returns = "thinking_blocks"
+must_round_trip = "signature"
+incompatible_with = ["temperature", "top_p", "top_k"]
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = "disabled"
+
+[reasoning.budget]
+param = "thinking.budget_tokens"
+min = 1024
+max = 128_000
+zero_means_off = false
+constraint = "must be < max_tokens"
+
+[reasoning.source]
+url = "https://platform.claude.com/docs/en/docs/build-with-claude/extended-thinking"
+verified = "2026-08-18"

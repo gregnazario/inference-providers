@@ -1,0 +1,49 @@
+id = "anthropic"
+name = "Anthropic"
+kind = "first_party"
+api_surfaces = ["text", "streaming", "batch", "count_tokens", "prompt_caching", "files"]
+
+[urls]
+docs = "https://platform.claude.com/docs/en/api/overview"
+console = "https://console.anthropic.com"
+status = "https://status.anthropic.com"
+pricing = "https://platform.claude.com/docs/en/docs/about-claude/models"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "x-api-key"
+env = ["ANTHROPIC_API_KEY"]
+key_prefix = "sk-ant-api"
+extra_headers = { anthropic-version = "2023-06-01" }
+getting_credentials = "Console → Settings → API Keys. Keys are org-scoped; optional expiry (3h to never)."
+docs = "https://platform.claude.com/docs/en/manage-claude/authentication"
+
+[[auth]]
+id = "oauth"
+type = "oauth"
+transport = "header"
+flow = "authorization_code_pkce"
+token_transport = "header"
+header = "x-api-key"
+extra_headers = { anthropic-beta = "oauth-2025-04-20", anthropic-version = "2023-06-01" }
+scopes = ["org:create_api_key", "user:profile", "user:inference"]
+getting_credentials = "Run Claude Code and sign in with a Claude subscription; OAuth tokens are sent via x-api-key (not Bearer)."
+docs = "https://code.claude.com/docs/en/authentication"
+
+[[endpoints]]
+id = "v1-messages"
+base_url = "https://api.anthropic.com"
+path = "/v1/messages"
+protocol = "anthropic-messages"
+
+[[endpoints]]
+id = "v1-messages-batches"
+base_url = "https://api.anthropic.com"
+path = "/v1/messages/batches"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "Thinking is incompatible with temperature/top_p/top_k, forced tool use, and prefill; changing thinking params invalidates prompt caches; thinking signatures must be replayed unmodified in tool-use turns."
+docs = "https://platform.claude.com/docs/en/docs/build-with-claude/extended-thinking"
