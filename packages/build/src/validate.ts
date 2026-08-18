@@ -44,6 +44,8 @@ export function validateData(
   }
 
   const offerings: { providerId: string; data: Offering }[] = []
+  // wire_id uniqueness is scoped per (provider, endpoint): the same model string
+  // legitimately appears on several endpoints of one provider (chat + responses).
   const wireIds = new Map<string, Set<string>>()
   for (const f of raw.offeringFiles) {
     const r = OfferingSchema.safeParse(f.data)
@@ -55,10 +57,11 @@ export function validateData(
     else if (!provider.endpoints.some((e) => e.id === o.endpoint)) {
       issues.push(`${f.path}: unknown endpoint "${o.endpoint}" on provider "${f.providerId}"`)
     }
-    const seen = wireIds.get(f.providerId) ?? new Set<string>()
-    if (seen.has(o.wire_id)) issues.push(`${f.path}: duplicate wire_id "${o.wire_id}" on provider "${f.providerId}"`)
+    const seenKey = `${f.providerId}/${o.endpoint}`
+    const seen = wireIds.get(seenKey) ?? new Set<string>()
+    if (seen.has(o.wire_id)) issues.push(`${f.path}: duplicate wire_id "${o.wire_id}" on endpoint "${o.endpoint}" of provider "${f.providerId}"`)
     seen.add(o.wire_id)
-    wireIds.set(f.providerId, seen)
+    wireIds.set(seenKey, seen)
 
     const checkSource = (label: string, url: string, verified: string) => {
       const age = daysBetween(verified, today)

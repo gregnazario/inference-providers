@@ -85,4 +85,27 @@ describe("validateData", () => {
       (d) => expect(() => validateData(loadRaw(d))).toThrow(/duplicate wire_id/),
     )
   })
+
+  it("allows the same wire_id on different endpoints of one provider", () => {
+    withFixture(
+      (d) => {
+        const provider = join(d, "providers/acme/provider.toml")
+        writeFileSync(
+          provider,
+          readFileSync(provider, "utf8") +
+            '\n[[endpoints]]\nid = "responses"\nbase_url = "https://api.acme.example.com"\npath = "/v1/responses"\nprotocol = "openai-responses"\n',
+        )
+        const offering = join(d, "providers/acme/offerings/test-model-responses.toml")
+        writeFileSync(
+          offering,
+          readFileSync(join(d, "providers/acme/offerings/test-model.toml"), "utf8")
+            .replace('endpoint = "chat"', 'endpoint = "responses"'),
+        )
+      },
+      (d) => {
+        const r = validateData(loadRaw(d))
+        expect(r.offerings).toHaveLength(2)
+      },
+    )
+  })
 })
