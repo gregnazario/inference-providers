@@ -43,4 +43,14 @@ describe("ReasoningSchema", () => {
   it("none style is valid for non-reasoning models", () => {
     expect(ReasoningSchema.safeParse({ ...base, style: "none", default: "off" }).success).toBe(true)
   })
+  it("effort style allows optional toggle block (deepseek-style surfaces)", () => {
+    const ok = {
+      ...base, style: "effort",
+      effort: { param: "reasoning_effort", values: ["low", "high", "max"], default: "high" },
+      toggle: { param: "thinking.type", on: "enabled", off: "disabled" },
+    }
+    expect(ReasoningSchema.safeParse(ok).success).toBe(true)
+    const noEffort = { ...base, style: "effort", toggle: { param: "thinking.type", on: "enabled", off: "disabled" } }
+    expect(ReasoningSchema.safeParse(noEffort).success).toBe(false)
+  })
 })

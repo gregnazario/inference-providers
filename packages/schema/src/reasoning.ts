@@ -39,7 +39,7 @@ const base = {
 
 export const ReasoningSchema = z.discriminatedUnion("style", [
   z.object({ style: z.literal("none"), ...base }).strict(),
-  z.object({ style: z.literal("effort"), ...base, effort: effortBlock, budget: budgetBlock.optional() }).strict(),
+  z.object({ style: z.literal("effort"), ...base, effort: effortBlock, budget: budgetBlock.optional(), toggle: toggleBlock.optional() }).strict(),
   z.object({ style: z.literal("budget"), ...base, budget: budgetBlock, toggle: toggleBlock.optional() })
     .strict()
     .refine((r) => !("effort" in r), { message: "effort block not allowed on budget style" }),
