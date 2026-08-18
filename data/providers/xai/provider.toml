@@ -1,0 +1,33 @@
+id = "xai"
+name = "xAI"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://docs.x.ai/overview"
+console = "https://console.x.ai"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["XAI_API_KEY"]
+getting_credentials = "Create a key at console.x.ai. OpenAI SDKs work by changing base_url only; also Anthropic-compatible."
+docs = "https://docs.x.ai/overview"
+
+[[endpoints]]
+id = "v1-chat-completions"
+base_url = "https://api.x.ai"
+path = "/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "v1-responses"
+base_url = "https://api.x.ai"
+path = "/v1/responses"
+protocol = "openai-responses"
+
+[[quirks]]
+text = "Responses is the preferred API per xAI docs. presence_penalty, frequency_penalty, and stop cannot be used with reasoning models — requests including them error. grok-4.20-multi-agent maps reasoning.effort to agent count (4 or 16), not depth."
+docs = "https://docs.x.ai/docs/guides/reasoning"

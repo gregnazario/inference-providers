@@ -1,0 +1,33 @@
+id = "deepseek"
+name = "DeepSeek"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://api-docs.deepseek.com/"
+console = "https://platform.deepseek.com"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["DEEPSEEK_API_KEY"]
+getting_credentials = "Create a key at platform.deepseek.com. Works in Claude Code, Copilot, OpenCode via the Anthropic-compatible endpoint."
+docs = "https://api-docs.deepseek.com/"
+
+[[endpoints]]
+id = "chat-completions"
+base_url = "https://api.deepseek.com"
+path = "/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "anthropic"
+base_url = "https://api.deepseek.com"
+path = "/anthropic"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "Root path /chat/completions works without /v1. Stateless OpenAI Responses API also supported. In tool-call flows, prior-turn reasoning_content must be passed back or you get a 400; without tools it is ignored. When thinking is on, temperature/top_p/presence_penalty/frequency_penalty are silently ignored. FIM only in non-thinking mode. The old deepseek-chat / deepseek-reasoner split is gone — same model names serve both modes via the thinking toggle."
+docs = "https://api-docs.deepseek.com/guides/thinking_mode"

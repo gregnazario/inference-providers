@@ -1,0 +1,22 @@
+model = "deepseek/deepseek-v4-flash"
+wire_id = "deepseek-v4-flash"
+endpoint = "anthropic"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "Anthropic-compatible surface (for Claude Code et al.): thinking {type} toggle; reasoning_content round-trip applies in tool flows."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = "disabled"
+
+[reasoning.source]
+url = "https://api-docs.deepseek.com/"
+verified = "2026-08-18"

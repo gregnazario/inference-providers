@@ -1,0 +1,15 @@
+id = "deepseek/deepseek-v4-pro"
+name = "DeepSeek V4 Pro"
+family = "deepseek-v4"
+lab = "deepseek"
+release_date = "2026-08-13"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Hybrid thinking on by default (V4-Pro-0813); 1M context, 384K max output shared with CoT."
+aliases = ["deepseek-v4-pro-0813"]
+[modalities]
+input = ["text"]
+output = ["text"]

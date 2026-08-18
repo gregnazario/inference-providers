@@ -1,0 +1,46 @@
+id = "opencode-go"
+name = "OpenCode Go"
+kind = "subscription"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://opencode.ai/docs/go/"
+console = "https://opencode.ai/go"
+
+[plan]
+price_usd = 10.0
+period = "monthly"
+quota = "$12 per 5 hours, $30/week, $60/month"
+notes = "$5 first month then $10/mo, on top of the Zen console (same API key mechanism); open coding models only — Grok 4.5, GPT 5.6 Luna, GLM-5.x, Kimi K3/K2.x, MiniMax M3/M2.7, Qwen3.x, DeepSeek V4, MiMo, Hy3; optional Zen-balance fallback. Routes per protocol: /responses for Grok/GPT, /chat/completions for GLM/Kimi/DeepSeek, /messages (Anthropic) for MiniMax/Qwen."
+docs = "https://opencode.ai/docs/go/"
+
+[[auth]]
+id = "plan-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["OPENCODE_API_KEY"]
+getting_credentials = "Subscribe at opencode.ai/go; uses the OpenCode Zen API key. Provider IDs are opencode-go/<model>."
+docs = "https://opencode.ai/docs/go/"
+
+[[endpoints]]
+id = "go-responses"
+base_url = "https://opencode.ai"
+path = "/zen/go/v1/responses"
+protocol = "openai-responses"
+
+[[endpoints]]
+id = "go-chat-completions"
+base_url = "https://opencode.ai"
+path = "/zen/go/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "go-messages"
+base_url = "https://opencode.ai"
+path = "/zen/go/v1/messages"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "Per-model-family protocol routing: /responses for Grok/GPT, /chat/completions for GLM/Kimi/DeepSeek, /messages for MiniMax/Qwen. Model list at GET /zen/go/v1/models; offerings pending wire-id verification (Phase 2 sync)."
+docs = "https://opencode.ai/docs/go/"

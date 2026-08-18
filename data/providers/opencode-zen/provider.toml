@@ -1,0 +1,45 @@
+id = "opencode-zen"
+name = "OpenCode Zen"
+kind = "aggregator"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://opencode.ai/docs/zen/"
+console = "https://opencode.ai/auth"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["OPENCODE_API_KEY"]
+getting_credentials = "Create a key at opencode.ai/auth (in the TUI: /connect). ~90+ curated models billed at cost, pay-as-you-go."
+docs = "https://opencode.ai/docs/providers/"
+
+[[endpoints]]
+id = "chat-completions"
+base_url = "https://opencode.ai"
+path = "/zen/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "responses"
+base_url = "https://opencode.ai"
+path = "/zen/v1/responses"
+protocol = "openai-responses"
+
+[[endpoints]]
+id = "messages"
+base_url = "https://opencode.ai"
+path = "/zen/v1/messages"
+protocol = "anthropic-messages"
+
+[[endpoints]]
+id = "gemini-style"
+base_url = "https://opencode.ai"
+path = "/zen/v1/models/{model-id}"
+protocol = "google-generate-content"
+
+[[quirks]]
+text = "Four protocol surfaces; models are assigned per surface (Responses for GPT/Grok, Anthropic Messages for Claude/Qwen, chat-completions for DeepSeek/MiniMax/GLM/Kimi, Gemini-style for Google models). No documented reasoning normalization — controls follow each upstream provider's wire format per surface; community-verified: thinking {type: enabled} and reasoning_effort (low/high/max) pass through for DeepSeek V4 on the chat surface. Offerings pending wire-id verification via GET /zen/v1/models (Phase 2 sync)."
+docs = "https://opencode.ai/docs/zen/"

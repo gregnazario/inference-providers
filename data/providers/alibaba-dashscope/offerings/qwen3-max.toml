@@ -1,0 +1,22 @@
+model = "alibaba/qwen3-max"
+wire_id = "qwen3-max"
+endpoint = "compatible-mode-chat"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "off"
+notes = "Commercial Qwen models default thinking OFF (qwen3-max, qwen-plus since 2025-04-28, qwen-flash since 2025-07-28, qwen-turbo)."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.toggle]
+param = "enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://www.alibabacloud.com/help/en/model-studio/deep-thinking"
+verified = "2026-08-18"
