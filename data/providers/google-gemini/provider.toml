@@ -1,0 +1,27 @@
+id = "google-gemini"
+name = "Google Gemini API"
+kind = "first_party"
+api_surfaces = ["text", "streaming", "embeddings", "files", "batch", "count_tokens", "prompt_caching"]
+
+[urls]
+docs = "https://ai.google.dev/api"
+console = "https://aistudio.google.com"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "x-goog-api-key"
+env = ["GEMINI_API_KEY", "GOOGLE_API_KEY"]
+getting_credentials = "AI Studio → Get API key. Prefer the x-goog-api-key header; the legacy ?key= query param leaks keys into logs."
+docs = "https://ai.google.dev/api"
+
+[[endpoints]]
+id = "generate-content"
+base_url = "https://generativelanguage.googleapis.com"
+path = "/v1beta/models/{model}:generateContent"
+protocol = "google-generate-content"
+
+[[quirks]]
+text = "OpenAI-compatible route: use https://generativelanguage.googleapis.com/v1beta/openai/ as base URL with the same API key."
+docs = "https://ai.google.dev/gemini-api/docs/openai"

@@ -1,0 +1,23 @@
+model = "google/gemini-2-5-pro"
+wire_id = "gemini-2.5-pro"
+endpoint = "generate-content"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "budget"
+mandatory = true
+default = "on"
+returns = "thought_parts"
+must_round_trip = "thought_signature"
+
+[reasoning.budget]
+param = "generationConfig.thinkingConfig.thinkingBudget"
+min = 128
+max = 32_768
+zero_means_off = false
+special_values = { "-1" = "dynamic" }
+
+[reasoning.source]
+url = "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/thinking"
+verified = "2026-08-18"
