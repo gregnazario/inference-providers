@@ -1266,7 +1266,7 @@ Expected: ENOENT error mentioning `data/models` (proves wiring; acceptable until
 ### Task 10: seed — canonical models
 
 **Files:**
-- Create: 15 files under `data/models/`. File names must equal the model segment of `id`.
+- Create: 16 files under `data/models/`. File names must equal the model segment of `id`.
 
 All reasoning-related offering facts land in Task 11+; this task is models only. Dates/prices use only research-verified values; unknown = `""` / omitted.
 
@@ -1576,7 +1576,7 @@ output = ["text"]
 
 - [ ] **Step 1: Write the files above** (models with `release_date = ""` — leave unknown)
 - [ ] **Step 2: Verify** — `pnpm validate` at repo root. Expected: fails with "unknown model" on nothing — actually fails only if data/models has no providers dir; provider seeding is next. If `loadRaw` throws on missing `data/providers`, create `data/providers/.gitkeep` and note `loadRaw` must tolerate an empty providers dir: wrap `readdirSync(providersDir)` in the same try/catch pattern as `listToml` returning `[]` when missing. Make that small parse.ts change in this task.
-Expected after fix: `OK: 16 models, 0 providers, 0 offerings` — wait, 15 files listed; message reads `OK: 15 models, 0 providers, 0 offerings`.
+Expected after fix: `OK: 15 models, 0 providers, 0 offerings`. (Corrected during execution: the file list contains 16 models — 5 anthropic + 4 openai + 3 google + 2 zai + 2 minimax — and all 16 are referenced by downstream offerings, so the expected line is `OK: 16 models, 0 providers, 0 offerings`.)
 - [ ] **Step 3: Commit** — `git add -A && git commit -m "Seed canonical models for anthropic, openai, google, zai, minimax"`
 
 ---
@@ -1949,7 +1949,7 @@ verified = "2026-08-18"
 ```
 
 - [ ] **Step 1: Write the files**
-- [ ] **Step 2: Verify** — `pnpm validate`. Expected: `OK: 15 models, 2 providers, 7 offerings`.
+- [ ] **Step 2: Verify** — `pnpm validate`. Expected: `OK: 16 models, 2 providers, 7 offerings`.
 - [ ] **Step 3: Commit** — `git add -A && git commit -m "Seed anthropic and aws-bedrock surfaces"`
 
 ---
@@ -2288,7 +2288,7 @@ verified = "2026-08-18"
 ```
 
 - [ ] **Step 1: Write the files**
-- [ ] **Step 2: Verify** — `pnpm validate`. Expected: `OK: 15 models, 4 providers, 16 offerings`.
+- [ ] **Step 2: Verify** — `pnpm validate`. Expected: `OK: 16 models, 4 providers, 16 offerings`.
 - [ ] **Step 3: Commit** — `git add -A && git commit -m "Seed openai and azure-foundry surfaces"`
 
 ---
@@ -2464,7 +2464,7 @@ verified = "2026-08-18"
 ```
 
 - [ ] **Step 1: Write the files**
-- [ ] **Step 2: Verify** — `pnpm validate`. Expected: `OK: 15 models, 6 providers, 20 offerings`.
+- [ ] **Step 2: Verify** — `pnpm validate`. Expected: `OK: 16 models, 6 providers, 20 offerings`.
 - [ ] **Step 3: Commit** — `git add -A && git commit -m "Seed google-gemini and google-vertex surfaces"`
 
 ---
@@ -2737,7 +2737,7 @@ verified = "2026-08-18"
 Note: `default = "adaptive"` is valid per the base enum (`on|off|adaptive`).
 
 - [ ] **Step 1: Write the files**
-- [ ] **Step 2: Verify** — `pnpm validate`. Expected: `OK: 15 models, 9 providers, 26 offerings`.
+- [ ] **Step 2: Verify** — `pnpm validate`. Expected: `OK: 16 models, 9 providers, 26 offerings`.
 - [ ] **Step 3: Commit** — `git add -A && git commit -m "Seed zai, zai-coding-plan, minimax surfaces"`
 
 ---
@@ -2868,8 +2868,8 @@ verified = "2026-08-18"
 ```
 
 - [ ] **Step 1: Write the files**
-- [ ] **Step 2: Verify** — `pnpm validate`. Expected: `OK: 15 models, 10 providers, 29 offerings`.
-- [ ] **Step 3: Emit artifacts** — `pnpm emit`. Expected: `dist/` contains catalog.json, providers.json, models.json, 10 provider files, 15 model files.
+- [ ] **Step 2: Verify** — `pnpm validate`. Expected: `OK: 16 models, 10 providers, 29 offerings`.
+- [ ] **Step 3: Emit artifacts** — `pnpm emit`. Expected: `dist/` contains catalog.json, providers.json, models.json, 10 provider files, 16 model files.
 - [ ] **Step 4: Commit** — `git add -A && git commit -m "Seed openrouter and emit first full artifact set"`
 
 ---
@@ -2935,14 +2935,14 @@ the design rationale.
 
 - [ ] **Step 1: Write both files**
 - [ ] **Step 2: Verify locally** — `pnpm typecheck && pnpm test && pnpm validate && pnpm emit`
-Expected: all green, `OK: 15 models, 10 providers, 29 offerings`.
+Expected: all green, `OK: 16 models, 10 providers, 29 offerings`.
 - [ ] **Step 3: Commit** — `git add -A && git commit -m "Add CI workflow and contribution guide"`
 
 ---
 
 ## Completion criteria
 
-- `pnpm validate` passes with 15 models, 10 providers, 29 offerings, zero errors.
+- `pnpm validate` passes with 16 models, 10 providers, 29 offerings, zero errors.
 - `pnpm test` green across schema and build packages.
 - `pnpm emit` produces `dist/` artifacts with `generated_at` + `source_commit`.
 - Every seeded reasoning fact carries a source URL verified 2026-08-18.
