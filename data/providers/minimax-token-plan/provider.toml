@@ -1,0 +1,34 @@
+id = "minimax-token-plan"
+name = "MiniMax Token Plan"
+kind = "subscription"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://platform.minimax.io/docs/token-plan/intro"
+console = "https://platform.minimax.io/subscribe/token-plan"
+
+[plan]
+price_usd = 20.0
+period = "monthly"
+quota = "Plus ~1.7B tokens/mo (3-4 concurrent agents); Max ~5.1B; higher tiers to ~$120"
+notes = "Subscription Key is a separate credential type from pay-as-you-go API keys, issued under Billing > Token Plan. Sources conflict on Plus pricing ($20 vs $40) — verify at the subscribe page. For Claude Code: ANTHROPIC_BASE_URL=https://api.minimax.io/anthropic + ANTHROPIC_AUTH_TOKEN=<Subscription Key>."
+docs = "https://platform.minimax.io/docs/token-plan/claude-code"
+
+[[auth]]
+id = "subscription-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["MINIMAX_SUBSCRIPTION_KEY"]
+getting_credentials = "Subscribe at platform.minimax.io/subscribe/token-plan; the Subscription Key is issued separately from standard API keys under Billing > Token Plan."
+docs = "https://platform.minimax.io/docs/token-plan/intro"
+
+[[endpoints]]
+id = "anthropic"
+base_url = "https://api.minimax.io"
+path = "/anthropic"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "Anthropic-compatible endpoint for coding tools (Claude Code). China base: https://api.minimaxi.com/anthropic."
+docs = "https://platform.minimax.io/docs/token-plan/claude-code"
