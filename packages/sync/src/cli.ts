@@ -11,8 +11,8 @@ const catalog = loadCatalog()
 const result = await runSync({ catalog, env: process.env })
 
 const lines: string[] = []
-if (result.missingTargets.length === TARGETS.length) {
-  lines.push("no targets with credentials")
+if (result.missingTargets.length === TARGETS.filter((t) => t.auth !== "none").length) {
+  lines.push("no keyed targets have credentials — keyless targets only")
 }
 for (const report of result.reports) {
   lines.push(`## ${report.providerId}`)

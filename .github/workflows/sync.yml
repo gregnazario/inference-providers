@@ -52,23 +52,31 @@ jobs:
             import { readFileSync } from "node:fs";
             import { execSync } from "node:child_process";
             const r = JSON.parse(readFileSync(".superpowers/sync-report.json", "utf8"));
-            if (!r.reports || r.reports.length === 0) {
-              console.log("no drift");
+            const reports = r.reports ?? [];
+            const cap = (ids) => {
+              const shown = ids.slice(0, 50).map((x) => "- `" + x + "`").join("\n");
+              return ids.length > 50 ? shown + "\n- … and " + (ids.length - 50) + " more" : shown;
+            };
+            // The issue fires only on removals — a removal means the catalog
+            // may be broken. Additions alone are uncataloged leads and stay in
+            // the sync-report artifact.
+            if (!reports.some((d) => d.removed.length > 0)) {
+              console.log("no removals — issue not opened");
               process.exit(0);
             }
-            const body = r.reports
+            const body = reports
               .map(
                 (d) =>
                   `## ${d.providerId}` +
-                  (d.added.length
-                    ? "\n\n**Added:**\n" + d.added.map((x) => "- `" + x + "`").join("\n")
-                    : "") +
                   (d.removed.length
-                    ? "\n\n**Removed:**\n" + d.removed.map((x) => "- `" + x + "`").join("\n")
+                    ? "\n\n**Removed (action needed):**\n" + cap(d.removed)
+                    : "") +
+                  (d.added.length
+                    ? "\n\n**Added (uncataloged leads):**\n" + cap(d.added)
                     : "")
               )
               .join("\n\n") +
-              "\n\n---\n\nDetected by the daily sync run. Offerings land only after human verification with sources — see the Verify page.";
+              "\n\n---\n\nDetected by the daily sync run. Removed wire ids are no longer live and need catalog fixes; added ones are uncataloged leads. Offerings land only after human verification with sources — see the Verify page.";
             const title = "Provider drift detected";
             const existing = execSync(
               `gh issue list --repo "$GITHUB_REPOSITORY" --search "in:title is:open ${title}" --state open --json number --jq ".[0].number // empty"`,

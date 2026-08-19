@@ -1,5 +1,5 @@
 model = "moonshot/kimi-k2-7-code"
-wire_id = "kimi-k2.7-code:cloud"
+wire_id = "kimi-k2.7-code"
 endpoint = "v1-chat-completions"
 status = "ga"
 status_date = ""

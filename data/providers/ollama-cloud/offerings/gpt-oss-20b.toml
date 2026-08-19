@@ -1,5 +1,5 @@
 model = "openai/gpt-oss-20b"
-wire_id = "gpt-oss:20b-cloud"
+wire_id = "gpt-oss:20b"
 endpoint = "v1-chat-completions"
 status = "ga"
 status_date = ""

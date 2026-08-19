@@ -1,8 +1,8 @@
 model = "deepseek/deepseek-v4-pro"
 wire_id = "deepseek-ai/deepseek-v4-pro"
 endpoint = "v1-chat-completions"
-status = "ga"
-status_date = ""
+status = "retired"
+status_date = "2026-08-19"
 
 [limits]
 context = 1_048_576
@@ -12,7 +12,7 @@ source = { url = "https://docs.api.nvidia.com/nim/reference/deepseek-ai-deepseek
 style = "adaptive"
 mandatory = false
 default = "on"
-notes = "Modes non-think/think-high/think-max via chat_template_kwargs; reasoning_effort reportedly silently ignored on this model (forum) — verify."
+notes = "Modes non-think/think-high/think-max via chat_template_kwargs; reasoning_effort reportedly silently ignored on this model (forum) — verify. Removed from the live NIM catalog 2026-08-19 (only deepseek-v4-flash-0731 remains); no replacement id."
 returns = "reasoning_content"
 must_round_trip = "reasoning_content"
 

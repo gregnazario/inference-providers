@@ -41,3 +41,7 @@ docs = "https://docs.ollama.com/api/openai-compatibility"
 [[quirks]]
 text = "Usage levels (Low, Medium, High, Extra High) weight billing — no per-Mtok pricing. Full catalog at ollama.com/search?c=cloud (also gemma4, nemotron-3 family, mistral-large-3 — the only non-thinking cloud model)."
 docs = "https://ollama.com/cloud"
+
+[[quirks]]
+text = "Model IDs dropped the -cloud suffix (verified 2026-08-19); DeepSeek and Qwen entries carry snapshot/variant suffixes (:0731/:0813/:397b/:preview) and full-catalog drift is visible in the daily sync."
+docs = "https://ollama.com/search?c=cloud"

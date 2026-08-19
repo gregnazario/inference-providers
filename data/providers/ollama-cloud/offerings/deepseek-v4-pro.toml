@@ -1,5 +1,5 @@
 model = "deepseek/deepseek-v4-pro"
-wire_id = "deepseek-v4-pro:cloud"
+wire_id = "deepseek-v4-pro:0813"
 endpoint = "v1-chat-completions"
 status = "ga"
 status_date = ""
