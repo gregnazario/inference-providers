@@ -1,0 +1,48 @@
+id = "fireworks-ai"
+name = "Fireworks AI"
+kind = "first_party"
+api_surfaces = ["text", "streaming", "embeddings", "batch", "rerank"]
+
+[urls]
+docs = "https://docs.fireworks.ai/"
+console = "https://app.fireworks.ai"
+pricing = "https://docs.fireworks.ai/serverless/pricing"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["FIREWORKS_API_KEY"]
+getting_credentials = "Create keys in the Fireworks console (app.fireworks.ai, Account Settings > API Keys)."
+docs = "https://docs.fireworks.ai/"
+
+[[endpoints]]
+id = "inference-v1"
+base_url = "https://api.fireworks.ai"
+path = "/inference/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "responses"
+base_url = "https://api.fireworks.ai"
+path = "/inference/v1/responses"
+protocol = "openai-responses"
+
+[[endpoints]]
+id = "anthropic"
+base_url = "https://api.fireworks.ai"
+path = "/inference/v1/messages"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "reasoning_effort (low/medium/high) AND an Anthropic-style thinking object {type: enabled, budget_tokens >= 1024} are both accepted on chat/completions — specifying both errors."
+docs = "https://docs.fireworks.ai/guides/reasoning"
+
+[[quirks]]
+text = "Interleaved thinking: you MUST echo prior assistant reasoning_content when the last message is a tool result; reasoning_history: preserved retains reasoning across turns."
+docs = "https://docs.fireworks.ai/guides/reasoning"
+
+[[quirks]]
+text = "Batch is 50% of serverless price via the Fireworks-native batch API (not OpenAI /v1/batches); Responses API stores by default; streaming includes usage in the final chunk."
+docs = "https://docs.fireworks.ai/guides/reasoning"

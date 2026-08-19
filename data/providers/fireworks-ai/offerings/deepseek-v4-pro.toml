@@ -1,0 +1,32 @@
+model = "deepseek/deepseek-v4-pro"
+wire_id = "deepseek-v4-pro"
+endpoint = "inference-v1"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 1.74
+output = 3.48
+cache_read = 0.145
+source = { url = "https://docs.fireworks.ai/serverless/pricing", verified = "2026-08-19" }
+
+[limits]
+context = 1_048_576
+source = { url = "https://api.fireworks.ai/inference/v1/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high"]
+default = "high"
+notes = "Default not documented — verify."
+
+[reasoning.source]
+url = "https://docs.fireworks.ai/guides/reasoning"
+verified = "2026-08-19"
