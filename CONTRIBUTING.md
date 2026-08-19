@@ -1,5 +1,28 @@
 # Contributing to inference-providers
 
+Thanks for contributing! This project welcomes contributions of all kinds —
+data corrections, new providers and models, docs, and tooling.
+
+Contributions are licensed under the [Apache License 2.0](LICENSE). By
+submitting a pull request (or otherwise contributing), you agree that your
+contributions are licensed under Apache-2.0 and that the project may
+redistribute them under that license.
+
+### PR checklist
+
+- [ ] `pnpm validate` is green (data + provenance gates)
+- [ ] Every mutable fact carries complete provenance (`[*.source] url/verified`)
+- [ ] Facts you could not fully verify are flagged with a note in the PR
+      describing what was checked and against which source
+- [ ] `pnpm emit` was run and the regenerated `dist/` changes are included
+      (never hand-edit `dist/`)
+
+The verification procedure for every fact dimension — pricing, models,
+features (reasoning), auth, and API compatibility — is documented on the
+[Verify page](https://gregnazario.github.io/inference-providers/verify/)
+(source: [`site/src/pages/verify.md`](site/src/pages/verify.md)). When in
+doubt about how to verify a fact, start there.
+
 Data lives in `data/` as TOML. Three layers:
 
 - `data/models/<lab>/<model>.toml` — canonical model facts (lab-owned)

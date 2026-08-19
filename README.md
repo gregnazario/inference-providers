@@ -1,5 +1,8 @@
 # inference-providers
 
+[![CI](https://github.com/gregnazario/inference-providers/actions/workflows/ci.yml/badge.svg)](https://github.com/gregnazario/inference-providers/actions/workflows/ci.yml)
+[![Docs site](https://github.com/gregnazario/inference-providers/actions/workflows/pages.yml/badge.svg)](https://gregnazario.github.io/inference-providers/)
+
 An open, provenance-tracked registry of AI model providers: canonical models,
 provider surfaces (auth, endpoints, protocols), and per-surface offerings with
 structured reasoning/thinking parameter specs. The data-first fix for what
@@ -8,8 +11,8 @@ models.dev can't model.
 The registry is live: two layers of provenance-tracked TOML — canonical
 models (`data/models/`, lab-owned facts) and provider offerings
 (`data/providers/`, per-surface serving facts) — validated by gating rules and
-emitted as typed artifacts in `dist/`. Current counts: **24 models, 18
-providers, 44 offerings**.
+emitted as typed artifacts in `dist/`. Current counts: **45 models, 30
+providers, 98 offerings**.
 
 ## Usage
 
@@ -56,3 +59,16 @@ Actions** — the deploy workflow stays inert until Pages is enabled.
 
 Design spec and rationale:
 [`docs/superpowers/specs/2026-08-18-ai-providers-registry-design.md`](docs/superpowers/specs/2026-08-18-ai-providers-registry-design.md)
+
+## Contributing
+
+Contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for the data
+rules, the PR checklist, and the sync drift workflow. Every fact must carry
+provenance; the full verification methodology for pricing, models, features,
+auth, and API compatibility is documented on the
+[Verify page](https://gregnazario.github.io/inference-providers/verify/)
+([source](site/src/pages/verify.md)).
+
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE).
