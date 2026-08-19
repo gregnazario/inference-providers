@@ -2,6 +2,10 @@ import { describe, expect, it } from "vitest"
 import type { Provider } from "@ai-providers/schema"
 import { authHeaders } from "../src/auth.js"
 
+// Round-trip fixture values — placeholders, not credentials.
+const CRED = "fixture-credential"
+const STALE_EXTRA = "stale-extra-header-value"
+
 const anthropic: Provider = {
   id: "anthropic",
   name: "Anthropic",
@@ -162,57 +166,57 @@ const colliding: Provider = {
   auth: [
     {
       ...anthropic.auth[0]!,
-      extra_headers: { "x-api-key": "stale-extra-value", "anthropic-version": "2023-06-01" },
+      extra_headers: { "x-api-key": STALE_EXTRA, "anthropic-version": "2023-06-01" },
     },
   ],
 }
 
 describe("authHeaders", () => {
   it("uses the first auth entry by default (anthropic x-api-key + anthropic-version)", () => {
-    expect(authHeaders(anthropic, { credential: "sk-ant-api03-test" })).toEqual({
-      "x-api-key": "sk-ant-api03-test",
+    expect(authHeaders(anthropic, { credential: CRED })).toEqual({
+      "x-api-key": CRED,
       "anthropic-version": "2023-06-01",
     })
   })
 
   it("picks the auth entry matching authId (anthropic oauth adds its beta header)", () => {
-    expect(authHeaders(anthropic, { credential: "oauth-token", authId: "oauth" })).toEqual({
-      "x-api-key": "oauth-token",
+    expect(authHeaders(anthropic, { credential: CRED, authId: "oauth" })).toEqual({
+      "x-api-key": CRED,
       "anthropic-beta": "oauth-2025-04-20",
       "anthropic-version": "2023-06-01",
     })
   })
 
   it("renders Authorization: Bearer for openai", () => {
-    expect(authHeaders(openai, { credential: "sk-test" })).toEqual({
-      Authorization: "Bearer sk-test",
+    expect(authHeaders(openai, { credential: CRED })).toEqual({
+      Authorization: `Bearer ${CRED}`,
     })
   })
 
   it("uses the plain api-key header for azure", () => {
-    expect(authHeaders(azure, { credential: "32charhexkey" })).toEqual({
-      "api-key": "32charhexkey",
+    expect(authHeaders(azure, { credential: CRED })).toEqual({
+      "api-key": CRED,
     })
-    expect(authHeaders(azure, { credential: "entra-token", authId: "entra" })).toEqual({
-      Authorization: "Bearer entra-token",
+    expect(authHeaders(azure, { credential: CRED, authId: "entra" })).toEqual({
+      Authorization: `Bearer ${CRED}`,
     })
   })
 
   it("throws for bedrock sigv4 request signing", () => {
-    expect(() => authHeaders(bedrock, { credential: "AKIA-test", authId: "sigv4" })).toThrowError(
+    expect(() => authHeaders(bedrock, { credential: CRED, authId: "sigv4" })).toThrowError(
       "sigv4 requires request signing — not a header scheme",
     )
   })
 
   it("throws for an unknown authId", () => {
-    expect(() => authHeaders(anthropic, { credential: "sk-ant-api03-test", authId: "nope" })).toThrowError(
+    expect(() => authHeaders(anthropic, { credential: CRED, authId: "nope" })).toThrowError(
       "auth method nope not found",
     )
   })
 
   it("lets the credential header win over a colliding extra header", () => {
-    expect(authHeaders(colliding, { credential: "sk-ant-api03-test" })).toEqual({
-      "x-api-key": "sk-ant-api03-test",
+    expect(authHeaders(colliding, { credential: CRED })).toEqual({
+      "x-api-key": CRED,
       "anthropic-version": "2023-06-01",
     })
   })

@@ -76,6 +76,9 @@ describe("PROVIDER_ENV_KEYS", () => {
   })
 })
 
+// Fixture env value for wire-up assertions — a placeholder, not a credential.
+const ENV_VALUE = "unit-test-value"
+
 describe("runSync", () => {
   it("reports drift for the credentialed provider and lists the rest as missing", async () => {
     const catalog = catalogOf(
@@ -84,7 +87,7 @@ describe("runSync", () => {
     )
     const result = await runSync({
       catalog,
-      env: { OPENAI_API_KEY: "test-openai-key" },
+      env: { OPENAI_API_KEY: ENV_VALUE },
       fetchImpl: async () => jsonResponse({ data: [{ id: "gpt-5" }, { id: "gpt-5.5" }] }),
     })
 
@@ -99,7 +102,7 @@ describe("runSync", () => {
     const catalog = catalogOf(provider("openai", [{ wire_id: "gpt-5" }]))
     await runSync({
       catalog,
-      env: { OPENAI_API_KEY: "test-openai-key" },
+      env: { OPENAI_API_KEY: ENV_VALUE },
       fetchImpl: async (input, init) => {
         requestedUrl = String(input)
         authorization = new Headers(init?.headers).get("Authorization") ?? undefined
@@ -108,7 +111,7 @@ describe("runSync", () => {
     })
 
     expect(requestedUrl).toBe(OPENAI_URL)
-    expect(authorization).toBe("Bearer test-openai-key")
+    expect(authorization).toBe(`Bearer ${ENV_VALUE}`)
   })
 
   it("treats an empty env value as a missing target and never fetches", async () => {
@@ -132,7 +135,7 @@ describe("runSync", () => {
     const catalog = catalogOf(provider("openai", [{ wire_id: "gpt-5" }]))
     const result = await runSync({
       catalog,
-      env: { OPENAI_API_KEY: "test-openai-key" },
+      env: { OPENAI_API_KEY: ENV_VALUE },
       fetchImpl: async () => jsonResponse({ data: [{ id: "gpt-5" }] }),
     })
 
@@ -149,7 +152,7 @@ describe("runSync", () => {
     )
     const result = await runSync({
       catalog,
-      env: { OPENAI_API_KEY: "test-openai-key" },
+      env: { OPENAI_API_KEY: ENV_VALUE },
       fetchImpl: async () => jsonResponse({ data: [{ id: "gpt-5" }, { id: "gpt-5.5" }] }),
     })
 
@@ -159,7 +162,7 @@ describe("runSync", () => {
   it("reports every live id as added for a provider absent from the catalog", async () => {
     const result = await runSync({
       catalog: catalogOf(provider("openai", [{ wire_id: "gpt-5" }])),
-      env: { OPENROUTER_API_KEY: "test-or-key" },
+      env: { OPENROUTER_API_KEY: ENV_VALUE },
       fetchImpl: async () => jsonResponse({ data: [{ id: "anthropic/claude-sonnet-5" }] }),
     })
 
@@ -175,7 +178,7 @@ describe("runSync", () => {
     )
     const result = await runSync({
       catalog,
-      env: { OPENAI_API_KEY: "k", ANTHROPIC_API_KEY: "k" },
+      env: { OPENAI_API_KEY: ENV_VALUE, ANTHROPIC_API_KEY: ENV_VALUE },
       fetchImpl: async (input) => {
         if (String(input).includes("anthropic")) throw new Error("network down")
         return jsonResponse({ data: [{ id: "gpt-5" }] })
@@ -191,7 +194,7 @@ describe("runSync", () => {
     const catalog = catalogOf(provider("openai", [{ wire_id: "gpt-5" }]))
     const result = await runSync({
       catalog,
-      env: { OPENAI_API_KEY: "k" },
+      env: { OPENAI_API_KEY: ENV_VALUE },
       fetchImpl: async () => new Response(JSON.stringify({ error: { message: "bad key" } }), { status: 401 }),
     })
 
