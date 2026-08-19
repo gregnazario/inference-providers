@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config"
 
 export default defineConfig({
-  base: "/ai-providers/",
+  base: "/inference-providers/",
   outDir: "dist",
   trailingSlash: "ignore",
 })

@@ -87,14 +87,13 @@ const base = import.meta.env.BASE_URL
     <code>dist/</code>. No credentials or environment variables are involved —
     the output is fully reproducible:
   </p>
-  <pre><code>git clone &lt;repo&gt; &amp;&amp; cd ai-providers
+  <pre><code>git clone git@github.com:gregnazario/inference-providers.git &amp;&amp; cd inference-providers
 pnpm install
 pnpm emit</code></pre>
   <p>
     The result is byte-for-byte the same data served by the links above and
-    rendered by this site (timestamps aside). Once the repository is published,
-    this site lives at
-    <code>https://&lt;owner&gt;.github.io/ai-providers/</code>, rebuilt on
+    rendered by this site (timestamps aside). This site lives at
+    <code>https://gregnazario.github.io/inference-providers/</code>, rebuilt on
     every push to <code>main</code> by the GitHub Pages deploy workflow.
   </p>
 </Base>
