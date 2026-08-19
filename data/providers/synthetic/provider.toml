@@ -1,0 +1,45 @@
+id = "synthetic"
+name = "Synthetic"
+kind = "subscription"
+api_surfaces = ["text", "streaming", "embeddings"]
+
+[urls]
+docs = "https://dev.synthetic.new/"
+console = "https://synthetic.new"
+pricing = "https://synthetic.new/pricing"
+
+[plan]
+price_usd = 30.0
+period = "monthly"
+quota = "$1/day or $30/month per pack, stackable; 500 price-weighted requests / 5h + $24/week credits + 1 concurrent per model"
+notes = "Subscription includes all always-on models, no per-token billing; embeddings free and exempt."
+docs = "https://synthetic.new/rate-limits"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["SYNTHETIC_API_KEY"]
+getting_credentials = "Subscribe at synthetic.new and create an API key in the dashboard; send as Authorization: Bearer SYNTHETIC_API_KEY."
+docs = "https://dev.synthetic.new/"
+
+[[endpoints]]
+id = "openai-chat"
+base_url = "https://api.synthetic.new"
+path = "/openai/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "anthropic"
+base_url = "https://api.synthetic.new"
+path = "/anthropic/v1/messages"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "Prefer syn: routing aliases (syn:large:text etc.) — pinned model names 404 as models rotate."
+docs = "https://dev.synthetic.new/docs/api/models"
+
+[[quirks]]
+text = "Reasoning controls are not documented; behavior follows upstream chat templates — verify before relying."
+docs = "https://dev.synthetic.new/docs/api/models"
