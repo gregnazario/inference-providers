@@ -20,6 +20,23 @@ describe("ModelSchema", () => {
   it("rejects bad modality value", () => {
     expect(ModelSchema.safeParse({ ...valid, modalities: { input: ["vibes"], output: ["text"] } }).success).toBe(false)
   })
+  it("allows omitted open_weights and hf_repo (unknown)", () => {
+    const r = ModelSchema.safeParse({ ...valid, open_weights: undefined, hf_repo: undefined })
+    expect(r.success).toBe(true)
+  })
+  it("allows fully absent open_weights and hf_repo keys", () => {
+    const noWeights = { ...valid } as Partial<typeof valid>
+    delete noWeights.open_weights
+    delete noWeights.hf_repo
+    const r = ModelSchema.safeParse(noWeights)
+    expect(r.success).toBe(true)
+  })
+  it("preserves open_weights when present and undefined when omitted", () => {
+    expect(ModelSchema.parse({ ...valid }).open_weights).toBe(false)
+    expect(ModelSchema.parse({ ...valid }).hf_repo).toBe("")
+    expect(ModelSchema.parse({ ...valid, open_weights: undefined }).open_weights).toBeUndefined()
+    expect(ModelSchema.parse({ ...valid, hf_repo: undefined }).hf_repo).toBeUndefined()
+  })
   it("defaults aliases to []", () => {
     const r = ModelSchema.parse(valid)
     expect(r.aliases).toEqual([])
