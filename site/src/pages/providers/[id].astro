@@ -1,0 +1,278 @@
+---
+import { loadCatalog } from "@ai-providers/sdk"
+import Base from "../../layouts/Base.astro"
+import ReasoningBadge from "../../components/ReasoningBadge.astro"
+
+export function getStaticPaths() {
+  const c = loadCatalog()
+  return c.providers.map((p) => ({
+    params: { id: p.id },
+    props: { provider: p, modelsById: new Map(c.models.map((m) => [m.id, m])) },
+  }))
+}
+
+const { provider, modelsById } = Astro.props
+const base = import.meta.env.BASE_URL
+
+const modelHref = (modelId: string) => `${base}models/${modelId.replace("/", "-")}/`
+
+const urlLinks = [
+  { label: "Docs", href: provider.urls.docs },
+  { label: "Console", href: provider.urls.console },
+  { label: "Status", href: provider.urls.status },
+  { label: "Pricing", href: provider.urls.pricing },
+].filter((u) => Boolean(u.href))
+---
+
+<Base title={`${provider.name} — ai-providers`}>
+  <h1>{provider.name}</h1>
+  <p>
+    <span class="kind-badge">{provider.kind}</span>
+  </p>
+  <p class="urls">
+    {urlLinks.map((u) => <a href={u.href}>{u.label}</a>)}
+  </p>
+
+  <section>
+    <h2>Getting credentials</h2>
+    {
+      provider.auth.map((a) => (
+        <div class="auth-block">
+          <h3>{a.id}</h3>
+          <p>
+            <code>{a.type}</code> via <code>{a.transport}</code>
+            {a.header && (
+              <>
+                {" "}
+                (header <code>{a.header}</code>)
+              </>
+            )}
+          </p>
+          {a.key_prefix && (
+            <p>
+              Key prefix: <code>{a.key_prefix}</code>
+            </p>
+          )}
+          {a.env.length > 0 && (
+            <p>
+              Environment: {a.env.map((v) => <code>{v}</code>)}
+            </p>
+          )}
+          {Object.keys(a.extra_headers).length > 0 && (
+            <p>
+              Extra headers:{" "}
+              {Object.entries(a.extra_headers).map(([k, v]) => (
+                <code>
+                  {k}: {v}
+                </code>
+              ))}
+            </p>
+          )}
+          {a.flow && (
+            <p>
+              Flow: <code>{a.flow}</code>
+            </p>
+          )}
+          {a.scopes && a.scopes.length > 0 && (
+            <p>
+              Scopes: {a.scopes.map((s) => <code>{s}</code>)}
+            </p>
+          )}
+          {a.token_transport && (
+            <p>
+              Token transport: <code>{a.token_transport}</code>
+            </p>
+          )}
+          <p>{a.getting_credentials}</p>
+          <p>
+            <a href={a.docs}>Credentials docs</a>
+          </p>
+        </div>
+      ))
+    }
+  </section>
+
+  <section>
+    <h2>Endpoints</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>URL</th>
+          <th>Protocol</th>
+          <th>Auth</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          provider.endpoints.map((e) => (
+            <tr>
+              <td>{e.id}</td>
+              <td>
+                <code>
+                  {e.base_url}
+                  {e.path}
+                </code>
+              </td>
+              <td>{e.protocol}</td>
+              <td>{e.auth ?? "any"}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>API surfaces</h2>
+    <p class="chips">
+      {provider.api_surfaces.map((s) => <span class="chip">{s}</span>)}
+    </p>
+  </section>
+
+  {
+    provider.plan && (
+      <section>
+        <h2>Plan</h2>
+        <dl class="plan">
+          <dt>Price</dt>
+          <dd>
+            {provider.plan.price_usd === null ? (
+              "unknown"
+            ) : (
+              <>
+                ${provider.plan.price_usd} / {provider.plan.period}
+              </>
+            )}
+          </dd>
+          <dt>Quota</dt>
+          <dd>{provider.plan.quota}</dd>
+          <dt>Notes</dt>
+          <dd>{provider.plan.notes}</dd>
+          <dt>Docs</dt>
+          <dd>
+            <a href={provider.plan.docs}>{provider.plan.docs}</a>
+          </dd>
+        </dl>
+      </section>
+    )
+  }
+
+  <section>
+    <h2>Quirks</h2>
+    {
+      provider.quirks.length === 0 ? (
+        <p>No quirks recorded.</p>
+      ) : (
+        <ul>
+          {provider.quirks.map((q) => (
+            <li>
+              {q.text} (<a href={q.docs}>docs</a>)
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  <section>
+    <h2>Models offered</h2>
+    {
+      provider.offerings.length === 0 ? (
+        <p>No models cataloged for this provider.</p>
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Wire ID</th>
+              <th>Endpoint</th>
+              <th>Status</th>
+              <th>Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            {provider.offerings.map((o) => (
+              <tr>
+                <td>
+                  {modelsById.get(o.model) ? (
+                    <a href={modelHref(o.model)}>{o.model}</a>
+                  ) : (
+                    o.model
+                  )}
+                </td>
+                <td>
+                  <code>{o.wire_id}</code>
+                </td>
+                <td>{o.endpoint}</td>
+                <td>{o.status}</td>
+                <td>
+                  <ReasoningBadge reasoning={o.reasoning} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )
+    }
+  </section>
+</Base>
+
+<style>
+  .kind-badge {
+    display: inline-block;
+    font-size: 0.85rem;
+    border: 1px solid #999;
+    border-radius: 999px;
+    padding: 0.05rem 0.6rem;
+    background: #f3f3f3;
+  }
+
+  .urls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .auth-block {
+    border-left: 3px solid #ccc;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .chip {
+    display: inline-block;
+    font-size: 0.85rem;
+    border: 1px solid #999;
+    border-radius: 999px;
+    padding: 0.05rem 0.6rem;
+    background: #f3f3f3;
+  }
+
+  .plan dt {
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  .plan dd {
+    margin-left: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .kind-badge,
+    .chip {
+      border-color: #555;
+      background: #22262d;
+    }
+
+    .auth-block {
+      border-color: #3a3f47;
+    }
+  }
+</style>
