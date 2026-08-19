@@ -1,0 +1,15 @@
+id = "thinkingmachines/inkling-small"
+name = "Inkling Small"
+family = "inkling"
+lab = "thinkingmachines"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Smaller Inkling variant."
+aliases = ["thinkingmachines/inkling-small"]
+[modalities]
+input = ["text", "image", "audio"]
+output = ["text"]

@@ -1,0 +1,15 @@
+id = "meta/muse-glimmer-30b"
+name = "Muse Glimmer 30B"
+family = "muse-glimmer"
+lab = "meta"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "meta-models/Muse-Glimmer-30B"
+license = ""
+description = "Open-weight (Apache 2.0) 30B reasoning model, 128K context; served on NVIDIA NIM, not on Meta's own API."
+aliases = ["muse-glimmer-30b"]
+[modalities]
+input = ["text"]
+output = ["text"]
