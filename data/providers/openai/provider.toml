@@ -19,6 +19,16 @@ extra_headers = { }
 getting_credentials = "platform.openai.com → API Keys. Project keys (sk-proj-) scope to a project; send OpenAI-Organization / OpenAI-Project when a key spans orgs/projects."
 docs = "https://developers.openai.com/api/reference/overview/"
 
+[[auth]]
+id = "chatgpt-oauth"
+type = "oauth"
+transport = "header"
+header = "Authorization: Bearer"
+flow = "authorization_code_pkce or device code at auth.openai.com (public client; first-party clients only)"
+scopes = ["openid", "profile", "email", "offline_access"]
+getting_credentials = "codex login (or --device-auth). Tokens persist in ~/.codex/auth.json (or OS keyring); refresh tokens rotate and are effectively single-use. Billed against ChatGPT Plus/Pro/Business plans (5-hour + weekly windows), not API credits."
+docs = "https://learn.chatgpt.com/docs/auth"
+
 [[endpoints]]
 id = "v1-chat-completions"
 base_url = "https://api.openai.com"
@@ -31,6 +41,21 @@ base_url = "https://api.openai.com"
 path = "/v1/responses"
 protocol = "openai-responses"
 
+[[endpoints]]
+id = "codex-backend"
+base_url = "https://chatgpt.com"
+path = "/backend-api/codex/responses"
+protocol = "openai-responses"
+auth = "chatgpt-oauth"
+
 [[quirks]]
 text = "Assistants API sunsets 2026-08-26; migrate to Responses. Reasoning models require max_completion_tokens (chat) instead of max_tokens."
 docs = "https://developers.openai.com/api/docs/guides/migrate-to-responses"
+
+[[quirks]]
+text = "ChatGPT-plan requests go to chatgpt.com/backend-api/codex (not api.openai.com) with Bearer tokens plus ChatGPT-Account-ID and originator headers; OpenAI allow-lists first-party originators server-side — third-party clients mimicking Codex work but are officially unsupported (ban reports exist). Enterprise access tokens (CODEX_ACCESS_TOKEN) are the supported programmatic path."
+docs = "https://learn.chatgpt.com/docs/auth"
+
+[[quirks]]
+text = "Subscription quotas: rolling 5-hour windows shared by local messages and cloud tasks plus weekly caps (Plus/Business: gpt-5.6-luna 50-280 local messages/5h; Pro 5x-20x that; flexible-pricing enterprises scale with credits — credits per 1M tokens: Sol 125/750 in/out, Terra 50/300, Luna 5/30). GPT-5.4/5.4-mini retire from ChatGPT-plan access 2026-08-31."
+docs = "https://chatgpt.com/codex/pricing/"

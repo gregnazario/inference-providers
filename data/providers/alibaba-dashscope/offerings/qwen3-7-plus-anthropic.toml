@@ -1,0 +1,22 @@
+model = "alibaba/qwen3-7-plus"
+wire_id = "qwen3.7-plus"
+endpoint = "anthropic"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+notes = "Anthropic-compatible path: thinking defaults ON; enable_thinking controls on this path are not separately documented — verify."
+
+[reasoning.toggle]
+param = "enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://www.alibabacloud.com/help/en/model-studio/deep-thinking"
+verified = "2026-08-19"

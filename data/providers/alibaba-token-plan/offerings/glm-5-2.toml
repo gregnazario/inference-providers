@@ -1,0 +1,22 @@
+model = "zai/glm-5-2"
+wire_id = "glm-5.2"
+endpoint = "compatible-mode"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+notes = "DashScope-family enable_thinking toggle; thinking controls not documented for Token Plan endpoints — verify."
+
+[reasoning.toggle]
+param = "enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://www.alibabacloud.com/help/en/model-studio/deep-thinking"
+verified = "2026-08-19"

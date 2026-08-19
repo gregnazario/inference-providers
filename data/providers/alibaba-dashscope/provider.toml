@@ -23,6 +23,24 @@ base_url = "https://dashscope-intl.aliyuncs.com"
 path = "/compatible-mode/v1/chat/completions"
 protocol = "openai-chat"
 
+[[endpoints]]
+id = "anthropic"
+base_url = "https://dashscope-intl.aliyuncs.com"
+path = "/apps/anthropic"
+protocol = "anthropic-messages"
+
 [[quirks]]
 text = "China base: https://dashscope.aliyuncs.com/compatible-mode/v1. Soft switches /think and /no_think appended to prompts work on open-source hybrid Qwen3 models and qwen-plus-2025-04-28+ (most recent instruction wins). Open-source hybrid models (qwen3-235b-a22b, qwen3-32b) support streaming only when enable_thinking=true — non-streaming calls error. Thinking-only variants (qwen3-next-80b-a3b-thinking, qwq-plus, kimi-k2-thinking) cannot disable. Regional OpenAI-compatible bases like https://{workspace}.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1 also exist; native DashScope endpoint .../api/v1/services/aigc/text-generation/generation with X-DashScope-SSE: enable."
 docs = "https://www.alibabacloud.com/help/en/model-studio/deep-thinking"
+
+[[quirks]]
+text = "Pay-as-you-go regions: China dashscope.aliyuncs.com, Singapore dashscope-intl, Virginia dashscope-us — each with /compatible-mode/v1 (OpenAI), /apps/anthropic (Anthropic), and native /api/v1. Workspace-dedicated domains https://{WorkspaceId}.{region}.maas.aliyuncs.com are recommended for production; rate-limited trial domains exist (trial.cn-beijing / trial.ap-southeast-1)."
+docs = "https://help.aliyun.com/en/model-studio/base-url"
+
+[[quirks]]
+text = "Temporary API keys: POST /api/v1/tokens (Bearer with permanent key) returns short-lived st- tokens (default 60s, max 1800s) inheriting the parent key's permissions — for browser/mobile use. Alibaba Cloud AccessKey/STS is NOT accepted on inference endpoints."
+docs = "https://www.alibabacloud.com/help/en/model-studio/application-obtain-temporary-authentication-token"
+
+[[quirks]]
+text = "Savings/resource plans are billing constructs on the same keys and endpoints: AI General-purpose Savings Plan (from $150/mo, discounts up to 32%/47%, no discount for DeepSeek/Kimi/GLM/MiniMax) and LLM Savings Plan prepaid credits (no discount). QwenCloud (qwencloud.com) is a separate-account console using these same endpoints and key formats; Bailian is the China brand of Model Studio."
+docs = "https://www.alibabacloud.com/help/en/model-studio/savings-plan-and-resource-package"
