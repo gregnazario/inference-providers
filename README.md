@@ -11,8 +11,8 @@ models.dev can't model.
 The registry is live: two layers of provenance-tracked TOML — canonical
 models (`data/models/`, lab-owned facts) and provider offerings
 (`data/providers/`, per-surface serving facts) — validated by gating rules and
-emitted as typed artifacts in `dist/`. Current counts: **24 models, 18
-providers, 44 offerings**.
+emitted as typed artifacts in `dist/`. Current counts: **45 models, 30
+providers, 98 offerings**.
 
 ## Usage
 
