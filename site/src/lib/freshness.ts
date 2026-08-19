@@ -19,12 +19,21 @@ export function cutoffDate(now: Date = new Date()): string {
 const CUTOFF = cutoffDate()
 
 /**
+ * Models exempt from the age rule despite a release date past the cutoff —
+ * still the current generation of their line with no successor. GPT-OSS is
+ * the open-weight standard still served everywhere (decision 2026-08-19).
+ * Their true release dates stay in the data; only the archive rule skips.
+ */
+const GRANDFATHERED = new Set(["openai/gpt-oss-120b", "openai/gpt-oss-20b"])
+
+/**
  * Single source of truth for the archive rule:
  * archived = retired_date is set, or release_date is set and older than the
- * cutoff. Unknown ("") release dates stay current — never hide what cannot
- * be dated.
+ * cutoff (unless grandfathered). Unknown ("") release dates stay current —
+ * never hide what cannot be dated.
  */
 export function isArchived(model: CatalogModel, cutoff: string = CUTOFF): boolean {
+  if (GRANDFATHERED.has(model.id)) return false
   return (
     model.retired_date !== "" ||
     (model.release_date !== "" && model.release_date < cutoff)
