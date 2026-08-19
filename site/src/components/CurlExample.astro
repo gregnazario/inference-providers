@@ -101,6 +101,17 @@ if (fragment) {
   body = { ...body, ...fragment }
 }
 
+// Validity guard: the anthropic-messages budget constraint requires
+// max_tokens to exceed the thinking budget — keep the example servable.
+const thinking = body.thinking as { budget_tokens?: number } | undefined
+if (
+  typeof thinking?.budget_tokens === "number" &&
+  typeof body.max_tokens === "number" &&
+  body.max_tokens <= thinking.budget_tokens
+) {
+  body.max_tokens = thinking.budget_tokens + 1024
+}
+
 const json = JSON.stringify(body, null, 2)
 const command = [
   ...(note ? [`# ${note}`] : []),
