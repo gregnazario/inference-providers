@@ -83,7 +83,7 @@ const price = (cost: CatalogOffering["cost"]) => {
 }
 ---
 
-<Base title={`${model.name} — inference-providers`}>
+<Base title={`${model.name} — inference-providers`} active="models">
   <h1>{model.name}</h1>
   <p>
     by {model.lab} · family {model.family}
@@ -91,27 +91,28 @@ const price = (cost: CatalogOffering["cost"]) => {
 
   <section>
     <h2>Facts</h2>
-    <table>
-      <tbody>
-        <tr>
-          <th scope="row">Release date</th>
-          <td>{model.release_date || "—"}</td>
-        </tr>
-        <tr>
-          <th scope="row">Retired date</th>
-          <td>{model.retired_date || "—"}</td>
-        </tr>
-        <tr>
-          <th scope="row">Knowledge cutoff</th>
-          <td>{model.knowledge_cutoff || "—"}</td>
-        </tr>
-        <tr>
-          <th scope="row">Modalities</th>
-          <td>{model.modalities.input.join(", ")} → {model.modalities.output.join(", ")}</td>
-        </tr>
-        <tr>
-          <th scope="row">Aliases</th>
-          <td>
+    <div class="table-wrap">
+      <table>
+        <tbody>
+          <tr>
+            <th scope="row">Release date</th>
+            <td>{model.release_date || "—"}</td>
+          </tr>
+          <tr>
+            <th scope="row">Retired date</th>
+            <td>{model.retired_date || "—"}</td>
+          </tr>
+          <tr>
+            <th scope="row">Knowledge cutoff</th>
+            <td>{model.knowledge_cutoff || "—"}</td>
+          </tr>
+          <tr>
+            <th scope="row">Modalities</th>
+            <td>{model.modalities.input.join(", ")} → {model.modalities.output.join(", ")}</td>
+          </tr>
+          <tr>
+            <th scope="row">Aliases</th>
+            <td>
             {
               model.aliases.length > 0 ? (
                 model.aliases.map((a) => <code>{a}</code>)
@@ -120,10 +121,10 @@ const price = (cost: CatalogOffering["cost"]) => {
               )
             }
           </td>
-        </tr>
-        <tr>
-          <th scope="row">Open weights</th>
-          <td>
+          </tr>
+          <tr>
+            <th scope="row">Open weights</th>
+            <td>
             {openWeights}
             {hfUrl && (
               <>
@@ -131,13 +132,14 @@ const price = (cost: CatalogOffering["cost"]) => {
               </>
             )}
           </td>
-        </tr>
-        <tr>
-          <th scope="row">Description</th>
-          <td>{model.description}</td>
-        </tr>
-      </tbody>
-    </table>
+          </tr>
+          <tr>
+            <th scope="row">Description</th>
+            <td>{model.description}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <p class="footnote">Unknown values are shown as —.</p>
   </section>
 
@@ -147,38 +149,42 @@ const price = (cost: CatalogOffering["cost"]) => {
       offerings.length === 0 ? (
         <p>No provider offerings cataloged for this model.</p>
       ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Provider</th>
-              <th>Wire ID</th>
-              <th>Endpoint</th>
-              <th>Protocol</th>
-              <th>Status</th>
-              <th>Price (USD / Mtok)</th>
-              <th>Reasoning</th>
-            </tr>
-          </thead>
-          <tbody>
-            {offerings.map((o) => (
+        <div class="table-wrap">
+          <table>
+            <thead>
               <tr>
-                <td>
-                  <a href={`${base}providers/${o.providerId}/`}>{o.providerName}</a>
-                </td>
-                <td>
-                  <code>{o.wireId}</code>
-                </td>
-                <td>{o.endpoint}</td>
-                <td>{o.protocol}</td>
-                <td>{o.status}</td>
-                <td class="num">{price(o.cost)}</td>
-                <td>
-                  <ReasoningBadge reasoning={o.reasoning} />
-                </td>
+                <th>Provider</th>
+                <th>Wire ID</th>
+                <th>Endpoint</th>
+                <th>Protocol</th>
+                <th>Status</th>
+                <th>Price (USD / Mtok)</th>
+                <th>Reasoning</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {offerings.map((o) => (
+                <tr>
+                  <td>
+                    <a href={`${base}providers/${o.providerId}/`}>{o.providerName}</a>
+                  </td>
+                  <td>
+                    <code>{o.wireId}</code>
+                  </td>
+                  <td>{o.endpoint}</td>
+                  <td>{o.protocol}</td>
+                  <td>
+                    <span class={`chip chip-${o.status}`}>{o.status}</span>
+                  </td>
+                  <td class="num">{price(o.cost)}</td>
+                  <td>
+                    <ReasoningBadge reasoning={o.reasoning} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )
     }
   </section>
@@ -203,13 +209,7 @@ const price = (cost: CatalogOffering["cost"]) => {
   }
 
   .footnote {
-    color: #666;
+    color: var(--muted);
     font-size: 0.9rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .footnote {
-      color: #9aa1ab;
-    }
   }
 </style>
