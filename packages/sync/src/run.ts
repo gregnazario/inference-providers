@@ -19,6 +19,8 @@ export const PROVIDER_ENV_KEYS: Record<string, string> = {
   "opencode-go": "OPENCODE_API_KEY",
   minimax: "MINIMAX_API_KEY",
   "alibaba-dashscope": "DASHSCOPE_API_KEY",
+  moonshot: "MOONSHOT_API_KEY",
+  "ollama-cloud": "OLLAMA_API_KEY",
 }
 
 export type RunSyncOptions = {

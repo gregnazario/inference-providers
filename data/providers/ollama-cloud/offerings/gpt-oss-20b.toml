@@ -1,0 +1,27 @@
+model = "openai/gpt-oss-20b"
+wire_id = "gpt-oss:20b-cloud"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 131_072
+source = { url = "https://docs.ollama.com/cloud", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "Native API returns message.thinking; /v1 return shape varies — verify."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high"]
+default = "high"
+notes = "Default level not documented; verify."
+
+[reasoning.source]
+url = "https://docs.ollama.com/cloud"
+verified = "2026-08-19"

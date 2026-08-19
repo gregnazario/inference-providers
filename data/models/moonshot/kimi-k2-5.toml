@@ -1,0 +1,15 @@
+id = "moonshot/kimi-k2-5"
+name = "Kimi K2.5"
+family = "kimi"
+lab = "moonshot"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Closed to new registrations; platform sunset 2026-08-31."
+aliases = ["kimi-k2.5"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

@@ -1,0 +1,33 @@
+model = "moonshot/kimi-k2-5"
+wire_id = "kimi-k2.5"
+endpoint = "chat-completions"
+status = "deprecated"
+status_date = "2026-08-31"
+
+[cost]
+input = 0.6
+output = 3.0
+cache_read = 0.1
+free = false
+source = { url = "https://platform.kimi.ai/docs/models", verified = "2026-08-19" }
+
+[limits]
+context = 262_144
+source = { url = "https://platform.kimi.ai/docs/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "Default thinking state not documented; verify. k2.5 has no keep param — round-trip rule not documented."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = "disabled"
+
+[reasoning.source]
+url = "https://platform.kimi.ai/docs/models"
+verified = "2026-08-19"

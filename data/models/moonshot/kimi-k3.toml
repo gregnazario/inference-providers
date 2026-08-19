@@ -1,0 +1,15 @@
+id = "moonshot/kimi-k3"
+name = "Kimi K3"
+family = "kimi"
+lab = "moonshot"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Flagship 2.8T-param MoE (16/896 active) with vision; always-on reasoning; weights open-sourcing promised 2026-07-27."
+aliases = ["k3"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

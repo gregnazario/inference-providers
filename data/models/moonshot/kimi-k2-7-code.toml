@@ -1,0 +1,15 @@
+id = "moonshot/kimi-k2-7-code"
+name = "Kimi K2.7 Code"
+family = "kimi"
+lab = "moonshot"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Current coding model (~180 tok/s); text/image/video input; thinking.type accepts only enabled."
+aliases = ["kimi-k2.7-code"]
+[modalities]
+input = ["text", "image", "video"]
+output = ["text"]

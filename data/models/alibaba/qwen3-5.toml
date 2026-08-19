@@ -1,0 +1,15 @@
+id = "alibaba/qwen3-5"
+name = "Qwen3.5"
+family = "qwen3"
+lab = "alibaba"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = ""
+description = "397B (A17B) flagship with vision and hybrid thinking."
+aliases = ["qwen3.5"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

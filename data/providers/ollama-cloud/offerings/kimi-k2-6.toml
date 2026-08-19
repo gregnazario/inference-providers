@@ -1,0 +1,27 @@
+model = "moonshot/kimi-k2-6"
+wire_id = "kimi-k2.6:cloud"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 262_144
+source = { url = "https://docs.ollama.com/cloud", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Native API returns message.thinking; /v1 return shape varies — verify."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["none", "low", "medium", "high", "max"]
+default = "high"
+notes = "Default level not documented; verify."
+
+[reasoning.source]
+url = "https://docs.ollama.com/cloud"
+verified = "2026-08-19"

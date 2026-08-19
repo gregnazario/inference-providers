@@ -1,0 +1,15 @@
+id = "moonshot/kimi-k2-6"
+name = "Kimi K2.6"
+family = "kimi"
+lab = "moonshot"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "General-purpose multimodal with hybrid thinking (enabled/disabled) and Preserved Thinking (keep=all)."
+aliases = ["kimi-k2.6"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

@@ -31,3 +31,16 @@ protocol = "openai-responses"
 [[quirks]]
 text = "Responses is the preferred API per xAI docs. presence_penalty, frequency_penalty, and stop cannot be used with reasoning models — requests including them error. grok-4.20-multi-agent maps reasoning.effort to agent count (4 or 16), not depth."
 docs = "https://docs.x.ai/docs/guides/reasoning"
+
+[[auth]]
+id = "oauth"
+type = "oauth"
+transport = "header"
+header = "Authorization: Bearer"
+flow = "browser OIDC or device code at auth.x.ai (endpoints not publicly documented)"
+getting_credentials = "grok login (or grok login --device-auth) with a SuperGrok or X Premium subscription. Tokens persist in ~/.grok/auth.json with background refresh; requests use subscription quota (a weekly pool shared across Grok chat, Build, and API), not API billing."
+docs = "https://docs.x.ai/build/overview"
+
+[[quirks]]
+text = "OAuth sessions call https://api.x.ai/v1 with Bearer tokens; an entitlement-aware catalog is available at https://cli-chat-proxy.grok.com/v1/models-v2. xAI decides which accounts receive OAuth tokens — some non-Heavy tiers report 403. SuperGrok is $30/mo, SuperGrok Plus $100/mo."
+docs = "https://docs.x.ai/build/enterprise"

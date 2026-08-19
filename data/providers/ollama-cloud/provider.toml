@@ -1,0 +1,43 @@
+id = "ollama-cloud"
+name = "Ollama Cloud"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://docs.ollama.com/cloud"
+console = "https://ollama.com/settings/keys"
+pricing = "https://ollama.com/cloud"
+
+[plan]
+price_usd = 20.0
+period = "monthly"
+quota = "Free: 1 concurrent model; Pro $20: 3; Max $100: 10. Sessions reset every 5 hours plus weekly limits; usage weighted by model cost level; extra balance purchasable on Pro/Max."
+notes = "Zero data retention; no training on prompts; US-primary hosting."
+docs = "https://ollama.com/cloud"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["OLLAMA_API_KEY"]
+getting_credentials = "Create keys at ollama.com/settings/keys (they do not currently expire)."
+docs = "https://docs.ollama.com/api/authentication"
+
+[[endpoints]]
+id = "v1-chat-completions"
+base_url = "https://ollama.com"
+path = "/v1/chat/completions"
+protocol = "openai-chat"
+
+[[quirks]]
+text = "Native API at https://ollama.com/api (chat/generate/tags) uses the think parameter (low/medium/high/max); gpt-oss models accept only low/medium/high and cannot disable thinking. An Anthropic-compatible API is also documented. https://ollama.com/api/v1 does NOT exist (404)."
+docs = "https://docs.ollama.com/capabilities/thinking"
+
+[[quirks]]
+text = "The OpenAI-compatible /v1 accepts reasoning_effort (high/medium/low/max/none) and reasoning.effort. Reasoning returns in message.thinking on the native API — not reasoning_content. Cloud embeddings are unverified: /api/embed may not be authorized for cloud keys."
+docs = "https://docs.ollama.com/api/openai-compatibility"
+
+[[quirks]]
+text = "Usage levels (Low, Medium, High, Extra High) weight billing — no per-Mtok pricing. Full catalog at ollama.com/search?c=cloud (also gemma4, nemotron-3 family, mistral-large-3 — the only non-thinking cloud model)."
+docs = "https://ollama.com/cloud"
