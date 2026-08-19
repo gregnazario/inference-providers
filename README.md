@@ -31,8 +31,8 @@ const reasoning = buildReasoningParam(offering, { kind: "budget", budget: 4096 }
 
 ## Docs site
 
-Once the repo is published and GitHub Pages is enabled, the generated site
-lives at `https://<owner>.github.io/ai-providers/` (deployed by
+The generated site lives at
+`https://gregnazario.github.io/inference-providers/` (deployed by
 `.github/workflows/pages.yml` on every push to `main`).
 
 Local development (`site/` loads the emitted catalog via the SDK, so build the
@@ -42,7 +42,7 @@ workspace packages and emit first):
 pnpm --filter @ai-providers/schema run build
 pnpm --filter @ai-providers/sdk run build
 pnpm emit
-pnpm --filter site run dev      # http://localhost:4321/ai-providers/
+pnpm --filter site run dev      # http://localhost:4321/inference-providers/
 ```
 
 Production build (what the workflow deploys):
