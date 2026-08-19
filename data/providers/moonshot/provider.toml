@@ -1,0 +1,42 @@
+id = "moonshot"
+name = "Moonshot Kimi"
+kind = "first_party"
+api_surfaces = ["text", "streaming", "files", "batch"]
+
+[urls]
+docs = "https://platform.kimi.ai/docs/overview"
+console = "https://platform.kimi.ai/console/api-keys"
+pricing = "https://platform.kimi.ai/docs/models"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["MOONSHOT_API_KEY"]
+getting_credentials = "Create keys at the Kimi Open Platform (intl) or platform.kimi.com (CN, Chinese phone required). Keys are region-bound: .ai and .cn are not interchangeable."
+docs = "https://platform.kimi.ai/docs/overview"
+
+[[endpoints]]
+id = "chat-completions"
+base_url = "https://api.moonshot.ai"
+path = "/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "anthropic"
+base_url = "https://api.moonshot.ai"
+path = "/anthropic"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "China base: https://api.moonshot.cn/v1 (console platform.kimi.com). No embeddings endpoint. Partial Mode (partial: true) and ms:// file references are Moonshot extensions. Context caching is automatic for prompts over 256 tokens. Rate limits tier by cumulative top-up."
+docs = "https://platform.kimi.ai/docs/overview"
+
+[[quirks]]
+text = "Sampling params are fixed on k-series models (temperature 1.0, top_p 0.95; k2.6 uses 0.6 outside thinking mode) and error if set otherwise; only moonshot-v1 allows modifying temperature. tool_choice required is k3-only."
+docs = "https://platform.kimi.ai/docs/guide/use-thinking-models"
+
+[[quirks]]
+text = "The /anthropic endpoint (for Claude Code et al.) uses OPEN PLATFORM keys — never Kimi Code keys. WebFetch is unsupported there; WebSearch 400s on kimi-k2.7-code with thinking off."
+docs = "https://platform.kimi.ai/docs/guide/claude-code-kimi"

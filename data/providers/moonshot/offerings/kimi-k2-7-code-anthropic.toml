@@ -1,0 +1,22 @@
+model = "moonshot/kimi-k2-7-code"
+wire_id = "kimi-k2.7-code"
+endpoint = "anthropic"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = true
+default = "on"
+notes = "Anthropic-compatible surface (for Claude Code et al.); thinking.type accepts only enabled."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = ""
+
+[reasoning.source]
+url = "https://platform.kimi.ai/docs/guide/claude-code-kimi"
+verified = "2026-08-19"

@@ -1,0 +1,34 @@
+model = "moonshot/kimi-k3"
+wire_id = "kimi-k3"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 3.0
+output = 15.0
+cache_read = 0.3
+free = false
+source = { url = "https://platform.kimi.ai/docs/models", verified = "2026-08-19" }
+
+[limits]
+context = 1_048_576
+source = { url = "https://platform.kimi.ai/docs/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "Always-on reasoning; do NOT pass thinking on k3. Preserved Thinking always on. Claude Code /effort low/medium/high/xhigh/max maps to low/high/max."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+incompatible_with = ["temperature", "top_p", "n", "presence_penalty", "frequency_penalty"]
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "high", "max"]
+default = "max"
+
+[reasoning.source]
+url = "https://platform.kimi.ai/docs/guide/use-reasoning-effort"
+verified = "2026-08-19"

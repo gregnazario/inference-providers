@@ -1,0 +1,34 @@
+model = "moonshot/kimi-k2-7-code"
+wire_id = "kimi-k2.7-code-highspeed"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 1.9
+output = 8.0
+cache_read = 0.38
+free = false
+source = { url = "https://platform.kimi.ai/docs/models", verified = "2026-08-19" }
+
+[limits]
+context = 262_144
+source = { url = "https://platform.kimi.ai/docs/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "toggle"
+mandatory = true
+default = "on"
+notes = "~180-260 tok/s; exactly 2x pricing."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+incompatible_with = ["temperature", "top_p", "n", "presence_penalty", "frequency_penalty"]
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = ""
+
+[reasoning.source]
+url = "https://platform.kimi.ai/docs/guide/use-thinking-models"
+verified = "2026-08-19"
