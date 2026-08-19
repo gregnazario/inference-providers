@@ -31,6 +31,11 @@ const command = [
 
 const label = `${provider.name} · ${endpoint.protocol} · ${offering.wire_id}`
 
+// Reasoning caveats surfaced under the example, only when the data carries them.
+const roundTrip = offering.reasoning.must_round_trip
+const incompatible = offering.reasoning.incompatible_with ?? []
+const hasNotes = roundTrip !== "" || incompatible.length > 0
+
 // Header/body payloads shared by every renderer. JSON.stringify output is a
 // valid Python dict literal as well as a TS object literal, and insertion
 // order (sorted headers) is preserved.
@@ -74,6 +79,21 @@ const renderersHtml = [
   <p class="label">{label}</p>
   <pre><code set:html={commandHtml} /></pre>
   <Fragment set:html={renderersHtml} />
+  {
+    hasNotes && (
+      <ul class="notes">
+        {roundTrip !== "" && (
+          <li>
+            ⚠ Responses include <code>{roundTrip}</code> artifacts — pass them back unmodified on
+            subsequent turns (dropping them triggers 400s or quality loss).
+          </li>
+        )}
+        {incompatible.length > 0 && (
+          <li>Reported incompatible with thinking controls: {incompatible.join(", ")}.</li>
+        )}
+      </ul>
+    )
+  }
 </div>
 
 <style>
@@ -84,5 +104,18 @@ const renderersHtml = [
   .label {
     font-weight: 600;
     margin: 0 0 0.25rem;
+  }
+
+  .notes {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .notes {
+      color: #9aa1ab;
+    }
   }
 </style>

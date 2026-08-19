@@ -4,6 +4,7 @@ interface ReasoningLike {
   default: string
   mandatory: boolean
   returns: string
+  must_round_trip: string
 }
 
 interface Props {
@@ -14,6 +15,7 @@ const { reasoning } = Astro.props
 const parts = [`${reasoning.style} · default ${reasoning.default}`]
 if (reasoning.mandatory) parts.push("mandatory")
 parts.push(`returns ${reasoning.returns}`)
+if (reasoning.must_round_trip !== "") parts.push(`round-trips ${reasoning.must_round_trip}`)
 ---
 
 <span class="reasoning-badge">{parts.join(" · ")}</span>
