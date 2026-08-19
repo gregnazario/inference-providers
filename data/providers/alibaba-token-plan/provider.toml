@@ -1,0 +1,46 @@
+id = "alibaba-token-plan"
+name = "Alibaba Token Plan"
+kind = "subscription"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://www.alibabacloud.com/help/en/model-studio/token-plan-overview"
+console = "https://modelstudio.console.alibabacloud.com/"
+pricing = "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+
+[plan]
+price_usd = 6.0
+period = "monthly"
+quota = "Personal: Lite $6 (700 credits/5h, 2500/7d), Standard $20 (3000/10k), Pro $70 (12k/40k). Team: Standard $30/seat (25k credits), Pro $100/seat (100k), Max $200/seat (250k), shared packs $700/625k."
+notes = "Sliding 5-hour + 7-day windows, no monthly reset. sk-sp- keys are NOT interchangeable with Coding Plan keys (shared prefix, different product). Interactive-tool use only (Claude Code, Cursor, Qwen Code, OpenClaw); scripts/backends banned on Personal."
+docs = "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+
+[[auth]]
+id = "plan-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["BAILIAN_TOKEN_PLAN_API_KEY"]
+key_prefix = "sk-sp-"
+getting_credentials = "Subscribe in Model Studio (Singapore region); plan keys only work on token-plan endpoints. Env var name not officially documented — verify."
+docs = "https://www.alibabacloud.com/help/en/model-studio/token-plan-team-quickstart"
+
+[[endpoints]]
+id = "compatible-mode"
+base_url = "https://token-plan.ap-southeast-1.maas.aliyuncs.com"
+path = "/compatible-mode/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "anthropic"
+base_url = "https://token-plan.ap-southeast-1.maas.aliyuncs.com"
+path = "/apps/anthropic"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "China base: https://token-plan.cn-beijing.maas.aliyuncs.com (same paths). Model allowlist (exact strings): qwen3.8-max-preview (10x credit discount, night pricing 22:00-08:00 UTC+8), qwen3.7-max, qwen3.7-plus, qwen3.6-flash, glm-5.2, deepseek-v4-pro, wan2.7-image(-pro), happyhorse-1.1 video models; Team edition adds Kimi k2.7-code/k2.6/k2.5, GLM 5.1/5, MiniMax-M2.5, qwen3.6-plus/flash."
+docs = "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+
+[[quirks]]
+text = "Team Edition: seat = one member + one auto-generated key; deduction order seat quota then shared packs then suspension; TPS/TPM limits at primary-account level; RAM policies AliyunTokenPlanFullAccess gate purchase."
+docs = "https://www.alibabacloud.com/help/en/model-studio/token-plan-overview"
