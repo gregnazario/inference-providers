@@ -1,15 +1,11 @@
 ---
 import {
-  authHeaders,
-  buildReasoningParam,
-  ReasoningParamError,
-  type EffortValue,
-  type SdkCatalog,
-} from "@ai-providers/sdk"
-
-type CatalogProvider = SdkCatalog["providers"][number]
-type CatalogOffering = CatalogProvider["offerings"][number]
-type CatalogEndpoint = CatalogProvider["endpoints"][number]
+  computeExample,
+  escapeHtml,
+  type CatalogEndpoint,
+  type CatalogOffering,
+  type CatalogProvider,
+} from "../lib/example"
 
 interface Props {
   provider: CatalogProvider
@@ -19,98 +15,11 @@ interface Props {
 
 const { provider, offering, endpoint } = Astro.props
 
-const PROMPT = "Tell me about the weather."
+const { url, headers, sigv4Fallback, body } = computeExample(provider, offering, endpoint)
 
-/** Structural view of the reasoning spec used to pick the example's fragment. */
-type ReasoningControls = {
-  style: string
-  effort?: { default?: EffortValue }
-  budget?: { min?: number; max?: number }
-  toggle?: unknown
-}
+const note = sigv4Fallback ? "sigv4 endpoints require request signing — see provider page" : null
 
-/**
- * The offering's own default reasoning control as a wire fragment:
- * effort default, else a mid-range budget sample, else the on-toggle.
- * Styles without a control block (none/always_on/adaptive-without-effort)
- * contribute nothing. Never throws — an example must not fail the build.
- */
-function reasoningFragment(offering: CatalogOffering): Record<string, unknown> | null {
-  const r = offering.reasoning as ReasoningControls
-  try {
-    if (r.effort?.default) {
-      return buildReasoningParam(offering, { kind: "effort", effort: r.effort.default })
-    }
-    if (r.budget) {
-      const sample = Math.min(Math.max(r.budget.min ?? 512, 2048), r.budget.max ?? Infinity)
-      return buildReasoningParam(offering, { kind: "budget", budget: sample })
-    }
-    if (r.toggle) {
-      return buildReasoningParam(offering, { kind: "enabled", enabled: true })
-    }
-    return null
-  } catch (err) {
-    if (err instanceof ReasoningParamError) return null
-    throw err
-  }
-}
-
-// 1. URL: only {model} is filled in; other {slots} stay visible for substitution.
-const url = `${endpoint.base_url}${endpoint.path}`.replaceAll("{model}", offering.wire_id)
-
-// 2. Headers from the SDK; request-signing auths (sigv4) are not expressible
-//    as headers, so those fall back to a Bearer placeholder plus a note.
-let headerLines: string[] = []
-let note: string | null = null
-try {
-  const headers: Record<string, string> = {
-    ...authHeaders(provider, { credential: "<YOUR_API_KEY>", authId: endpoint.auth }),
-    "Content-Type": "application/json",
-  }
-  headerLines = Object.keys(headers)
-    .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
-    .map((name) => `-H '${name}: ${headers[name]}'`)
-} catch {
-  headerLines = ["-H 'Authorization: Bearer <YOUR_API_KEY>'", "-H 'Content-Type: application/json'"]
-  note = "sigv4 endpoints require request signing — see provider page"
-}
-
-// 3. Protocol body; the reasoning fragment merges at the top level.
-const message = { role: "user", content: PROMPT }
-let body: Record<string, unknown> = {}
-switch (endpoint.protocol) {
-  case "openai-chat":
-    body = { model: offering.wire_id, messages: [message] }
-    break
-  case "openai-responses":
-    body = { model: offering.wire_id, input: PROMPT }
-    break
-  case "anthropic-messages":
-    body = { model: offering.wire_id, max_tokens: 1024, messages: [message] }
-    break
-  case "google-generate-content":
-    body = { contents: [{ parts: [{ text: PROMPT }] }] }
-    break
-  case "bedrock-converse":
-    body = { modelId: offering.wire_id, messages: [message] }
-    break
-}
-
-const fragment = reasoningFragment(offering)
-if (fragment) {
-  body = { ...body, ...fragment }
-}
-
-// Validity guard: the anthropic-messages budget constraint requires
-// max_tokens to exceed the thinking budget — keep the example servable.
-const thinking = body.thinking as { budget_tokens?: number } | undefined
-if (
-  typeof thinking?.budget_tokens === "number" &&
-  typeof body.max_tokens === "number" &&
-  body.max_tokens <= thinking.budget_tokens
-) {
-  body.max_tokens = thinking.budget_tokens + 1024
-}
+const headerLines = Object.keys(headers).map((name) => `-H '${name}: ${headers[name]}'`)
 
 const json = JSON.stringify(body, null, 2)
 const command = [
@@ -122,17 +31,49 @@ const command = [
 
 const label = `${provider.name} · ${endpoint.protocol} · ${offering.wire_id}`
 
-// Escape only the HTML-significant characters so single quotes stay literal
-// in the rendered source (shell quoting must survive copy-paste and greps).
-const commandHtml = command
-  .replace(/&/g, "&amp;")
-  .replace(/</g, "&lt;")
-  .replace(/>/g, "&gt;")
+// Header/body payloads shared by every renderer. JSON.stringify output is a
+// valid Python dict literal as well as a TS object literal, and insertion
+// order (sorted headers) is preserved.
+const headersJson = JSON.stringify(headers, null, 2)
+const indent = (s: string, pad: string) => s.replace(/\n/g, `\n${pad}`)
+
+const python = [
+  "import requests",
+  "",
+  "resp = requests.post(",
+  `    "${url}",`,
+  `    headers=${indent(headersJson, "    ")},`,
+  `    json=${indent(json, "    ")},`,
+  ")",
+  "print(resp.json())",
+].join("\n")
+
+const typescript = [
+  `const resp = await fetch("${url}", {`,
+  `  method: "POST",`,
+  `  headers: ${indent(headersJson, "  ")},`,
+  `  body: JSON.stringify(${indent(json, "  ")}),`,
+  `})`,
+  "console.log(await resp.json())",
+].join("\n")
+
+const commandHtml = escapeHtml(command)
+const pythonHtml = escapeHtml(python)
+const typescriptHtml = escapeHtml(typescript)
+
+// Rendered as one raw fragment so the emitted markup stays the plain
+// <details><summary>…</summary><pre><code>…</code></pre></details> shape
+// (no scoped attributes are needed — nothing in <style> targets these).
+const renderersHtml = [
+  `<details><summary>Python (requests)</summary><pre><code>${pythonHtml}</code></pre></details>`,
+  `<details><summary>TypeScript (fetch)</summary><pre><code>${typescriptHtml}</code></pre></details>`,
+].join("\n")
 ---
 
 <div class="curl-example">
   <p class="label">{label}</p>
   <pre><code set:html={commandHtml} /></pre>
+  <Fragment set:html={renderersHtml} />
 </div>
 
 <style>

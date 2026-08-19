@@ -86,6 +86,9 @@ importers:
 
   site:
     dependencies:
+      '@ai-providers/schema':
+        specifier: workspace:*
+        version: link:../packages/schema
       '@ai-providers/sdk':
         specifier: workspace:*
         version: link:../packages/sdk
