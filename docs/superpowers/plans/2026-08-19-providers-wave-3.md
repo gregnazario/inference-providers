@@ -18,7 +18,7 @@
 
 ## Wave 1 files
 
-### Task 1: 12 new canonical models
+### Task 1: 11 new canonical models
 
 `data/models/meta/{muse-spark-1-2,muse-glimmer-30b,llama-4-maverick,llama-3-3-70b}.toml`, `data/models/thinkingmachines/{inkling,inkling-small}.toml`, `data/models/nvidia/nemotron-3-ultra.toml`, `data/models/alibaba/{qwen3-8-27b,qwen3-6-27b,qwen3-6-35b-a3b}.toml`, `data/models/zai/glm-4-7.toml`
 
@@ -94,4 +94,4 @@ Add to TARGETS/PROVIDER_ENV_KEYS + tests (count 12→20): baseten https://infere
 
 ## Completion criteria
 
-`pnpm validate` green (46 models / 29 providers / ~91 offerings); full test suite; site builds; spot-greps: meta provider page shows all three protocol endpoints + Llama-retirement quirk; nvidia page shows nvapi- prefix; hetzner page shows free pricing; fireworks page shows both reasoning mechanisms.
+`pnpm validate` green (45 models / 29 providers / 91 offerings); full test suite; site builds; spot-greps: meta provider page shows all three protocol endpoints + Llama-retirement quirk; nvidia page shows nvapi- prefix; hetzner page shows free pricing; fireworks page shows both reasoning mechanisms.
