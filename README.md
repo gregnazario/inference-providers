@@ -29,5 +29,30 @@ const headers = authHeaders(provider, { credential: process.env.ANTHROPIC_API_KE
 const reasoning = buildReasoningParam(offering, { kind: "budget", budget: 4096 })
 ```
 
+## Docs site
+
+Once the repo is published and GitHub Pages is enabled, the generated site
+lives at `https://<owner>.github.io/ai-providers/` (deployed by
+`.github/workflows/pages.yml` on every push to `main`).
+
+Local development (`site/` loads the emitted catalog via the SDK, so build the
+workspace packages and emit first):
+
+```bash
+pnpm --filter @ai-providers/schema run build
+pnpm --filter @ai-providers/sdk run build
+pnpm emit
+pnpm --filter site run dev      # http://localhost:4321/ai-providers/
+```
+
+Production build (what the workflow deploys):
+
+```bash
+pnpm --filter site run build    # outputs to site/dist
+```
+
+One-time setup after pushing: repo **Settings → Pages → Source: GitHub
+Actions** — the deploy workflow stays inert until Pages is enabled.
+
 Design spec and rationale:
 [`docs/superpowers/specs/2026-08-18-ai-providers-registry-design.md`](docs/superpowers/specs/2026-08-18-ai-providers-registry-design.md)

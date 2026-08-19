@@ -1,0 +1,76 @@
+---
+import Base from "../layouts/Base.astro"
+---
+
+<Base title="Download — ai-providers">
+  <h1>Download the catalog</h1>
+  <p>
+    Everything on this site is rendered from emitted JSON artifacts in the
+    repository's <code>dist/</code> directory. They are generated code, not
+    hand-maintained data — regenerate them at any time from the public TOML
+    sources.
+  </p>
+
+  <h2>Artifacts</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>Contents</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>catalog.json</code></td>
+        <td>
+          The full join: canonical models and every provider offering in a
+          single document. The complete registry in one fetch.
+        </td>
+      </tr>
+      <tr>
+        <td><code>providers.json</code></td>
+        <td>Normalized provider layer — providers, auth, endpoints, plans.</td>
+      </tr>
+      <tr>
+        <td><code>models.json</code></td>
+        <td>Normalized model layer — lab-owned canonical model facts.</td>
+      </tr>
+      <tr>
+        <td><code>providers/&lt;id&gt;.json</code></td>
+        <td>One file per provider, at a stable path.</td>
+      </tr>
+      <tr>
+        <td><code>models/&lt;id&gt;.json</code></td>
+        <td>One file per model, at a stable path.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Provenance metadata</h2>
+  <p>
+    Every artifact — the catalog, the normalized layers, and each per-entity
+    file — embeds two top-level fields: <code>generated_at</code> (when it was
+    emitted) and <code>source_commit</code> (the git commit of the TOML data it
+    was built from). Any fact can be traced back to the exact data revision.
+  </p>
+
+  <h2>Generating them yourself</h2>
+  <p>
+    The artifacts are produced by <code>pnpm emit</code>, which reads the TOML
+    data in <code>data/models/</code> and <code>data/providers/</code>,
+    validates it against the gating rules, and writes the typed artifacts to
+    <code>dist/</code>. No credentials or environment variables are involved —
+    the output is fully reproducible:
+  </p>
+  <pre><code>git clone &lt;repo&gt; &amp;&amp; cd ai-providers
+pnpm install
+pnpm emit</code></pre>
+  <p>
+    The result is byte-for-byte the same data this site renders (timestamps
+    aside). Until the repository is published, that local
+    <code>pnpm emit</code> is the way to get the artifacts; once published, this
+    site lives at
+    <code>https://&lt;owner&gt;.github.io/ai-providers/</code>, rebuilt on
+    every push to <code>main</code> by the GitHub Pages deploy workflow.
+  </p>
+</Base>
