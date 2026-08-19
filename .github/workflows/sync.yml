@@ -3,6 +3,9 @@ on:
   schedule:
     - cron: "0 6 * * *"
   workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
 jobs:
   report:
     runs-on: ubuntu-latest
@@ -31,3 +34,48 @@ jobs:
         with:
           name: sync-report
           path: .superpowers/sync-report.json
+      - name: Open or update drift issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module -e '
+            import { readFileSync } from "node:fs";
+            import { execSync } from "node:child_process";
+            const r = JSON.parse(readFileSync(".superpowers/sync-report.json", "utf8"));
+            if (!r.reports || r.reports.length === 0) {
+              console.log("no drift");
+              process.exit(0);
+            }
+            const body = r.reports
+              .map(
+                (d) =>
+                  `## ${d.providerId}` +
+                  (d.added.length
+                    ? "\n\n**Added:**\n" + d.added.map((x) => "- `" + x + "`").join("\n")
+                    : "") +
+                  (d.removed.length
+                    ? "\n\n**Removed:**\n" + d.removed.map((x) => "- `" + x + "`").join("\n")
+                    : "")
+              )
+              .join("\n\n") +
+              "\n\n---\n\nDetected by the daily sync run. Offerings land only after human verification with sources — see the Verify page.";
+            const title = "Provider drift detected";
+            const existing = execSync(
+              `gh issue list --repo "$GITHUB_REPOSITORY" --search "in:title is:open ${title}" --state open --json number --jq ".[0].number // empty"`,
+              { env: process.env }
+            )
+              .toString()
+              .trim();
+            if (existing) {
+              execSync(`gh issue comment "${existing}" --repo "$GITHUB_REPOSITORY" --body-file -`, {
+                input: body,
+                env: process.env,
+              });
+            } else {
+              execSync(`gh issue create --repo "$GITHUB_REPOSITORY" --title "${title}" --body-file -`, {
+                input: body,
+                env: process.env,
+              });
+            }
+            console.log("drift issue updated");
+          '
