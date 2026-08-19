@@ -10,7 +10,7 @@ source = { url = "https://docs.ollama.com/cloud", verified = "2026-08-19" }
 
 [reasoning]
 style = "effort"
-mandatory = true
+mandatory = false
 default = "on"
 notes = "Native API returns message.thinking; /v1 return shape varies — verify."
 returns = "hidden"

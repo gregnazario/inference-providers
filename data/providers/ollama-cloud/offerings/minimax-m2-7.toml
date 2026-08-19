@@ -6,7 +6,7 @@ status_date = ""
 
 [reasoning]
 style = "effort"
-mandatory = true
+mandatory = false
 default = "on"
 notes = "Native API returns message.thinking; /v1 return shape varies — verify."
 returns = "hidden"
