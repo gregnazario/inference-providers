@@ -1,0 +1,21 @@
+model = "moonshot/kimi-k3"
+wire_id = "k3"
+endpoint = "coding-openai"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "high", "max"]
+default = "max"
+
+[reasoning.source]
+url = "https://www.kimi.com/code/docs/en/third-party-tools/claude-code.html"
+verified = "2026-08-19"

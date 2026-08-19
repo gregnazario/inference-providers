@@ -1,0 +1,44 @@
+id = "kimi-coding"
+name = "Kimi for Coding"
+kind = "subscription"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://www.kimi.com/code/docs/"
+console = "https://www.kimi.com/code/console"
+
+[plan]
+price_usd = 19.0
+period = "monthly"
+quota = "Kimi Code has its own rolling 5-hour + weekly limits plus shared agent credits (60/150/360/720 by tier); concurrency-limited"
+notes = "Included with Kimi membership — tiers Moderato $19, Allegretto $39, Allegro $99, Vivace $199 (annual discounts); K3 access from Moderato up. Coding keys are distinct from Open Platform keys and never interchangeable (top 401 cause)."
+docs = "https://www.kimi.ai/help/membership/membership-pricing"
+
+[[auth]]
+id = "plan-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = []
+getting_credentials = "Create keys in the Kimi Code Console (shown once). For Claude Code: ANTHROPIC_BASE_URL=https://api.kimi.com/coding/ and ANTHROPIC_API_KEY=<coding key>."
+docs = "https://www.kimi.com/code/docs/en/third-party-tools/claude-code.html"
+
+[[endpoints]]
+id = "coding-openai"
+base_url = "https://api.kimi.com"
+path = "/coding/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "coding-anthropic"
+base_url = "https://api.kimi.com"
+path = "/coding"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "Model ids on the coding endpoints: kimi-for-coding, kimi-for-coding-highspeed, k3 (1M ctx, ~2x quota), k3-256k. The [1m] suffix (kimi-k3[1m]) is a Claude Code env convention only — raw API uses k3/kimi-k3. Claude Code /effort maps to k3 low/high/max."
+docs = "https://www.kimi.com/code/docs/en/third-party-tools/claude-code.html"
+
+[[quirks]]
+text = "kimi-for-coding is the K2.7-code-class model; highspeed variant doubles speed and quota consumption."
+docs = "https://www.kimi.com/code/docs/kimi-code/faq.html"

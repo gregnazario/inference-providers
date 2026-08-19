@@ -1,0 +1,17 @@
+model = "moonshot/kimi-k3"
+wire_id = "k3-256k"
+endpoint = "coding-anthropic"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "always_on"
+mandatory = true
+default = "on"
+notes = "262144-context variant; control effort via Claude Code /effort (low/high/max) — raw wire param on this surface not documented; verify."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.source]
+url = "https://www.kimi.com/code/docs/en/third-party-tools/claude-code.html"
+verified = "2026-08-19"

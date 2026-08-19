@@ -1,0 +1,21 @@
+model = "moonshot/kimi-k2-7-code"
+wire_id = "kimi-for-coding"
+endpoint = "coding-openai"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = true
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = ""
+
+[reasoning.source]
+url = "https://www.kimi.com/code/docs/en/third-party-tools/claude-code.html"
+verified = "2026-08-19"
