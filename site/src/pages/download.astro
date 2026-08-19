@@ -1,5 +1,7 @@
 ---
 import Base from "../layouts/Base.astro"
+
+const base = import.meta.env.BASE_URL
 ---
 
 <Base title="Download — ai-providers">
@@ -9,6 +11,29 @@ import Base from "../layouts/Base.astro"
     repository's <code>dist/</code> directory. They are generated code, not
     hand-maintained data — regenerate them at any time from the public TOML
     sources.
+  </p>
+
+  <h2>Direct downloads</h2>
+  <ul>
+    <li>
+      <a href={`${base}artifacts/catalog.json`}><code>catalog.json</code></a> —
+      the full denormalized join: canonical models and every provider offering
+      in a single document. The complete registry in one fetch.
+    </li>
+    <li>
+      <a href={`${base}artifacts/providers.json`}><code>providers.json</code></a>
+      and
+      <a href={`${base}artifacts/models.json`}><code>models.json</code></a> —
+      the normalized layers: providers, auth, endpoints, and plans in one;
+      lab-owned canonical model facts in the other.
+    </li>
+  </ul>
+  <p>
+    Per-entity files are served at stable paths under
+    <code>artifacts/providers/</code> and <code>artifacts/models/</code> — for
+    example
+    <code>{`${base}artifacts/providers/anthropic.json`}</code> or
+    <code>{`${base}artifacts/models/openai-gpt-5-6.json`}</code>.
   </p>
 
   <h2>Artifacts</h2>
@@ -66,10 +91,9 @@ import Base from "../layouts/Base.astro"
 pnpm install
 pnpm emit</code></pre>
   <p>
-    The result is byte-for-byte the same data this site renders (timestamps
-    aside). Until the repository is published, that local
-    <code>pnpm emit</code> is the way to get the artifacts; once published, this
-    site lives at
+    The result is byte-for-byte the same data served by the links above and
+    rendered by this site (timestamps aside). Once the repository is published,
+    this site lives at
     <code>https://&lt;owner&gt;.github.io/ai-providers/</code>, rebuilt on
     every push to <code>main</code> by the GitHub Pages deploy workflow.
   </p>
