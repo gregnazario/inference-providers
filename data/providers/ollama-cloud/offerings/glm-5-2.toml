@@ -1,5 +1,5 @@
 model = "zai/glm-5-2"
-wire_id = "glm-5.2:cloud"
+wire_id = "glm-5.2"
 endpoint = "v1-chat-completions"
 status = "ga"
 status_date = ""
