@@ -7,7 +7,7 @@ const target = (providerId: string): SyncTarget => {
   return t
 }
 
-/** The eleven providers whose model-list endpoints are OpenAI-style `{ data: [{ id }] }`. */
+/** The nineteen providers whose model-list endpoints are OpenAI-style `{ data: [{ id }] }`. */
 const DATA_STYLE_PROVIDER_IDS = [
   "openai",
   "anthropic",
@@ -20,6 +20,14 @@ const DATA_STYLE_PROVIDER_IDS = [
   "alibaba-dashscope",
   "moonshot",
   "ollama-cloud",
+  "baseten",
+  "fireworks-ai",
+  "synthetic",
+  "near-ai",
+  "io-intelligence",
+  "hetzner",
+  "meta",
+  "nvidia",
 ]
 
 describe("TARGETS registry", () => {
@@ -37,11 +45,19 @@ describe("TARGETS registry", () => {
       "alibaba-dashscope": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/models",
       moonshot: "https://api.moonshot.ai/v1/models",
       "ollama-cloud": "https://ollama.com/v1/models",
+      baseten: "https://inference.baseten.co/v1/models",
+      "fireworks-ai": "https://api.fireworks.ai/inference/v1/models",
+      synthetic: "https://api.synthetic.new/openai/v1/models",
+      "near-ai": "https://cloud-api.near.ai/v1/models",
+      "io-intelligence": "https://api.intelligence.io.solutions/api/v1/models",
+      hetzner: "https://inference.hetzner.com/api/v1/models",
+      meta: "https://api.meta.ai/v1/models",
+      nvidia: "https://integrate.api.nvidia.com/v1/models",
     }
     for (const [providerId, url] of Object.entries(expected)) {
       expect(target(providerId).url, `url for ${providerId}`).toBe(url)
     }
-    expect(TARGETS).toHaveLength(12)
+    expect(TARGETS).toHaveLength(20)
   })
 
   it("has unique provider ids", () => {
@@ -78,6 +94,21 @@ describe("OpenAI-style data mapper", () => {
   it("keeps ollama-cloud's org:model:cloud wire ids verbatim", () => {
     const body = { data: [{ id: "gpt-oss:120b-cloud" }, { id: "kimi-k3:cloud" }] }
     expect(target("ollama-cloud").map(body)).toEqual(["gpt-oss:120b-cloud", "kimi-k3:cloud"])
+  })
+
+  it("keeps nvidia's vendor-prefixed wire ids verbatim", () => {
+    const body = { data: [{ id: "meta/muse-glimmer-30b" }, { id: "deepseek-ai/deepseek-v4-pro" }] }
+    expect(target("nvidia").map(body)).toEqual(["meta/muse-glimmer-30b", "deepseek-ai/deepseek-v4-pro"])
+  })
+
+  it("keeps io-intelligence's org/model wire ids verbatim", () => {
+    const body = { data: [{ id: "deepseek-ai/DeepSeek-V4-Pro" }, { id: "moonshotai/Kimi-K3" }] }
+    expect(target("io-intelligence").map(body)).toEqual(["deepseek-ai/DeepSeek-V4-Pro", "moonshotai/Kimi-K3"])
+  })
+
+  it("keeps hetzner's HF-style wire ids verbatim", () => {
+    const body = { data: [{ id: "Qwen/Qwen3.6-35B-A3B-FP8" }, { id: "Qwen/Qwen3.8-27B" }] }
+    expect(target("hetzner").map(body)).toEqual(["Qwen/Qwen3.6-35B-A3B-FP8", "Qwen/Qwen3.8-27B"])
   })
 
   it("returns an empty list when the body is not a model-list object", () => {

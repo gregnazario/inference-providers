@@ -1,7 +1,8 @@
 /**
  * Model-list sync adapters: one entry per provider whose model list can be
  * fetched from a public (auth-less or authed elsewhere) HTTP endpoint.
- * URLs were verified against provider docs in the 2026-08-18 research pass.
+ * URLs were verified against provider docs in the 2026-08-18 and 2026-08-19
+ * research passes.
  */
 export type SyncTarget = {
   providerId: string
@@ -53,4 +54,13 @@ export const TARGETS: SyncTarget[] = [
   },
   { providerId: "moonshot", url: "https://api.moonshot.ai/v1/models", map: mapDataIds },
   { providerId: "ollama-cloud", url: "https://ollama.com/v1/models", map: mapDataIds },
+  // Wave-3 providers — all serve OpenAI-style `{ data: [{ id }] }` model lists.
+  { providerId: "baseten", url: "https://inference.baseten.co/v1/models", map: mapDataIds },
+  { providerId: "fireworks-ai", url: "https://api.fireworks.ai/inference/v1/models", map: mapDataIds },
+  { providerId: "synthetic", url: "https://api.synthetic.new/openai/v1/models", map: mapDataIds },
+  { providerId: "near-ai", url: "https://cloud-api.near.ai/v1/models", map: mapDataIds },
+  { providerId: "io-intelligence", url: "https://api.intelligence.io.solutions/api/v1/models", map: mapDataIds },
+  { providerId: "hetzner", url: "https://inference.hetzner.com/api/v1/models", map: mapDataIds },
+  { providerId: "meta", url: "https://api.meta.ai/v1/models", map: mapDataIds },
+  { providerId: "nvidia", url: "https://integrate.api.nvidia.com/v1/models", map: mapDataIds },
 ]
