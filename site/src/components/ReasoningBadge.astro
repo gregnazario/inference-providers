@@ -1,0 +1,38 @@
+---
+interface ReasoningLike {
+  style: string
+  default: string
+  mandatory: boolean
+  returns: string
+}
+
+interface Props {
+  reasoning: ReasoningLike
+}
+
+const { reasoning } = Astro.props
+const parts = [`${reasoning.style} · default ${reasoning.default}`]
+if (reasoning.mandatory) parts.push("mandatory")
+parts.push(`returns ${reasoning.returns}`)
+---
+
+<span class="reasoning-badge">{parts.join(" · ")}</span>
+
+<style>
+  .reasoning-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    border: 1px solid #999;
+    border-radius: 999px;
+    padding: 0.05rem 0.55rem;
+    background: #f3f3f3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .reasoning-badge {
+      border-color: #555;
+      background: #22262d;
+    }
+  }
+</style>

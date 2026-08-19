@@ -1,0 +1,215 @@
+---
+import { loadCatalog, type SdkCatalog } from "@ai-providers/sdk"
+import Base from "../../layouts/Base.astro"
+import CurlExample from "../../components/CurlExample.astro"
+import ReasoningBadge from "../../components/ReasoningBadge.astro"
+
+type CatalogProvider = SdkCatalog["providers"][number]
+type CatalogOffering = CatalogProvider["offerings"][number]
+type CatalogEndpoint = CatalogProvider["endpoints"][number]
+
+type ExampleInput = {
+  provider: CatalogProvider
+  offering: CatalogOffering
+  endpoint: CatalogEndpoint
+}
+
+type OfferingRow = {
+  providerId: string
+  providerName: string
+  wireId: string
+  endpoint: string
+  protocol: string
+  status: string
+  cost: CatalogOffering["cost"]
+  reasoning: CatalogOffering["reasoning"]
+  example: ExampleInput | null
+}
+
+export function getStaticPaths() {
+  const c = loadCatalog()
+
+  const offeringsByModel = new Map<string, { provider: CatalogProvider; offering: CatalogOffering }[]>()
+  for (const p of c.providers) {
+    for (const o of p.offerings) {
+      const list = offeringsByModel.get(o.model) ?? []
+      list.push({ provider: p, offering: o })
+      offeringsByModel.set(o.model, list)
+    }
+  }
+
+  return c.models.map((m) => ({
+    params: { id: m.id.replace("/", "-") },
+    props: {
+      model: m,
+      offerings: (offeringsByModel.get(m.id) ?? [])
+        .map(({ provider, offering }): OfferingRow => {
+          const endpoint = provider.endpoints.find((e) => e.id === offering.endpoint)
+          return {
+            providerId: provider.id,
+            providerName: provider.name,
+            wireId: offering.wire_id,
+            endpoint: offering.endpoint,
+            protocol: endpoint?.protocol ?? "—",
+            status: offering.status,
+            cost: offering.cost,
+            reasoning: offering.reasoning,
+            example: endpoint ? { provider, offering, endpoint } : null,
+          }
+        })
+        .sort(
+          (a, b) =>
+            a.providerId.localeCompare(b.providerId) || a.endpoint.localeCompare(b.endpoint),
+        ),
+    },
+  }))
+}
+
+const { model, offerings } = Astro.props
+const base = import.meta.env.BASE_URL
+
+const examples = offerings
+  .map((o) => o.example)
+  .filter((e): e is ExampleInput => e !== null)
+
+const openWeights =
+  model.open_weights === undefined ? "—" : model.open_weights ? "yes" : "no"
+const hfUrl = model.open_weights && model.hf_repo ? `https://huggingface.co/${model.hf_repo}` : null
+
+const price = (cost: CatalogOffering["cost"]) => {
+  if (!cost || (cost.input == null && cost.output == null)) return "—"
+  const part = (v: number | null) => (v == null ? "—" : v.toFixed(2))
+  return `${part(cost.input)} / ${part(cost.output)}`
+}
+---
+
+<Base title={`${model.name} — ai-providers`}>
+  <h1>{model.name}</h1>
+  <p>
+    by {model.lab} · family {model.family}
+  </p>
+
+  <section>
+    <h2>Facts</h2>
+    <table>
+      <tbody>
+        <tr>
+          <th scope="row">Release date</th>
+          <td>{model.release_date || "—"}</td>
+        </tr>
+        <tr>
+          <th scope="row">Retired date</th>
+          <td>{model.retired_date || "—"}</td>
+        </tr>
+        <tr>
+          <th scope="row">Knowledge cutoff</th>
+          <td>{model.knowledge_cutoff || "—"}</td>
+        </tr>
+        <tr>
+          <th scope="row">Modalities</th>
+          <td>{model.modalities.input.join(", ")} → {model.modalities.output.join(", ")}</td>
+        </tr>
+        <tr>
+          <th scope="row">Aliases</th>
+          <td>
+            {
+              model.aliases.length > 0 ? (
+                model.aliases.map((a) => <code>{a}</code>)
+              ) : (
+                "—"
+              )
+            }
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Open weights</th>
+          <td>
+            {openWeights}
+            {hfUrl && (
+              <>
+                {" "}(<a href={hfUrl}>{model.hf_repo}</a>)
+              </>
+            )}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Description</th>
+          <td>{model.description}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="footnote">Unknown values are shown as —.</p>
+  </section>
+
+  <section>
+    <h2>Offerings</h2>
+    {
+      offerings.length === 0 ? (
+        <p>No provider offerings cataloged for this model.</p>
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Wire ID</th>
+              <th>Endpoint</th>
+              <th>Protocol</th>
+              <th>Status</th>
+              <th>Price (USD / Mtok)</th>
+              <th>Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            {offerings.map((o) => (
+              <tr>
+                <td>
+                  <a href={`${base}providers/${o.providerId}/`}>{o.providerName}</a>
+                </td>
+                <td>
+                  <code>{o.wireId}</code>
+                </td>
+                <td>{o.endpoint}</td>
+                <td>{o.protocol}</td>
+                <td>{o.status}</td>
+                <td class="num">{price(o.cost)}</td>
+                <td>
+                  <ReasoningBadge reasoning={o.reasoning} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )
+    }
+  </section>
+
+  <section>
+    <h2>Example requests</h2>
+    {
+      examples.length === 0 ? (
+        <p>No example requests for this model.</p>
+      ) : (
+        examples.map((e) => (
+          <CurlExample provider={e.provider} offering={e.offering} endpoint={e.endpoint} />
+        ))
+      )
+    }
+  </section>
+</Base>
+
+<style>
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .footnote {
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .footnote {
+      color: #9aa1ab;
+    }
+  }
+</style>
