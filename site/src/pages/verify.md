@@ -48,13 +48,12 @@ offering.
   `input`, `output`, `cache_read`, `cache_write` exactly as published — some
   providers quote cache-hit and cache-miss input prices separately; record the
   cache-hit value in `cache_read`.
-- Cross-check with a live response where possible: some model-list endpoints
-  embed per-model pricing (OpenRouter's does), and a small real request plus
+- Cross-check with a live response where possible: a small real request plus
   the usage dashboard catches stale-doc errors.
 - Watch for: prompt-size tiers (grok-build-0.1 doubles above 200K prompt),
-  thinking vs non-thinking mode pricing (Qwen on DashScope), free tiers, and
-  subscription surfaces — those have **no** per-token `[cost]` at all; they
-  carry a `[plan]` block instead.
+  speed-variant pricing (kimi-k2.7-code-highspeed is exactly 2x), free tiers,
+  and subscription surfaces — those have **no** per-token `[cost]` at all;
+  they carry a `[plan]` block instead.
 
 **Record:** `[cost]` with `source.url` = the exact pricing page.
 
@@ -87,9 +86,9 @@ sync reports are leads, not facts.
 **How:**
 - Find the provider's thinking/reasoning docs page. Classify the control
   style: effort enum (`reasoning_effort` / `reasoning.effort`), token budget
-  (`budget_tokens` / `thinkingBudget` / `thinking_budget`), toggle object
-  (`thinking: {type}` — note the exact value set: enabled/disabled vs
-  adaptive/disabled vs enabled-only), adaptive, or always-on. Encode style +
+  (`thinking.budget_tokens` / `thinkingBudget` / `reasoning.max_tokens`),
+  toggle object (`thinking: {type}` — note the exact value set: enabled/disabled
+  vs adaptive/disabled vs enabled-only), adaptive, or always-on. Encode style +
   per-model value sets + defaults in `[reasoning]`.
 - Check the three follow-ons every time: (a) can thinking be *disabled*
   (`mandatory = true` only when it truly cannot — never combine with `none`
@@ -122,8 +121,8 @@ sync reports are leads, not facts.
 - Confirm with a live 401: the error body usually names the header the server
   expected.
 - Watch for: required extra headers on every request (`anthropic-version`,
-  Azure's classic `api-version`), key prefixes (`sk-ant-`, `sk-sp-`,
-  `nvapi-`), region-bound keys (Kimi .ai vs .cn), and the env-var conventions
+  Azure's classic `api-version`), key prefixes (`sk-ant-`, `sk-sp-`, `sk-`),
+  region-bound keys (Kimi .ai vs .cn), and the env-var conventions
   coding tools expect (`ANTHROPIC_BASE_URL` overrides for Anthropic-compat
   surfaces).
 
