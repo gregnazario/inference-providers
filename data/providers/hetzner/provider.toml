@@ -1,0 +1,31 @@
+id = "hetzner"
+name = "Hetzner Inference (Experiments)"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://docs.hetzner.com/general/company-and-policy/experiments/inference/"
+console = "https://experiments.hetzner.com"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["HETZNER_API_KEY"]
+getting_credentials = "Create a token in the Experiments dashboard; free while experimental, no SLA."
+docs = "https://docs.hetzner.com/general/company-and-policy/experiments/inference/"
+
+[[endpoints]]
+id = "chat"
+base_url = "https://inference.hetzner.com"
+path = "/api/v1/chat/completions"
+protocol = "openai-chat"
+
+[[quirks]]
+text = "Experimental 'as is' program (launched ~2026-07): free, EU-based, no production guarantees; email notice before changes. GET /api/v1/models is definitive for the lineup."
+docs = "https://docs.hetzner.com/general/company-and-policy/experiments/inference/"
+
+[[quirks]]
+text = "Limits per key: 10 requests/60s, 4M input and 100k output tokens/60s. Reasoning control is undocumented; a community-reported chat_template_kwargs.enable_thinking flag exists for Qwen3.6."
+docs = "https://docs.hetzner.com/general/company-and-policy/experiments/inference/"
