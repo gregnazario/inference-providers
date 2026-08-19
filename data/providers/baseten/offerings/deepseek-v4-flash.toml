@@ -1,0 +1,32 @@
+model = "deepseek/deepseek-v4-flash"
+wire_id = "deepseek-ai/DeepSeek-V4-Flash-0731"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.13
+output = 0.26
+cache_read = 0.028
+source = { url = "https://www.baseten.co/pricing/", verified = "2026-08-19" }
+
+[limits]
+context = 1_048_576
+source = { url = "https://docs.baseten.co/inference/model-apis/overview", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["none", "minimal", "low", "medium", "high", "xhigh", "max"]
+default = "high"
+notes = "Default not documented — verify."
+
+[reasoning.source]
+url = "https://docs.baseten.co/inference/model-apis/reasoning"
+verified = "2026-08-19"

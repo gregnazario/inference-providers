@@ -1,0 +1,46 @@
+id = "baseten"
+name = "Baseten"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://docs.baseten.co/inference/model-apis/overview"
+console = "https://www.baseten.co"
+pricing = "https://www.baseten.co/pricing/"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["BASETEN_API_KEY"]
+getting_credentials = "Create keys in the Baseten dashboard (Settings > API Keys). Send as Authorization: Bearer BASETEN_API_KEY; the legacy Api-Key header scheme is also accepted."
+docs = "https://docs.baseten.co/inference/model-apis/overview"
+
+[[endpoints]]
+id = "chat-completions"
+base_url = "https://inference.baseten.co"
+path = "/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "messages"
+base_url = "https://inference.baseten.co"
+path = "/v1/messages"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "Baseten reads Authorization only — the Anthropic SDK's default x-api-key is NOT read; override default_headers."
+docs = "https://docs.baseten.co/inference/model-apis/overview"
+
+[[quirks]]
+text = "reasoning_effort is validated (invalid values 400); chat_template_args.enable_thinking on opt-in models is unvalidated and fails silently."
+docs = "https://docs.baseten.co/inference/model-apis/reasoning"
+
+[[quirks]]
+text = "Rate limits are account-wide (Basic verified 120 RPM / 500k TPM); 529 = overloaded; GET /v1/models embeds pricing and context."
+docs = "https://docs.baseten.co/inference/model-apis/pricing-and-limits"
+
+[[quirks]]
+text = "The Anthropic-compatible /v1/messages endpoint is in beta; behavior may change before general availability — prefer Chat Completions for production workloads."
+docs = "https://docs.baseten.co/inference/model-apis/overview"
