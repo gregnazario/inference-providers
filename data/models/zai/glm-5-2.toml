@@ -1,0 +1,15 @@
+id = "zai/glm-5-2"
+name = "GLM-5.2"
+family = "glm"
+lab = "zai"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = ""
+description = "756B open-weight model, 976K context."
+aliases = ["glm-5.2"]
+[modalities]
+input = ["text"]
+output = ["text"]

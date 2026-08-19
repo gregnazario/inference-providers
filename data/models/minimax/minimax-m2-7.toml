@@ -1,0 +1,15 @@
+id = "minimax/minimax-m2-7"
+name = "MiniMax M2.7"
+family = "minimax-m"
+lab = "minimax"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = ""
+description = "229B open-weight model; replaced M2.5 on Ollama Cloud 2026-07-31."
+aliases = ["MiniMax-M2.7", "minimax-m2.7"]
+[modalities]
+input = ["text"]
+output = ["text"]

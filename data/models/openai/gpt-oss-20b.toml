@@ -1,0 +1,15 @@
+id = "openai/gpt-oss-20b"
+name = "GPT-OSS 20B"
+family = "gpt-oss"
+lab = "openai"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "openai/gpt-oss-20b"
+license = ""
+description = "21B MoE open-weight reasoning model; thinking cannot be disabled."
+aliases = ["gpt-oss-20b"]
+[modalities]
+input = ["text"]
+output = ["text"]
