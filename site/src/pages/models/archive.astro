@@ -29,17 +29,19 @@ const fmtLimit = (n: number) => (n > 0 ? n.toLocaleString("en-US") : "—")
 const fmtWeights = (openWeights: SdkCatalog["models"][number]["open_weights"]) =>
   openWeights === undefined ? "—" : openWeights ? "yes" : "no"
 
-const rows = current
+const rows = archived
   .map((m) => ({ model: m, acc: byModel.get(m.id) ?? { offerings: 0, context: 0, output: 0 } }))
   .sort((a, b) => a.model.lab.localeCompare(b.model.lab) || a.model.name.localeCompare(b.model.name))
 ---
 
-<Base title="Models — inference-providers" active="models">
-  <h1>Models</h1>
+<Base title="Archived models — inference-providers" active="models">
+  <h1>Archived models</h1>
   <p>
-    {current.length} current models, rendered from the emitted catalog. Open a
-    model for its facts and every provider offering.{" "}
-    <a href={`${base}models/archive/`}>View archived models ({archived.length})</a>
+    Models released more than 12 months ago (or retired). Kept for reference —
+    provider offerings remain in the full artifacts.
+  </p>
+  <p class="intro-count">
+    {archived.length} archived · <a href={`${base}models/`}>{current.length} current models</a>
   </p>
 
   <div class="table-wrap">
@@ -50,6 +52,7 @@ const rows = current
           <th>Lab</th>
           <th>Family</th>
           <th>Released</th>
+          <th>Retired</th>
           <th class="num">Context</th>
           <th class="num">Output</th>
           <th>Open weights</th>
@@ -66,6 +69,7 @@ const rows = current
               <td>{model.lab}</td>
               <td>{model.family}</td>
               <td>{model.release_date || "—"}</td>
+              <td>{model.retired_date || "—"}</td>
               <td class="num">{fmtLimit(acc.context)}</td>
               <td class="num">{fmtLimit(acc.output)}</td>
               <td>{fmtWeights(model.open_weights)}</td>
@@ -87,6 +91,11 @@ const rows = current
   .num {
     text-align: right;
     font-variant-numeric: tabular-nums;
+  }
+
+  .intro-count {
+    color: var(--muted);
+    font-size: 0.9rem;
   }
 
   .footnote {
