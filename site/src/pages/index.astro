@@ -1,0 +1,54 @@
+---
+import { loadCatalog } from "@ai-providers/sdk"
+import Base from "../layouts/Base.astro"
+
+const c = loadCatalog()
+const totalOfferings = c.providers.reduce((n, p) => n + p.offerings.length, 0)
+const base = import.meta.env.BASE_URL
+---
+
+<Base title="ai-providers">
+  <h1>ai-providers</h1>
+  <p>
+    A provenance-tracked registry of AI model providers — auth, endpoints, and
+    reasoning-parameter specs for every surface. All pages are generated from
+    the emitted catalog; nothing here is hand-maintained.
+  </p>
+  <p class="stat-line">
+    {c.models.length} models · {c.providers.length} providers · {totalOfferings} offerings
+  </p>
+
+  <h2>Providers</h2>
+  <ul class="provider-grid">
+    {
+      c.providers.map((p) => (
+        <li>
+          <a href={`${base}providers/${p.id}/`}>
+            {p.name} <small>({p.kind})</small>
+          </a>
+          <br />
+          <small>auth: {p.auth[0]?.type ?? "none"}</small>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p>
+    Browse the <a href={`${base}models/`}>full model list</a> or
+    <a href={`${base}download/`}>download the catalog</a>.
+  </p>
+</Base>
+
+<style>
+  .stat-line {
+    font-weight: 600;
+  }
+
+  .provider-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 0.75rem 1.5rem;
+  }
+</style>
