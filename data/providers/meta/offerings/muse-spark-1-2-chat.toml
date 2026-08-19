@@ -1,0 +1,35 @@
+model = "meta/muse-spark-1-2"
+wire_id = "muse-spark-1.2"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 1.25
+output = 4.25
+cache_read = 0.15
+free = false
+source = { url = "https://dev.meta.ai/docs/pricing-rate-limits/", verified = "2026-08-19" }
+
+[limits]
+context = 1_048_576
+output = 131_072
+source = { url = "https://dev.meta.ai/docs/pricing-rate-limits/", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "reasoning_content is redacted to empty for external callers on this surface."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["minimal", "low", "medium", "high", "xhigh"]
+default = "medium"
+notes = "Default effort is not documented — verify."
+
+[reasoning.source]
+url = "https://dev.meta.ai/docs/reasoning"
+verified = "2026-08-19"
