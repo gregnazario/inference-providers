@@ -23,3 +23,17 @@ Data lives in `data/` as TOML. Three layers:
 
 See `docs/superpowers/specs/2026-08-18-ai-providers-registry-design.md` for
 the design rationale.
+
+## Sync drift detection
+
+`runSync` (in `packages/sync`) compares live provider APIs against the catalog:
+adapters list each provider's wire ids, the diff engine classifies them as
+added/removed/unchanged versus `data/`, and `pnpm --filter @ai-providers/sync
+run report` prints a dry-run summary. Two invariants:
+
+- **Sync never writes capability facts.** It only reports drift — every cost,
+  limit, and reasoning fact in `data/` still needs a human-verified source URL.
+- **New wire ids land as offerings only after human verification.** An added
+  wire id from a sync run is a lead, not a fact: create the offering TOML only
+  once you've confirmed the model mapping and filled `[*.source]` entries from
+  provider documentation.
