@@ -12,7 +12,7 @@
 - TOML layout: root keys (incl. api_surfaces) before tables; offering root keys before [cost]/[limits]/[reasoning]; reasoning base keys before sub-blocks.
 - All new sources `verified = "2026-08-19"`. Unknown = omitted. `mandatory = true` never combines with `none` in values.
 - Where reasoning controls are undocumented (Synthetic, Hetzner), encode `style = "adaptive"` (or a toggle following the upstream convention) with a notes entry containing "verify" — never invent value sets.
-- Totals after this plan: 46 models, 29 providers, ~91 offerings.
+- Totals after this plan: 45 models (the Task 1 file list enumerates 11 new models — the "12" in the heading was an arithmetic slip corrected during execution), 29 providers, 91 offerings.
 
 ---
 
