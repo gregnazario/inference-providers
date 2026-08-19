@@ -37,3 +37,29 @@ run report` prints a dry-run summary. Two invariants:
   wire id from a sync run is a lead, not a fact: create the offering TOML only
   once you've confirmed the model mapping and filled `[*.source]` entries from
   provider documentation.
+
+## Verification methodology
+
+Every fact dimension has a defined verification procedure — pricing, models,
+features (reasoning), auth models, and API compatibility. The full guide lives
+in [`site/src/pages/verify.md`](site/src/pages/verify.md) and is rendered at
+`/verify/` on the site. The short version:
+
+- **Pricing**: the provider's canonical pricing page, cross-checked against a
+  live request; `source.url` must point at the exact page. Subscription
+  surfaces carry a `[plan]` block, never per-token costs.
+- **Models**: live `GET /models` is ground truth for wire IDs
+  (`pnpm --filter @inference-providers/sync run report`); copy IDs verbatim;
+  record deprecations as `status` with dates.
+- **Features**: classify the reasoning control style from the provider's
+  thinking docs, then confirm with a live request — the site's generated
+  examples are the test templates. `mandatory` never combines with `none` in
+  values. `incompatible_with` is for params that error; ignored behavior goes
+  in notes.
+- **Auth**: enumerate every method (key header scheme, OAuth flow + token
+  transport, signing, subscription keys); a live 401 usually names the
+  expected header; traps go in quirks.
+- **Compatible APIs**: point the official SDK at the base URL and make a
+  minimal call; classify the protocol per endpoint; record every divergence
+  and the presence/absence of operation families in `api_surfaces`.
+
