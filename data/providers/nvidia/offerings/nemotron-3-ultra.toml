@@ -1,0 +1,22 @@
+model = "nvidia/nemotron-3-ultra"
+wire_id = "nvidia/nemotron-3-ultra-550b-a55b"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "chat_template_kwargs.medium_effort: true adds a medium effort tier."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "chat_template_kwargs.enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://docs.api.nvidia.com/nim/reference/nvidia-nemotron-3-ultra-550b-a55b"
+verified = "2026-08-19"

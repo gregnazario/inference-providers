@@ -1,0 +1,21 @@
+model = "deepseek/deepseek-v4-pro"
+wire_id = "deepseek-ai/deepseek-v4-pro"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 1_048_576
+source = { url = "https://docs.api.nvidia.com/nim/reference/deepseek-ai-deepseek-v4-pro", verified = "2026-08-19" }
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Modes non-think/think-high/think-max via chat_template_kwargs; reasoning_effort reportedly silently ignored on this model (forum) — verify."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.source]
+url = "https://docs.api.nvidia.com/nim/reference/deepseek-ai-deepseek-v4-pro"
+verified = "2026-08-19"
