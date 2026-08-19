@@ -10,7 +10,7 @@ importers:
 
   packages/build:
     dependencies:
-      '@ai-providers/schema':
+      '@inference-providers/schema':
         specifier: workspace:*
         version: link:../schema
       smol-toml:
@@ -48,7 +48,7 @@ importers:
 
   packages/sdk:
     dependencies:
-      '@ai-providers/schema':
+      '@inference-providers/schema':
         specifier: workspace:*
         version: link:../schema
     devDependencies:
@@ -64,10 +64,10 @@ importers:
 
   packages/sync:
     dependencies:
-      '@ai-providers/schema':
+      '@inference-providers/schema':
         specifier: workspace:*
         version: link:../schema
-      '@ai-providers/sdk':
+      '@inference-providers/sdk':
         specifier: workspace:*
         version: link:../sdk
     devDependencies:
@@ -86,10 +86,10 @@ importers:
 
   site:
     dependencies:
-      '@ai-providers/schema':
+      '@inference-providers/schema':
         specifier: workspace:*
         version: link:../packages/schema
-      '@ai-providers/sdk':
+      '@inference-providers/sdk':
         specifier: workspace:*
         version: link:../packages/sdk
       astro:

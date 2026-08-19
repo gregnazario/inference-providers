@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import type { Provider } from "@ai-providers/schema"
+import type { Provider } from "@inference-providers/schema"
 import { authHeaders } from "../src/auth.js"
 
 // Round-trip fixture values — placeholders, not credentials.

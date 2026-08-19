@@ -3,8 +3,8 @@ import {
   buildReasoningParam,
   ReasoningParamError,
   type EffortValue,
-} from "@ai-providers/sdk"
-import type { Offering, Provider } from "@ai-providers/schema"
+} from "@inference-providers/sdk"
+import type { Offering, Provider } from "@inference-providers/schema"
 
 /** Provider as materialized in the SDK catalog: schema Provider plus its offerings. */
 export type CatalogProvider = Provider & { offerings: Offering[] }

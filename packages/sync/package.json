@@ -1,5 +1,5 @@
 {
-  "name": "@ai-providers/sync",
+  "name": "@inference-providers/sync",
   "version": "0.1.0",
   "type": "module",
   "main": "dist/index.js",
@@ -10,6 +10,6 @@
     "build": "tsc -p tsconfig.json",
     "report": "tsx src/cli.ts"
   },
-  "dependencies": { "@ai-providers/sdk": "workspace:*", "@ai-providers/schema": "workspace:*" },
+  "dependencies": { "@inference-providers/sdk": "workspace:*", "@inference-providers/schema": "workspace:*" },
   "devDependencies": { "@types/node": "^22.0.0", "typescript": "^5.6.0", "vitest": "^3.0.0", "tsx": "^4.19.0" }
 }

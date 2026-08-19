@@ -1,12 +1,12 @@
 ---
-import { loadCatalog } from "@ai-providers/sdk"
+import { loadCatalog } from "@inference-providers/sdk"
 import Base from "../../layouts/Base.astro"
 
 const c = loadCatalog()
 const base = import.meta.env.BASE_URL
 ---
 
-<Base title="Providers — ai-providers">
+<Base title="Providers — inference-providers">
   <h1>Providers</h1>
   <p>
     {c.providers.length} providers, rendered from the emitted catalog. Open a

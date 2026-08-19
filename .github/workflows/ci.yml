@@ -12,8 +12,8 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: pnpm }
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @ai-providers/schema run build
-      - run: pnpm --filter @ai-providers/sdk run build
+      - run: pnpm --filter @inference-providers/schema run build
+      - run: pnpm --filter @inference-providers/sdk run build
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm validate

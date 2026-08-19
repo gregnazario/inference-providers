@@ -8,8 +8,8 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@ai-providers/schema": "workspace:*",
-    "@ai-providers/sdk": "workspace:*",
+    "@inference-providers/schema": "workspace:*",
+    "@inference-providers/sdk": "workspace:*",
     "astro": "^5.0.0"
   },
   "devDependencies": {

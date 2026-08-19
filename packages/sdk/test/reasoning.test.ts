@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 import { buildReasoningParam, ReasoningParamError } from "../src/reasoning.js"
 import type { EffortValue } from "../src/index.js"
-import type { Offering, Reasoning } from "@ai-providers/schema"
+import type { Offering, Reasoning } from "@inference-providers/schema"
 
 /**
  * Minimal offering skeleton. Each reasoning block below is copied verbatim from

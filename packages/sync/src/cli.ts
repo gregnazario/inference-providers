@@ -1,6 +1,6 @@
 import { mkdirSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
-import { loadCatalog } from "@ai-providers/sdk"
+import { loadCatalog } from "@inference-providers/sdk"
 import { runSync } from "./run.js"
 import { TARGETS } from "./adapters.js"
 

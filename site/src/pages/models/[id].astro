@@ -1,5 +1,5 @@
 ---
-import { loadCatalog, type SdkCatalog } from "@ai-providers/sdk"
+import { loadCatalog, type SdkCatalog } from "@inference-providers/sdk"
 import Base from "../../layouts/Base.astro"
 import CurlExample from "../../components/CurlExample.astro"
 import ReasoningBadge from "../../components/ReasoningBadge.astro"
@@ -83,7 +83,7 @@ const price = (cost: CatalogOffering["cost"]) => {
 }
 ---
 
-<Base title={`${model.name} — ai-providers`}>
+<Base title={`${model.name} — inference-providers`}>
   <h1>{model.name}</h1>
   <p>
     by {model.lab} · family {model.family}

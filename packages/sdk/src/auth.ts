@@ -1,4 +1,4 @@
-import type { Provider } from "@ai-providers/schema"
+import type { Provider } from "@inference-providers/schema"
 
 /** Credential + optional auth-entry selector passed to {@link authHeaders}. */
 export type AuthHeadersOptions = {

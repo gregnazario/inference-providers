@@ -2,7 +2,7 @@ import { basename } from "node:path"
 import {
   ModelSchema, OfferingSchema, ProviderSchema,
   type Model, type Offering, type Provider,
-} from "@ai-providers/schema"
+} from "@inference-providers/schema"
 import type { loadRaw } from "./parse.js"
 
 export class ValidationError extends Error {

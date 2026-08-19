@@ -1,5 +1,5 @@
 {
-  "name": "@ai-providers/sdk",
+  "name": "@inference-providers/sdk",
   "version": "0.1.0",
   "type": "module",
   "main": "dist/index.js",
@@ -9,6 +9,6 @@
     "typecheck": "tsc --noEmit",
     "build": "tsc -p tsconfig.json"
   },
-  "dependencies": { "@ai-providers/schema": "workspace:*" },
+  "dependencies": { "@inference-providers/schema": "workspace:*" },
   "devDependencies": { "@types/node": "^22.0.0", "typescript": "^5.6.0", "vitest": "^3.0.0" }
 }
