@@ -1,10 +1,18 @@
 ---
 import { loadCatalog, type SdkCatalog } from "@ai-providers/sdk"
 import Base from "../../layouts/Base.astro"
+import CurlExample from "../../components/CurlExample.astro"
 import ReasoningBadge from "../../components/ReasoningBadge.astro"
 
 type CatalogProvider = SdkCatalog["providers"][number]
 type CatalogOffering = CatalogProvider["offerings"][number]
+type CatalogEndpoint = CatalogProvider["endpoints"][number]
+
+type ExampleInput = {
+  provider: CatalogProvider
+  offering: CatalogOffering
+  endpoint: CatalogEndpoint
+}
 
 type OfferingRow = {
   providerId: string
@@ -15,6 +23,7 @@ type OfferingRow = {
   status: string
   cost: CatalogOffering["cost"]
   reasoning: CatalogOffering["reasoning"]
+  example: ExampleInput | null
 }
 
 export function getStaticPaths() {
@@ -34,17 +43,20 @@ export function getStaticPaths() {
     props: {
       model: m,
       offerings: (offeringsByModel.get(m.id) ?? [])
-        .map(({ provider, offering }): OfferingRow => ({
-          providerId: provider.id,
-          providerName: provider.name,
-          wireId: offering.wire_id,
-          endpoint: offering.endpoint,
-          protocol:
-            provider.endpoints.find((e) => e.id === offering.endpoint)?.protocol ?? "—",
-          status: offering.status,
-          cost: offering.cost,
-          reasoning: offering.reasoning,
-        }))
+        .map(({ provider, offering }): OfferingRow => {
+          const endpoint = provider.endpoints.find((e) => e.id === offering.endpoint)
+          return {
+            providerId: provider.id,
+            providerName: provider.name,
+            wireId: offering.wire_id,
+            endpoint: offering.endpoint,
+            protocol: endpoint?.protocol ?? "—",
+            status: offering.status,
+            cost: offering.cost,
+            reasoning: offering.reasoning,
+            example: endpoint ? { provider, offering, endpoint } : null,
+          }
+        })
         .sort(
           (a, b) =>
             a.providerId.localeCompare(b.providerId) || a.endpoint.localeCompare(b.endpoint),
@@ -55,6 +67,10 @@ export function getStaticPaths() {
 
 const { model, offerings } = Astro.props
 const base = import.meta.env.BASE_URL
+
+const examples = offerings
+  .map((o) => o.example)
+  .filter((e): e is ExampleInput => e !== null)
 
 const openWeights =
   model.open_weights === undefined ? "—" : model.open_weights ? "yes" : "no"
@@ -167,12 +183,18 @@ const price = (cost: CatalogOffering["cost"]) => {
     }
   </section>
 
-  <!-- One curl example slot per offering; Task 3 replaces these placeholders. -->
-  {
-    offerings.map((o) => (
-      <Fragment set:html={`<!-- curl:${o.providerId}:${o.wireId}:${o.endpoint} -->`} />
-    ))
-  }
+  <section>
+    <h2>Example requests</h2>
+    {
+      examples.length === 0 ? (
+        <p>No example requests for this model.</p>
+      ) : (
+        examples.map((e) => (
+          <CurlExample provider={e.provider} offering={e.offering} endpoint={e.endpoint} />
+        ))
+      )
+    }
+  </section>
 </Base>
 
 <style>
