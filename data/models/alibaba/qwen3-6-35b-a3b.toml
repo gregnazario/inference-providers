@@ -1,0 +1,15 @@
+id = "alibaba/qwen3-6-35b-a3b"
+name = "Qwen3.6 35B A3B"
+family = "qwen3"
+lab = "alibaba"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = ""
+description = "MoE 35B/3B-active with hybrid thinking, 262K context, vision input."
+aliases = ["Qwen/Qwen3.6-35B-A3B", "Qwen/Qwen3.6-35B-A3B-FP8"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

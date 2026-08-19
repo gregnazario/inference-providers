@@ -1,0 +1,21 @@
+model = "moonshot/kimi-k3"
+wire_id = "hf:moonshotai/Kimi-K3"
+endpoint = "openai-chat"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 524_288
+source = { url = "https://dev.synthetic.new/docs/api/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Reasoning controls are not documented; behavior follows the upstream Kimi chat template — verify before relying. Catalog labels the model Beta."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://dev.synthetic.new/docs/api/models"
+verified = "2026-08-19"

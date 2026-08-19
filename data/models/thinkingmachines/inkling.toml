@@ -1,0 +1,15 @@
+id = "thinkingmachines/inkling"
+name = "Inkling"
+family = "inkling"
+lab = "thinkingmachines"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Thinking Machines' reasoning model with vision and audio input, 1M context / 32K output; served on Baseten."
+aliases = ["thinkingmachines/inkling"]
+[modalities]
+input = ["text", "image", "audio"]
+output = ["text"]

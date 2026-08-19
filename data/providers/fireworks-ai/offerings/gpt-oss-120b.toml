@@ -1,0 +1,28 @@
+model = "openai/gpt-oss-120b"
+wire_id = "gpt-oss-120b"
+endpoint = "inference-v1"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.15
+output = 0.60
+cache_read = 0.015
+source = { url = "https://docs.fireworks.ai/serverless/pricing", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high"]
+default = "high"
+notes = "none is not offered on this surface."
+
+[reasoning.source]
+url = "https://docs.fireworks.ai/guides/reasoning"
+verified = "2026-08-19"

@@ -1,0 +1,48 @@
+id = "meta"
+name = "Meta Model API"
+kind = "first_party"
+api_surfaces = ["text", "streaming", "files"]
+
+[urls]
+docs = "https://dev.meta.ai/docs/overview/"
+console = "https://dev.meta.ai"
+pricing = "https://dev.meta.ai/docs/pricing-rate-limits/"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["MODEL_API_KEY"]
+getting_credentials = "Create keys in the dev.meta.ai dashboard (API Keys tab). For Claude Code: ANTHROPIC_BASE_URL=https://api.meta.ai with ANTHROPIC_AUTH_TOKEN=<key>."
+docs = "https://dev.meta.ai/docs/quickstart/"
+
+[[endpoints]]
+id = "v1-responses"
+base_url = "https://api.meta.ai"
+path = "/v1/responses"
+protocol = "openai-responses"
+
+[[endpoints]]
+id = "v1-chat-completions"
+base_url = "https://api.meta.ai"
+path = "/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "v1-messages"
+base_url = "https://api.meta.ai"
+path = "/v1/messages"
+protocol = "anthropic-messages"
+
+[[quirks]]
+text = "The Llama API (api.llama.com/compat/v1) was retired 2026-07-06 — there is no first-party hosted Llama inference; Llama models are open weights served by third parties."
+docs = "https://www.promptfoo.dev/docs/providers/llamaApi/"
+
+[[quirks]]
+text = "reasoning_effort none returns 400 (always-on reasoning). Chat Completions exposes reasoning_content redacted to empty for external callers; use the Responses surface for summaries and encrypted reasoning replay. No logprobs, no n>1, no stop."
+docs = "https://dev.meta.ai/docs/reasoning"
+
+[[quirks]]
+text = "All keys share team limits: Standard 3,000 RPM / 4M TPM. Contributor tier (muse-spark-1.2-contributor) trades a heavy discount for prompts possibly training future Meta models."
+docs = "https://dev.meta.ai/docs/pricing-rate-limits/"

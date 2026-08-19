@@ -1,0 +1,15 @@
+id = "meta/llama-3-3-70b"
+name = "Llama 3.3 70B"
+family = "llama"
+lab = "meta"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = ""
+description = "Open-weight 70B instruct model; served by third parties."
+aliases = ["Llama-3.3-70B-Instruct", "llama-v3p3-70b-instruct"]
+[modalities]
+input = ["text"]
+output = ["text"]

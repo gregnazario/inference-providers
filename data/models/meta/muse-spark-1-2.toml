@@ -1,0 +1,15 @@
+id = "meta/muse-spark-1-2"
+name = "Muse Spark 1.2"
+family = "muse-spark"
+lab = "meta"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Meta's hosted flagship (served by the Meta Model API); always-on reasoning (reasoning_effort none returns 400); 1M context; image/video/PDF/audio input."
+aliases = ["muse-spark-1.2"]
+[modalities]
+input = ["text", "image", "audio", "video"]
+output = ["text"]

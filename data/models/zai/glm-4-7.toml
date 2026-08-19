@@ -1,0 +1,15 @@
+id = "zai/glm-4-7"
+name = "GLM-4.7"
+family = "glm"
+lab = "zai"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = ""
+description = "Open-weight GLM generation between 4.6 and 5.x; hybrid thinking via enable_thinking on self-host-style surfaces."
+aliases = ["glm-4.7", "glm-4p7", "GLM-4.7"]
+[modalities]
+input = ["text"]
+output = ["text"]

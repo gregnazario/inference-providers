@@ -21,6 +21,14 @@ export const PROVIDER_ENV_KEYS: Record<string, string> = {
   "alibaba-dashscope": "DASHSCOPE_API_KEY",
   moonshot: "MOONSHOT_API_KEY",
   "ollama-cloud": "OLLAMA_API_KEY",
+  baseten: "BASETEN_API_KEY",
+  "fireworks-ai": "FIREWORKS_API_KEY",
+  synthetic: "SYNTHETIC_API_KEY",
+  "near-ai": "NEAR_AI_API_KEY",
+  "io-intelligence": "IOINTELLIGENCE_API_KEY",
+  hetzner: "HETZNER_API_KEY",
+  meta: "MODEL_API_KEY",
+  nvidia: "NVIDIA_API_KEY",
 }
 
 export type RunSyncOptions = {

@@ -1,0 +1,32 @@
+model = "zai/glm-5-2"
+wire_id = "zai-org/GLM-5.2"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 1.40
+output = 4.40
+cache_read = 0.14
+source = { url = "https://www.baseten.co/pricing/", verified = "2026-08-19" }
+
+[limits]
+context = 1_048_576
+source = { url = "https://docs.baseten.co/inference/model-apis/overview", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["none", "high", "max"]
+default = "high"
+notes = "Default not documented — verify."
+
+[reasoning.source]
+url = "https://docs.baseten.co/inference/model-apis/reasoning"
+verified = "2026-08-19"

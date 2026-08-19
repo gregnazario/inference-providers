@@ -1,0 +1,31 @@
+model = "moonshot/kimi-k3"
+wire_id = "moonshotai/Kimi-K3"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 3.00
+output = 15.00
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-19" }
+
+[limits]
+context = 1_048_576
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high"]
+default = "high"
+notes = "Default not documented — verify."
+
+[reasoning.source]
+url = "https://io.net/docs/guides/intelligence/reasoning-for-chat-completions"
+verified = "2026-08-19"

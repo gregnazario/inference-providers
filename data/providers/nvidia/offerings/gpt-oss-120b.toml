@@ -1,0 +1,25 @@
+model = "openai/gpt-oss-120b"
+wire_id = "openai/gpt-oss-120b"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 131_072
+source = { url = "https://docs.api.nvidia.com/nim/reference/openai-gpt-oss-120b", verified = "2026-08-19" }
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "chat_template_kwargs.enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://docs.api.nvidia.com/nim/reference/openai-gpt-oss-120b"
+verified = "2026-08-19"

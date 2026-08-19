@@ -1,0 +1,31 @@
+model = "zai/glm-5-2"
+wire_id = "z-ai/glm-5.2"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 1.40
+output = 4.40
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-19" }
+
+[limits]
+context = 1_048_576
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "Follows the GLM chat_template_kwargs.enable_thinking convention; not documented for GLM-5.2 specifically — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "chat_template_kwargs.enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://docs.near.ai/cloud/reasoning-models/"
+verified = "2026-08-19"

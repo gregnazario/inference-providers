@@ -1,0 +1,21 @@
+model = "openai/gpt-oss-120b"
+wire_id = "hf:openai/gpt-oss-120b"
+endpoint = "openai-chat"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 131_072
+source = { url = "https://dev.synthetic.new/docs/api/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Reasoning controls are not documented; gpt-oss reasons by default upstream — verify before relying."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://dev.synthetic.new/docs/api/models"
+verified = "2026-08-19"

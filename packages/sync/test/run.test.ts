@@ -79,6 +79,20 @@ describe("PROVIDER_ENV_KEYS", () => {
     expect(PROVIDER_ENV_KEYS["moonshot"]).toBe("MOONSHOT_API_KEY")
     expect(PROVIDER_ENV_KEYS["ollama-cloud"]).toBe("OLLAMA_API_KEY")
   })
+
+  it("maps every wave-3 target to its provider's documented env key", () => {
+    expect(PROVIDER_ENV_KEYS["baseten"]).toBe("BASETEN_API_KEY")
+    expect(PROVIDER_ENV_KEYS["fireworks-ai"]).toBe("FIREWORKS_API_KEY")
+    expect(PROVIDER_ENV_KEYS["synthetic"]).toBe("SYNTHETIC_API_KEY")
+    expect(PROVIDER_ENV_KEYS["near-ai"]).toBe("NEAR_AI_API_KEY")
+    expect(PROVIDER_ENV_KEYS["io-intelligence"]).toBe("IOINTELLIGENCE_API_KEY")
+    expect(PROVIDER_ENV_KEYS["hetzner"]).toBe("HETZNER_API_KEY")
+    expect(PROVIDER_ENV_KEYS["nvidia"]).toBe("NVIDIA_API_KEY")
+  })
+
+  it("maps meta to MODEL_API_KEY per the Meta Model API's official env name", () => {
+    expect(PROVIDER_ENV_KEYS["meta"]).toBe("MODEL_API_KEY")
+  })
 })
 
 // Fixture env value for wire-up assertions — a placeholder, not a credential.
@@ -174,6 +188,27 @@ describe("runSync", () => {
     expect(result.reports).toEqual([
       { providerId: "openrouter", added: ["anthropic/claude-sonnet-5"], removed: [] },
     ])
+  })
+
+  it("runs a wave-3 target end to end against its exact model-list url", async () => {
+    let requestedUrl: string | undefined
+    let authorization: string | undefined
+    const catalog = catalogOf(provider("io-intelligence", [{ wire_id: "deepseek-ai/DeepSeek-V4-Pro" }]))
+    const result = await runSync({
+      catalog,
+      env: { IOINTELLIGENCE_API_KEY: ENV_VALUE },
+      fetchImpl: async (input, init) => {
+        requestedUrl = String(input)
+        authorization = new Headers(init?.headers).get("Authorization") ?? undefined
+        return jsonResponse({ data: [{ id: "deepseek-ai/DeepSeek-V4-Pro" }, { id: "moonshotai/Kimi-K3" }] })
+      },
+    })
+
+    expect(requestedUrl).toBe("https://api.intelligence.io.solutions/api/v1/models")
+    expect(authorization).toBe(`Bearer ${ENV_VALUE}`)
+    expect(result.reports).toEqual([{ providerId: "io-intelligence", added: ["moonshotai/Kimi-K3"], removed: [] }])
+    expect(result.missingTargets).toEqual(missingExcept("io-intelligence"))
+    expect(result.failed).toEqual([])
   })
 
   it("records a throwing fetch in failed without aborting the run", async () => {

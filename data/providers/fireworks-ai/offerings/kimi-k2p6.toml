@@ -1,0 +1,38 @@
+model = "moonshot/kimi-k2-6"
+wire_id = "kimi-k2p6"
+endpoint = "inference-v1"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.95
+output = 4.00
+cache_read = 0.16
+source = { url = "https://docs.fireworks.ai/serverless/pricing", verified = "2026-08-19" }
+
+[limits]
+context = 262_144
+source = { url = "https://api.fireworks.ai/inference/v1/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "reasoning_effort and thinking.budget_tokens are mutually exclusive — specifying both raises a validation error."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high"]
+default = "high"
+notes = "Default not documented — verify."
+
+[reasoning.budget]
+param = "thinking.budget_tokens"
+min = 1024
+zero_means_off = false
+
+[reasoning.source]
+url = "https://docs.fireworks.ai/guides/reasoning"
+verified = "2026-08-19"

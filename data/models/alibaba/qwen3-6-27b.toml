@@ -1,0 +1,15 @@
+id = "alibaba/qwen3-6-27b"
+name = "Qwen3.6 27B"
+family = "qwen3"
+lab = "alibaba"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = ""
+description = "27B with hybrid thinking (enable_thinking), 262K context."
+aliases = ["Qwen/Qwen3.6-27B"]
+[modalities]
+input = ["text"]
+output = ["text"]

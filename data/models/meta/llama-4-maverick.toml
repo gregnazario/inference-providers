@@ -1,0 +1,15 @@
+id = "meta/llama-4-maverick"
+name = "Llama 4 Maverick"
+family = "llama"
+lab = "meta"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = ""
+description = "Open-weight MoE (17B active/128 experts); the last Llama generation shipped before the Llama API retired 2026-07-06; served by third parties."
+aliases = ["Llama-4-Maverick-17B-128E-Instruct-FP8"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

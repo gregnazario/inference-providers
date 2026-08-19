@@ -1,0 +1,23 @@
+model = "zai/glm-4-7"
+wire_id = "glm-4p7"
+endpoint = "inference-v1"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.60
+output = 2.20
+cache_read = 0.30
+source = { url = "https://docs.fireworks.ai/serverless/pricing", verified = "2026-08-19" }
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Per-model reasoning controls not documented; the reasoning guide demos GLM-4.7 with reasoning_history: preserved — verify."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.source]
+url = "https://docs.fireworks.ai/guides/reasoning"
+verified = "2026-08-19"

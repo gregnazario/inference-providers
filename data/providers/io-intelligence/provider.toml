@@ -1,0 +1,36 @@
+id = "io-intelligence"
+name = "IO Intelligence (io.net)"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://io.net/docs/guides/intelligence/io-intelligence-apis"
+console = "https://ai.io.net"
+pricing = "https://io.net/docs/guides/payment/io-intelligence-payments"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["IOINTELLIGENCE_API_KEY"]
+getting_credentials = "Create keys at ai.io.net/ai/api-keys with expiry and permission scoping."
+docs = "https://io.net/docs/guides/intelligence/api-keys-and-secrets"
+
+[[endpoints]]
+id = "chat"
+base_url = "https://api.intelligence.io.solutions"
+path = "/api/v1/chat/completions"
+protocol = "openai-chat"
+
+[[quirks]]
+text = "Base path is /api/v1 (not /v1) on the io.solutions domain; api.intelligence.io.net does not resolve."
+docs = "https://io.net/docs/guides/intelligence/io-intelligence-apis"
+
+[[quirks]]
+text = "Per-token prices (USD, scientific notation) come from GET /api/v1/models; model access gated by min_access_tier 1-3 by plan (Standard free-light/Professional $15/Developer $150 daily credits)."
+docs = "https://api.intelligence.io.solutions/api/v1/models"
+
+[[quirks]]
+text = "reasoning.effort none/low/medium/high is primary; legacy top-level reasoning_effort still accepted; MiniMax-M2.7 is always-on (none is a no-op; some models 400 on none)."
+docs = "https://io.net/docs/guides/intelligence/reasoning-for-chat-completions"

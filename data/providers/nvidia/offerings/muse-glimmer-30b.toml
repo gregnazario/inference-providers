@@ -1,0 +1,26 @@
+model = "meta/muse-glimmer-30b"
+wire_id = "meta/muse-glimmer-30b"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 131_072
+source = { url = "https://docs.api.nvidia.com/nim/reference/meta-muse-glimmer-30b", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["none", "minimal", "low", "medium", "high", "max"]
+default = "high"
+notes = "Model-dependent; chat_template_kwargs.reasoning_strength also documented — verify."
+
+[reasoning.source]
+url = "https://docs.api.nvidia.com/nim/reference/meta-muse-glimmer-30b"
+verified = "2026-08-19"
