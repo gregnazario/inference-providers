@@ -1,0 +1,27 @@
+model = "openai/gpt-oss-120b"
+wire_id = "openai/gpt-oss-120b"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.188
+output = 0.70
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high"]
+default = "high"
+notes = "none suppresses reasoning output; the model still reasons internally."
+
+[reasoning.source]
+url = "https://io.net/docs/guides/intelligence/reasoning-for-chat-completions"
+verified = "2026-08-19"
