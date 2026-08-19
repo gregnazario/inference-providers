@@ -10,6 +10,7 @@ const nav = [
   { label: "Overview", href: `${base}` },
   { label: "Providers", href: `${base}providers/` },
   { label: "Models", href: `${base}models/` },
+  { label: "Search", href: `${base}search/` },
   { label: "Download", href: `${base}download/` },
 ]
 ---
@@ -30,7 +31,7 @@ const nav = [
         </nav>
       </div>
     </header>
-    <main class="container">
+    <main class="container" data-pagefind-body>
       <slot />
     </main>
     <footer>
@@ -119,6 +120,11 @@ const nav = [
     background: #f6f6f6;
     padding: 0.75rem;
     overflow-x: auto;
+  }
+
+  pagefind-search {
+    display: block;
+    margin-top: 1.5rem;
   }
 
   footer {
