@@ -1,0 +1,45 @@
+id = "near-ai"
+name = "NEAR AI Cloud"
+kind = "first_party"
+api_surfaces = ["text", "streaming", "embeddings", "image_gen"]
+
+[urls]
+docs = "https://docs.near.ai/cloud/quickstart"
+console = "https://cloud.near.ai"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["NEAR_AI_API_KEY"]
+getting_credentials = "Keys from cloud.near.ai Developer Dashboard; prepaid Usage Credits (or NEAR staking yield). The old api.near.ai went offline 2025-10-31."
+docs = "https://docs.near.ai/cloud/quickstart"
+
+[[endpoints]]
+id = "chat"
+base_url = "https://cloud-api.near.ai"
+path = "/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "responses"
+base_url = "https://cloud-api.near.ai"
+path = "/v1/responses"
+protocol = "openai-responses"
+
+[[quirks]]
+text = "Inference runs in hardware TEEs with attestation (/v1/attestation/report) and response signatures; direct per-model endpoints at {slug}.completions.near.ai terminate TLS inside the enclave."
+docs = "https://docs.near.ai/cloud/quickstart"
+
+[[quirks]]
+text = "Per-model prices live in GET /v1/models (public, no auth); frontier OpenAI/Anthropic/Google models are resold through the gateway in OpenAI format."
+docs = "https://cloud-api.near.ai/v1/models"
+
+[[quirks]]
+text = "Reasoning params vary by model: reasoning_effort (gpt-oss, always-on), chat_template_kwargs.enable_thinking (GLM/Qwen), chat_template_kwargs.thinking (Kimi — not enable_thinking)."
+docs = "https://docs.near.ai/cloud/reasoning-models/"
+
+[[quirks]]
+text = "The OpenAI Responses-compatible /v1/responses endpoint on the gateway is in beta."
+docs = "https://docs.near.ai/cloud/guides/openai-compatibility"

@@ -1,0 +1,30 @@
+model = "openai/gpt-oss-120b"
+wire_id = "openai/gpt-oss-120b"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.15
+output = 0.55
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-19" }
+
+[limits]
+context = 131_072
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high"]
+default = "medium"
+
+[reasoning.source]
+url = "https://docs.near.ai/cloud/reasoning-models/"
+verified = "2026-08-19"

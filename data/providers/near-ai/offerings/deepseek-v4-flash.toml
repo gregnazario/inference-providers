@@ -1,0 +1,31 @@
+model = "deepseek/deepseek-v4-flash"
+wire_id = "deepseek-ai/DeepSeek-V4-Flash"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.17
+output = 0.35
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-19" }
+
+[limits]
+context = 1_048_576
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "Follows the upstream DeepSeek convention; not documented here — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = "disabled"
+
+[reasoning.source]
+url = "https://docs.near.ai/cloud/reasoning-models/"
+verified = "2026-08-19"
