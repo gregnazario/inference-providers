@@ -32,45 +32,47 @@ const rows = [...c.models]
   .sort((a, b) => a.model.lab.localeCompare(b.model.lab) || a.model.name.localeCompare(b.model.name))
 ---
 
-<Base title="Models — inference-providers">
+<Base title="Models — inference-providers" active="models">
   <h1>Models</h1>
   <p>
     {c.models.length} models, rendered from the emitted catalog. Open a model for
     its facts and every provider offering.
   </p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Model</th>
-        <th>Lab</th>
-        <th>Family</th>
-        <th>Released</th>
-        <th class="num">Context</th>
-        <th class="num">Output</th>
-        <th>Open weights</th>
-        <th class="num">Offerings</th>
-      </tr>
-    </thead>
-    <tbody>
-      {
-        rows.map(({ model, acc }) => (
-          <tr>
-            <td>
-              <a href={modelHref(model.id)}>{model.name}</a>
-            </td>
-            <td>{model.lab}</td>
-            <td>{model.family}</td>
-            <td>{model.release_date || "—"}</td>
-            <td class="num">{fmtLimit(acc.context)}</td>
-            <td class="num">{fmtLimit(acc.output)}</td>
-            <td>{fmtWeights(model.open_weights)}</td>
-            <td class="num">{acc.offerings}</td>
-          </tr>
-        ))
-      }
-    </tbody>
-  </table>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Lab</th>
+          <th>Family</th>
+          <th>Released</th>
+          <th class="num">Context</th>
+          <th class="num">Output</th>
+          <th>Open weights</th>
+          <th class="num">Offerings</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          rows.map(({ model, acc }) => (
+            <tr>
+              <td>
+                <a href={modelHref(model.id)}>{model.name}</a>
+              </td>
+              <td>{model.lab}</td>
+              <td>{model.family}</td>
+              <td>{model.release_date || "—"}</td>
+              <td class="num">{fmtLimit(acc.context)}</td>
+              <td class="num">{fmtLimit(acc.output)}</td>
+              <td>{fmtWeights(model.open_weights)}</td>
+              <td class="num">{acc.offerings}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
 
   <p class="footnote">
     Unknown values are shown as —. Context and output limits are the maximum
@@ -85,13 +87,7 @@ const rows = [...c.models]
   }
 
   .footnote {
-    color: #666;
+    color: var(--muted);
     font-size: 0.9rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .footnote {
-      color: #9aa1ab;
-    }
   }
 </style>

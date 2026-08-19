@@ -24,10 +24,10 @@ const urlLinks = [
 ].filter((u) => Boolean(u.href))
 ---
 
-<Base title={`${provider.name} — inference-providers`}>
+<Base title={`${provider.name} — inference-providers`} active="providers">
   <h1>{provider.name}</h1>
   <p>
-    <span class="kind-badge">{provider.kind}</span>
+    <span class={`chip chip-${provider.kind}`}>{provider.kind}</span>
   </p>
   <p class="urls">
     {urlLinks.map((u) => <a href={u.href}>{u.label}</a>)}
@@ -90,30 +90,32 @@ const urlLinks = [
 
   <section>
     <h2>Endpoints</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>URL</th>
-          <th>Protocol</th>
-          <th>Auth</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          provider.endpoints.map((e) => (
-            <tr>
-              <td>{e.id}</td>
-              <td>
-                <code>{`${e.base_url}${e.path}`}</code>
-              </td>
-              <td>{e.protocol}</td>
-              <td>{e.auth ?? "any"}</td>
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>Protocol</th>
+            <th>Auth</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            provider.endpoints.map((e) => (
+              <tr>
+                <td>{e.id}</td>
+                <td>
+                  <code>{`${e.base_url}${e.path}`}</code>
+                </td>
+                <td>{e.protocol}</td>
+                <td>{e.auth ?? "any"}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <section>
@@ -174,53 +176,48 @@ const urlLinks = [
       provider.offerings.length === 0 ? (
         <p>No models cataloged for this provider.</p>
       ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Wire ID</th>
-              <th>Endpoint</th>
-              <th>Status</th>
-              <th>Reasoning</th>
-            </tr>
-          </thead>
-          <tbody>
-            {provider.offerings.map((o) => (
+        <div class="table-wrap">
+          <table>
+            <thead>
               <tr>
-                <td>
-                  {modelsById.get(o.model) ? (
-                    <a href={modelHref(o.model)}>{o.model}</a>
-                  ) : (
-                    o.model
-                  )}
-                </td>
-                <td>
-                  <code>{o.wire_id}</code>
-                </td>
-                <td>{o.endpoint}</td>
-                <td>{o.status}</td>
-                <td>
-                  <ReasoningBadge reasoning={o.reasoning} />
-                </td>
+                <th>Model</th>
+                <th>Wire ID</th>
+                <th>Endpoint</th>
+                <th>Status</th>
+                <th>Reasoning</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {provider.offerings.map((o) => (
+                <tr>
+                  <td>
+                    {modelsById.get(o.model) ? (
+                      <a href={modelHref(o.model)}>{o.model}</a>
+                    ) : (
+                      o.model
+                    )}
+                  </td>
+                  <td>
+                    <code>{o.wire_id}</code>
+                  </td>
+                  <td>{o.endpoint}</td>
+                  <td>
+                    <span class={`chip chip-${o.status}`}>{o.status}</span>
+                  </td>
+                  <td>
+                    <ReasoningBadge reasoning={o.reasoning} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )
     }
   </section>
 </Base>
 
 <style>
-  .kind-badge {
-    display: inline-block;
-    font-size: 0.85rem;
-    border: 1px solid #999;
-    border-radius: 999px;
-    padding: 0.05rem 0.6rem;
-    background: #f3f3f3;
-  }
-
   .urls {
     display: flex;
     gap: 1rem;
@@ -228,7 +225,7 @@ const urlLinks = [
   }
 
   .auth-block {
-    border-left: 3px solid #ccc;
+    border-left: 3px solid color-mix(in oklab, var(--accent) 35%, var(--border));
     padding-left: 1rem;
     margin-bottom: 1.5rem;
   }
@@ -239,15 +236,6 @@ const urlLinks = [
     flex-wrap: wrap;
   }
 
-  .chip {
-    display: inline-block;
-    font-size: 0.85rem;
-    border: 1px solid #999;
-    border-radius: 999px;
-    padding: 0.05rem 0.6rem;
-    background: #f3f3f3;
-  }
-
   .plan dt {
     font-weight: 600;
     margin-top: 0.5rem;
@@ -255,17 +243,5 @@ const urlLinks = [
 
   .plan dd {
     margin-left: 0;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .kind-badge,
-    .chip {
-      border-color: #555;
-      background: #22262d;
-    }
-
-    .auth-block {
-      border-color: #3a3f47;
-    }
   }
 </style>

@@ -6,35 +6,37 @@ const c = loadCatalog()
 const base = import.meta.env.BASE_URL
 ---
 
-<Base title="Providers — inference-providers">
+<Base title="Providers — inference-providers" active="providers">
   <h1>Providers</h1>
   <p>
     {c.providers.length} providers, rendered from the emitted catalog. Open a
     provider for credentials setup, endpoints, plans, quirks, and models.
   </p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Provider</th>
-        <th>Kind</th>
-        <th>Auth</th>
-        <th>Protocols</th>
-      </tr>
-    </thead>
-    <tbody>
-      {
-        c.providers.map((p) => (
-          <tr>
-            <td>
-              <a href={`${base}providers/${p.id}/`}>{p.name}</a>
-            </td>
-            <td>{p.kind}</td>
-            <td>{p.auth.map((a) => `${a.id} (${a.type})`).join(", ")}</td>
-            <td>{[...new Set(p.endpoints.map((e) => e.protocol))].join(", ")}</td>
-          </tr>
-        ))
-      }
-    </tbody>
-  </table>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Kind</th>
+          <th>Auth</th>
+          <th>Protocols</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          c.providers.map((p) => (
+            <tr>
+              <td>
+                <a href={`${base}providers/${p.id}/`}>{p.name}</a>
+              </td>
+              <td>{p.kind}</td>
+              <td>{p.auth.map((a) => `${a.id} (${a.type})`).join(", ")}</td>
+              <td>{[...new Set(p.endpoints.map((e) => e.protocol))].join(", ")}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
 </Base>
