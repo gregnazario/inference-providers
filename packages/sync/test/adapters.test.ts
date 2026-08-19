@@ -7,7 +7,7 @@ const target = (providerId: string): SyncTarget => {
   return t
 }
 
-/** The nine providers whose model-list endpoints are OpenAI-style `{ data: [{ id }] }`. */
+/** The eleven providers whose model-list endpoints are OpenAI-style `{ data: [{ id }] }`. */
 const DATA_STYLE_PROVIDER_IDS = [
   "openai",
   "anthropic",
@@ -18,6 +18,8 @@ const DATA_STYLE_PROVIDER_IDS = [
   "opencode-zen",
   "opencode-go",
   "alibaba-dashscope",
+  "moonshot",
+  "ollama-cloud",
 ]
 
 describe("TARGETS registry", () => {
@@ -33,11 +35,13 @@ describe("TARGETS registry", () => {
       "opencode-go": "https://opencode.ai/zen/go/v1/models",
       minimax: "https://api.minimax.io/v1/models",
       "alibaba-dashscope": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/models",
+      moonshot: "https://api.moonshot.ai/v1/models",
+      "ollama-cloud": "https://ollama.com/v1/models",
     }
     for (const [providerId, url] of Object.entries(expected)) {
       expect(target(providerId).url, `url for ${providerId}`).toBe(url)
     }
-    expect(TARGETS).toHaveLength(Object.keys(expected).length)
+    expect(TARGETS).toHaveLength(12)
   })
 
   it("has unique provider ids", () => {
@@ -64,6 +68,16 @@ describe("OpenAI-style data mapper", () => {
   it("keeps openrouter's vendor/model wire ids verbatim", () => {
     const body = { data: [{ id: "anthropic/claude-sonnet-4.5" }, { id: "openai/gpt-5.6" }] }
     expect(target("openrouter").map(body)).toEqual(["anthropic/claude-sonnet-4.5", "openai/gpt-5.6"])
+  })
+
+  it("keeps moonshot's dotted kimi wire ids verbatim", () => {
+    const body = { data: [{ id: "kimi-k2.7-code" }, { id: "kimi-k3" }] }
+    expect(target("moonshot").map(body)).toEqual(["kimi-k2.7-code", "kimi-k3"])
+  })
+
+  it("keeps ollama-cloud's org:model:cloud wire ids verbatim", () => {
+    const body = { data: [{ id: "gpt-oss:120b-cloud" }, { id: "kimi-k3:cloud" }] }
+    expect(target("ollama-cloud").map(body)).toEqual(["gpt-oss:120b-cloud", "kimi-k3:cloud"])
   })
 
   it("returns an empty list when the body is not a model-list object", () => {

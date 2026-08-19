@@ -51,4 +51,6 @@ export const TARGETS: SyncTarget[] = [
     url: "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/models",
     map: mapDataIds,
   },
+  { providerId: "moonshot", url: "https://api.moonshot.ai/v1/models", map: mapDataIds },
+  { providerId: "ollama-cloud", url: "https://ollama.com/v1/models", map: mapDataIds },
 ]

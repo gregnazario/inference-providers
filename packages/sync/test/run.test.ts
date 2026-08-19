@@ -74,6 +74,11 @@ describe("PROVIDER_ENV_KEYS", () => {
     expect(PROVIDER_ENV_KEYS["opencode-zen"]).toBe("OPENCODE_API_KEY")
     expect(PROVIDER_ENV_KEYS["opencode-go"]).toBe("OPENCODE_API_KEY")
   })
+
+  it("maps moonshot and ollama-cloud to their dedicated env keys", () => {
+    expect(PROVIDER_ENV_KEYS["moonshot"]).toBe("MOONSHOT_API_KEY")
+    expect(PROVIDER_ENV_KEYS["ollama-cloud"]).toBe("OLLAMA_API_KEY")
+  })
 })
 
 // Fixture env value for wire-up assertions — a placeholder, not a credential.
