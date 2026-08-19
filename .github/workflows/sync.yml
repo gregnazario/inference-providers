@@ -30,6 +30,16 @@ jobs:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+          OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+          BASETEN_API_KEY: ${{ secrets.BASETEN_API_KEY }}
+          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
+          SYNTHETIC_API_KEY: ${{ secrets.SYNTHETIC_API_KEY }}
+          NEAR_AI_API_KEY: ${{ secrets.NEAR_AI_API_KEY }}
+          IOINTELLIGENCE_API_KEY: ${{ secrets.IOINTELLIGENCE_API_KEY }}
+          HETZNER_API_KEY: ${{ secrets.HETZNER_API_KEY }}
+          MODEL_API_KEY: ${{ secrets.MODEL_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
       - uses: actions/upload-artifact@v4
         with:
           name: sync-report
@@ -79,3 +89,6 @@ jobs:
             }
             console.log("drift issue updated");
           '
+      # Staleness tripwire: provenance older than 180 days fails here, turning
+      # the daily run red until facts are re-verified (drift handling already ran).
+      - run: pnpm validate
