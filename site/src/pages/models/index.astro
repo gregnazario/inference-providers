@@ -1,0 +1,97 @@
+---
+import { loadCatalog, type SdkCatalog } from "@ai-providers/sdk"
+import Base from "../../layouts/Base.astro"
+
+type ModelAccumulator = { offerings: number; context: number; output: number }
+
+const c = loadCatalog()
+const base = import.meta.env.BASE_URL
+
+const modelHref = (modelId: string) => `${base}models/${modelId.replace("/", "-")}/`
+
+// One pass over the providers to count offerings and track limit maxima per model.
+const byModel = new Map<string, ModelAccumulator>()
+for (const p of c.providers) {
+  for (const o of p.offerings) {
+    const acc = byModel.get(o.model) ?? { offerings: 0, context: 0, output: 0 }
+    acc.offerings += 1
+    if (o.limits) {
+      if (o.limits.context > acc.context) acc.context = o.limits.context
+      if (o.limits.output != null && o.limits.output > acc.output) acc.output = o.limits.output
+    }
+    byModel.set(o.model, acc)
+  }
+}
+
+const fmtLimit = (n: number) => (n > 0 ? n.toLocaleString("en-US") : "—")
+const fmtWeights = (openWeights: SdkCatalog["models"][number]["open_weights"]) =>
+  openWeights === undefined ? "—" : openWeights ? "yes" : "no"
+
+const rows = [...c.models]
+  .map((m) => ({ model: m, acc: byModel.get(m.id) ?? { offerings: 0, context: 0, output: 0 } }))
+  .sort((a, b) => a.model.lab.localeCompare(b.model.lab) || a.model.name.localeCompare(b.model.name))
+---
+
+<Base title="Models — ai-providers">
+  <h1>Models</h1>
+  <p>
+    {c.models.length} models, rendered from the emitted catalog. Open a model for
+    its facts and every provider offering.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Lab</th>
+        <th>Family</th>
+        <th>Released</th>
+        <th class="num">Context</th>
+        <th class="num">Output</th>
+        <th>Open weights</th>
+        <th class="num">Offerings</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map(({ model, acc }) => (
+          <tr>
+            <td>
+              <a href={modelHref(model.id)}>{model.name}</a>
+            </td>
+            <td>{model.lab}</td>
+            <td>{model.family}</td>
+            <td>{model.release_date || "—"}</td>
+            <td class="num">{fmtLimit(acc.context)}</td>
+            <td class="num">{fmtLimit(acc.output)}</td>
+            <td>{fmtWeights(model.open_weights)}</td>
+            <td class="num">{acc.offerings}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <p class="footnote">
+    Unknown values are shown as —. Context and output limits are the maximum
+    across the model's offerings that record limits.
+  </p>
+</Base>
+
+<style>
+  .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .footnote {
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .footnote {
+      color: #9aa1ab;
+    }
+  }
+</style>
