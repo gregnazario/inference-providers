@@ -7,11 +7,13 @@ import { TARGETS } from "../src/adapters.js"
 
 const source = { url: "https://example.com/docs", verified: "2026-01-01" }
 
-const offering = (wire_id: string, endpoint: string): SdkCatalog["providers"][number]["offerings"][number] => ({
+type FixtureOffering = SdkCatalog["providers"][number]["offerings"][number]
+
+const offering = (wire_id: string, endpoint: string, status: FixtureOffering["status"] = "ga"): FixtureOffering => ({
   model: "lab/model",
   wire_id,
   endpoint,
-  status: "ga",
+  status,
   status_date: "2026-01-01",
   features: { streaming: true, tools: true, structured_output: true, prompt_caching: true, vision: true },
   reasoning: {
@@ -27,7 +29,7 @@ const offering = (wire_id: string, endpoint: string): SdkCatalog["providers"][nu
 
 const provider = (
   id: string,
-  offerings: { wire_id: string; endpoint?: string }[],
+  offerings: { wire_id: string; endpoint?: string; status?: FixtureOffering["status"] }[],
 ): SdkCatalog["providers"][number] => ({
   id,
   name: id,
@@ -48,7 +50,7 @@ const provider = (
   endpoints: [{ id: "main", base_url: "https://api.example.com", path: "/v1", protocol: "openai-chat" }],
   api_surfaces: ["text", "streaming"],
   quirks: [],
-  offerings: offerings.map((o) => offering(o.wire_id, o.endpoint ?? "main")),
+  offerings: offerings.map((o) => offering(o.wire_id, o.endpoint ?? "main", o.status)),
 })
 
 const catalogOf = (...providers: SdkCatalog["providers"][number][]): SdkCatalog => ({ providers, models: [] })
@@ -229,6 +231,23 @@ describe("runSync", () => {
     })
 
     expect(result.reports).toEqual([{ providerId: "openai", added: ["gpt-5.5"], removed: [] }])
+  })
+
+  it("excludes retired offerings from the drift baseline — no removal when the live list lacks their ids", async () => {
+    const catalog = catalogOf(
+      provider("openai", [
+        { wire_id: "gpt-5" },
+        { wire_id: "gpt-4", status: "retired" },
+      ]),
+    )
+    const result = await runSync({
+      catalog,
+      env: { OPENAI_API_KEY: ENV_VALUE },
+      fetchImpl: routeFetch({ [OPENAI_URL]: () => jsonResponse({ data: [{ id: "gpt-5" }] }) }),
+    })
+
+    expect(result.reports).toEqual([])
+    expect(result.failed).toEqual([])
   })
 
   it("reports every live id as added for a provider absent from the catalog", async () => {

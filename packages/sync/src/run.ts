@@ -48,10 +48,15 @@ export type SyncRunResult = {
   failed: SyncFailure[]
 }
 
-/** All catalog wire ids for a provider, collected across its endpoints. */
+/**
+ * Catalog wire ids for a provider that should still be live, collected across
+ * its endpoints. Retired offerings are excluded: their ids are expected to be
+ * absent from the live list, so counting them would report known retirements
+ * as removals on every run.
+ */
 function catalogWireIds(catalog: SdkCatalog, providerId: string): string[] {
   const provider = catalog.providers.find((p) => p.id === providerId)
-  return provider ? provider.offerings.map((o) => o.wire_id) : []
+  return provider ? provider.offerings.filter((o) => o.status !== "retired").map((o) => o.wire_id) : []
 }
 
 /**
