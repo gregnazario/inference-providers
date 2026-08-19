@@ -58,10 +58,29 @@ const catalogOf = (...providers: SdkCatalog["providers"][number][]): SdkCatalog 
 const jsonResponse = (body: unknown) => new Response(JSON.stringify(body), { status: 200 })
 
 const OPENAI_URL = "https://api.openai.com/v1/models"
+const OPENROUTER_URL = "https://openrouter.ai/api/v1/models"
+const FIREWORKS_URL = "https://api.fireworks.ai/inference/v1/models"
+const IO_INTELLIGENCE_URL = "https://api.intelligence.io.solutions/api/v1/models"
 
-/** All target ids except the given ones — the providers expected to be missing. */
+/** Targets that run with no credentials (`auth: "none"` in the registry). */
+const KEYLESS_IDS = TARGETS.filter((t) => t.auth === "none").map((t) => t.providerId)
+const KEYLESS_URLS = TARGETS.filter((t) => t.auth === "none").map((t) => t.url)
+
+/**
+ * Fixture fetch serving per-URL routes; any URL without a route gets an empty
+ * model list so keyless targets that run on every sync stay drift-free unless
+ * a test deliberately routes them.
+ */
+const routeFetch =
+  (routes: Record<string, (init?: RequestInit) => Response>) =>
+  async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
+    const respond = routes[String(input)]
+    return respond ? respond(init) : jsonResponse({ data: [] })
+  }
+
+/** Keyed target ids except the given ones — the providers expected to be missing. */
 const missingExcept = (...present: string[]) =>
-  TARGETS.map((t) => t.providerId).filter((id) => !present.includes(id))
+  TARGETS.map((t) => t.providerId).filter((id) => !KEYLESS_IDS.includes(id) && !present.includes(id))
 
 describe("PROVIDER_ENV_KEYS", () => {
   it("maps every target provider id to an env var", () => {
@@ -107,7 +126,7 @@ describe("runSync", () => {
     const result = await runSync({
       catalog,
       env: { OPENAI_API_KEY: ENV_VALUE },
-      fetchImpl: async () => jsonResponse({ data: [{ id: "gpt-5" }, { id: "gpt-5.5" }] }),
+      fetchImpl: routeFetch({ [OPENAI_URL]: () => jsonResponse({ data: [{ id: "gpt-5" }, { id: "gpt-5.5" }] }) }),
     })
 
     expect(result.reports).toEqual([{ providerId: "openai", added: ["gpt-5.5"], removed: ["gpt-4"] }])
@@ -116,38 +135,72 @@ describe("runSync", () => {
   })
 
   it("sends the env key as a Bearer Authorization header to the target url", async () => {
-    let requestedUrl: string | undefined
     let authorization: string | undefined
     const catalog = catalogOf(provider("openai", [{ wire_id: "gpt-5" }]))
     await runSync({
       catalog,
       env: { OPENAI_API_KEY: ENV_VALUE },
-      fetchImpl: async (input, init) => {
-        requestedUrl = String(input)
-        authorization = new Headers(init?.headers).get("Authorization") ?? undefined
-        return jsonResponse({ data: [{ id: "gpt-5" }] })
-      },
+      fetchImpl: routeFetch({
+        [OPENAI_URL]: (init) => {
+          authorization = new Headers(init?.headers).get("Authorization") ?? undefined
+          return jsonResponse({ data: [{ id: "gpt-5" }] })
+        },
+      }),
     })
 
-    expect(requestedUrl).toBe(OPENAI_URL)
     expect(authorization).toBe(`Bearer ${ENV_VALUE}`)
   })
 
-  it("treats an empty env value as a missing target and never fetches", async () => {
-    let fetches = 0
+  it("treats an empty env value as missing for keyed targets only — keyless targets still run", async () => {
+    const fetchedUrls: string[] = []
     const result = await runSync({
       catalog: catalogOf(provider("openai", [{ wire_id: "gpt-5" }])),
       env: { OPENAI_API_KEY: "" },
-      fetchImpl: async () => {
-        fetches += 1
+      fetchImpl: async (input) => {
+        fetchedUrls.push(String(input))
         return jsonResponse({ data: [] })
       },
     })
 
-    expect(result.missingTargets).toEqual(TARGETS.map((t) => t.providerId))
+    expect(fetchedUrls).toEqual(KEYLESS_URLS)
+    expect(result.missingTargets).toEqual(missingExcept())
     expect(result.reports).toEqual([])
     expect(result.failed).toEqual([])
-    expect(fetches).toBe(0)
+  })
+
+  it("processes a keyless target with no env and reports its drift", async () => {
+    const catalog = catalogOf(provider("openrouter", [{ wire_id: "zai-org/glm-5.2" }]))
+    const result = await runSync({
+      catalog,
+      env: {},
+      fetchImpl: routeFetch({
+        [OPENROUTER_URL]: () => jsonResponse({ data: [{ id: "zai-org/glm-5.2" }, { id: "moonshotai/kimi-k3" }] }),
+      }),
+    })
+
+    expect(result.reports).toEqual([{ providerId: "openrouter", added: ["moonshotai/kimi-k3"], removed: [] }])
+    expect(result.missingTargets).toEqual(missingExcept())
+    expect(result.failed).toEqual([])
+  })
+
+  it("sends no Authorization header to a keyless target even when its env key is set", async () => {
+    let authorization: string | null = "sentinel"
+    const catalog = catalogOf(provider("io-intelligence", [{ wire_id: "deepseek-ai/DeepSeek-V4-Pro" }]))
+    const result = await runSync({
+      catalog,
+      env: { IOINTELLIGENCE_API_KEY: ENV_VALUE },
+      fetchImpl: routeFetch({
+        [IO_INTELLIGENCE_URL]: (init) => {
+          authorization = new Headers(init?.headers).get("Authorization")
+          return jsonResponse({ data: [{ id: "deepseek-ai/DeepSeek-V4-Pro" }, { id: "moonshotai/Kimi-K3" }] })
+        },
+      }),
+    })
+
+    expect(authorization).toBeNull()
+    expect(result.reports).toEqual([{ providerId: "io-intelligence", added: ["moonshotai/Kimi-K3"], removed: [] }])
+    expect(result.missingTargets).toEqual(missingExcept())
+    expect(result.failed).toEqual([])
   })
 
   it("omits the DriftReport when provider wire ids match exactly", async () => {
@@ -155,7 +208,7 @@ describe("runSync", () => {
     const result = await runSync({
       catalog,
       env: { OPENAI_API_KEY: ENV_VALUE },
-      fetchImpl: async () => jsonResponse({ data: [{ id: "gpt-5" }] }),
+      fetchImpl: routeFetch({ [OPENAI_URL]: () => jsonResponse({ data: [{ id: "gpt-5" }] }) }),
     })
 
     expect(result.reports).toEqual([])
@@ -172,7 +225,7 @@ describe("runSync", () => {
     const result = await runSync({
       catalog,
       env: { OPENAI_API_KEY: ENV_VALUE },
-      fetchImpl: async () => jsonResponse({ data: [{ id: "gpt-5" }, { id: "gpt-5.5" }] }),
+      fetchImpl: routeFetch({ [OPENAI_URL]: () => jsonResponse({ data: [{ id: "gpt-5" }, { id: "gpt-5.5" }] }) }),
     })
 
     expect(result.reports).toEqual([{ providerId: "openai", added: ["gpt-5.5"], removed: [] }])
@@ -180,9 +233,9 @@ describe("runSync", () => {
 
   it("reports every live id as added for a provider absent from the catalog", async () => {
     const result = await runSync({
-      catalog: catalogOf(provider("openai", [{ wire_id: "gpt-5" }])),
-      env: { OPENROUTER_API_KEY: ENV_VALUE },
-      fetchImpl: async () => jsonResponse({ data: [{ id: "anthropic/claude-sonnet-5" }] }),
+      catalog: catalogOf(),
+      env: {},
+      fetchImpl: routeFetch({ [OPENROUTER_URL]: () => jsonResponse({ data: [{ id: "anthropic/claude-sonnet-5" }] }) }),
     })
 
     expect(result.reports).toEqual([
@@ -190,24 +243,27 @@ describe("runSync", () => {
     ])
   })
 
-  it("runs a wave-3 target end to end against its exact model-list url", async () => {
-    let requestedUrl: string | undefined
+  it("runs a keyed wave-3 target end to end against its exact model-list url", async () => {
     let authorization: string | undefined
-    const catalog = catalogOf(provider("io-intelligence", [{ wire_id: "deepseek-ai/DeepSeek-V4-Pro" }]))
+    const catalog = catalogOf(provider("fireworks-ai", [{ wire_id: "accounts/fireworks/models/qwen3p" }]))
     const result = await runSync({
       catalog,
-      env: { IOINTELLIGENCE_API_KEY: ENV_VALUE },
-      fetchImpl: async (input, init) => {
-        requestedUrl = String(input)
-        authorization = new Headers(init?.headers).get("Authorization") ?? undefined
-        return jsonResponse({ data: [{ id: "deepseek-ai/DeepSeek-V4-Pro" }, { id: "moonshotai/Kimi-K3" }] })
-      },
+      env: { FIREWORKS_API_KEY: ENV_VALUE },
+      fetchImpl: routeFetch({
+        [FIREWORKS_URL]: (init) => {
+          authorization = new Headers(init?.headers).get("Authorization") ?? undefined
+          return jsonResponse({
+            data: [{ id: "accounts/fireworks/models/qwen3p" }, { id: "accounts/fireworks/models/kimi-k3" }],
+          })
+        },
+      }),
     })
 
-    expect(requestedUrl).toBe("https://api.intelligence.io.solutions/api/v1/models")
     expect(authorization).toBe(`Bearer ${ENV_VALUE}`)
-    expect(result.reports).toEqual([{ providerId: "io-intelligence", added: ["moonshotai/Kimi-K3"], removed: [] }])
-    expect(result.missingTargets).toEqual(missingExcept("io-intelligence"))
+    expect(result.reports).toEqual([
+      { providerId: "fireworks-ai", added: ["accounts/fireworks/models/kimi-k3"], removed: [] },
+    ])
+    expect(result.missingTargets).toEqual(missingExcept("fireworks-ai"))
     expect(result.failed).toEqual([])
   })
 
@@ -219,10 +275,12 @@ describe("runSync", () => {
     const result = await runSync({
       catalog,
       env: { OPENAI_API_KEY: ENV_VALUE, ANTHROPIC_API_KEY: ENV_VALUE },
-      fetchImpl: async (input) => {
-        if (String(input).includes("anthropic")) throw new Error("network down")
-        return jsonResponse({ data: [{ id: "gpt-5" }] })
-      },
+      fetchImpl: routeFetch({
+        [OPENAI_URL]: () => jsonResponse({ data: [{ id: "gpt-5" }] }),
+        "https://api.anthropic.com/v1/models": () => {
+          throw new Error("network down")
+        },
+      }),
     })
 
     expect(result.reports).toEqual([])
@@ -235,7 +293,9 @@ describe("runSync", () => {
     const result = await runSync({
       catalog,
       env: { OPENAI_API_KEY: ENV_VALUE },
-      fetchImpl: async () => new Response(JSON.stringify({ error: { message: "bad key" } }), { status: 401 }),
+      fetchImpl: routeFetch({
+        [OPENAI_URL]: () => new Response(JSON.stringify({ error: { message: "bad key" } }), { status: 401 }),
+      }),
     })
 
     expect(result.reports).toEqual([])

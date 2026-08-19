@@ -8,6 +8,12 @@ export type SyncTarget = {
   providerId: string
   url: string
   map: (body: unknown) => string[]
+  /**
+   * How the endpoint is authenticated. `"none"` — live-verified to serve its
+   * model list without credentials — means the target runs on every sync and
+   * is fetched with no Authorization header. Defaults to `"bearer"`.
+   */
+  auth?: "bearer" | "none"
 }
 
 /** Extract `body.data[].id` — the envelope shared by OpenAI-style model lists. */
@@ -43,9 +49,9 @@ export const TARGETS: SyncTarget[] = [
   { providerId: "mistral", url: "https://api.mistral.ai/v1/models", map: mapDataIds },
   // DeepSeek serves the model list from the root path (`/v1/models` also works).
   { providerId: "deepseek", url: "https://api.deepseek.com/models", map: mapDataIds },
-  { providerId: "openrouter", url: "https://openrouter.ai/api/v1/models", map: mapDataIds },
-  { providerId: "opencode-zen", url: "https://opencode.ai/zen/v1/models", map: mapDataIds },
-  { providerId: "opencode-go", url: "https://opencode.ai/zen/go/v1/models", map: mapDataIds },
+  { providerId: "openrouter", url: "https://openrouter.ai/api/v1/models", map: mapDataIds, auth: "none" },
+  { providerId: "opencode-zen", url: "https://opencode.ai/zen/v1/models", map: mapDataIds, auth: "none" },
+  { providerId: "opencode-go", url: "https://opencode.ai/zen/go/v1/models", map: mapDataIds, auth: "none" },
   { providerId: "minimax", url: "https://api.minimax.io/v1/models", map: mapMinimax },
   {
     providerId: "alibaba-dashscope",
@@ -53,14 +59,14 @@ export const TARGETS: SyncTarget[] = [
     map: mapDataIds,
   },
   { providerId: "moonshot", url: "https://api.moonshot.ai/v1/models", map: mapDataIds },
-  { providerId: "ollama-cloud", url: "https://ollama.com/v1/models", map: mapDataIds },
+  { providerId: "ollama-cloud", url: "https://ollama.com/v1/models", map: mapDataIds, auth: "none" },
   // Wave-3 providers — all serve OpenAI-style `{ data: [{ id }] }` model lists.
   { providerId: "baseten", url: "https://inference.baseten.co/v1/models", map: mapDataIds },
   { providerId: "fireworks-ai", url: "https://api.fireworks.ai/inference/v1/models", map: mapDataIds },
-  { providerId: "synthetic", url: "https://api.synthetic.new/openai/v1/models", map: mapDataIds },
-  { providerId: "near-ai", url: "https://cloud-api.near.ai/v1/models", map: mapDataIds },
-  { providerId: "io-intelligence", url: "https://api.intelligence.io.solutions/api/v1/models", map: mapDataIds },
+  { providerId: "synthetic", url: "https://api.synthetic.new/openai/v1/models", map: mapDataIds, auth: "none" },
+  { providerId: "near-ai", url: "https://cloud-api.near.ai/v1/models", map: mapDataIds, auth: "none" },
+  { providerId: "io-intelligence", url: "https://api.intelligence.io.solutions/api/v1/models", map: mapDataIds, auth: "none" },
   { providerId: "hetzner", url: "https://inference.hetzner.com/api/v1/models", map: mapDataIds },
   { providerId: "meta", url: "https://api.meta.ai/v1/models", map: mapDataIds },
-  { providerId: "nvidia", url: "https://integrate.api.nvidia.com/v1/models", map: mapDataIds },
+  { providerId: "nvidia", url: "https://integrate.api.nvidia.com/v1/models", map: mapDataIds, auth: "none" },
 ]

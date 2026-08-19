@@ -4,9 +4,10 @@ import { diffWireIds, type DriftReport } from "./diff.js"
 
 /**
  * providerId → env var holding its API key. Both opencode targets share
- * OPENCODE_API_KEY. A target whose env var is absent or empty is skipped
- * (recorded in `missingTargets`) — local dry-runs and first CI runs have no
- * secrets, and that is not an error.
+ * OPENCODE_API_KEY. Keyed targets whose env var is absent or empty are
+ * skipped (recorded in `missingTargets`) — local dry-runs and first CI runs
+ * have no secrets, and that is not an error. Targets marked `auth: "none"`
+ * ignore this map entirely: they always run, credential-free.
  */
 export const PROVIDER_ENV_KEYS: Record<string, string> = {
   openai: "OPENAI_API_KEY",
@@ -55,8 +56,10 @@ function catalogWireIds(catalog: SdkCatalog, providerId: string): string[] {
 
 /**
  * Fetch every target's live model list and diff it against the catalog.
- * Per-target failures (fetch, HTTP status, body parsing) are recorded in
- * `failed` — one bad provider never aborts the run.
+ * Keyless targets (`auth: "none"`) are always processed and fetched with no
+ * Authorization header; keyed targets need their env var or they land in
+ * `missingTargets`. Per-target failures (fetch, HTTP status, body parsing)
+ * are recorded in `failed` — one bad provider never aborts the run.
  */
 export async function runSync(opts: RunSyncOptions): Promise<SyncRunResult> {
   const { catalog, fetchImpl = fetch, env = {} } = opts
@@ -65,15 +68,19 @@ export async function runSync(opts: RunSyncOptions): Promise<SyncRunResult> {
   const failed: SyncFailure[] = []
 
   for (const target of TARGETS) {
-    const envKey = PROVIDER_ENV_KEYS[target.providerId]
-    const apiKey = envKey !== undefined ? env[envKey] : undefined
-    if (!apiKey) {
-      missingTargets.push(target.providerId)
-      continue
+    let headers: Record<string, string> | undefined
+    if (target.auth !== "none") {
+      const envKey = PROVIDER_ENV_KEYS[target.providerId]
+      const apiKey = envKey !== undefined ? env[envKey] : undefined
+      if (!apiKey) {
+        missingTargets.push(target.providerId)
+        continue
+      }
+      headers = { Authorization: `Bearer ${apiKey}` }
     }
 
     try {
-      const res = await fetchImpl(target.url, { headers: { Authorization: `Bearer ${apiKey}` } })
+      const res = await fetchImpl(target.url, headers === undefined ? undefined : { headers })
       if (!res.ok) throw new Error(`HTTP ${res.status} from ${target.url}`)
       const liveWireIds = target.map(await res.json())
       const { added, removed } = diffWireIds(catalogWireIds(catalog, target.providerId), liveWireIds)

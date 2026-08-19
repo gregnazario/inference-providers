@@ -30,6 +30,18 @@ const DATA_STYLE_PROVIDER_IDS = [
   "nvidia",
 ]
 
+/** The eight endpoints live-verified (2026-08-19, unauthenticated) to serve model lists with no credentials. */
+const KEYLESS_PROVIDER_IDS = [
+  "openrouter",
+  "opencode-zen",
+  "opencode-go",
+  "ollama-cloud",
+  "synthetic",
+  "near-ai",
+  "io-intelligence",
+  "nvidia",
+]
+
 describe("TARGETS registry", () => {
   it("covers every researched model-list endpoint with its exact URL", () => {
     const expected: Record<string, string> = {
@@ -63,6 +75,27 @@ describe("TARGETS registry", () => {
   it("has unique provider ids", () => {
     const ids = TARGETS.map((t) => t.providerId)
     expect(new Set(ids).size).toBe(ids.length)
+  })
+
+  it("marks exactly the eight live-verified unauthenticated endpoints auth none", () => {
+    const keyless = TARGETS.filter((t) => t.auth === "none").map((t) => t.providerId)
+    expect(keyless).toEqual([
+      "openrouter",
+      "opencode-zen",
+      "opencode-go",
+      "ollama-cloud",
+      "synthetic",
+      "near-ai",
+      "io-intelligence",
+      "nvidia",
+    ])
+  })
+
+  it("leaves every other target keyed (auth defaults to bearer)", () => {
+    for (const t of TARGETS) {
+      if (KEYLESS_PROVIDER_IDS.includes(t.providerId)) continue
+      expect(t.auth, `auth for ${t.providerId}`).toBeUndefined()
+    }
   })
 
   it("maps each provider id to a sample model of its own", () => {
@@ -109,6 +142,41 @@ describe("OpenAI-style data mapper", () => {
   it("keeps hetzner's HF-style wire ids verbatim", () => {
     const body = { data: [{ id: "Qwen/Qwen3.6-35B-A3B-FP8" }, { id: "Qwen/Qwen3.8-27B" }] }
     expect(target("hetzner").map(body)).toEqual(["Qwen/Qwen3.6-35B-A3B-FP8", "Qwen/Qwen3.8-27B"])
+  })
+
+  it("maps synthetic's live envelope: data[] entries carry id alongside non-standard fields", () => {
+    // Trimmed from the live unauthenticated response of
+    // https://api.synthetic.new/openai/v1/models (verified 2026-08-19): the
+    // entries carry many extra fields, but the wire id is plain data[].id.
+    const body = {
+      data: [
+        {
+          provider: "synthetic",
+          always_on: true,
+          id: "syn:large:text",
+          hugging_face_id: "zai-org/GLM-5.2",
+          name: "syn:large:text",
+          reasoning_parameters: { efforts: ["none", "high", "max"] },
+          input_modalities: ["text"],
+          output_modalities: ["text"],
+          context_length: 524288,
+          pricing: { prompt: "$0.000001", completion: "$0.000003" },
+          supported_features: ["tools", "json_mode", "structured_outputs", "reasoning"],
+          openrouter: { slug: "zai-org/glm-5.2" },
+          datacenters: [{ country_code: "US" }, { country_code: "SE" }],
+        },
+        {
+          provider: "synthetic",
+          always_on: true,
+          id: "syn:large:vision",
+          hugging_face_id: "moonshotai/Kimi-K3",
+          name: "syn:large:vision",
+          input_modalities: ["text", "image"],
+          output_modalities: ["text"],
+        },
+      ],
+    }
+    expect(target("synthetic").map(body)).toEqual(["syn:large:text", "syn:large:vision"])
   })
 
   it("returns an empty list when the body is not a model-list object", () => {
