@@ -4,11 +4,15 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/copy-artifacts.mjs && pagefind --site dist",
     "preview": "astro preview"
   },
   "dependencies": {
+    "@ai-providers/schema": "workspace:*",
     "@ai-providers/sdk": "workspace:*",
     "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "pagefind": "^1.0.0"
   }
 }

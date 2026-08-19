@@ -1,0 +1,14 @@
+---
+import Base from "../layouts/Base.astro"
+
+const base = import.meta.env.BASE_URL
+---
+
+<Base title="Search — ai-providers">
+  <div data-pagefind-ignore="all">
+    <h1>Search</h1>
+    <p>Index covers provider guides and model pages.</p>
+    <script is:inline type="module" src={`${base}pagefind/pagefind.js`}></script>
+    <pagefind-search></pagefind-search>
+  </div>
+</Base>
