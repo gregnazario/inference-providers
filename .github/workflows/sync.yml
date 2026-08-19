@@ -13,10 +13,10 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: pnpm }
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @ai-providers/schema run build
-      - run: pnpm --filter @ai-providers/sdk run build
+      - run: pnpm --filter @inference-providers/schema run build
+      - run: pnpm --filter @inference-providers/sdk run build
       - run: pnpm emit
-      - run: pnpm --filter @ai-providers/sync run report
+      - run: pnpm --filter @inference-providers/sync run report
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

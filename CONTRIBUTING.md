@@ -1,4 +1,4 @@
-# Contributing to ai-providers
+# Contributing to inference-providers
 
 Data lives in `data/` as TOML. Three layers:
 
@@ -28,7 +28,7 @@ the design rationale.
 
 `runSync` (in `packages/sync`) compares live provider APIs against the catalog:
 adapters list each provider's wire ids, the diff engine classifies them as
-added/removed/unchanged versus `data/`, and `pnpm --filter @ai-providers/sync
+added/removed/unchanged versus `data/`, and `pnpm --filter @inference-providers/sync
 run report` prints a dry-run summary. Two invariants:
 
 - **Sync never writes capability facts.** It only reports drift — every cost,

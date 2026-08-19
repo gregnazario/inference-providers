@@ -1,5 +1,5 @@
 ---
-import { loadCatalog } from "@ai-providers/sdk"
+import { loadCatalog } from "@inference-providers/sdk"
 import Base from "../layouts/Base.astro"
 
 const c = loadCatalog()
@@ -7,8 +7,8 @@ const totalOfferings = c.providers.reduce((n, p) => n + p.offerings.length, 0)
 const base = import.meta.env.BASE_URL
 ---
 
-<Base title="ai-providers">
-  <h1>ai-providers</h1>
+<Base title="inference-providers">
+  <h1>inference-providers</h1>
   <p>
     A provenance-tracked registry of AI model providers — auth, endpoints, and
     reasoning-parameter specs for every surface. All pages are generated from

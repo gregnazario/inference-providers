@@ -1,5 +1,5 @@
 ---
-import { loadCatalog } from "@ai-providers/sdk"
+import { loadCatalog } from "@inference-providers/sdk"
 import Base from "../../layouts/Base.astro"
 import ReasoningBadge from "../../components/ReasoningBadge.astro"
 
@@ -24,7 +24,7 @@ const urlLinks = [
 ].filter((u) => Boolean(u.href))
 ---
 
-<Base title={`${provider.name} — ai-providers`}>
+<Base title={`${provider.name} — inference-providers`}>
   <h1>{provider.name}</h1>
   <p>
     <span class="kind-badge">{provider.kind}</span>

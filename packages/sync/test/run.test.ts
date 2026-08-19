@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import type { SdkCatalog } from "@ai-providers/sdk"
+import type { SdkCatalog } from "@inference-providers/sdk"
 import { runSync, PROVIDER_ENV_KEYS } from "../src/run.js"
 import { TARGETS } from "../src/adapters.js"
 

@@ -1,4 +1,4 @@
-import type { EFFORT_VOCAB, Offering } from "@ai-providers/schema"
+import type { EFFORT_VOCAB, Offering } from "@inference-providers/schema"
 
 /** Effort vocabulary, derived from the schema package's single source of truth. */
 export type EffortValue = (typeof EFFORT_VOCAB)[number]

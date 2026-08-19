@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from "node:fs"
 import { join } from "node:path"
-import type { Model, Offering, Provider } from "@ai-providers/schema"
+import type { Model, Offering, Provider } from "@inference-providers/schema"
 
 export type SdkCatalog = {
   providers: (Provider & { offerings: Offering[] })[]

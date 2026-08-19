@@ -1,5 +1,5 @@
 {
-  "name": "@ai-providers/schema",
+  "name": "@inference-providers/schema",
   "version": "0.1.0",
   "type": "module",
   "main": "dist/index.js",

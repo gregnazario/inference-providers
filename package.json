@@ -1,5 +1,5 @@
 {
-  "name": "ai-providers",
+  "name": "inference-providers",
   "private": true,
   "type": "module",
   "engines": { "node": ">=22" },
@@ -7,7 +7,7 @@
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
-    "validate": "pnpm --filter @ai-providers/build run validate",
-    "emit": "pnpm --filter @ai-providers/build run emit"
+    "validate": "pnpm --filter @inference-providers/build run validate",
+    "emit": "pnpm --filter @inference-providers/build run emit"
   }
 }

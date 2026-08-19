@@ -1,4 +1,4 @@
-import type { Model, Offering, Provider } from "@ai-providers/schema"
+import type { Model, Offering, Provider } from "@inference-providers/schema"
 
 export type Catalog = {
   providers: (Provider & { offerings: Offering[] })[]

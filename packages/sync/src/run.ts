@@ -1,4 +1,4 @@
-import type { SdkCatalog } from "@ai-providers/sdk"
+import type { SdkCatalog } from "@inference-providers/sdk"
 import { TARGETS } from "./adapters.js"
 import { diffWireIds, type DriftReport } from "./diff.js"
 

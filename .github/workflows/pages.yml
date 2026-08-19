@@ -27,8 +27,8 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @ai-providers/schema run build
-      - run: pnpm --filter @ai-providers/sdk run build
+      - run: pnpm --filter @inference-providers/schema run build
+      - run: pnpm --filter @inference-providers/sdk run build
       - run: pnpm emit
       - run: pnpm --filter site run build
       - uses: actions/configure-pages@v5

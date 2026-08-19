@@ -1,4 +1,4 @@
-# ai-providers
+# inference-providers
 
 An open, provenance-tracked registry of AI model providers: canonical models,
 provider surfaces (auth, endpoints, protocols), and per-surface offerings with
@@ -16,13 +16,13 @@ providers, 44 offerings**.
 ```bash
 pnpm validate   # validate data + provenance gates
 pnpm emit       # regenerate dist/ artifacts
-pnpm --filter @ai-providers/sync run report   # drift check (needs provider env keys)
+pnpm --filter @inference-providers/sync run report   # drift check (needs provider env keys)
 ```
 
 ### SDK example
 
 ```ts
-import { loadCatalog, resolveModel, authHeaders, buildReasoningParam } from "@ai-providers/sdk"
+import { loadCatalog, resolveModel, authHeaders, buildReasoningParam } from "@inference-providers/sdk"
 const c = loadCatalog()
 const { offering, provider } = resolveModel(c, "anthropic", "claude-sonnet-4-6")
 const headers = authHeaders(provider, { credential: process.env.ANTHROPIC_API_KEY! })
@@ -39,8 +39,8 @@ Local development (`site/` loads the emitted catalog via the SDK, so build the
 workspace packages and emit first):
 
 ```bash
-pnpm --filter @ai-providers/schema run build
-pnpm --filter @ai-providers/sdk run build
+pnpm --filter @inference-providers/schema run build
+pnpm --filter @inference-providers/sdk run build
 pnpm emit
 pnpm --filter site run dev      # http://localhost:4321/inference-providers/
 ```
