@@ -55,17 +55,13 @@ const urlLinks = [
           )}
           {a.env.length > 0 && (
             <p>
-              Environment: {a.env.map((v) => <code>{v}</code>)}
+              Environment: <code>{a.env.join("  ")}</code>
             </p>
           )}
           {Object.keys(a.extra_headers).length > 0 && (
             <p>
               Extra headers:{" "}
-              {Object.entries(a.extra_headers).map(([k, v]) => (
-                <code>
-                  {k}: {v}
-                </code>
-              ))}
+              <code>{Object.entries(a.extra_headers).map(([k, v]) => `${k}: ${v}`).join("  ")}</code>
             </p>
           )}
           {a.flow && (
@@ -75,7 +71,7 @@ const urlLinks = [
           )}
           {a.scopes && a.scopes.length > 0 && (
             <p>
-              Scopes: {a.scopes.map((s) => <code>{s}</code>)}
+              Scopes: <code>{a.scopes.join("  ")}</code>
             </p>
           )}
           {a.token_transport && (
@@ -109,10 +105,7 @@ const urlLinks = [
             <tr>
               <td>{e.id}</td>
               <td>
-                <code>
-                  {e.base_url}
-                  {e.path}
-                </code>
+                <code>{`${e.base_url}${e.path}`}</code>
               </td>
               <td>{e.protocol}</td>
               <td>{e.auth ?? "any"}</td>
