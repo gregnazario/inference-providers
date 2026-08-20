@@ -3,6 +3,12 @@
 Thanks for contributing! This project welcomes contributions of all kinds —
 data corrections, new providers and models, docs, and tooling.
 
+## How changes land
+
+All changes go through pull requests — including maintainer changes. Branch
+from `main`, commit, push, open a PR; CI must be green before merge. Keep
+commits plain and focused (one logical change per commit).
+
 Contributions are licensed under the [Apache License 2.0](LICENSE). By
 submitting a pull request (or otherwise contributing), you agree that your
 contributions are licensed under Apache-2.0 and that the project may
