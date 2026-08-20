@@ -42,5 +42,5 @@ path = "/zen/go/v1/messages"
 protocol = "anthropic-messages"
 
 [[quirks]]
-text = "Per-model-family protocol routing: /responses for Grok/GPT, /chat/completions for GLM/Kimi/DeepSeek, /messages for MiniMax/Qwen. Model list at GET /zen/go/v1/models; offerings pending wire-id verification (Phase 2 sync)."
+text = "Per-model-family protocol routing: /responses for Grok/GPT, /chat/completions for GLM/Kimi/DeepSeek, /messages for MiniMax/Qwen. Offerings verified against the live GET /zen/go/v1/models list (2026-08-19)."
 docs = "https://opencode.ai/docs/go/"

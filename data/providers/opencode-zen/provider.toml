@@ -41,5 +41,5 @@ path = "/zen/v1/models/{model-id}"
 protocol = "google-generate-content"
 
 [[quirks]]
-text = "Four protocol surfaces; models are assigned per surface (Responses for GPT/Grok, Anthropic Messages for Claude/Qwen, chat-completions for DeepSeek/MiniMax/GLM/Kimi, Gemini-style for Google models). No documented reasoning normalization — controls follow each upstream provider's wire format per surface; community-verified: thinking {type: enabled} and reasoning_effort (low/high/max) pass through for DeepSeek V4 on the chat surface. Offerings pending wire-id verification via GET /zen/v1/models (Phase 2 sync)."
+text = "Four protocol surfaces; models are assigned per surface (Responses for GPT/Grok, Anthropic Messages for Claude/Qwen, chat-completions for DeepSeek/MiniMax/GLM/Kimi, Gemini-style for Google models). No documented reasoning normalization — controls follow each upstream provider's wire format per surface; community-verified: thinking {type: enabled} and reasoning_effort (low/high/max) pass through for DeepSeek V4 on the chat surface. Offerings verified against the live GET /zen/v1/models list (2026-08-19)."
 docs = "https://opencode.ai/docs/zen/"
