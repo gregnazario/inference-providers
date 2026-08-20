@@ -1,0 +1,15 @@
+id = "alibaba/qwen3-8-max"
+name = "Qwen3.8 Max"
+family = "qwen3"
+lab = "alibaba"
+release_date = "2026-08-03"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Flagship MoE (~2.4T), 1M context; $2/$6 per Mtok; first Max-class promised open — weights pending. Preview 2026-07-19."
+aliases = ["qwen3.8-max"]
+[modalities]
+input = ["text"]
+output = ["text"]

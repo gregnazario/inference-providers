@@ -1,0 +1,15 @@
+id = "motif/motif-3"
+name = "Motif-3"
+family = "motif"
+lab = "motif"
+release_date = "2026-08-13"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "Motif-Technologies/Motif-3"
+license = "MIT"
+description = "Korea sovereign-AI flagship (Motif Technologies): 314B/13.2B-active MoE, 256K context, MIT. First-party API serving unconfirmed — currently open-weights only."
+aliases = []
+[modalities]
+input = ["text"]
+output = ["text"]

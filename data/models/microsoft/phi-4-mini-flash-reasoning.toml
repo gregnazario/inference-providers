@@ -1,0 +1,15 @@
+id = "microsoft/phi-4-mini-flash-reasoning"
+name = "Phi-4 Mini Flash Reasoning"
+family = "phi"
+lab = "microsoft"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "microsoft/Phi-4-mini-flash-reasoning"
+license = "MIT"
+description = "3.8B hybrid SSM+attention reasoning model, MIT; served on NVIDIA NIM and Azure."
+aliases = []
+[modalities]
+input = ["text"]
+output = ["text"]

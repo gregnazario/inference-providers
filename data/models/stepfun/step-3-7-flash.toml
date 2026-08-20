@@ -1,0 +1,15 @@
+id = "stepfun/step-3-7-flash"
+name = "Step-3.7 Flash"
+family = "step"
+lab = "stepfun"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "stepfun-ai/Step-3.7-Flash"
+license = "Apache-2.0"
+description = "198B sparse-MoE VLM, 256K ctx, Apache 2.0; three reasoning levels; Advisor Mode."
+aliases = ["step-3.7-flash"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

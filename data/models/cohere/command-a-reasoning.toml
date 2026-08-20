@@ -1,0 +1,15 @@
+id = "cohere/command-a-reasoning"
+name = "Command A Reasoning (08-2025)"
+family = "command"
+lab = "cohere"
+release_date = "2025-08-21"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "CohereLabs/command-a-reasoning-08-2025"
+license = ""
+description = "111B dense, Cohere's first reasoning model; native thinking parameter with budget_tokens."
+aliases = ["command-a-reasoning-08-2025"]
+[modalities]
+input = ["text"]
+output = ["text"]

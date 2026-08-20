@@ -1,0 +1,15 @@
+id = "mistral/mistral-large-3"
+name = "Mistral Large 3"
+family = "mistral-large"
+lab = "mistral"
+release_date = "2025-12-02"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = ""
+description = "675B/41B-active multimodal MoE flagship; $0.50/$1.50 per Mtok."
+aliases = ["mistral-large-2512", "mistral-large-3-2512"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

@@ -1,0 +1,15 @@
+id = "stepfun/step-3-5-flash"
+name = "Step-3.5 Flash"
+family = "step"
+lab = "stepfun"
+release_date = "2026-01-29"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "stepfun-ai/Step-3.5-Flash"
+license = ""
+description = "196B/11B MoE, 256K ctx (3:1 sliding:full attention), MTP-3 decoding, Parallel Thinking reasoning."
+aliases = []
+[modalities]
+input = ["text"]
+output = ["text"]

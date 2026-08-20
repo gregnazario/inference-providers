@@ -1,0 +1,15 @@
+id = "xiaomi/mimo-v2-5"
+name = "MiMo V2.5"
+family = "mimo"
+lab = "xiaomi"
+release_date = "2026-04-23"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "XiaomiMiMo/MiMo-V2.5"
+license = "MIT"
+description = "Xiaomi's omni-modal open-weight line (text/image/video/audio), 1M context, MIT; V2 series retired 2026-06-30. Weights open-sourced 2026-06-29."
+aliases = []
+[modalities]
+input = ["text", "image", "video", "audio"]
+output = ["text"]
