@@ -24,12 +24,12 @@ const headers = authHeaders(provider, {
   credential: process.env.ANTHROPIC_API_KEY!,
 })
 
-// The exact wire fragment for a 4096-token thinking budget
+// The exact wire fragment for a high-effort adaptive-thinking request
 const reasoning = buildReasoningParam(offering, {
-  kind: "budget",
-  budget: 4096,
+  kind: "effort",
+  effort: "high",
 })
-// => { thinking: { budget_tokens: 4096 } }`
+// => { output_config: { effort: "high" } }`
 ---
 
 <Base title="Help — inference-providers" active="help" section="guides">
