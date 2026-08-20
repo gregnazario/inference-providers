@@ -11,5 +11,5 @@ license = ""
 description = "Flagship MoE (~2.4T), 1M context; $2/$6 per Mtok; first Max-class promised open — weights pending. Preview 2026-07-19."
 aliases = ["qwen3.8-max"]
 [modalities]
-input = ["text"]
+input = ["text", "image", "video"]
 output = ["text"]

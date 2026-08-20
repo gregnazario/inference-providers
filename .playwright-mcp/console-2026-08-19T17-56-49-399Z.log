@@ -1,0 +1,31 @@
+[     598ms] [WARNING] <link rel=preload> uses an unsupported `as` value @ https://qwen.ai/apiplatform:2
+[    1079ms] Uncaught (in promise) TypeError: Cannot read properties of null (reading 'appendChild')
+    at <anonymous> (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:51039)
+    at <anonymous> (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:61177)
+    at <anonymous> (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:61282)
+    at n (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:52682)
+    at a (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:52879)
+    at <anonymous> (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:52938)
+    at <anonymous> (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:52820)
+    at q (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:52115)
+    at runtime (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:50485)
+    at <anonymous> (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:50507)
+    at <anonymous> (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:61177)
+    at <anonymous> (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:61282)
+    at n (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:52682)
+    at a (https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/3164.js:0:52879)
+[    1127ms] [LOG] /apiplatform pathname @ https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/p_home-index.js:0
+[    1127ms] [LOG] /apiplatform pathname @ https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/p_home-index.js:0
+[    1136ms] [LOG] 60 PageBack__Content width: 0 false @ https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/p_layout.js:0
+[    1156ms] [LOG] 60 PageBack__Content width: 0 false @ https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/p_layout.js:0
+[    1161ms] [LOG] 60 PageBack__Content width: 0 false @ https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/p_layout.js:0
+[    1467ms] [LOG] interceptors response: {data: Array(16), status: 200, statusText: , headers: e, config: Object} @ https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/969.js:0
+[    1468ms] [LOG] interceptors response: {data: Array(3), status: 200, statusText: , headers: e, config: Object} @ https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/969.js:0
+[    1477ms] [LOG] 60 PageBack__Content width: 0 false @ https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/p_layout.js:0
+[    1524ms] [LOG] interceptors response: {data: Array(2), status: 200, statusText: , headers: e, config: Object} @ https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/969.js:0
+[    1524ms] [LOG] interceptors response: {data: Object, status: 200, statusText: , headers: e, config: Object} @ https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/969.js:0
+[    1524ms] [LOG] interceptors response: {data: Object, status: 200, statusText: , headers: e, config: Object} @ https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/969.js:0
+[    1527ms] [LOG] 60 PageBack__Content width: 0 false @ https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.78/js/p_layout.js:0
+[    1599ms] [WARNING] [AES] 未监测到Aplus SDK @ https://g.alicdn.com/aes/??tracker/3.3.9/index.js,tracker-plugin-pv/3.0.6/index.js,tracker-plugin-event/3.0.0/index.js,tracker-plugin-jserror/3.0.3/index.js,tracker-plugin-api/3.1.3/index.js,tracker-plugin-resourceError/3.0.4/index.js,tracker-plugin-perf/3.1.0/index.js,tracker-plugin-eventTiming/3.0.0/index.js,tracker-plugin-autolog/3.0.13/index.js,tracker-plugin-blank/3.0.1/index.js,tracker-plugin-longtask/3.0.1/index.js:0
+[    2083ms] [LOG] %c [APLUS] -- APLUS INIT SUCCESS background:#3B82FE; padding: 4px; padding-right: 8px; border-radius: 4px; color: #fff; @ :1
+[    2825ms] [LOG] Wed Aug 19 2026 10:56:52 GMT-0700 (Pacific Daylight Time) @ https://g.alicdn.com/AWSC/et/1.83.41/et_f.js:1

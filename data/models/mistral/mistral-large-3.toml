@@ -7,7 +7,7 @@ retired_date = ""
 knowledge_cutoff = ""
 open_weights = true
 hf_repo = ""
-license = ""
+license = "Apache-2.0"
 description = "675B/41B-active multimodal MoE flagship; $0.50/$1.50 per Mtok."
 aliases = ["mistral-large-2512", "mistral-large-3-2512"]
 [modalities]

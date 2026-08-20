@@ -8,7 +8,7 @@ knowledge_cutoff = ""
 open_weights = true
 hf_repo = "microsoft/Phi-4-mini-flash-reasoning"
 license = "MIT"
-description = "3.8B hybrid SSM+attention reasoning model, MIT; served on NVIDIA NIM and Azure."
+description = "3.8B hybrid SSM+attention reasoning model, MIT; delisted from hosted catalogs as of 2026-08-20 — open weights only."
 aliases = []
 [modalities]
 input = ["text"]

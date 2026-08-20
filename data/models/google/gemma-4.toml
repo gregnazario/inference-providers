@@ -11,5 +11,5 @@ license = ""
 description = "Open-weight multimodal family (E2B/E4B/26B-A4B/31B dense), 256K context; MTP variants 2026-04-16, 12B Unified 2026-06-03; now served on the Gemini API."
 aliases = ["gemma-4-31B-it", "gemma4"]
 [modalities]
-input = ["text", "audio", "video"]
+input = ["text", "image", "audio", "video"]
 output = ["text"]

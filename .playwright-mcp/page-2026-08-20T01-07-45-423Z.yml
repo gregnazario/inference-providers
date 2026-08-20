@@ -1,0 +1,237 @@
+- generic [active] [ref=f6e1]:
+  - banner [ref=f6e2]:
+    - generic [ref=f6e3]:
+      - link "inference-providers" [ref=f6e4] [cursor=pointer]:
+        - /url: /inference-providers/
+      - navigation [ref=f6e5]:
+        - link "Overview" [ref=f6e6] [cursor=pointer]:
+          - /url: /inference-providers/
+        - link "Providers" [ref=f6e7] [cursor=pointer]:
+          - /url: /inference-providers/providers/
+        - link "Models" [ref=f6e8] [cursor=pointer]:
+          - /url: /inference-providers/models/
+        - link "Verify" [ref=f6e9] [cursor=pointer]:
+          - /url: /inference-providers/verify/
+        - link "Help" [ref=f6e10] [cursor=pointer]:
+          - /url: /inference-providers/help/
+        - link "Download" [ref=f6e11] [cursor=pointer]:
+          - /url: /inference-providers/download/
+        - searchbox "Search" [ref=f6e13]
+  - main [ref=f6e14]:
+    - generic [ref=f6e15]:
+      - heading "Search" [level=1] [ref=f6e16]
+      - paragraph [ref=f6e17]: Full-text search over every provider guide and model page. Type in the header search box, or query and filter below.
+      - navigation "Filter results by section" [ref=f6e18]:
+        - link "All" [ref=f6e19] [cursor=pointer]:
+          - /url: /inference-providers/search/?q=kimi
+        - link "Providers" [ref=f6e20] [cursor=pointer]:
+          - /url: /inference-providers/search/?q=kimi&section=providers
+        - link "Models" [ref=f6e21] [cursor=pointer]:
+          - /url: /inference-providers/search/?q=kimi&section=models
+        - link "Guides" [ref=f6e22] [cursor=pointer]:
+          - /url: /inference-providers/search/?q=kimi&section=guides
+      - generic [ref=f6e23]:
+        - paragraph [ref=f6e24]: 22 results for “kimi”
+        - list [ref=f6e25]:
+          - listitem [ref=f6e26]:
+            - link "Kimi K2.7 Code" [ref=f6e27] [cursor=pointer]:
+              - /url: /inference-providers/models/moonshot-kimi-k2-7-code/
+            - paragraph [ref=f6e28]:
+              - mark [ref=f6e29]: Kimi
+              - text: K2.7 Code. by moonshot · family
+              - mark [ref=f6e30]: kimi
+              - text: Facts. Release date — Retired date — Knowledge cutoff — Modalities text, image, video → text. Aliases
+              - mark [ref=f6e31]: kimi-k2.7-code
+              - text: Open weights no Description
+          - listitem [ref=f6e32]:
+            - link "Kimi K2.6" [ref=f6e33] [cursor=pointer]:
+              - /url: /inference-providers/models/moonshot-kimi-k2-6/
+            - paragraph [ref=f6e34]:
+              - mark [ref=f6e35]: Kimi
+              - text: K2.6. by moonshot · family
+              - mark [ref=f6e36]: kimi
+              - text: Facts. Release date — Retired date — Knowledge cutoff — Modalities text, image → text. Aliases
+              - mark [ref=f6e37]: kimi-k2.6
+              - text: Open weights no Description General-purpose multimodal
+          - listitem [ref=f6e38]:
+            - link "Kimi K3" [ref=f6e39] [cursor=pointer]:
+              - /url: /inference-providers/models/moonshot-kimi-k3/
+            - paragraph [ref=f6e40]:
+              - mark [ref=f6e41]: Kimi
+              - text: K3. by moonshot · family
+              - mark [ref=f6e42]: kimi
+              - text: Facts. Release date — Retired date — Knowledge cutoff — Modalities text, image → text. Aliases k3 Open weights no Description Flagship 2.8T-param
+          - listitem [ref=f6e43]:
+            - link "Kimi K2.5" [ref=f6e44] [cursor=pointer]:
+              - /url: /inference-providers/models/moonshot-kimi-k2-5/
+            - paragraph [ref=f6e45]:
+              - mark [ref=f6e46]: Kimi
+              - text: K2.5. by moonshot · family
+              - mark [ref=f6e47]: kimi
+              - text: Facts. Release date — Retired date — Knowledge cutoff — Modalities text, image → text. Aliases
+              - mark [ref=f6e48]: kimi-k2.5
+              - text: Open weights no Description Closed to
+          - listitem [ref=f6e49]:
+            - link "Moonshot Kimi" [ref=f6e50] [cursor=pointer]:
+              - /url: /inference-providers/providers/moonshot/
+            - paragraph [ref=f6e51]:
+              - text: Moonshot
+              - mark [ref=f6e52]: Kimi.
+              - text: "first_party DocsConsolePricing Getting credentials. api-key. api_key via header (header Authorization: Bearer) Environment: MOONSHOT_API_KEY Create keys at the"
+              - mark [ref=f6e53]: Kimi
+              - text: Open Platform (intl) or
+              - mark [ref=f6e54]: platform.kimi.com
+              - text: (CN, Chinese phone required). Keys
+          - listitem [ref=f6e55]:
+            - link "Kimi for Coding" [ref=f6e56] [cursor=pointer]:
+              - /url: /inference-providers/providers/kimi-coding/
+            - paragraph [ref=f6e57]:
+              - mark [ref=f6e58]: Kimi
+              - text: "for Coding. subscription DocsConsole Getting credentials. plan-key. api_key via header (header Authorization: Bearer) Create keys in the"
+              - mark [ref=f6e59]: Kimi
+              - text: "Code Console (shown once). For Claude Code:"
+              - mark [ref=f6e60]: ANTHROPIC_BASE_URL=https://api.kimi.com/coding/
+              - text: and ANTHROPIC_API_KEY=<coding key>.
+          - listitem [ref=f6e61]:
+            - link "Models" [ref=f6e62] [cursor=pointer]:
+              - /url: /inference-providers/models/
+            - paragraph [ref=f6e63]:
+              - text: "1."
+              - mark [ref=f6e64]: Kimi
+              - text: K2.5 moonshot.
+              - mark [ref=f6e65]: kimi.
+              - text: — 262,144. — no. 1 Moonshot
+              - mark [ref=f6e66]: Kimikimi-k2.5.
+              - text: "1."
+              - mark [ref=f6e67]: Kimi
+              - text: K2.6 moonshot.
+              - mark [ref=f6e68]: kimi.
+              - text: — 262,144. — no. 3 Fireworks AIkimi-k2p6. Moonshot
+              - mark [ref=f6e69]: Kimikimi-k2.6.
+              - text: Ollama Cloudkimi-k2.6. 3.
+              - mark [ref=f6e70]: Kimi
+          - listitem [ref=f6e71]:
+            - link "Ollama Cloud" [ref=f6e72] [cursor=pointer]:
+              - /url: /inference-providers/providers/ollama-cloud/
+            - paragraph [ref=f6e73]:
+              - text: on · returns hidden
+              - mark [ref=f6e74]: moonshot/kimi-k2-6
+              - mark [ref=f6e75]: kimi-k2.6
+              - text: v1-chat-completions. ga effort · default on · returns hidden
+              - mark [ref=f6e76]: moonshot/kimi-k2-7-code
+              - mark [ref=f6e77]: kimi-k2.7-code
+              - text: v1-chat-completions. ga effort · default on · returns hidden
+              - mark [ref=f6e78]: moonshot/kimi-k3
+              - mark [ref=f6e79]: kimi-k3
+              - text: v1-chat-completions. ga
+          - listitem [ref=f6e80]:
+            - link "Qwen Coding Plan" [ref=f6e81] [cursor=pointer]:
+              - /url: /inference-providers/providers/qwen-coding-plan/
+            - paragraph [ref=f6e82]:
+              - text: "daily 00:00 UTC+8 Notes Strict model allowlist: qwen3.7-plus, qwen3.6-plus, qwen3.5-plus, qwen3-max-2026-01-23, qwen3-coder-next, qwen3-coder-plus, glm-5, glm-4.7,"
+              - mark [ref=f6e83]: kimi-k2.5,
+              - text: "MiniMax-M2.5. Interactive coding-tool use only. Lite discontinued: new subscriptions ended 2026-03-20, renewals ended 2026-04-13."
+          - listitem [ref=f6e84]:
+            - link "inference-providers" [ref=f6e85] [cursor=pointer]:
+              - /url: /inference-providers/
+            - paragraph [ref=f6e86]:
+              - text: "auth: api_key"
+              - mark [ref=f6e87]: Kimi
+              - text: "for Coding subscription auth: api_key Meta Model API first_party auth: api_key MiniMax first_party auth: api_key MiniMax Token Plan subscription auth: api_key Mistral first_party auth: api_key Moonshot"
+              - mark [ref=f6e88]: Kimi
+          - listitem [ref=f6e89]:
+            - link "OpenCode Go" [ref=f6e90] [cursor=pointer]:
+              - /url: /inference-providers/providers/opencode-go/
+            - paragraph [ref=f6e91]:
+              - text: 4.5, GPT 5.6 Luna, GLM-5.x,
+              - mark [ref=f6e92]: Kimi
+              - text: "K3/K2.x, MiniMax M3/M2.7, Qwen3.x, DeepSeek V4, MiMo, Hy3; optional Zen-balance fallback. Routes per protocol: /responses for Grok/GPT, /chat/completions for"
+              - mark [ref=f6e93]: GLM/Kimi/DeepSeek,
+              - text: /messages (Anthropic) for MiniMax/Qwen.
+          - listitem [ref=f6e94]:
+            - link "Providers" [ref=f6e95] [cursor=pointer]:
+              - /url: /inference-providers/providers/
+            - paragraph [ref=f6e96]:
+              - text: google-generate-content. Hetzner Inference (Experiments) first_party. api-key (api_key). openai-chat. IO Intelligence (io.net) first_party. api-key (api_key). openai-chat.
+              - mark [ref=f6e97]: Kimi
+              - text: for Coding subscription. plan-key (api_key). openai-chat, anthropic-messages. Meta Model API first_party. api-key (api_key). openai-responses,
+          - listitem [ref=f6e98]:
+            - link "Alibaba Token Plan" [ref=f6e99] [cursor=pointer]:
+              - /url: /inference-providers/providers/alibaba-token-plan/
+            - paragraph [ref=f6e100]:
+              - text: pricing 22:00-08:00 UTC+8), qwen3.7-max, qwen3.7-plus, qwen3.6-flash, glm-5.2, deepseek-v4-pro, wan2.7-image(-pro), happyhorse-1.1 video models; Team edition adds
+              - mark [ref=f6e101]: Kimi
+              - text: "k2.7-code/k2.6/k2.5, GLM 5.1/5, MiniMax-M2.5, qwen3.6-plus/flash. (docs) Team Edition: seat = one member + one"
+          - listitem [ref=f6e102]:
+            - link "Fireworks AI" [ref=f6e103] [cursor=pointer]:
+              - /url: /inference-providers/providers/fireworks-ai/
+            - paragraph [ref=f6e104]:
+              - text: ID Endpoint Status Reasoning deepseek/deepseek-v4-pro deepseek-v4-pro inference-v1. ga effort · default on · returns reasoning_content
+              - mark [ref=f6e105]: moonshot/kimi-k2-6
+              - mark [ref=f6e106]: kimi-k2p6
+              - text: inference-v1. ga effort · default on · returns reasoning_content · round-trips reasoning_content openai/gpt-oss-120b
+          - listitem [ref=f6e107]:
+            - link "IO Intelligence (io.net)" [ref=f6e108] [cursor=pointer]:
+              - /url: /inference-providers/providers/io-intelligence/
+            - paragraph [ref=f6e109]:
+              - text: Reasoning deepseek/deepseek-v4-pro deepseek-ai/DeepSeek-V4-Pro chat. ga effort · default on · returns reasoning_content · round-trips reasoning_content
+              - mark [ref=f6e110]: moonshot/kimi-k3
+              - mark [ref=f6e111]: moonshotai/Kimi-K3
+              - text: chat. ga effort · default on · returns reasoning_content openai/gpt-oss-120b openai/gpt-oss-120b chat. ga
+          - listitem [ref=f6e112]:
+            - link "NEAR AI Cloud" [ref=f6e113] [cursor=pointer]:
+              - /url: /inference-providers/providers/near-ai/
+            - paragraph [ref=f6e114]:
+              - text: "in OpenAI format. (docs) Reasoning params vary by model: reasoning_effort (gpt-oss, always-on), chat_template_kwargs.enable_thinking (GLM/Qwen), chat_template_kwargs.thinking"
+              - mark [ref=f6e115]: (Kimi
+              - text: — not enable_thinking). (docs) The OpenAI Responses-compatible /v1/responses endpoint on the gateway is in
+          - listitem [ref=f6e116]:
+            - link "Verification methodology" [ref=f6e117] [cursor=pointer]:
+              - /url: /inference-providers/verify/
+            - paragraph [ref=f6e118]:
+              - text: exactly as accepted; aliases on the canonical model file; status + status_date for deprecations (see
+              - mark [ref=f6e119]: kimi-k2.5).
+              - text: A new wire ID lands as an offering only after a human verifies its
+          - listitem [ref=f6e120]:
+            - link "Baseten" [ref=f6e121] [cursor=pointer]:
+              - /url: /inference-providers/providers/baseten/
+            - paragraph [ref=f6e122]:
+              - text: ID Endpoint Status Reasoning deepseek/deepseek-v4-flash deepseek-ai/DeepSeek-V4-Flash-0731 chat-completions. ga effort · default on · returns reasoning_content
+              - mark [ref=f6e123]: moonshot/kimi-k3
+              - mark [ref=f6e124]: moonshotai/Kimi-K3
+              - text: chat-completions. ga effort · default on · returns reasoning_content · round-trips reasoning_content openai/gpt-oss-120b
+          - listitem [ref=f6e125]:
+            - link "Synthetic" [ref=f6e126] [cursor=pointer]:
+              - /url: /inference-providers/providers/synthetic/
+            - paragraph [ref=f6e127]:
+              - text: chat templates — verify before relying. (docs) Models offered. Model Wire ID Endpoint Status Reasoning
+              - mark [ref=f6e128]: moonshot/kimi-k3
+              - mark [ref=f6e129]: hf:moonshotai/Kimi-K3
+              - text: openai-chat. ga adaptive · default on · returns hidden openai/gpt-oss-120b hf:openai/gpt-oss-120b openai-chat. ga
+          - listitem [ref=f6e130]:
+            - link "Help" [ref=f6e131] [cursor=pointer]:
+              - /url: /inference-providers/help/
+            - paragraph [ref=f6e132]:
+              - text: Plan,
+              - mark [ref=f6e133]: Kimi
+              - text: for Coding) only work on coding-plan endpoints;
+              - mark [ref=f6e134]: Kimi's
+              - text: /anthropic endpoint wants Open Platform keys, never
+              - mark [ref=f6e135]: Kimi
+              - text: Code keys. Moonshot keys are bound to the console that issued them
+          - listitem [ref=f6e136]:
+            - link "Alibaba Model Studio (DashScope)" [ref=f6e137] [cursor=pointer]:
+              - /url: /inference-providers/providers/alibaba-dashscope/
+            - paragraph [ref=f6e138]:
+              - text: (qwen3-235b-a22b, qwen3-32b) support streaming only when enable_thinking=true — non-streaming calls error. Thinking-only variants (qwen3-next-80b-a3b-thinking, qwq-plus,
+              - mark [ref=f6e139]: kimi-k2-thinking)
+              - text: "cannot disable. Regional OpenAI-compatible bases like https://{workspace}.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1 also exist; native DashScope endpoint .../api/v1/services/aigc/text-generation/generation with"
+          - listitem [ref=f6e140]:
+            - link "OpenCode Zen" [ref=f6e141] [cursor=pointer]:
+              - /url: /inference-providers/providers/opencode-zen/
+            - paragraph [ref=f6e142]:
+              - text: surfaces; models are assigned per surface (Responses for GPT/Grok, Anthropic Messages for Claude/Qwen, chat-completions for
+              - mark [ref=f6e143]: DeepSeek/MiniMax/GLM/Kimi,
+              - text: Gemini-style for Google models). No documented reasoning normalization — controls follow each upstream provider's
+  - contentinfo [ref=f6e144]:
+    - paragraph [ref=f6e146]: Every fact carries a source URL and verification date — see the repository.

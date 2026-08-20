@@ -14,8 +14,8 @@ notes = "Upstream defaults to no-think with low/high CoT modes."
 
 [reasoning.effort]
 param = "reasoning.effort"
-values = ["none", "low", "medium", "high", "xhigh", "max"]
-default = "medium"
+values = ["none", "low", "high"]
+default = "high"
 
 [reasoning.source]
 url = "https://openrouter.ai/api/v1/models"

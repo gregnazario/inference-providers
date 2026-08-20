@@ -7,6 +7,7 @@ status_date = ""
 [cost]
 input = 0.14
 output = 0.28
+cache_read = 0.0028
 free = false
 source = { url = "https://mimo.mi.com/docs/en-US/pricing", verified = "2026-08-20" }
 

@@ -6,7 +6,7 @@ status_date = ""
 
 [reasoning]
 style = "effort"
-mandatory = false
+mandatory = true
 default = "on"
 returns = "reasoning_content"
 must_round_trip = "reasoning_content"
@@ -14,7 +14,7 @@ notes = "Upstream reasoning incl. Parallel Thinking."
 
 [reasoning.effort]
 param = "reasoning.effort"
-values = ["none", "low", "medium", "high", "xhigh", "max"]
+values = ["minimal", "low", "medium", "high", "xhigh"]
 default = "medium"
 
 [reasoning.source]

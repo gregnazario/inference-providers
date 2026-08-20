@@ -11,5 +11,5 @@ license = "MIT"
 description = "1.02T/42B-active MoE agentic flagship, 1M context; GDPVal-AA #1 open-source; ultraspeed FP4 variant >1000 tok/s early access."
 aliases = []
 [modalities]
-input = ["text", "image", "video", "audio"]
+input = ["text"]
 output = ["text"]

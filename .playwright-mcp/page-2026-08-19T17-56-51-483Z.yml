@@ -1,0 +1,358 @@
+- generic [ref=e3]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "logo" [ref=e10] [cursor=pointer]
+      - generic [ref=e11]:
+        - generic [ref=e12] [cursor=pointer]: Qwen Studio
+        - generic [ref=e13] [cursor=pointer]:
+          - generic [ref=e14]: More
+          - generic [ref=e15]: 
+    - generic [ref=e16]:
+      - generic [ref=e17] [cursor=pointer]:
+        - generic [ref=e18]: EN
+        - generic [ref=e19]: 
+      - button "Download" [ref=e20] [cursor=pointer]
+      - button "Try Qwen Studio " [ref=e22] [cursor=pointer]:
+        - generic [ref=e23]: Try Qwen Studio
+        - generic [ref=e24]: 
+  - generic [ref=e26]:
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]: Building AI Products with Qwen
+        - generic [ref=e31]: Built with Qwen via OpenAI-compatible API. Power apps for chat, Q&A, creative writing, translation, summarization, and coding.
+        - generic [ref=e32]:
+          - button "Start building " [ref=e33] [cursor=pointer]:
+            - generic [ref=e34]: Start building
+            - generic [ref=e35]: 
+          - button "MuleRouter " [ref=e37] [cursor=pointer]:
+            - generic [ref=e38]: MuleRouter
+            - generic [ref=e39]: 
+          - button "Contact sales" [ref=e41] [cursor=pointer]
+      - generic [ref=e43]: Our Flagship Models
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - generic [ref=e50] [cursor=pointer]:
+            - generic [ref=e51]: Qwen3.7-Max
+            - generic [ref=e52]:
+              - generic [ref=e53]:
+                - generic [ref=e54]: 
+                - generic [ref=e55]: Inputs:Text
+              - generic [ref=e57]:
+                - generic [ref=e58]: 
+                - generic [ref=e59]: Outputs:Text
+              - generic [ref=e61]:
+                - generic [ref=e62]: 
+                - generic [ref=e63]: 1,000,000 context length
+            - button "Learn more " [ref=e64]:
+              - generic [ref=e65]: Learn more
+              - generic [ref=e66]: 
+          - generic [ref=e71] [cursor=pointer]:
+            - generic [ref=e72]: Qwen3.7-Plus
+            - generic [ref=e73]:
+              - generic [ref=e74]:
+                - generic [ref=e75]: 
+                - generic [ref=e76]: Inputs:Text,Image,Video
+              - generic [ref=e78]:
+                - generic [ref=e79]: 
+                - generic [ref=e80]: Outputs:Text
+              - generic [ref=e82]:
+                - generic [ref=e83]: 
+                - generic [ref=e84]: 1,000,000 context length
+            - button "Learn more " [ref=e85]:
+              - generic [ref=e86]: Learn more
+              - generic [ref=e87]: 
+          - generic [ref=e92] [cursor=pointer]:
+            - generic [ref=e93]: Qwen3.6-Max-Preview
+            - generic [ref=e94]:
+              - generic [ref=e95]:
+                - generic [ref=e96]: 
+                - generic [ref=e97]: Inputs:Text
+              - generic [ref=e99]:
+                - generic [ref=e100]: 
+                - generic [ref=e101]: Outputs:Text
+              - generic [ref=e103]:
+                - generic [ref=e104]: 
+                - generic [ref=e105]: 262,144 context length
+            - button "Learn more " [ref=e106]:
+              - generic [ref=e107]: Learn more
+              - generic [ref=e108]: 
+        - generic [ref=e110]:
+          - generic [ref=e114] [cursor=pointer]:
+            - generic [ref=e115]: Qwen3.6-Plus
+            - generic [ref=e116]:
+              - generic [ref=e117]:
+                - generic [ref=e118]: 
+                - generic [ref=e119]: Inputs:Text,Image,Video
+              - generic [ref=e121]:
+                - generic [ref=e122]: 
+                - generic [ref=e123]: Outputs:Text
+              - generic [ref=e125]:
+                - generic [ref=e126]: 
+                - generic [ref=e127]: 1,000,000 context length
+            - button "Learn more " [ref=e128]:
+              - generic [ref=e129]: Learn more
+              - generic [ref=e130]: 
+          - generic [ref=e135] [cursor=pointer]:
+            - generic [ref=e136]: Qwen3.5-Plus
+            - generic [ref=e137]:
+              - generic [ref=e138]:
+                - generic [ref=e139]: 
+                - generic [ref=e140]: Inputs:Text,Image,Video
+              - generic [ref=e142]:
+                - generic [ref=e143]: 
+                - generic [ref=e144]: Outputs:Text
+              - generic [ref=e146]:
+                - generic [ref=e147]: 
+                - generic [ref=e148]: 1,000,000 context length
+            - button "Learn more " [ref=e149]:
+              - generic [ref=e150]: Learn more
+              - generic [ref=e151]: 
+          - generic [ref=e156] [cursor=pointer]:
+            - generic [ref=e157]: Qwen3.5-Flash
+            - generic [ref=e158]:
+              - generic [ref=e159]:
+                - generic [ref=e160]: 
+                - generic [ref=e161]: Inputs:Text,Image,Video
+              - generic [ref=e163]:
+                - generic [ref=e164]: 
+                - generic [ref=e165]: Outputs:Text
+              - generic [ref=e167]:
+                - generic [ref=e168]: 
+                - generic [ref=e169]: 1,000,000 context length
+            - button "Learn more " [ref=e170]:
+              - generic [ref=e171]: Learn more
+              - generic [ref=e172]: 
+        - generic [ref=e174]:
+          - generic [ref=e178] [cursor=pointer]:
+            - generic [ref=e179]: Qwen3-Max
+            - generic [ref=e180]:
+              - generic [ref=e181]:
+                - generic [ref=e182]: 
+                - generic [ref=e183]: Inputs:Text
+              - generic [ref=e185]:
+                - generic [ref=e186]: 
+                - generic [ref=e187]: Outputs:Text
+              - generic [ref=e189]:
+                - generic [ref=e190]: 
+                - generic [ref=e191]: 262,144 context length
+            - button "Learn more " [ref=e192]:
+              - generic [ref=e193]: Learn more
+              - generic [ref=e194]: 
+          - generic [ref=e199] [cursor=pointer]:
+            - generic [ref=e200]: Qwen3-VL-Plus
+            - generic [ref=e201]:
+              - generic [ref=e202]:
+                - generic [ref=e203]: 
+                - generic [ref=e204]: Inputs:Text,Image,Video
+              - generic [ref=e206]:
+                - generic [ref=e207]: 
+                - generic [ref=e208]: Outputs:Text
+              - generic [ref=e210]:
+                - generic [ref=e211]: 
+                - generic [ref=e212]: 131,027 context length
+            - button "Learn more " [ref=e213]:
+              - generic [ref=e214]: Learn more
+              - generic [ref=e215]: 
+          - generic [ref=e220] [cursor=pointer]:
+            - generic [ref=e221]: Qwen3-VL-Flash
+            - generic [ref=e222]:
+              - generic [ref=e223]:
+                - generic [ref=e224]: 
+                - generic [ref=e225]: Inputs:Text,Image,Video
+              - generic [ref=e227]:
+                - generic [ref=e228]: 
+                - generic [ref=e229]: Outputs:Text
+              - generic [ref=e231]:
+                - generic [ref=e232]: 
+                - generic [ref=e233]: 131,027 context length
+            - button "Learn more " [ref=e234]:
+              - generic [ref=e235]: Learn more
+              - generic [ref=e236]: 
+        - generic [ref=e238]:
+          - generic [ref=e242] [cursor=pointer]:
+            - generic [ref=e243]: Qwen3-Omni-Flash
+            - generic [ref=e244]:
+              - generic [ref=e245]:
+                - generic [ref=e246]: 
+                - generic [ref=e247]: Inputs:Text,Image,Audio,Video
+              - generic [ref=e249]:
+                - generic [ref=e250]: 
+                - generic [ref=e251]: Outputs:Text,Audio
+              - generic [ref=e253]:
+                - generic [ref=e254]: 
+                - generic [ref=e255]: 65,536 context length
+            - button "Learn more " [ref=e256]:
+              - generic [ref=e257]: Learn more
+              - generic [ref=e258]: 
+          - generic [ref=e263] [cursor=pointer]:
+            - generic [ref=e264]: Qwen3-ASR-Flash
+            - generic [ref=e265]:
+              - generic [ref=e266]:
+                - generic [ref=e267]: 
+                - generic [ref=e268]: Inputs:Audio
+              - generic [ref=e270]:
+                - generic [ref=e271]: 
+                - generic [ref=e272]: Outputs:Text
+            - button "Learn more " [ref=e274]:
+              - generic [ref=e275]: Learn more
+              - generic [ref=e276]: 
+          - generic [ref=e281] [cursor=pointer]:
+            - generic [ref=e282]: Qwen-Image-2.0-Pro
+            - generic [ref=e283]:
+              - generic [ref=e284]:
+                - generic [ref=e285]: 
+                - generic [ref=e286]: Inputs:Text,Image
+              - generic [ref=e288]:
+                - generic [ref=e289]: 
+                - generic [ref=e290]: Outputs:Image
+            - button "Learn more " [ref=e292]:
+              - generic [ref=e293]: Learn more
+              - generic [ref=e294]: 
+        - generic [ref=e296]:
+          - generic [ref=e300] [cursor=pointer]:
+            - generic [ref=e301]: Qwen-Image-2.0
+            - generic [ref=e302]:
+              - generic [ref=e303]:
+                - generic [ref=e304]: 
+                - generic [ref=e305]: Inputs:Text,Image
+              - generic [ref=e307]:
+                - generic [ref=e308]: 
+                - generic [ref=e309]: Outputs:Image
+            - button "Learn more " [ref=e311]:
+              - generic [ref=e312]: Learn more
+              - generic [ref=e313]: 
+          - generic [ref=e318] [cursor=pointer]:
+            - generic [ref=e319]: Qwen3-TTS-Flash
+            - generic [ref=e320]:
+              - generic [ref=e321]:
+                - generic [ref=e322]: 
+                - generic [ref=e323]: Inputs:Text
+              - generic [ref=e325]:
+                - generic [ref=e326]: 
+                - generic [ref=e327]: Outputs:Audio
+            - button "Learn more " [ref=e329]:
+              - generic [ref=e330]: Learn more
+              - generic [ref=e331]: 
+          - generic [ref=e336] [cursor=pointer]:
+            - generic [ref=e337]: Qwen-Image-Plus
+            - generic [ref=e338]:
+              - generic [ref=e339]:
+                - generic [ref=e340]: 
+                - generic [ref=e341]: Inputs:Text
+              - generic [ref=e343]:
+                - generic [ref=e344]: 
+                - generic [ref=e345]: Outputs:Image
+            - button "Learn more " [ref=e347]:
+              - generic [ref=e348]: Learn more
+              - generic [ref=e349]: 
+        - generic [ref=e355] [cursor=pointer]:
+          - generic [ref=e356]: Qwen-Image-Edit
+          - generic [ref=e357]:
+            - generic [ref=e358]:
+              - generic [ref=e359]: 
+              - generic [ref=e360]: Inputs:Text,Image
+            - generic [ref=e362]:
+              - generic [ref=e363]: 
+              - generic [ref=e364]: Outputs:Image
+          - button "Learn more " [ref=e366]:
+            - generic [ref=e367]: Learn more
+            - generic [ref=e368]: 
+      - generic [ref=e370]: Unlock the potential of Qwen through APIs
+      - generic [ref=e372]:
+        - generic [ref=e373]:
+          - img "Chat Completions API" [ref=e375]
+          - generic [ref=e376]:
+            - generic [ref=e377]: Chat Completions API
+            - generic [ref=e378]: Get access to the Qwen series models with just a few lines of code. Users utilize the Chat Completions API for downstream tasks, including question answering, conversion, coding assistance, creative writing, tool usage, and more.
+        - generic [ref=e379]:
+          - img "Realtime API" [ref=e381]
+          - generic [ref=e382]:
+            - generic [ref=e383]: Realtime API
+            - generic [ref=e384]: Build low-latency, multimodal experiences, including speech-to-speech. This approach is suitable for scenarios such as video chat, audio chat, and avatar.
+        - generic [ref=e385]:
+          - img "Batch API" [ref=e387]
+          - generic [ref=e388]:
+            - generic [ref=e389]: Batch API
+            - generic [ref=e390]: Use the Batch API to initiate offline tasks that utilize lower-cost computing resources. This approach is suitable for scenarios where immediate results are not required and there is a need for offline processing of large amounts of data, such as model evaluation, semantic extraction of datasets, and batch extraction of text vectors.
+      - generic [ref=e391]: Boost productivity with Qwen Agent
+      - generic [ref=e393]:
+        - generic [ref=e394]:
+          - img "Web Search" [ref=e396]
+          - generic [ref=e397]:
+            - generic [ref=e398]: Web Search
+            - generic [ref=e399]: Enhance model responses with up-to-date and clearly cited answers from the web search.
+        - generic [ref=e400]:
+          - img "Function Call" [ref=e402]
+          - generic [ref=e403]:
+            - generic [ref=e404]: Function Call
+            - generic [ref=e405]: Connect large language models to external tools for more complex tasks.
+      - generic [ref=e406]:
+        - generic [ref=e407]: Build with Qwen API
+        - button "Go API Platform " [ref=e408] [cursor=pointer]:
+          - generic [ref=e409]: Go API Platform
+          - generic [ref=e410]: 
+    - generic [ref=e413]:
+      - generic [ref=e414]:
+        - generic [ref=e416]:
+          - generic [ref=e417]: Try Qwen Studio
+          - generic [ref=e418]:
+            - generic [ref=e420] [cursor=pointer]:
+              - generic [ref=e421]: Web
+              - generic [ref=e422]: 
+            - generic [ref=e425] [cursor=pointer]:
+              - generic [ref=e426]: iOS
+              - generic [ref=e427]: 
+            - generic [ref=e430] [cursor=pointer]:
+              - generic [ref=e431]: Android
+              - generic [ref=e432]: 
+            - generic [ref=e435] [cursor=pointer]:
+              - generic [ref=e436]: macOS
+              - generic [ref=e437]: 
+            - generic [ref=e440] [cursor=pointer]:
+              - generic [ref=e441]: Windows
+              - generic [ref=e442]: 
+        - generic [ref=e445]:
+          - generic [ref=e446]: Qwen Studio
+          - generic [ref=e447]:
+            - generic [ref=e448] [cursor=pointer]: Qwen Studio Overview
+            - generic [ref=e451] [cursor=pointer]: Download
+        - generic [ref=e455]:
+          - generic [ref=e456]: API Platform
+          - generic [ref=e457]:
+            - generic [ref=e458] [cursor=pointer]: Our Flagship Models
+            - generic [ref=e461] [cursor=pointer]: Platform Overview
+            - generic [ref=e465] [cursor=pointer]:
+              - generic [ref=e466]: API Platform
+              - generic [ref=e467]: 
+            - generic [ref=e470] [cursor=pointer]:
+              - generic [ref=e471]: Qwen Cloud
+              - generic [ref=e472]: 
+        - generic [ref=e475]:
+          - generic [ref=e476]: Research
+          - generic [ref=e477]:
+            - generic [ref=e478] [cursor=pointer]: Latest Advancements
+            - generic [ref=e481] [cursor=pointer]: Research Index
+            - generic [ref=e485] [cursor=pointer]:
+              - generic [ref=e486]: GitHub
+              - generic [ref=e487]: 
+        - generic [ref=e490]:
+          - generic [ref=e491]: Terms & Policies
+          - generic [ref=e492]:
+            - generic [ref=e493] [cursor=pointer]: Terms of Service
+            - generic [ref=e496] [cursor=pointer]: Privacy Policy
+            - generic [ref=e499] [cursor=pointer]: Usage Policy
+            - generic [ref=e502] [cursor=pointer]: Cookies Notice
+            - generic [ref=e505] [cursor=pointer]: Training Data Summary
+      - generic [ref=e509]:
+        - generic [ref=e510]:
+          - img [ref=e511] [cursor=pointer]
+          - img [ref=e512] [cursor=pointer]
+          - img [ref=e513] [cursor=pointer]
+          - img [ref=e514] [cursor=pointer]
+          - img [ref=e515] [cursor=pointer]
+          - img [ref=e516] [cursor=pointer]
+          - img [ref=e517] [cursor=pointer]
+        - generic [ref=e518]:
+          - generic [ref=e519]: Qwen © 2026
+          - generic [ref=e520] [cursor=pointer]: Manage Cookies
+          - generic [ref=e521]: Powered by Alibaba Cloud

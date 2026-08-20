@@ -1,0 +1,165 @@
+- generic [active] [ref=f13e1]:
+  - banner [ref=f13e2]:
+    - generic [ref=f13e3]:
+      - link "inference-providers" [ref=f13e4] [cursor=pointer]:
+        - /url: /inference-providers/
+      - navigation [ref=f13e5]:
+        - link "Overview" [ref=f13e6] [cursor=pointer]:
+          - /url: /inference-providers/
+        - link "Providers" [ref=f13e7] [cursor=pointer]:
+          - /url: /inference-providers/providers/
+        - link "Models" [ref=f13e8] [cursor=pointer]:
+          - /url: /inference-providers/models/
+        - link "Verify" [ref=f13e9] [cursor=pointer]:
+          - /url: /inference-providers/verify/
+        - link "Help" [ref=f13e10] [cursor=pointer]:
+          - /url: /inference-providers/help/
+        - link "Download" [ref=f13e11] [cursor=pointer]:
+          - /url: /inference-providers/download/
+        - searchbox "Search" [ref=f13e13]
+  - main [ref=f13e14]:
+    - heading "Archived models" [level=1] [ref=f13e15]
+    - paragraph [ref=f13e16]: Models released more than 12 months ago (or retired). Kept for reference — provider offerings remain in the full artifacts.
+    - paragraph [ref=f13e17]:
+      - text: 7 archived ·
+      - link "38 current models" [ref=f13e18] [cursor=pointer]:
+        - /url: /inference-providers/models/
+    - generic [ref=f13e19]:
+      - generic [ref=f13e20]:
+        - searchbox "Filter table rows" [ref=f13e21]
+        - combobox "Filter by Lab" [ref=f13e22]:
+          - option "All Lab" [selected]
+          - option "anthropic"
+          - option "google"
+          - option "meta"
+          - option "openai"
+        - combobox "Filter by Weights" [ref=f13e23]:
+          - option "All Weights" [selected]
+          - option "closed"
+          - option "open"
+        - generic [ref=f13e24]: 7 of 7
+      - table [ref=f13e25]:
+        - rowgroup [ref=f13e26]:
+          - row [ref=f13e27]:
+            - columnheader [ref=f13e28]:
+              - button "Model ↕" [ref=f13e29] [cursor=pointer]
+            - columnheader [ref=f13e30]:
+              - button "Lab ↕" [ref=f13e31] [cursor=pointer]
+            - columnheader "Family" [ref=f13e32]
+            - columnheader [ref=f13e33]:
+              - button "Released ↕" [ref=f13e34] [cursor=pointer]
+            - columnheader "Retired" [ref=f13e35]
+            - columnheader [ref=f13e36]:
+              - button "Context ↕" [ref=f13e37] [cursor=pointer]
+            - columnheader [ref=f13e38]:
+              - button "Output ↕" [ref=f13e39] [cursor=pointer]
+            - columnheader "Open weights" [ref=f13e40]
+            - columnheader [ref=f13e41]:
+              - button "Providers ↕" [ref=f13e42] [cursor=pointer]
+            - columnheader [ref=f13e43]:
+              - button "Offerings ↕" [ref=f13e44] [cursor=pointer]
+        - rowgroup [ref=f13e45]:
+          - row [ref=f13e46]:
+            - cell [ref=f13e47]:
+              - link "Claude 3.7 Sonnet" [ref=f13e48] [cursor=pointer]:
+                - /url: /inference-providers/models/anthropic-claude-3-7-sonnet/
+            - cell "anthropic" [ref=f13e49]
+            - cell "claude" [ref=f13e50]
+            - cell "2025-02-19" [ref=f13e51]
+            - cell "—" [ref=f13e52]
+            - cell "200,000" [ref=f13e53]
+            - cell "—" [ref=f13e54]
+            - cell "no" [ref=f13e55]
+            - cell [ref=f13e56]:
+              - group [ref=f13e57]:
+                - generic "1 +" [ref=f13e58] [cursor=pointer]
+            - cell "1" [ref=f13e59]
+          - row [ref=f13e60]:
+            - cell [ref=f13e61]:
+              - link "Gemini 2.5 Flash" [ref=f13e62] [cursor=pointer]:
+                - /url: /inference-providers/models/google-gemini-2-5-flash/
+            - cell "google" [ref=f13e63]
+            - cell "gemini" [ref=f13e64]
+            - cell "2025-06-17" [ref=f13e65]
+            - cell "—" [ref=f13e66]
+            - cell "—" [ref=f13e67]
+            - cell "—" [ref=f13e68]
+            - cell "no" [ref=f13e69]
+            - cell [ref=f13e70]:
+              - group [ref=f13e71]:
+                - generic "1 +" [ref=f13e72] [cursor=pointer]
+            - cell "1" [ref=f13e73]
+          - row [ref=f13e74]:
+            - cell [ref=f13e75]:
+              - link "Gemini 2.5 Pro" [ref=f13e76] [cursor=pointer]:
+                - /url: /inference-providers/models/google-gemini-2-5-pro/
+            - cell "google" [ref=f13e77]
+            - cell "gemini" [ref=f13e78]
+            - cell "2025-03-31" [ref=f13e79]
+            - cell "—" [ref=f13e80]
+            - cell "—" [ref=f13e81]
+            - cell "—" [ref=f13e82]
+            - cell "no" [ref=f13e83]
+            - cell [ref=f13e84]:
+              - group [ref=f13e85]:
+                - generic "3 +" [ref=f13e86] [cursor=pointer]
+            - cell "3" [ref=f13e87]
+          - row [ref=f13e88]:
+            - cell [ref=f13e89]:
+              - link "Llama 3.3 70B" [ref=f13e90] [cursor=pointer]:
+                - /url: /inference-providers/models/meta-llama-3-3-70b/
+            - cell "meta" [ref=f13e91]
+            - cell "llama" [ref=f13e92]
+            - cell "2024-12-06" [ref=f13e93]
+            - cell "—" [ref=f13e94]
+            - cell "—" [ref=f13e95]
+            - cell "—" [ref=f13e96]
+            - cell "yes" [ref=f13e97]
+            - cell "—" [ref=f13e98]
+            - cell "0" [ref=f13e99]
+          - row [ref=f13e100]:
+            - cell [ref=f13e101]:
+              - link "Llama 4 Maverick" [ref=f13e102] [cursor=pointer]:
+                - /url: /inference-providers/models/meta-llama-4-maverick/
+            - cell "meta" [ref=f13e103]
+            - cell "llama" [ref=f13e104]
+            - cell "2025-04-27" [ref=f13e105]
+            - cell "—" [ref=f13e106]
+            - cell "—" [ref=f13e107]
+            - cell "—" [ref=f13e108]
+            - cell "yes" [ref=f13e109]
+            - cell "—" [ref=f13e110]
+            - cell "0" [ref=f13e111]
+          - row [ref=f13e112]:
+            - cell [ref=f13e113]:
+              - link "GPT-5" [ref=f13e114] [cursor=pointer]:
+                - /url: /inference-providers/models/openai-gpt-5/
+            - cell "openai" [ref=f13e115]
+            - cell "gpt" [ref=f13e116]
+            - cell "2025-08-07" [ref=f13e117]
+            - cell "—" [ref=f13e118]
+            - cell "—" [ref=f13e119]
+            - cell "—" [ref=f13e120]
+            - cell "no" [ref=f13e121]
+            - cell [ref=f13e122]:
+              - group [ref=f13e123]:
+                - generic "1 +" [ref=f13e124] [cursor=pointer]
+            - cell "2" [ref=f13e125]
+          - row [ref=f13e126]:
+            - cell [ref=f13e127]:
+              - link "o3" [ref=f13e128] [cursor=pointer]:
+                - /url: /inference-providers/models/openai-o3/
+            - cell "openai" [ref=f13e129]
+            - cell "o" [ref=f13e130]
+            - cell "2025-04-16" [ref=f13e131]
+            - cell "—" [ref=f13e132]
+            - cell "—" [ref=f13e133]
+            - cell "—" [ref=f13e134]
+            - cell "no" [ref=f13e135]
+            - cell [ref=f13e136]:
+              - group [ref=f13e137]:
+                - generic "1 +" [ref=f13e138] [cursor=pointer]
+            - cell "2" [ref=f13e139]
+    - paragraph [ref=f13e140]: Unknown values are shown as —. Context and output limits are the maximum across the model's offerings that record limits. The Providers count is unique providers — open it for each provider's wire IDs; ×N marks a provider serving the model on N endpoints.
+  - contentinfo [ref=f13e141]:
+    - paragraph [ref=f13e143]: Every fact carries a source URL and verification date — see the repository.
