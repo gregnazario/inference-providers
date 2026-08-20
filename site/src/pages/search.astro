@@ -2,13 +2,246 @@
 import Base from "../layouts/Base.astro"
 
 const base = import.meta.env.BASE_URL
+
+// Section filter chips; ids match the data-pagefind-filter values set on the
+// page wrappers ("archive" pages are reachable via All but have no chip).
+const filters = [
+  { id: "all", label: "All" },
+  { id: "providers", label: "Providers" },
+  { id: "models", label: "Models" },
+  { id: "guides", label: "Guides" },
+]
 ---
 
 <Base title="Search — inference-providers" active="search">
   <div data-pagefind-ignore="all">
     <h1>Search</h1>
-    <p>Index covers provider guides and model pages.</p>
-    <script is:inline type="module" src={`${base}pagefind/pagefind.js`}></script>
-    <pagefind-search></pagefind-search>
+    <p>
+      Full-text search over every provider guide and model page. Type in the
+      header search box, or query and filter below.
+    </p>
+
+    <noscript>
+      <p class="search-note">
+        Search requires JavaScript. Browse the
+        <a href={`${base}providers/`}>providers</a> or
+        <a href={`${base}models/`}>models</a> lists instead.
+      </p>
+    </noscript>
+
+    <nav class="search-filters" aria-label="Filter results by section">
+      {
+        filters.map((f) => (
+          <a href={`?section=${f.id}`} data-filter={f.id}>
+            {f.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div id="search-results">
+      <p class="search-status">Loading search…</p>
+    </div>
   </div>
+
+  <script is:inline type="module" define:vars={{ base }}>
+    // Pagefind is the only sanctioned client-side script on this site.
+    const params = new URLSearchParams(location.search)
+    const q = (params.get("q") ?? "").trim()
+    const section = params.get("section") ?? "all"
+
+    const knownFilters = new Set(["all", "providers", "models", "guides"])
+    const filter = knownFilters.has(section) ? section : "all"
+
+    const results = document.getElementById("search-results")
+
+    // Filter chips are plain links; keep the current query when switching.
+    for (const a of document.querySelectorAll(".search-filters a")) {
+      const next = new URLSearchParams()
+      if (q) next.set("q", q)
+      if (a.dataset.filter !== "all") next.set("section", a.dataset.filter)
+      a.href = `${location.pathname}?${next.toString()}`
+      if (a.dataset.filter === filter) {
+        a.classList.add("active")
+        a.setAttribute("aria-current", "true")
+      }
+    }
+
+    const link = (href, text) => {
+      const a = document.createElement("a")
+      a.href = href
+      a.textContent = text
+      return a
+    }
+
+    const para = (text, className) => {
+      const p = document.createElement("p")
+      if (className) p.className = className
+      p.textContent = text
+      return p
+    }
+
+    if (!q) {
+      const empty = document.createElement("div")
+      empty.className = "search-empty"
+      empty.appendChild(para("Enter a query in the header search box."))
+      const popular = document.createElement("p")
+      popular.append("Popular destinations: ")
+      const sep = document.createTextNode(" · ")
+      popular.appendChild(link(`${base}providers/`, "Providers"))
+      popular.append(sep)
+      popular.appendChild(link(`${base}models/`, "Models"))
+      popular.append(" · ")
+      popular.appendChild(link(`${base}verify/`, "Verify"))
+      popular.append(" · ")
+      popular.appendChild(link(`${base}help/`, "Help"))
+      empty.appendChild(popular)
+      results.replaceChildren(empty)
+    } else {
+      try {
+        const pagefind = await import(`${base}pagefind/pagefind.js`)
+        await pagefind.options({ basePath: `${base}pagefind/` })
+        const search =
+          filter === "all"
+            ? await pagefind.search(q)
+            : await pagefind.search(q, { filters: { section: [filter] } })
+
+        if (search.results.length === 0) {
+          const none = document.createElement("div")
+          none.className = "search-empty"
+          none.appendChild(para(`No results for “${q}”.`, "search-none"))
+          none.appendChild(
+            para(
+              filter === "all"
+                ? "Check the spelling, or browse the providers and models lists."
+                : `No matches in the ${filter} section — try the All filter.`,
+            ),
+          )
+          results.replaceChildren(none)
+        } else {
+          const summary = para(
+            `${search.results.length} result${search.results.length === 1 ? "" : "s"} for “${q}”${filter === "all" ? "" : ` in ${filter}`}`,
+            "search-status",
+          )
+          const hits = document.createElement("ul")
+          hits.className = "search-hits"
+          for (const result of search.results) {
+            const data = await result.data()
+            const li = document.createElement("li")
+            li.className = "search-hit"
+            // pagefind returns deployment-base-prefixed URLs already
+            li.appendChild(link(data.url, data.meta.title ?? data.url))
+            const excerpt = document.createElement("p")
+            excerpt.className = "search-excerpt"
+            excerpt.innerHTML = data.excerpt
+            li.appendChild(excerpt)
+            hits.appendChild(li)
+          }
+          results.replaceChildren(summary, hits)
+        }
+      } catch (err) {
+        results.replaceChildren(
+          para("Search failed to load — refresh the page, or browse the providers and models lists.", "search-note"),
+        )
+        console.error(err)
+      }
+    }
+  </script>
 </Base>
+
+<style is:global>
+  .search-filters {
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    margin: 1.25rem 0 0.75rem;
+  }
+
+  /* Same pill language as the header nav. */
+  .search-filters a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.925rem;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+  }
+
+  .search-filters a:hover {
+    color: var(--fg);
+    background: color-mix(in oklab, var(--fg) 8%, transparent);
+  }
+
+  .search-filters a.active {
+    color: var(--link);
+    background: color-mix(in oklab, var(--accent) 12%, transparent);
+    border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+  }
+
+  .search-status {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .search-hits {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0;
+  }
+
+  .search-hit {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .search-hit a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .search-hit a:hover {
+    text-decoration: underline;
+  }
+
+  .search-excerpt {
+    margin: 0.35rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .search-excerpt mark {
+    background: color-mix(in oklab, var(--accent) 22%, transparent);
+    color: var(--fg);
+    border-radius: 3px;
+    padding: 0 0.15em;
+  }
+
+  .search-empty {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+  }
+
+  .search-empty .search-none {
+    font-weight: 650;
+    margin: 0 0 0.35rem;
+  }
+
+  .search-empty p {
+    margin: 0.35rem 0;
+  }
+
+  .search-note {
+    background: color-mix(in oklab, var(--accent) 8%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent) 35%, var(--border));
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+  }
+</style>
