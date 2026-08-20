@@ -2,13 +2,13 @@ id = "alibaba/qwen3-8-27b"
 name = "Qwen3.8 27B"
 family = "qwen3"
 lab = "alibaba"
-release_date = ""
+release_date = "2026-08-14"
 retired_date = ""
 knowledge_cutoff = ""
 open_weights = true
 hf_repo = ""
 license = ""
-description = "Dense 27B with hybrid thinking, 262K context, vision input."
+description = "Dense 27B with hybrid thinking, 262K context, vision input. Release date per third-party reporting."
 aliases = ["Qwen/Qwen3.8-27B"]
 [modalities]
 input = ["text", "image"]
