@@ -1,0 +1,23 @@
+model = "anthropic/claude-opus-5"
+wire_id = "claude-opus-5"
+endpoint = "messages"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "adaptive"
+notes = "Reasoning follows the upstream wire format on this surface; cloned from Anthropic's native offering. opus-5/sonnet-5 accept thinking.type disabled only at effort ≤ high; effort changes invalidate prompt-cache breakpoints."
+returns = "thinking_blocks"
+must_round_trip = "signature"
+incompatible_with = ["temperature", "top_p", "top_k", "prefill"]
+
+[reasoning.effort]
+param = "output_config.effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "high"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-08-19"

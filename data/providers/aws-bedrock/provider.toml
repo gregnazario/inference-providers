@@ -39,5 +39,5 @@ protocol = "anthropic-messages"
 auth = "sigv4"
 
 [[quirks]]
-text = "Cross-region inference profiles prefix model IDs with us./eu./apac./global. — e.g. us.anthropic.claude-sonnet-4-6. Streaming required when max_tokens > 21,333 with thinking."
+text = "Cross-region inference profiles prefix model IDs with us./eu./apac./global. — e.g. us.anthropic.claude-sonnet-5. Streaming required when max_tokens > 21,333 with thinking."
 docs = "https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html"

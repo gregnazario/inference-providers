@@ -1,0 +1,15 @@
+id = "anthropic/claude-sonnet-5"
+name = "Claude Sonnet 5"
+family = "claude"
+lab = "anthropic"
+release_date = "2026-06-30"
+retired_date = ""
+knowledge_cutoff = "2026-01-31"
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Mainstream 5-series; adaptive thinking; $2/$10 pricing made permanent 2026-08-10."
+aliases = []
+[modalities]
+input = ["text", "image"]
+output = ["text"]

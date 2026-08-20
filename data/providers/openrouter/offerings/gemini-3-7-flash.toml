@@ -1,0 +1,22 @@
+model = "google/gemini-3-7-flash"
+wire_id = "google/gemini-3.7-flash"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+notes = "minimal thinking level errors upstream; thinking cannot be disabled (mandatory)."
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-19"

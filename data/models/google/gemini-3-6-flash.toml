@@ -1,0 +1,15 @@
+id = "google/gemini-3-6-flash"
+name = "Gemini 3.6 Flash"
+family = "gemini"
+lab = "google"
+release_date = "2026-07-21"
+retired_date = ""
+knowledge_cutoff = "2026-03-31"
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Intro pricing (50% off) through 2026-12-31."
+aliases = []
+[modalities]
+input = ["text", "image"]
+output = ["text"]

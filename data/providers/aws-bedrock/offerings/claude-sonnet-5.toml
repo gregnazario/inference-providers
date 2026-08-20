@@ -1,0 +1,31 @@
+model = "anthropic/claude-sonnet-5"
+wire_id = "anthropic.claude-sonnet-5"
+endpoint = "invoke-anthropic"
+status = "ga"
+status_date = ""
+
+[features]
+vision = true
+
+[limits]
+context = 1_000_000
+output = 128_000
+source = { url = "https://aws.amazon.com/bedrock/claude/", verified = "2026-08-19" }
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "adaptive"
+notes = "Adaptive thinking clone of the native sonnet-5 offering. thinking.type disabled→400 on fable-5; opus-5/sonnet-5 accept disabled only at effort ≤ high; enabled+budget_tokens→400 on all 5-series; effort changes invalidate prompt-cache breakpoints. Bedrock 5-series IDs carry no -v1:0 suffix; mantle Messages endpoint exists at bedrock-mantle.{region}.api.aws/anthropic/v1/messages."
+returns = "thinking_blocks"
+must_round_trip = "signature"
+incompatible_with = ["temperature", "top_p", "top_k", "prefill"]
+
+[reasoning.effort]
+param = "output_config.effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "high"
+
+[reasoning.source]
+url = "https://docs.aws.amazon.com/bedrock/latest/userguide/claude-messages-extended-thinking.html"
+verified = "2026-08-19"

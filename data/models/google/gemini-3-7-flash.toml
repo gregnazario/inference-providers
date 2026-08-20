@@ -1,0 +1,15 @@
+id = "google/gemini-3-7-flash"
+name = "Gemini 3.7 Flash"
+family = "gemini"
+lab = "google"
+release_date = "2026-08-13"
+retired_date = ""
+knowledge_cutoff = "2026-03-31"
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Flash flagship; minimal thinking level returns an error."
+aliases = []
+[modalities]
+input = ["text", "image"]
+output = ["text"]

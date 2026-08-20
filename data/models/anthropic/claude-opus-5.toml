@@ -1,0 +1,15 @@
+id = "anthropic/claude-opus-5"
+name = "Claude Opus 5"
+family = "claude"
+lab = "anthropic"
+release_date = "2026-07-24"
+retired_date = ""
+knowledge_cutoff = "2026-05-31"
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Frontier Opus; adaptive thinking (output_config.effort, default high); disabling accepted only at effort up to high."
+aliases = []
+[modalities]
+input = ["text", "image"]
+output = ["text"]
