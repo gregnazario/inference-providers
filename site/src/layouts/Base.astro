@@ -361,6 +361,48 @@ const nav = [
     background: color-mix(in oklab, var(--fg) 4%, transparent);
   }
 
+  /* Models tables whose provider popovers must escape the wrapper: the
+     wrapper stops clipping (overflow-x scroll would cut the popovers off),
+     and the rounded corners are held by radii on the corner th/td cells.
+     Narrow screens keep the scrollable wrapper — the popover then becomes
+     horizontally scrollable-to instead of clipped or breaking the page. */
+  .table-wrap--open {
+    overflow: visible;
+  }
+
+  @media (max-width: 50rem) {
+    .table-wrap--open {
+      overflow-x: auto;
+    }
+  }
+
+  .table-wrap--open thead th:first-child {
+    border-top-left-radius: 9px;
+  }
+
+  .table-wrap--open thead th:last-child {
+    border-top-right-radius: 9px;
+  }
+
+  .table-wrap--open tbody tr:last-child td:first-child,
+  .table-wrap--open tbody tr:last-child th:first-child {
+    border-bottom-left-radius: 9px;
+  }
+
+  .table-wrap--open tbody tr:last-child td:last-child,
+  .table-wrap--open tbody tr:last-child th:last-child {
+    border-bottom-right-radius: 9px;
+  }
+
+  /* The hover wash paints through the cells so the rounded corners hold. */
+  .table-wrap--open tbody tr:hover {
+    background: none;
+  }
+
+  .table-wrap--open tbody tr:hover td {
+    background: color-mix(in oklab, var(--fg) 4%, transparent);
+  }
+
   /* ---------- code ---------- */
   code,
   pre,
@@ -442,6 +484,63 @@ const nav = [
 
   details pre {
     margin: 0.75rem 0 0.25rem;
+  }
+
+  /* ---------- providers popover (models tables) ---------- */
+  .prov-pop {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Compact count chip; inherits the collapsible summary look above. */
+  .prov-pop > summary {
+    padding: 0.05rem 0.6rem;
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .prov-pop > div {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 0.4rem);
+    z-index: 30;
+    /* 12rem keeps the popover inside the viewport when opened from the
+       rightmost columns at the container width. */
+    min-width: 12rem;
+    max-width: 24rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 0.65rem 0.85rem;
+  }
+
+  .prov-item {
+    margin: 0 0 0.45rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .prov-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .prov-times {
+    margin-left: 0.4rem;
+    font-size: 0.72rem;
+    padding: 0.05rem 0.45rem;
+  }
+
+  .prov-wire {
+    display: block;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    overflow-wrap: anywhere;
+  }
+
+  .prov-none {
+    color: var(--muted);
   }
 
   /* ---------- search ---------- */

@@ -1,0 +1,30 @@
+---
+import type { ProviderRef } from "../lib/modelRows"
+
+interface Props {
+  /** Site base URL, for provider links. */
+  base: string
+  providers: ProviderRef[]
+}
+
+const { base, providers } = Astro.props
+---
+
+{
+  providers.length === 0 ? (
+    <span class="prov-none">—</span>
+  ) : (
+    <details class="prov-pop">
+      <summary>{providers.length}</summary>
+      <div>
+        {providers.map((p) => (
+          <p class="prov-item">
+            <a href={`${base}providers/${p.id}/`}>{p.name}</a>
+            {p.endpoints > 1 && <span class="chip chip-none prov-times">{`×${p.endpoints}`}</span>}
+            <small class="prov-wire">{p.wireIds.join("  ")}</small>
+          </p>
+        ))}
+      </div>
+    </details>
+  )
+}
