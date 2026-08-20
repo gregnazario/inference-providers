@@ -1,0 +1,15 @@
+id = "anthropic/claude-fable-5"
+name = "Claude Fable 5"
+family = "claude"
+lab = "anthropic"
+release_date = "2026-06-09"
+retired_date = ""
+knowledge_cutoff = "2026-01-31"
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Top tier for long-horizon reasoning (2x Opus pricing); thinking cannot be disabled; mandatory 30-day retention; refusals return stop_reason refusal."
+aliases = []
+[modalities]
+input = ["text", "image"]
+output = ["text"]

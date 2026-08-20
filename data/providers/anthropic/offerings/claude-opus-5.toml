@@ -1,0 +1,36 @@
+model = "anthropic/claude-opus-5"
+wire_id = "claude-opus-5"
+endpoint = "v1-messages"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 5.0
+output = 25.0
+cache_read = 0.5
+cache_write = 6.25
+free = false
+source = { url = "https://platform.claude.com/docs/en/docs/about-claude/models", verified = "2026-08-19" }
+
+[limits]
+context = 1_000_000
+output = 128_000
+source = { url = "https://www.anthropic.com/news/claude-opus-5", verified = "2026-08-19" }
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "adaptive"
+notes = "thinking.type disabled→400 on fable-5 (mandatory=true there); opus-5/sonnet-5 accept disabled only at effort ≤ high; enabled+budget_tokens→400 on all 5-series; effort changes invalidate prompt-cache breakpoints; 300k output via Batch beta header output-300k-2026-03-24 (opus/sonnet)."
+returns = "thinking_blocks"
+must_round_trip = "signature"
+incompatible_with = ["temperature", "top_p", "top_k", "prefill"]
+
+[reasoning.effort]
+param = "output_config.effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "high"
+
+[reasoning.source]
+url = "https://platform.claude.com/docs/en/docs/build-with-claude/adaptive-thinking"
+verified = "2026-08-19"
