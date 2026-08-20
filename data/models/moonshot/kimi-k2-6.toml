@@ -13,3 +13,9 @@ aliases = ["kimi-k2.6"]
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 45
+aa_variant = "reasoning"
+url = "https://artificialanalysis.ai/models/kimi-k2-6"
+verified = "2026-08-20"

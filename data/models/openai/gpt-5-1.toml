@@ -13,3 +13,9 @@ aliases = []
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 37
+aa_variant = "high effort"
+url = "https://artificialanalysis.ai/models/gpt-5-1"
+verified = "2026-08-20"

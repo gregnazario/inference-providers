@@ -13,3 +13,9 @@ aliases = ["MiniMax-M2.7", "minimax-m2.7"]
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 39
+aa_variant = "reasoning"
+url = "https://artificialanalysis.ai/models/minimax-m2-7"
+verified = "2026-08-20"

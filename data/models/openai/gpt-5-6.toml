@@ -13,3 +13,9 @@ aliases = []
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 61
+aa_variant = "Sol variant, max effort"
+url = "https://artificialanalysis.ai/models/gpt-5-6-sol"
+verified = "2026-08-20"

@@ -4,11 +4,16 @@ endpoint = "go-chat-completions"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 262_144
+output = 131_072
+source = { url = "https://www.tencentcloud.com/document/product/1300/80695", verified = "2026-08-20" }
+
 [reasoning]
 style = "adaptive"
 mandatory = false
 default = "on"
-notes = "Reasoning follows the upstream wire format on this surface; Hunyuan Hy3 defaults to no-think with low/high CoT modes — wire params here not documented, verify."
+notes = "Reasoning follows the upstream wire format on this surface; Hunyuan Hy3 defaults to no-think with low/high CoT modes — wire params here not documented, verify. Max input 192k."
 returns = "reasoning_content"
 must_round_trip = ""
 

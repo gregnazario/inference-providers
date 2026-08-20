@@ -13,3 +13,9 @@ aliases = ["grok-4.6"]
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 61
+aa_variant = "high effort"
+url = "https://artificialanalysis.ai/models/grok-4-6"
+verified = "2026-08-20"

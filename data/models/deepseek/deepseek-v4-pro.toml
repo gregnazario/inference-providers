@@ -13,3 +13,9 @@ aliases = ["deepseek-v4-pro-0813"]
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 53
+aa_variant = "V4 Pro 0813, max effort"
+url = "https://artificialanalysis.ai/models/deepseek-v4-pro"
+verified = "2026-08-20"

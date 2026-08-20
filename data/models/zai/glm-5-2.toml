@@ -13,3 +13,9 @@ aliases = ["glm-5.2"]
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 53
+aa_variant = "max"
+url = "https://artificialanalysis.ai/models/glm-5-2"
+verified = "2026-08-20"

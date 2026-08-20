@@ -13,3 +13,9 @@ aliases = ["thinkingmachines/inkling-small"]
 [modalities]
 input = ["text", "image", "audio"]
 output = ["text"]
+
+[ranking]
+aa_index = 41
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/inkling-small"
+verified = "2026-08-20"

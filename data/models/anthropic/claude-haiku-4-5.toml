@@ -13,3 +13,9 @@ aliases = ["claude-haiku-4-5-20251001"]
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 30
+aa_variant = "reasoning"
+url = "https://artificialanalysis.ai/models/claude-4-5-haiku-reasoning"
+verified = "2026-08-20"

@@ -13,3 +13,9 @@ aliases = []
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 27
+aa_variant = "estimated"
+url = "https://artificialanalysis.ai/models/step-3-5-flash"
+verified = "2026-08-20"

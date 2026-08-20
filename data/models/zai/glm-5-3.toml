@@ -13,3 +13,9 @@ aliases = []
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 60
+aa_variant = "max effort"
+url = "https://artificialanalysis.ai/models/glm-5-3"
+verified = "2026-08-20"

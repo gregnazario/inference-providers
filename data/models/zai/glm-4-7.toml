@@ -13,3 +13,9 @@ aliases = ["glm-4.7", "glm-4p7", "GLM-4.7"]
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 34
+aa_variant = "Reasoning"
+url = "https://artificialanalysis.ai/models/glm-4-7"
+verified = "2026-08-20"

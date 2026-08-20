@@ -1,3 +1,4 @@
+import type { Reasoning } from "@inference-providers/schema"
 import type { SdkCatalog } from "@inference-providers/sdk"
 
 type CatalogModel = SdkCatalog["models"][number]
@@ -20,6 +21,8 @@ export type ModelRow = {
   /** Max context / output limits across the offerings that record limits. */
   context: number
   output: number
+  /** Reasoning blocks of every offering, for the derived Reasoning column. */
+  reasonings: Reasoning[]
   /** Unique providers serving the model (a multi-endpoint provider once). */
   providers: ProviderRef[]
 }
@@ -35,7 +38,7 @@ export function modelRows(catalog: SdkCatalog, models: CatalogModel[]): ModelRow
     for (const o of p.offerings) {
       let row = byModel.get(o.model)
       if (!row) {
-        row = { offerings: 0, context: 0, output: 0, providers: [] }
+        row = { offerings: 0, context: 0, output: 0, reasonings: [], providers: [] }
         byModel.set(o.model, row)
       }
       row.offerings += 1
@@ -43,6 +46,7 @@ export function modelRows(catalog: SdkCatalog, models: CatalogModel[]): ModelRow
         if (o.limits.context > row.context) row.context = o.limits.context
         if (o.limits.output != null && o.limits.output > row.output) row.output = o.limits.output
       }
+      row.reasonings.push(o.reasoning)
       let ref = row.providers.find((r) => r.id === p.id)
       if (!ref) {
         ref = { id: p.id, name: p.name, wireIds: [], endpoints: 0 }
@@ -53,10 +57,8 @@ export function modelRows(catalog: SdkCatalog, models: CatalogModel[]): ModelRow
     }
   }
 
+  const empty = { offerings: 0, context: 0, output: 0, reasonings: [] as Reasoning[], providers: [] }
   return models
-    .map((model) => ({
-      model,
-      ...(byModel.get(model.id) ?? { offerings: 0, context: 0, output: 0, providers: [] }),
-    }))
+    .map((model) => ({ model, ...(byModel.get(model.id) ?? empty) }))
     .sort((a, b) => a.model.lab.localeCompare(b.model.lab) || a.model.name.localeCompare(b.model.name))
 }

@@ -13,3 +13,9 @@ aliases = ["muse-glimmer-30b"]
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 35
+aa_variant = "high"
+url = "https://artificialanalysis.ai/models/muse-glimmer-30b"
+verified = "2026-08-20"

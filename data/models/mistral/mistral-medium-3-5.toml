@@ -11,3 +11,9 @@ aliases = ["mistral-medium-3.5"]
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 30
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/mistral-medium-3-5"
+verified = "2026-08-20"

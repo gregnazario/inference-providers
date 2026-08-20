@@ -13,3 +13,9 @@ aliases = ["kimi-k2.7-code"]
 [modalities]
 input = ["text", "image", "video"]
 output = ["text"]
+
+[ranking]
+aa_index = 43
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/kimi-k2-7-code"
+verified = "2026-08-20"

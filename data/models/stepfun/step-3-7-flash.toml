@@ -13,3 +13,9 @@ aliases = ["step-3.7-flash"]
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 31
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/step-3-7-flash"
+verified = "2026-08-20"

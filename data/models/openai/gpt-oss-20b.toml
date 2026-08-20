@@ -13,3 +13,9 @@ aliases = ["gpt-oss-20b"]
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 15
+aa_variant = "high effort"
+url = "https://artificialanalysis.ai/models/gpt-oss-20b"
+verified = "2026-08-20"
