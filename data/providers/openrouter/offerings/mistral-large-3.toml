@@ -1,0 +1,17 @@
+model = "mistral/mistral-large-3"
+wire_id = "mistralai/mistral-large-2512"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "none"
+mandatory = false
+default = "off"
+notes = "No reasoning in OpenRouter supported_parameters for this id; OR id is mistral-large-2512 (Large 3)."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-20"

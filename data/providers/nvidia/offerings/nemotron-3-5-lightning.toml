@@ -1,0 +1,26 @@
+model = "nvidia/nemotron-3-5-lightning"
+wire_id = "nvidia/nemotron-3.5-lightning-30b-a3b"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 1_000_000
+source = { url = "https://docs.api.nvidia.com/nim/reference/nvidia-nemotron-3-5-lightning-30b-a3b", verified = "2026-08-20" }
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "Nemotron-3 family convention is chat_template_kwargs (extra_body); not documented for 3.5 Lightning on the reference page — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "chat_template_kwargs.enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://docs.api.nvidia.com/nim/reference/nvidia-nemotron-3-5-lightning-30b-a3b"
+verified = "2026-08-20"

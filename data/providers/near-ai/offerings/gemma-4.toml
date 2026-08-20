@@ -1,0 +1,29 @@
+model = "google/gemma-4"
+wire_id = "google/gemma-4-31B-it"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.13
+output = 0.40
+cache_read = 0.026
+free = false
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-20" }
+
+[limits]
+context = 262_144
+output = 8_192
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-20" }
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Reasoning listed as a supported feature in NEAR's live model metadata; the control parameter for Gemma is not documented — verify."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://docs.near.ai/cloud/reasoning-models/"
+verified = "2026-08-20"
