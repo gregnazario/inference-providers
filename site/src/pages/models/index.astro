@@ -26,44 +26,76 @@ const rows = modelRows(c, current)
     <a href={`${base}models/archive/`}>View archived models ({archived.length})</a>
   </p>
 
-  <div class="table-wrap table-wrap--open">
-    <table>
+  <div class="table-wrap table-wrap--open" data-enhance>
+    <table
+      data-facets={JSON.stringify([
+        { key: "lab", label: "Lab" },
+        { key: "weights", label: "Weights" },
+      ])}
+    >
       <thead>
         <tr>
-          <th>Model</th>
-          <th>Lab</th>
+          <th data-sort-key="name" data-sort-type="text">Model</th>
+          <th data-sort-key="lab" data-sort-type="text">Lab</th>
           <th>Family</th>
-          <th>Released</th>
-          <th class="num">Context</th>
-          <th class="num">Output</th>
+          <th data-sort-key="release" data-sort-type="date">Released</th>
+          <th class="num" data-sort-key="context" data-sort-type="num">Context</th>
+          <th class="num" data-sort-key="output" data-sort-type="num">Output</th>
           <th>Open weights</th>
-          <th>Providers</th>
-          <th class="num">Offerings</th>
+          <th data-sort-key="providers" data-sort-type="num">Providers</th>
+          <th class="num" data-sort-key="offerings" data-sort-type="num">Offerings</th>
         </tr>
       </thead>
       <tbody>
         {
           rows.map(({ model, ...acc }) => (
-            <tr>
-              <td>
+            <tr
+              data-facet-lab={model.lab}
+              data-facet-weights={
+                model.open_weights === undefined
+                  ? "unknown"
+                  : model.open_weights
+                    ? "open"
+                    : "closed"
+              }
+            >
+              <td data-sort={model.name}>
                 <a href={modelHref(model.id)}>{model.name}</a>
               </td>
-              <td>{model.lab}</td>
+              <td data-sort={model.lab}>{model.lab}</td>
               <td>{model.family}</td>
-              <td>{model.release_date || "—"}</td>
-              <td class="num">{fmtLimit(acc.context)}</td>
-              <td class="num">{fmtLimit(acc.output)}</td>
-              <td>{fmtWeights(model.open_weights)}</td>
-              <td>
+              <td data-sort={model.release_date || ""}>{model.release_date || "—"}</td>
+              <td class="num" data-sort={acc.context > 0 ? String(acc.context) : ""}>
+                {fmtLimit(acc.context)}
+              </td>
+              <td class="num" data-sort={acc.output > 0 ? String(acc.output) : ""}>
+                {fmtLimit(acc.output)}
+              </td>
+              <td
+                data-sort={
+                  model.open_weights === undefined
+                    ? ""
+                    : model.open_weights
+                      ? "1"
+                      : "0"
+                }
+              >
+                {fmtWeights(model.open_weights)}
+              </td>
+              <td data-sort={String(acc.providers.length)}>
                 <ProvidersCell base={base} providers={acc.providers} />
               </td>
-              <td class="num">{acc.offerings}</td>
+              <td class="num" data-sort={String(acc.offerings)}>
+                {acc.offerings}
+              </td>
             </tr>
           ))
         }
       </tbody>
     </table>
   </div>
+
+  <script src="../../scripts/table-enhance.ts"></script>
 
   <p class="footnote">
     Unknown values are shown as —. Context and output limits are the maximum
