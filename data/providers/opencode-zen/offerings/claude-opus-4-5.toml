@@ -4,11 +4,16 @@ endpoint = "messages"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 200_000
+output = 64_000
+source = { url = "https://platform.claude.com/docs/en/docs/about-claude/models/overview", verified = "2026-08-19" }
+
 [reasoning]
 style = "budget"
 mandatory = false
 default = "on"
-notes = "Reasoning follows the upstream wire format on this surface. No native Anthropic catalog offering to clone — shape follows Claude extended thinking; verify against Anthropic docs."
+notes = "Reasoning follows the upstream wire format on this surface. No native Anthropic catalog offering to clone — shape follows Claude extended thinking; verify against Anthropic docs. Limits from Anthropic's official model page."
 returns = "thinking_blocks"
 must_round_trip = "signature"
 incompatible_with = ["temperature", "top_p", "top_k"]

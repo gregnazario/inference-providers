@@ -4,6 +4,11 @@ endpoint = "generate-content"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 1_048_576
+output = 65_536
+source = { url = "https://ai.google.dev/gemini-api/docs/models", verified = "2026-08-19" }
+
 [reasoning]
 style = "budget"
 mandatory = false

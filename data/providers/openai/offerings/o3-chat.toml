@@ -4,6 +4,11 @@ endpoint = "v1-chat-completions"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 200_000
+output = 100_000
+source = { url = "https://developers.openai.com/api/docs/models", verified = "2026-08-19" }
+
 [reasoning]
 style = "effort"
 mandatory = true

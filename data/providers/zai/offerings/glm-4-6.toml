@@ -4,6 +4,10 @@ endpoint = "chat-completions"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 200_000
+source = { url = "https://docs.z.ai/guides/llm/glm-4.6", verified = "2026-08-19" }
+
 [reasoning]
 style = "toggle"
 mandatory = false
