@@ -1,0 +1,27 @@
+model = "cohere/command-a-reasoning"
+wire_id = "command-a-reasoning-08-2025"
+endpoint = "compat-chat-completions"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 262_144
+output = 32_768
+source = { url = "https://docs.cohere.com/docs/models", verified = "2026-08-20" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Compat maps reasoning_effort none|high to the native thinking parameter (budget_tokens on the native v2 API); compat return shape for thinking not documented — verify."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["none", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://docs.cohere.com/docs/command-a-reasoning"
+verified = "2026-08-20"

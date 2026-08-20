@@ -1,0 +1,47 @@
+id = "xiaomi-mimo"
+name = "Xiaomi MiMo"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://mimo.mi.com/docs/en-US/quickstart"
+console = "https://platform.xiaomimimo.com"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["MIMO_API_KEY"]
+getting_credentials = "Create a key at platform.xiaomimimo.com; the api-key: header is also accepted."
+docs = "https://mimo.mi.com/docs/en-US/quickstart"
+
+[[endpoints]]
+id = "chat-completions"
+base_url = "https://api.xiaomimimo.com"
+path = "/v1/chat/completions"
+protocol = "openai-chat"
+
+[[endpoints]]
+id = "messages"
+base_url = "https://api.xiaomimimo.com"
+path = "/v1/messages"
+protocol = "anthropic-messages"
+
+[[endpoints]]
+id = "responses"
+base_url = "https://api.xiaomimimo.com"
+path = "/v1/responses"
+protocol = "openai-responses"
+
+[[quirks]]
+text = "Auth accepts api-key: header or Authorization: Bearer."
+docs = "https://mimo.mi.com/docs/en-US/quickstart"
+
+[[quirks]]
+text = "top_p ignored in thinking mode; reasoning returns in reasoning_content and must be passed back in tool loops."
+docs = "https://mimo.mi.com/docs/en-US/deep-thinking"
+
+[[quirks]]
+text = "Token Plan subscriptions also offered; V2 series retired 2026-06-30; ultraspeed FP4 variant early access."
+docs = "https://mimo.mi.com/docs/en-US/quickstart"

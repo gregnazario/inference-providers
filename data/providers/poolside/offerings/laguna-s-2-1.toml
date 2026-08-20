@@ -1,0 +1,21 @@
+model = "poolside/laguna-s-2-1"
+wire_id = "poolside/laguna-s-2.1"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 1_048_576
+source = { url = "https://docs.poolside.ai", verified = "2026-08-20" }
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "No reasoning parameters documented — verify."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://docs.poolside.ai"
+verified = "2026-08-20"

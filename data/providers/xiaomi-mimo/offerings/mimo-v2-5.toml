@@ -1,0 +1,27 @@
+model = "xiaomi/mimo-v2-5"
+wire_id = "mimo-v2.5"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.14
+output = 0.28
+free = false
+source = { url = "https://mimo.mi.com/docs/en-US/pricing", verified = "2026-08-20" }
+
+[limits]
+context = 1_048_576
+source = { url = "https://mimo.mi.com/docs/en-US/quickstart", verified = "2026-08-20" }
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Deep Thinking mode; toggle parameter not documented — verify."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.source]
+url = "https://mimo.mi.com/docs/en-US/deep-thinking"
+verified = "2026-08-20"
