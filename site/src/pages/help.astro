@@ -158,14 +158,6 @@ const reasoning = buildReasoningParam(offering, {
       <li><span class="chip chip-retired">retired</span> no longer served.</li>
     </ul>
 
-    <h3>The archived banner</h3>
-    <p>
-      <span class="chip chip-none">Archived — released more than 12 months ago</span>{" "}
-      marks models older than the rolling 12-month window (or retired). They
-      move to the <a href={`${base}models/archive/`}>archive</a> for
-      reference; offerings remain in the artifacts. Models with no successor
-      can be grandfathered back into the current list by explicit decision.
-    </p>
   </section>
 
   <section>
@@ -199,10 +191,6 @@ const reasoning = buildReasoningParam(offering, {
       <li>
         Staleness gates: CI fails any fact whose source is older than 180
         days and warns after 90.
-      </li>
-      <li>
-        Archive policy: models older than 12 months (or retired) leave the
-        current lists; the full registry keeps them forever.
       </li>
     </ul>
   </section>

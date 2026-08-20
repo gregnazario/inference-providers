@@ -1,0 +1,27 @@
+model = "deepseek/deepseek-v4-flash"
+wire_id = "deepseek-v4-flash"
+endpoint = "go-chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Reasoning follows the upstream wire format on this surface; cloned from DeepSeek's native offering. Thinking enabled by default, default effort high; native values low/high/max."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "high", "max"]
+default = "high"
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = "disabled"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/go/v1/models"
+verified = "2026-08-19"

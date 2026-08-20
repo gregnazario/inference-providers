@@ -1,0 +1,17 @@
+model = "alibaba/qwen3-6-27b"
+wire_id = "hf:Qwen/Qwen3.6-27B"
+endpoint = "openai-chat"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Reasoning controls are not documented; behavior follows the upstream Qwen chat template — verify before relying."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://dev.synthetic.new/docs/api/models"
+verified = "2026-08-19"

@@ -2,22 +2,19 @@
 import { loadCatalog } from "@inference-providers/sdk"
 import Base from "../../layouts/Base.astro"
 import ReasoningBadge from "../../components/ReasoningBadge.astro"
-import { classify } from "../../lib/freshness"
 
 export function getStaticPaths() {
   const c = loadCatalog()
-  const { archived } = classify(c.models)
   return c.providers.map((p) => ({
     params: { id: p.id },
     props: {
       provider: p,
       modelsById: new Map(c.models.map((m) => [m.id, m])),
-      archivedIds: new Set(archived.map((m) => m.id)),
     },
   }))
 }
 
-const { provider, modelsById, archivedIds } = Astro.props
+const { provider, modelsById } = Astro.props
 const base = import.meta.env.BASE_URL
 
 const modelHref = (modelId: string) => `${base}models/${modelId.replace("/", "-")}/`
@@ -198,15 +195,7 @@ const urlLinks = [
                 <tr>
                   <td>
                     {modelsById.get(o.model) ? (
-                      <>
-                        <a href={modelHref(o.model)}>{o.model}</a>
-                        {archivedIds.has(o.model) && (
-                          <>
-                            {" "}
-                            <span class="chip chip-none">archived</span>
-                          </>
-                        )}
-                      </>
+                      <a href={modelHref(o.model)}>{o.model}</a>
                     ) : (
                       o.model
                     )}

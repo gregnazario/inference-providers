@@ -1,0 +1,17 @@
+model = "meta/llama-3-3-70b"
+wire_id = "meta/llama-3.3-70b-instruct"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "none"
+mandatory = false
+default = "off"
+notes = "Llama 3.3 is not a reasoning model; no reasoning parameter on this surface."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://build.nvidia.com/meta/llama-3_3-70b-instruct"
+verified = "2026-08-19"

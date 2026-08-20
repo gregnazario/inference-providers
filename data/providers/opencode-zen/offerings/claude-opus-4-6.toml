@@ -1,0 +1,17 @@
+model = "anthropic/claude-opus-4-6"
+wire_id = "claude-opus-4-6"
+endpoint = "messages"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "adaptive"
+notes = "Reasoning follows the upstream wire format on this surface; cloned from Anthropic's native offering."
+returns = "thinking_blocks"
+must_round_trip = "signature"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-08-19"

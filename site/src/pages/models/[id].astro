@@ -3,7 +3,6 @@ import { loadCatalog, type SdkCatalog } from "@inference-providers/sdk"
 import Base from "../../layouts/Base.astro"
 import CurlExample from "../../components/CurlExample.astro"
 import ReasoningBadge from "../../components/ReasoningBadge.astro"
-import { isArchived } from "../../lib/freshness"
 
 type CatalogProvider = SdkCatalog["providers"][number]
 type CatalogOffering = CatalogProvider["offerings"][number]
@@ -43,7 +42,6 @@ export function getStaticPaths() {
     params: { id: m.id.replace("/", "-") },
     props: {
       model: m,
-      archived: isArchived(m),
       offerings: (offeringsByModel.get(m.id) ?? [])
         .map(({ provider, offering }): OfferingRow => {
           const endpoint = provider.endpoints.find((e) => e.id === offering.endpoint)
@@ -67,7 +65,7 @@ export function getStaticPaths() {
   }))
 }
 
-const { model, offerings, archived } = Astro.props
+const { model, offerings } = Astro.props
 const base = import.meta.env.BASE_URL
 
 const examples = offerings
@@ -90,13 +88,6 @@ const price = (cost: CatalogOffering["cost"]) => {
   <p>
     by {model.lab} · family {model.family}
   </p>
-  {
-    archived && (
-      <p class="archived-banner">
-        <span class="chip chip-none">Archived — released more than 12 months ago</span>
-      </p>
-    )
-  }
 
   <section>
     <h2>Facts</h2>
@@ -215,10 +206,6 @@ const price = (cost: CatalogOffering["cost"]) => {
 <style>
   .num {
     font-variant-numeric: tabular-nums;
-  }
-
-  .archived-banner {
-    margin: 0 0 1.25rem;
   }
 
   .footnote {

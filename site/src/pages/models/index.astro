@@ -2,12 +2,10 @@
 import { loadCatalog, type SdkCatalog } from "@inference-providers/sdk"
 import Base from "../../layouts/Base.astro"
 import ProvidersCell from "../../components/ProvidersCell.astro"
-import { classify } from "../../lib/freshness"
 import { modelRows } from "../../lib/modelRows"
 
 const c = loadCatalog()
 const base = import.meta.env.BASE_URL
-const { current, archived } = classify(c.models)
 
 const modelHref = (modelId: string) => `${base}models/${modelId.replace("/", "-")}/`
 
@@ -15,15 +13,14 @@ const fmtLimit = (n: number) => (n > 0 ? n.toLocaleString("en-US") : "—")
 const fmtWeights = (openWeights: SdkCatalog["models"][number]["open_weights"]) =>
   openWeights === undefined ? "—" : openWeights ? "yes" : "no"
 
-const rows = modelRows(c, current)
+const rows = modelRows(c, c.models)
 ---
 
 <Base title="Models — inference-providers" active="models" section="models">
   <h1>Models</h1>
   <p>
-    {current.length} current models, rendered from the emitted catalog. Open a
-    model for its facts and every provider offering.{" "}
-    <a href={`${base}models/archive/`}>View archived models ({archived.length})</a>
+    {c.models.length} models, rendered from the emitted catalog. Open a model
+    for its facts and every provider offering.
   </p>
 
   <div class="table-wrap table-wrap--open" data-enhance>

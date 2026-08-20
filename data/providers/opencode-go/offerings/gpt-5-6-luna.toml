@@ -1,0 +1,23 @@
+model = "openai/gpt-5-6"
+wire_id = "gpt-5.6-luna"
+endpoint = "go-responses"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Reasoning follows the upstream wire format on this surface; cloned from OpenAI's native offering. Fast Luna variant."
+returns = "reasoning_summary"
+must_round_trip = "encrypted_content"
+incompatible_with = ["temperature", "top_p"]
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/go/v1/models"
+verified = "2026-08-19"
