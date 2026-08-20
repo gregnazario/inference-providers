@@ -1,0 +1,34 @@
+model = "google/gemini-3-5-flash-lite"
+wire_id = "gemini-3-5-flash-lite"
+endpoint = "generate-content"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.3
+output = 2.5
+cache_read = 0.03
+free = false
+source = { url = "https://cloud.google.com/vertex-ai/generative-ai/pricing", verified = "2026-08-19" }
+
+[limits]
+context = 1_048_576
+output = 65_536
+source = { url = "https://cloud.google.com/vertex-ai/generative-ai/docs/models", verified = "2026-08-19" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Clone of the Gemini API offering; Vertex id — verify. Default minimal; docs recommend medium/high for multi-step subagent work — minimal can terminate prematurely on complex tasks. thinkingLevel replaces thinkingBudget."
+returns = "thought_parts"
+must_round_trip = "thought_signature"
+
+[reasoning.effort]
+param = "generationConfig.thinkingConfig.thinkingLevel"
+values = ["minimal", "low", "medium", "high"]
+default = "minimal"
+
+[reasoning.source]
+url = "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/thinking"
+verified = "2026-08-19"
