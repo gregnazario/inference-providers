@@ -1,5 +1,6 @@
 ---
-import { loadCatalog, type SdkCatalog } from "@inference-providers/sdk"
+import type { SdkCatalog } from "@inference-providers/sdk"
+import { catalog } from "../../lib/catalog"
 import Base from "../../layouts/Base.astro"
 import CurlExample from "../../components/CurlExample.astro"
 import ReasoningBadge from "../../components/ReasoningBadge.astro"
@@ -27,7 +28,7 @@ type OfferingRow = {
 }
 
 export function getStaticPaths() {
-  const c = loadCatalog()
+  const c = catalog
 
   const offeringsByModel = new Map<string, { provider: CatalogProvider; offering: CatalogOffering }[]>()
   for (const p of c.providers) {

@@ -1,8 +1,7 @@
 ---
-import { loadCatalog } from "@inference-providers/sdk"
+import { catalog as c } from "../lib/catalog"
 import Base from "../layouts/Base.astro"
 
-const c = loadCatalog()
 const totalOfferings = c.providers.reduce((n, p) => n + p.offerings.length, 0)
 const base = import.meta.env.BASE_URL
 ---

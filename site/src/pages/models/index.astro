@@ -1,10 +1,10 @@
 ---
-import { loadCatalog, type SdkCatalog } from "@inference-providers/sdk"
+import type { SdkCatalog } from "@inference-providers/sdk"
+import { catalog as c } from "../../lib/catalog"
 import Base from "../../layouts/Base.astro"
 import ProvidersCell from "../../components/ProvidersCell.astro"
 import { modelRows } from "../../lib/modelRows"
 
-const c = loadCatalog()
 const base = import.meta.env.BASE_URL
 
 const modelHref = (modelId: string) => `${base}models/${modelId.replace("/", "-")}/`

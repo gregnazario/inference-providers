@@ -1,10 +1,10 @@
 ---
-import { loadCatalog } from "@inference-providers/sdk"
+import { catalog } from "../../lib/catalog"
 import Base from "../../layouts/Base.astro"
 import ReasoningBadge from "../../components/ReasoningBadge.astro"
 
 export function getStaticPaths() {
-  const c = loadCatalog()
+  const c = catalog
   return c.providers.map((p) => ({
     params: { id: p.id },
     props: {
