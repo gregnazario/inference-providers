@@ -1,0 +1,22 @@
+model = "anthropic/claude-fable-5"
+wire_id = "anthropic/claude-fable-5"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+notes = "thinking cannot be disabled on fable-5; effort none maps to thinking.type disabled which errors upstream."
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high", "xhigh", "max"]
+default = "high"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-19"
