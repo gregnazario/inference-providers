@@ -5,16 +5,19 @@ interface Props {
   title: string
   /** Nav section id highlighted in the header; "" leaves nothing highlighted. */
   active?: string
+  /** Pagefind section filter value for this page (e.g. "providers", "guides"). */
+  section?: string
+  /** Markdown pages deliver their frontmatter under this prop instead. */
+  frontmatter?: { title?: string; active?: string; section?: string }
 }
 
-const { title, active = "" } = Astro.props
+const { title, active = "", section } = Astro.props.frontmatter ?? Astro.props
 const base = import.meta.env.BASE_URL
 
 const nav = [
   { id: "overview", label: "Overview", href: `${base}` },
   { id: "providers", label: "Providers", href: `${base}providers/` },
   { id: "models", label: "Models", href: `${base}models/` },
-  { id: "search", label: "Search", href: `${base}search/` },
   { id: "verify", label: "Verify", href: `${base}verify/` },
   { id: "help", label: "Help", href: `${base}help/` },
   { id: "download", label: "Download", href: `${base}download/` },
@@ -44,10 +47,19 @@ const nav = [
               </a>
             ))
           }
+          <form class="nav-search" action={`${base}search/`} method="get">
+            <input
+              type="search"
+              name="q"
+              placeholder="Search…"
+              aria-label="Search"
+            />
+          </form>
         </nav>
       </div>
     </header>
     <main class="container" data-pagefind-body>
+      {section && <div data-pagefind-filter={`section:${section}`}></div>}
       <slot />
     </main>
     <footer>
@@ -208,6 +220,29 @@ const nav = [
   nav a.active {
     color: var(--link);
     background: color-mix(in oklab, var(--accent) 12%, transparent);
+  }
+
+  /* Header search: a plain GET form — Enter submits to the search page. */
+  .nav-search input {
+    font-family: inherit;
+    font-size: 0.925rem;
+    color: var(--fg);
+    background: color-mix(in oklab, var(--fg) 5%, transparent);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.28rem 0.8rem;
+    width: 10rem;
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease;
+  }
+
+  .nav-search input::placeholder {
+    color: var(--muted);
+  }
+
+  .nav-search input:hover {
+    border-color: var(--accent);
   }
 
   /* ---------- chips ---------- */

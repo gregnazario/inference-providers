@@ -2,6 +2,7 @@
 layout: ../layouts/Base.astro
 title: "Verification — inference-providers"
 active: verify
+section: guides
 ---
 
 # Verification methodology
