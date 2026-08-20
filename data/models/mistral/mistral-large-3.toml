@@ -13,3 +13,9 @@ aliases = ["mistral-large-2512", "mistral-large-3-2512"]
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 16
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/mistral-large-3"
+verified = "2026-08-20"

@@ -13,3 +13,9 @@ aliases = []
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 31
+aa_variant = "estimated"
+url = "https://artificialanalysis.ai/models/o3"
+verified = "2026-08-20"

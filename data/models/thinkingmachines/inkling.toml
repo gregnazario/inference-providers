@@ -13,3 +13,9 @@ aliases = ["thinkingmachines/inkling"]
 [modalities]
 input = ["text", "image", "audio"]
 output = ["text"]
+
+[ranking]
+aa_index = 42
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/inkling"
+verified = "2026-08-20"

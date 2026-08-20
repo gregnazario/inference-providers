@@ -1,6 +1,15 @@
 import { z } from "zod"
+import { IsoDate } from "./common.js"
 
 const dateOrUnknown = z.string().regex(/^(\d{4}-\d{2}-\d{2})?$/, "ISO date or empty string for unknown")
+
+/** Artificial Analysis Intelligence Index ranking for the model. */
+export const RankingSchema = z.object({
+  aa_index: z.number(),
+  aa_variant: z.string().min(1),
+  url: z.string().regex(/^https:\/\//, "must be an https URL"),
+  verified: IsoDate,
+})
 
 export const ModelSchema = z.object({
   id: z.string().regex(/^[a-z0-9][a-z0-9-]*\/[a-z0-9][a-z0-9.-]*$/, "must be lab/model-slug"),
@@ -19,6 +28,7 @@ export const ModelSchema = z.object({
   }),
   aliases: z.array(z.string()).default([]),
   description: z.string(),
+  ranking: RankingSchema.optional(),
 })
 
 export type Model = z.infer<typeof ModelSchema>

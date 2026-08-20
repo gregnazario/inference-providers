@@ -13,3 +13,9 @@ aliases = []
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 42
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/hy3"
+verified = "2026-08-20"

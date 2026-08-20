@@ -13,3 +13,9 @@ aliases = ["Llama-4-Maverick-17B-128E-Instruct-FP8"]
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 14
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/llama-4-maverick"
+verified = "2026-08-20"

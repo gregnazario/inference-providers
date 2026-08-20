@@ -13,3 +13,9 @@ aliases = ["muse-spark-1.2"]
 [modalities]
 input = ["text", "image", "audio", "video"]
 output = ["text"]
+
+[ranking]
+aa_index = 57
+aa_variant = "xhigh effort"
+url = "https://artificialanalysis.ai/models/muse-spark-1-2"
+verified = "2026-08-20"

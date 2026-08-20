@@ -13,3 +13,9 @@ aliases = ["deepseek-v4-flash-0731"]
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 52
+aa_variant = "V4 Flash 0731, max"
+url = "https://artificialanalysis.ai/models/deepseek-v4-flash"
+verified = "2026-08-20"

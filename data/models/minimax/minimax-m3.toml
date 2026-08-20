@@ -13,3 +13,9 @@ aliases = ["MiniMax-M3"]
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 45
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/minimax-m3"
+verified = "2026-08-20"

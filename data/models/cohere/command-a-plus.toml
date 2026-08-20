@@ -13,3 +13,9 @@ aliases = ["command-a-plus-05-2026"]
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 23
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/command-a-plus"
+verified = "2026-08-20"

@@ -13,3 +13,9 @@ aliases = ["gemini-3-pro-preview"]
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 41
+aa_variant = "Gemini 3 Pro Preview (high)"
+url = "https://artificialanalysis.ai/models/gemini-3-pro"
+verified = "2026-08-20"

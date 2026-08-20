@@ -13,3 +13,9 @@ aliases = []
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 63
+aa_variant = "Adaptive Reasoning, Max Effort"
+url = "https://artificialanalysis.ai/models/claude-opus-5"
+verified = "2026-08-20"

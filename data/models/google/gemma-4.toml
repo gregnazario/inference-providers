@@ -13,3 +13,9 @@ aliases = ["gemma-4-31B-it", "gemma4"]
 [modalities]
 input = ["text", "image", "audio", "video"]
 output = ["text"]
+
+[ranking]
+aa_index = 30
+aa_variant = "Gemma 4 31B reasoning"
+url = "https://artificialanalysis.ai/models/gemma-4-31b"
+verified = "2026-08-20"

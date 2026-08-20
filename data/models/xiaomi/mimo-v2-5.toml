@@ -13,3 +13,9 @@ aliases = []
 [modalities]
 input = ["text", "image", "video", "audio"]
 output = ["text"]
+
+[ranking]
+aa_index = 38
+aa_variant = "reasoning, 0424 build"
+url = "https://artificialanalysis.ai/models/mimo-v2-5-0424"
+verified = "2026-08-20"

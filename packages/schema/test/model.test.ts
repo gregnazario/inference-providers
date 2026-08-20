@@ -41,4 +41,49 @@ describe("ModelSchema", () => {
     const r = ModelSchema.parse(valid)
     expect(r.aliases).toEqual([])
   })
+  it("accepts a valid ranking block", () => {
+    const r = ModelSchema.safeParse({
+      ...valid,
+      ranking: {
+        aa_index: 63,
+        aa_variant: "Adaptive Reasoning, Max Effort",
+        url: "https://artificialanalysis.ai/models/claude-opus-5",
+        verified: "2026-08-20",
+      },
+    })
+    expect(r.success).toBe(true)
+  })
+  it("allows models without a ranking block", () => {
+    const r = ModelSchema.safeParse(valid)
+    expect(r.success).toBe(true)
+    expect(r.success && r.data.ranking).toBeUndefined()
+  })
+  it("rejects a ranking block with a missing variant", () => {
+    const r = ModelSchema.safeParse({
+      ...valid,
+      ranking: { aa_index: 63, url: "https://artificialanalysis.ai/models/x", verified: "2026-08-20" },
+    })
+    expect(r.success).toBe(false)
+  })
+  it("rejects a ranking block with an empty variant", () => {
+    const r = ModelSchema.safeParse({
+      ...valid,
+      ranking: { aa_index: 63, aa_variant: "", url: "https://artificialanalysis.ai/models/x", verified: "2026-08-20" },
+    })
+    expect(r.success).toBe(false)
+  })
+  it("rejects a ranking block with a non-https url", () => {
+    const r = ModelSchema.safeParse({
+      ...valid,
+      ranking: { aa_index: 63, aa_variant: "high effort", url: "http://artificialanalysis.ai/models/x", verified: "2026-08-20" },
+    })
+    expect(r.success).toBe(false)
+  })
+  it("rejects a ranking block with a bad verified date", () => {
+    const r = ModelSchema.safeParse({
+      ...valid,
+      ranking: { aa_index: 63, aa_variant: "high effort", url: "https://artificialanalysis.ai/models/x", verified: "2026-8-20" },
+    })
+    expect(r.success).toBe(false)
+  })
 })

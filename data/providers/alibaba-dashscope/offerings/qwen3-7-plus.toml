@@ -4,6 +4,11 @@ endpoint = "compatible-mode-chat"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 1_048_576
+output = 65_536
+source = { url = "https://www.alibabacloud.com/blog/qwen3-7-plus-multimodal-agent-intelligence_603206", verified = "2026-08-20" }
+
 [reasoning]
 style = "toggle"
 mandatory = false

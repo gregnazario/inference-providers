@@ -13,3 +13,9 @@ aliases = ["nemotron-3.5-lightning-30b-a3b"]
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 24
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/nemotron-3-5-lightning"
+verified = "2026-08-20"

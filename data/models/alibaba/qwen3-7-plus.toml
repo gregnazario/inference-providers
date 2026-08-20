@@ -13,3 +13,9 @@ aliases = ["qwen3.7-plus"]
 [modalities]
 input = ["text"]
 output = ["text"]
+
+[ranking]
+aa_index = 39
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/qwen3-7-plus"
+verified = "2026-08-20"

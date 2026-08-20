@@ -4,6 +4,10 @@ endpoint = "chat-completions"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 204_800
+source = { url = "https://platform.minimax.io/docs/guides/text-generation", verified = "2026-08-20" }
+
 [reasoning]
 style = "effort"
 mandatory = true

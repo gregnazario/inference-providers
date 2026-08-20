@@ -13,3 +13,9 @@ aliases = []
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 29
+aa_variant = "Reasoning"
+url = "https://artificialanalysis.ai/models/glm-4-6-reasoning"
+verified = "2026-08-20"

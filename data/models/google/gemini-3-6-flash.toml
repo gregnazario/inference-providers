@@ -13,3 +13,9 @@ aliases = []
 [modalities]
 input = ["text", "image"]
 output = ["text"]
+
+[ranking]
+aa_index = 52
+aa_variant = "base"
+url = "https://artificialanalysis.ai/models/gemini-3-6-flash"
+verified = "2026-08-20"
