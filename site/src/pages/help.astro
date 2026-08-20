@@ -216,7 +216,8 @@ const reasoning = buildReasoningParam(offering, {
         Coding) only work on coding-plan endpoints; Kimi's{" "}
         <code>/anthropic</code> endpoint wants Open Platform keys, never Kimi
         Code keys. Moonshot keys are bound to the console that issued them
-        (platform.kimi.com vs the China console). Baseten reads{" "}
+        (platform.kimi.ai internationally vs the China console,
+        platform.kimi.com). Baseten reads{" "}
         <code>Authorization</code> only — the Anthropic SDK's default{" "}
         <code>x-api-key</code> is ignored, override{" "}
         <code>default_headers</code>.
