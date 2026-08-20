@@ -1,0 +1,15 @@
+id = "poolside/laguna-xs-2-1"
+name = "Laguna XS 2.1"
+family = "laguna"
+lab = "poolside"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "poolside/Laguna-XS-2.1"
+license = ""
+description = "33B/3B MoE, 256K context."
+aliases = []
+[modalities]
+input = ["text"]
+output = ["text"]

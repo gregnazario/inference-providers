@@ -1,0 +1,36 @@
+id = "cohere"
+name = "Cohere"
+kind = "first_party"
+api_surfaces = ["text", "streaming", "embeddings", "rerank"]
+
+[urls]
+docs = "https://docs.cohere.com/docs/models"
+console = "https://dashboard.cohere.com"
+pricing = "https://www.cohere.com/pricing"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["COHERE_API_KEY"]
+getting_credentials = "Create a key at dashboard.cohere.com; the same key works on the native v2 API and the OpenAI-compatibility surface."
+docs = "https://docs.cohere.com/docs/models"
+
+[[endpoints]]
+id = "compat-chat-completions"
+base_url = "https://api.cohere.ai"
+path = "/compatibility/v1/chat/completions"
+protocol = "openai-chat"
+
+[[quirks]]
+text = "Native v2 API at api.cohere.com (different request shape); the OpenAI-compat surface at api.cohere.ai/compatibility/v1 supports chat, embeddings, audio transcriptions — reasoning_effort only none|high there; no store/logit_bias/n."
+docs = "https://docs.cohere.com/v2"
+
+[[quirks]]
+text = "North is Cohere's enterprise agentic platform (not a model API). Embed/Rerank billed via Model Vault instances."
+docs = "https://www.cohere.com/north"
+
+[[quirks]]
+text = "Aya vision/translate variants and 8B Ayas retired 2026-04-04."
+docs = "https://docs.cohere.com/release-notes"

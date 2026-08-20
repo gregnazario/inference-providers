@@ -1,0 +1,15 @@
+id = "xiaomi/mimo-v2-5-pro"
+name = "MiMo V2.5 Pro"
+family = "mimo"
+lab = "xiaomi"
+release_date = "2026-04-23"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "XiaomiMiMo/MiMo-V2.5-Pro"
+license = "MIT"
+description = "1.02T/42B-active MoE agentic flagship, 1M context; GDPVal-AA #1 open-source; ultraspeed FP4 variant >1000 tok/s early access."
+aliases = []
+[modalities]
+input = ["text"]
+output = ["text"]

@@ -1,0 +1,22 @@
+model = "nvidia/nemotron-3-5-lightning"
+wire_id = "nvidia/nemotron-3.5-lightning"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+notes = "OR id drops the -30b-a3b size suffix."
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-20"

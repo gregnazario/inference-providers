@@ -1,0 +1,15 @@
+id = "poolside/laguna-s-2-1"
+name = "Laguna S 2.1"
+family = "laguna"
+lab = "poolside"
+release_date = ""
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "poolside/Laguna-S-2.1"
+license = ""
+description = "118B/8B MoE, 1M context, 30T tokens; agentic coding."
+aliases = []
+[modalities]
+input = ["text"]
+output = ["text"]

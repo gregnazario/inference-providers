@@ -1,0 +1,219 @@
+- generic [active] [ref=f5e1]:
+  - banner [ref=f5e2]:
+    - generic [ref=f5e3]:
+      - link "inference-providers" [ref=f5e4] [cursor=pointer]:
+        - /url: /inference-providers/
+      - navigation [ref=f5e5]:
+        - link "Overview" [ref=f5e6] [cursor=pointer]:
+          - /url: /inference-providers/
+        - link "Providers" [ref=f5e7] [cursor=pointer]:
+          - /url: /inference-providers/providers/
+        - link "Models" [ref=f5e8] [cursor=pointer]:
+          - /url: /inference-providers/models/
+        - link "Verify" [ref=f5e9] [cursor=pointer]:
+          - /url: /inference-providers/verify/
+        - link "Help" [ref=f5e10] [cursor=pointer]:
+          - /url: /inference-providers/help/
+        - link "Download" [ref=f5e11] [cursor=pointer]:
+          - /url: /inference-providers/download/
+        - searchbox "Search" [ref=f5e13]
+  - main [ref=f5e14]:
+    - heading "inference-providers" [level=1] [ref=f5e15]
+    - paragraph [ref=f5e16]: A provenance-tracked registry of AI model providers — auth, endpoints, and reasoning-parameter specs for every surface. All pages are generated from the emitted catalog; nothing here is hand-maintained.
+    - paragraph [ref=f5e17]: 38 current models · 30 providers · 98 offerings
+    - paragraph [ref=f5e18]:
+      - text: 7 archived —
+      - link "view archive" [ref=f5e19] [cursor=pointer]:
+        - /url: /inference-providers/models/archive/
+    - heading "Providers" [level=2] [ref=f5e20]
+    - list [ref=f5e21]:
+      - listitem [ref=f5e22]:
+        - 'link "Alibaba Model Studio (DashScope) first_party auth: api_key" [ref=f5e23] [cursor=pointer]':
+          - /url: /inference-providers/providers/alibaba-dashscope/
+          - generic [ref=f5e24]: Alibaba Model Studio (DashScope)
+          - generic [ref=f5e25]: first_party
+          - generic [ref=f5e26]: "auth: api_key"
+      - listitem [ref=f5e27]:
+        - 'link "Alibaba Token Plan subscription auth: api_key" [ref=f5e28] [cursor=pointer]':
+          - /url: /inference-providers/providers/alibaba-token-plan/
+          - generic [ref=f5e29]: Alibaba Token Plan
+          - generic [ref=f5e30]: subscription
+          - generic [ref=f5e31]: "auth: api_key"
+      - listitem [ref=f5e32]:
+        - 'link "Anthropic first_party auth: api_key" [ref=f5e33] [cursor=pointer]':
+          - /url: /inference-providers/providers/anthropic/
+          - generic [ref=f5e34]: Anthropic
+          - generic [ref=f5e35]: first_party
+          - generic [ref=f5e36]: "auth: api_key"
+      - listitem [ref=f5e37]:
+        - 'link "AWS Bedrock cloud_hosted auth: api_key" [ref=f5e38] [cursor=pointer]':
+          - /url: /inference-providers/providers/aws-bedrock/
+          - generic [ref=f5e39]: AWS Bedrock
+          - generic [ref=f5e40]: cloud_hosted
+          - generic [ref=f5e41]: "auth: api_key"
+      - listitem [ref=f5e42]:
+        - 'link "Azure AI Foundry cloud_hosted auth: api_key" [ref=f5e43] [cursor=pointer]':
+          - /url: /inference-providers/providers/azure-foundry/
+          - generic [ref=f5e44]: Azure AI Foundry
+          - generic [ref=f5e45]: cloud_hosted
+          - generic [ref=f5e46]: "auth: api_key"
+      - listitem [ref=f5e47]:
+        - 'link "Baseten first_party auth: api_key" [ref=f5e48] [cursor=pointer]':
+          - /url: /inference-providers/providers/baseten/
+          - generic [ref=f5e49]: Baseten
+          - generic [ref=f5e50]: first_party
+          - generic [ref=f5e51]: "auth: api_key"
+      - listitem [ref=f5e52]:
+        - 'link "DeepSeek first_party auth: api_key" [ref=f5e53] [cursor=pointer]':
+          - /url: /inference-providers/providers/deepseek/
+          - generic [ref=f5e54]: DeepSeek
+          - generic [ref=f5e55]: first_party
+          - generic [ref=f5e56]: "auth: api_key"
+      - listitem [ref=f5e57]:
+        - 'link "Fireworks AI first_party auth: api_key" [ref=f5e58] [cursor=pointer]':
+          - /url: /inference-providers/providers/fireworks-ai/
+          - generic [ref=f5e59]: Fireworks AI
+          - generic [ref=f5e60]: first_party
+          - generic [ref=f5e61]: "auth: api_key"
+      - listitem [ref=f5e62]:
+        - 'link "Google Gemini API first_party auth: api_key" [ref=f5e63] [cursor=pointer]':
+          - /url: /inference-providers/providers/google-gemini/
+          - generic [ref=f5e64]: Google Gemini API
+          - generic [ref=f5e65]: first_party
+          - generic [ref=f5e66]: "auth: api_key"
+      - listitem [ref=f5e67]:
+        - 'link "Google Vertex AI cloud_hosted auth: adc" [ref=f5e68] [cursor=pointer]':
+          - /url: /inference-providers/providers/google-vertex/
+          - generic [ref=f5e69]: Google Vertex AI
+          - generic [ref=f5e70]: cloud_hosted
+          - generic [ref=f5e71]: "auth: adc"
+      - listitem [ref=f5e72]:
+        - 'link "Hetzner Inference (Experiments) first_party auth: api_key" [ref=f5e73] [cursor=pointer]':
+          - /url: /inference-providers/providers/hetzner/
+          - generic [ref=f5e74]: Hetzner Inference (Experiments)
+          - generic [ref=f5e75]: first_party
+          - generic [ref=f5e76]: "auth: api_key"
+      - listitem [ref=f5e77]:
+        - 'link "IO Intelligence (io.net) first_party auth: api_key" [ref=f5e78] [cursor=pointer]':
+          - /url: /inference-providers/providers/io-intelligence/
+          - generic [ref=f5e79]: IO Intelligence (io.net)
+          - generic [ref=f5e80]: first_party
+          - generic [ref=f5e81]: "auth: api_key"
+      - listitem [ref=f5e82]:
+        - 'link "Kimi for Coding subscription auth: api_key" [ref=f5e83] [cursor=pointer]':
+          - /url: /inference-providers/providers/kimi-coding/
+          - generic [ref=f5e84]: Kimi for Coding
+          - generic [ref=f5e85]: subscription
+          - generic [ref=f5e86]: "auth: api_key"
+      - listitem [ref=f5e87]:
+        - 'link "Meta Model API first_party auth: api_key" [ref=f5e88] [cursor=pointer]':
+          - /url: /inference-providers/providers/meta/
+          - generic [ref=f5e89]: Meta Model API
+          - generic [ref=f5e90]: first_party
+          - generic [ref=f5e91]: "auth: api_key"
+      - listitem [ref=f5e92]:
+        - 'link "MiniMax first_party auth: api_key" [ref=f5e93] [cursor=pointer]':
+          - /url: /inference-providers/providers/minimax/
+          - generic [ref=f5e94]: MiniMax
+          - generic [ref=f5e95]: first_party
+          - generic [ref=f5e96]: "auth: api_key"
+      - listitem [ref=f5e97]:
+        - 'link "MiniMax Token Plan subscription auth: api_key" [ref=f5e98] [cursor=pointer]':
+          - /url: /inference-providers/providers/minimax-token-plan/
+          - generic [ref=f5e99]: MiniMax Token Plan
+          - generic [ref=f5e100]: subscription
+          - generic [ref=f5e101]: "auth: api_key"
+      - listitem [ref=f5e102]:
+        - 'link "Mistral first_party auth: api_key" [ref=f5e103] [cursor=pointer]':
+          - /url: /inference-providers/providers/mistral/
+          - generic [ref=f5e104]: Mistral
+          - generic [ref=f5e105]: first_party
+          - generic [ref=f5e106]: "auth: api_key"
+      - listitem [ref=f5e107]:
+        - 'link "Moonshot Kimi first_party auth: api_key" [ref=f5e108] [cursor=pointer]':
+          - /url: /inference-providers/providers/moonshot/
+          - generic [ref=f5e109]: Moonshot Kimi
+          - generic [ref=f5e110]: first_party
+          - generic [ref=f5e111]: "auth: api_key"
+      - listitem [ref=f5e112]:
+        - 'link "NEAR AI Cloud first_party auth: api_key" [ref=f5e113] [cursor=pointer]':
+          - /url: /inference-providers/providers/near-ai/
+          - generic [ref=f5e114]: NEAR AI Cloud
+          - generic [ref=f5e115]: first_party
+          - generic [ref=f5e116]: "auth: api_key"
+      - listitem [ref=f5e117]:
+        - 'link "NVIDIA NIM API first_party auth: api_key" [ref=f5e118] [cursor=pointer]':
+          - /url: /inference-providers/providers/nvidia/
+          - generic [ref=f5e119]: NVIDIA NIM API
+          - generic [ref=f5e120]: first_party
+          - generic [ref=f5e121]: "auth: api_key"
+      - listitem [ref=f5e122]:
+        - 'link "Ollama Cloud first_party auth: api_key" [ref=f5e123] [cursor=pointer]':
+          - /url: /inference-providers/providers/ollama-cloud/
+          - generic [ref=f5e124]: Ollama Cloud
+          - generic [ref=f5e125]: first_party
+          - generic [ref=f5e126]: "auth: api_key"
+      - listitem [ref=f5e127]:
+        - 'link "OpenAI first_party auth: api_key" [ref=f5e128] [cursor=pointer]':
+          - /url: /inference-providers/providers/openai/
+          - generic [ref=f5e129]: OpenAI
+          - generic [ref=f5e130]: first_party
+          - generic [ref=f5e131]: "auth: api_key"
+      - listitem [ref=f5e132]:
+        - 'link "OpenCode Go subscription auth: api_key" [ref=f5e133] [cursor=pointer]':
+          - /url: /inference-providers/providers/opencode-go/
+          - generic [ref=f5e134]: OpenCode Go
+          - generic [ref=f5e135]: subscription
+          - generic [ref=f5e136]: "auth: api_key"
+      - listitem [ref=f5e137]:
+        - 'link "OpenCode Zen aggregator auth: api_key" [ref=f5e138] [cursor=pointer]':
+          - /url: /inference-providers/providers/opencode-zen/
+          - generic [ref=f5e139]: OpenCode Zen
+          - generic [ref=f5e140]: aggregator
+          - generic [ref=f5e141]: "auth: api_key"
+      - listitem [ref=f5e142]:
+        - 'link "OpenRouter aggregator auth: api_key" [ref=f5e143] [cursor=pointer]':
+          - /url: /inference-providers/providers/openrouter/
+          - generic [ref=f5e144]: OpenRouter
+          - generic [ref=f5e145]: aggregator
+          - generic [ref=f5e146]: "auth: api_key"
+      - listitem [ref=f5e147]:
+        - 'link "Qwen Coding Plan subscription auth: api_key" [ref=f5e148] [cursor=pointer]':
+          - /url: /inference-providers/providers/qwen-coding-plan/
+          - generic [ref=f5e149]: Qwen Coding Plan
+          - generic [ref=f5e150]: subscription
+          - generic [ref=f5e151]: "auth: api_key"
+      - listitem [ref=f5e152]:
+        - 'link "Synthetic subscription auth: api_key" [ref=f5e153] [cursor=pointer]':
+          - /url: /inference-providers/providers/synthetic/
+          - generic [ref=f5e154]: Synthetic
+          - generic [ref=f5e155]: subscription
+          - generic [ref=f5e156]: "auth: api_key"
+      - listitem [ref=f5e157]:
+        - 'link "xAI first_party auth: api_key" [ref=f5e158] [cursor=pointer]':
+          - /url: /inference-providers/providers/xai/
+          - generic [ref=f5e159]: xAI
+          - generic [ref=f5e160]: first_party
+          - generic [ref=f5e161]: "auth: api_key"
+      - listitem [ref=f5e162]:
+        - 'link "Z.ai first_party auth: api_key" [ref=f5e163] [cursor=pointer]':
+          - /url: /inference-providers/providers/zai/
+          - generic [ref=f5e164]: Z.ai
+          - generic [ref=f5e165]: first_party
+          - generic [ref=f5e166]: "auth: api_key"
+      - listitem [ref=f5e167]:
+        - 'link "Z.ai GLM Coding Plan subscription auth: api_key" [ref=f5e168] [cursor=pointer]':
+          - /url: /inference-providers/providers/zai-coding-plan/
+          - generic [ref=f5e169]: Z.ai GLM Coding Plan
+          - generic [ref=f5e170]: subscription
+          - generic [ref=f5e171]: "auth: api_key"
+    - paragraph [ref=f5e172]:
+      - text: Browse the
+      - link "full model list" [ref=f5e173] [cursor=pointer]:
+        - /url: /inference-providers/models/
+      - text: or
+      - link "download the catalog" [ref=f5e174] [cursor=pointer]:
+        - /url: /inference-providers/download/
+      - text: .
+  - contentinfo [ref=f5e175]:
+    - paragraph [ref=f5e177]: Every fact carries a source URL and verification date — see the repository.

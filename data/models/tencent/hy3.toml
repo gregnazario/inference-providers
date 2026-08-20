@@ -1,0 +1,15 @@
+id = "tencent/hy3"
+name = "Hy3"
+family = "hy3"
+lab = "tencent"
+release_date = "2026-07-06"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "tencent/Hy3"
+license = ""
+description = "Tencent Hunyuan 295B/21B-active MoE, 256K context, 3.8B MTP layer; default no-think plus low/high CoT modes; agentic/coding focus. GA 2026-07-06; preview shipped 2026-04-24."
+aliases = []
+[modalities]
+input = ["text"]
+output = ["text"]

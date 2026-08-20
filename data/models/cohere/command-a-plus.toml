@@ -1,0 +1,15 @@
+id = "cohere/command-a-plus"
+name = "Command A+ (05-2026)"
+family = "command"
+lab = "cohere"
+release_date = "2026-05-20"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = "Apache-2.0"
+description = "218B/25B MoE, vision, 48 languages, Apache 2.0; free until rate limits on Cohere's platform."
+aliases = ["command-a-plus-05-2026"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

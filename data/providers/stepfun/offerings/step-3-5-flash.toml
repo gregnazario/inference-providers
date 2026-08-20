@@ -1,0 +1,21 @@
+model = "stepfun/step-3-5-flash"
+wire_id = "step-3.5-flash"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 262_144
+source = { url = "https://static.stepfun.com/blog/step-3.5-flash/", verified = "2026-08-20" }
+
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Reasoning incl. Parallel Thinking; wire params not enumerated in EN docs — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://static.stepfun.com/blog/step-3.5-flash/"
+verified = "2026-08-20"

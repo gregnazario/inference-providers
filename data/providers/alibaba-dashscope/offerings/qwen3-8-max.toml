@@ -1,0 +1,33 @@
+model = "alibaba/qwen3-8-max"
+wire_id = "qwen3.8-max"
+endpoint = "compatible-mode-chat"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 2.00
+output = 6.00
+cache_read = 0.25
+free = false
+source = { url = "https://qwen.ai/blog?id=qwen3.8", verified = "2026-08-20" }
+
+[limits]
+context = 1_048_576
+source = { url = "https://qwen.ai/blog?id=qwen3.8", verified = "2026-08-20" }
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "Follows the Qwen enable_thinking convention; not documented for qwen3.8-max specifically — verify."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.toggle]
+param = "enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://www.alibabacloud.com/help/en/model-studio/deep-thinking"
+verified = "2026-08-20"

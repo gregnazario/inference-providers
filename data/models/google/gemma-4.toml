@@ -1,0 +1,15 @@
+id = "google/gemma-4"
+name = "Gemma 4"
+family = "gemma"
+lab = "google"
+release_date = "2026-03-31"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = ""
+description = "Open-weight multimodal family (E2B/E4B/26B-A4B/31B dense), 256K context; MTP variants 2026-04-16, 12B Unified 2026-06-03; now served on the Gemini API."
+aliases = ["gemma-4-31B-it", "gemma4"]
+[modalities]
+input = ["text", "image", "audio", "video"]
+output = ["text"]

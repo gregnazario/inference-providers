@@ -1,0 +1,27 @@
+id = "poolside"
+name = "poolside"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://docs.poolside.ai"
+console = "https://platform.poolside.ai"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["POOLSIDE_API_KEY"]
+getting_credentials = "Create a key at platform.poolside.ai."
+docs = "https://docs.poolside.ai"
+
+[[endpoints]]
+id = "chat-completions"
+base_url = "https://inference.poolside.ai"
+path = "/v1/chat/completions"
+protocol = "openai-chat"
+
+[[quirks]]
+text = "Free for a limited time; model ids prefixed poolside/."
+docs = "https://docs.poolside.ai"

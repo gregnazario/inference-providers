@@ -1,0 +1,567 @@
+- generic [active] [ref=f7e1]:
+  - banner [ref=f7e2]:
+    - generic [ref=f7e3]:
+      - link "inference-providers" [ref=f7e4] [cursor=pointer]:
+        - /url: /inference-providers/
+      - navigation [ref=f7e5]:
+        - link "Overview" [ref=f7e6] [cursor=pointer]:
+          - /url: /inference-providers/
+        - link "Providers" [ref=f7e7] [cursor=pointer]:
+          - /url: /inference-providers/providers/
+        - link "Models" [ref=f7e8] [cursor=pointer]:
+          - /url: /inference-providers/models/
+        - link "Verify" [ref=f7e9] [cursor=pointer]:
+          - /url: /inference-providers/verify/
+        - link "Help" [ref=f7e10] [cursor=pointer]:
+          - /url: /inference-providers/help/
+        - link "Download" [ref=f7e11] [cursor=pointer]:
+          - /url: /inference-providers/download/
+        - searchbox "Search" [ref=f7e13]
+  - main [ref=f7e14]:
+    - heading "Models" [level=1] [ref=f7e15]
+    - paragraph [ref=f7e16]:
+      - text: 38 current models, rendered from the emitted catalog. Open a model for its facts and every provider offering.
+      - link "View archived models (7)" [ref=f7e17] [cursor=pointer]:
+        - /url: /inference-providers/models/archive/
+    - table [ref=f7e19]:
+      - rowgroup [ref=f7e20]:
+        - row [ref=f7e21]:
+          - columnheader "Model" [ref=f7e22]
+          - columnheader "Lab" [ref=f7e23]
+          - columnheader "Family" [ref=f7e24]
+          - columnheader "Released" [ref=f7e25]
+          - columnheader "Context" [ref=f7e26]
+          - columnheader "Output" [ref=f7e27]
+          - columnheader "Open weights" [ref=f7e28]
+          - columnheader "Providers" [ref=f7e29]
+          - columnheader "Offerings" [ref=f7e30]
+      - rowgroup [ref=f7e31]:
+        - row [ref=f7e32]:
+          - cell [ref=f7e33]:
+            - link "Qwen3 Max" [ref=f7e34] [cursor=pointer]:
+              - /url: /inference-providers/models/alibaba-qwen3-max/
+          - cell "alibaba" [ref=f7e35]
+          - cell "qwen3" [ref=f7e36]
+          - cell "—" [ref=f7e37]
+          - cell "—" [ref=f7e38]
+          - cell "—" [ref=f7e39]
+          - cell "no" [ref=f7e40]
+          - cell [ref=f7e41]:
+            - group [ref=f7e42]:
+              - generic "1 +" [ref=f7e43] [cursor=pointer]
+          - cell "1" [ref=f7e44]
+        - row [ref=f7e45]:
+          - cell [ref=f7e46]:
+            - link "Qwen3.5" [ref=f7e47] [cursor=pointer]:
+              - /url: /inference-providers/models/alibaba-qwen3-5/
+          - cell "alibaba" [ref=f7e48]
+          - cell "qwen3" [ref=f7e49]
+          - cell "—" [ref=f7e50]
+          - cell "262,144" [ref=f7e51]
+          - cell "—" [ref=f7e52]
+          - cell "yes" [ref=f7e53]
+          - cell [ref=f7e54]:
+            - group [ref=f7e55]:
+              - generic "1 +" [ref=f7e56] [cursor=pointer]
+          - cell "1" [ref=f7e57]
+        - row [ref=f7e58]:
+          - cell [ref=f7e59]:
+            - link "Qwen3.6 27B" [ref=f7e60] [cursor=pointer]:
+              - /url: /inference-providers/models/alibaba-qwen3-6-27b/
+          - cell "alibaba" [ref=f7e61]
+          - cell "qwen3" [ref=f7e62]
+          - cell "—" [ref=f7e63]
+          - cell "—" [ref=f7e64]
+          - cell "—" [ref=f7e65]
+          - cell "yes" [ref=f7e66]
+          - cell "—" [ref=f7e67]
+          - cell "0" [ref=f7e68]
+        - row [ref=f7e69]:
+          - cell [ref=f7e70]:
+            - link "Qwen3.6 35B A3B" [ref=f7e71] [cursor=pointer]:
+              - /url: /inference-providers/models/alibaba-qwen3-6-35b-a3b/
+          - cell "alibaba" [ref=f7e72]
+          - cell "qwen3" [ref=f7e73]
+          - cell "—" [ref=f7e74]
+          - cell "262,144" [ref=f7e75]
+          - cell "—" [ref=f7e76]
+          - cell "yes" [ref=f7e77]
+          - cell [ref=f7e78]:
+            - group [ref=f7e79]:
+              - generic "1 +" [ref=f7e80] [cursor=pointer]
+          - cell "1" [ref=f7e81]
+        - row [ref=f7e82]:
+          - cell [ref=f7e83]:
+            - link "Qwen3.7 Plus" [ref=f7e84] [cursor=pointer]:
+              - /url: /inference-providers/models/alibaba-qwen3-7-plus/
+          - cell "alibaba" [ref=f7e85]
+          - cell "qwen3" [ref=f7e86]
+          - cell "—" [ref=f7e87]
+          - cell "—" [ref=f7e88]
+          - cell "—" [ref=f7e89]
+          - cell "no" [ref=f7e90]
+          - cell [ref=f7e91]:
+            - group [ref=f7e92]:
+              - generic "2 +" [ref=f7e93] [cursor=pointer]
+          - cell "3" [ref=f7e94]
+        - row [ref=f7e95]:
+          - cell [ref=f7e96]:
+            - link "Qwen3.8 27B" [ref=f7e97] [cursor=pointer]:
+              - /url: /inference-providers/models/alibaba-qwen3-8-27b/
+          - cell "alibaba" [ref=f7e98]
+          - cell "qwen3" [ref=f7e99]
+          - cell "—" [ref=f7e100]
+          - cell "262,144" [ref=f7e101]
+          - cell "—" [ref=f7e102]
+          - cell "yes" [ref=f7e103]
+          - cell [ref=f7e104]:
+            - group [ref=f7e105]:
+              - generic "1 +" [ref=f7e106] [cursor=pointer]
+          - cell "1" [ref=f7e107]
+        - row [ref=f7e108]:
+          - cell [ref=f7e109]:
+            - link "Claude Haiku 4.5" [ref=f7e110] [cursor=pointer]:
+              - /url: /inference-providers/models/anthropic-claude-haiku-4-5/
+          - cell "anthropic" [ref=f7e111]
+          - cell "claude" [ref=f7e112]
+          - cell "2025-10-01" [ref=f7e113]
+          - cell "200,000" [ref=f7e114]
+          - cell "—" [ref=f7e115]
+          - cell "no" [ref=f7e116]
+          - cell [ref=f7e117]:
+            - group [ref=f7e118]:
+              - generic "1 +" [ref=f7e119] [cursor=pointer]
+          - cell "1" [ref=f7e120]
+        - row [ref=f7e121]:
+          - cell [ref=f7e122]:
+            - link "Claude Opus 4.6" [ref=f7e123] [cursor=pointer]:
+              - /url: /inference-providers/models/anthropic-claude-opus-4-6/
+          - cell "anthropic" [ref=f7e124]
+          - cell "claude" [ref=f7e125]
+          - cell "—" [ref=f7e126]
+          - cell "200,000" [ref=f7e127]
+          - cell "—" [ref=f7e128]
+          - cell "no" [ref=f7e129]
+          - cell [ref=f7e130]:
+            - group [ref=f7e131]:
+              - generic "1 +" [ref=f7e132] [cursor=pointer]
+          - cell "1" [ref=f7e133]
+        - row [ref=f7e134]:
+          - cell [ref=f7e135]:
+            - link "Claude Sonnet 4.5" [ref=f7e136] [cursor=pointer]:
+              - /url: /inference-providers/models/anthropic-claude-sonnet-4-5/
+          - cell "anthropic" [ref=f7e137]
+          - cell "claude" [ref=f7e138]
+          - cell "2025-09-29" [ref=f7e139]
+          - cell "200,000" [ref=f7e140]
+          - cell "64,000" [ref=f7e141]
+          - cell "no" [ref=f7e142]
+          - cell [ref=f7e143]:
+            - group [ref=f7e144]:
+              - generic "2 +" [ref=f7e145] [cursor=pointer]
+          - cell "2" [ref=f7e146]
+        - row [ref=f7e147]:
+          - cell [ref=f7e148]:
+            - link "Claude Sonnet 4.6" [ref=f7e149] [cursor=pointer]:
+              - /url: /inference-providers/models/anthropic-claude-sonnet-4-6/
+          - cell "anthropic" [ref=f7e150]
+          - cell "claude" [ref=f7e151]
+          - cell "—" [ref=f7e152]
+          - cell "200,000" [ref=f7e153]
+          - cell "—" [ref=f7e154]
+          - cell "no" [ref=f7e155]
+          - cell [ref=f7e156]:
+            - group [ref=f7e157]:
+              - generic "3 +" [ref=f7e158] [cursor=pointer]
+          - cell "3" [ref=f7e159]
+        - row [ref=f7e160]:
+          - cell [ref=f7e161]:
+            - link "DeepSeek V4 Flash" [ref=f7e162] [cursor=pointer]:
+              - /url: /inference-providers/models/deepseek-deepseek-v4-flash/
+          - cell "deepseek" [ref=f7e163]
+          - cell "deepseek-v4" [ref=f7e164]
+          - cell "2026-07-31" [ref=f7e165]
+          - cell "1,048,576" [ref=f7e166]
+          - cell "384,000" [ref=f7e167]
+          - cell "no" [ref=f7e168]
+          - cell [ref=f7e169]:
+            - group [ref=f7e170]:
+              - generic "4 +" [ref=f7e171] [cursor=pointer]
+          - cell "5" [ref=f7e172]
+        - row [ref=f7e173]:
+          - cell [ref=f7e174]:
+            - link "DeepSeek V4 Pro" [ref=f7e175] [cursor=pointer]:
+              - /url: /inference-providers/models/deepseek-deepseek-v4-pro/
+          - cell "deepseek" [ref=f7e176]
+          - cell "deepseek-v4" [ref=f7e177]
+          - cell "2026-08-13" [ref=f7e178]
+          - cell "1,048,576" [ref=f7e179]
+          - cell "384,000" [ref=f7e180]
+          - cell "no" [ref=f7e181]
+          - cell [ref=f7e182]:
+            - group [ref=f7e183]:
+              - generic "6 +" [ref=f7e184] [cursor=pointer]
+          - cell "7" [ref=f7e185]
+        - row [ref=f7e186]:
+          - cell [ref=f7e187]:
+            - link "Gemini 3 Pro" [ref=f7e188] [cursor=pointer]:
+              - /url: /inference-providers/models/google-gemini-3-pro/
+          - cell "google" [ref=f7e189]
+          - cell "gemini" [ref=f7e190]
+          - cell "2025-11-18" [ref=f7e191]
+          - cell "—" [ref=f7e192]
+          - cell "—" [ref=f7e193]
+          - cell "no" [ref=f7e194]
+          - cell [ref=f7e195]:
+            - group [ref=f7e196]:
+              - generic "1 +" [ref=f7e197] [cursor=pointer]
+          - cell "1" [ref=f7e198]
+        - row [ref=f7e199]:
+          - cell [ref=f7e200]:
+            - link "Muse Glimmer 30B" [ref=f7e201] [cursor=pointer]:
+              - /url: /inference-providers/models/meta-muse-glimmer-30b/
+          - cell "meta" [ref=f7e202]
+          - cell "muse-glimmer" [ref=f7e203]
+          - cell "—" [ref=f7e204]
+          - cell "131,072" [ref=f7e205]
+          - cell "—" [ref=f7e206]
+          - cell "yes" [ref=f7e207]
+          - cell [ref=f7e208]:
+            - group [ref=f7e209]:
+              - generic "1 +" [ref=f7e210] [cursor=pointer]
+          - cell "1" [ref=f7e211]
+        - row [ref=f7e212]:
+          - cell [ref=f7e213]:
+            - link "Muse Spark 1.2" [ref=f7e214] [cursor=pointer]:
+              - /url: /inference-providers/models/meta-muse-spark-1-2/
+          - cell "meta" [ref=f7e215]
+          - cell "muse-spark" [ref=f7e216]
+          - cell "—" [ref=f7e217]
+          - cell "1,048,576" [ref=f7e218]
+          - cell "131,072" [ref=f7e219]
+          - cell "no" [ref=f7e220]
+          - cell [ref=f7e221]:
+            - group [ref=f7e222]:
+              - generic "1 +" [ref=f7e223] [cursor=pointer]
+          - cell "3" [ref=f7e224]
+        - row [ref=f7e225]:
+          - cell [ref=f7e226]:
+            - link "MiniMax M2.5" [ref=f7e227] [cursor=pointer]:
+              - /url: /inference-providers/models/minimax-minimax-m2-5/
+          - cell "minimax" [ref=f7e228]
+          - cell "minimax-m" [ref=f7e229]
+          - cell "—" [ref=f7e230]
+          - cell "—" [ref=f7e231]
+          - cell "—" [ref=f7e232]
+          - cell "yes" [ref=f7e233]
+          - cell [ref=f7e234]:
+            - group [ref=f7e235]:
+              - generic "2 +" [ref=f7e236] [cursor=pointer]
+          - cell "2" [ref=f7e237]
+        - row [ref=f7e238]:
+          - cell [ref=f7e239]:
+            - link "MiniMax M2.7" [ref=f7e240] [cursor=pointer]:
+              - /url: /inference-providers/models/minimax-minimax-m2-7/
+          - cell "minimax" [ref=f7e241]
+          - cell "minimax-m" [ref=f7e242]
+          - cell "—" [ref=f7e243]
+          - cell "—" [ref=f7e244]
+          - cell "—" [ref=f7e245]
+          - cell "yes" [ref=f7e246]
+          - cell [ref=f7e247]:
+            - group [ref=f7e248]:
+              - generic "1 +" [ref=f7e249] [cursor=pointer]
+          - cell "1" [ref=f7e250]
+        - row [ref=f7e251]:
+          - cell [ref=f7e252]:
+            - link "MiniMax M3" [ref=f7e253] [cursor=pointer]:
+              - /url: /inference-providers/models/minimax-minimax-m3/
+          - cell "minimax" [ref=f7e254]
+          - cell "minimax-m" [ref=f7e255]
+          - cell "—" [ref=f7e256]
+          - cell "—" [ref=f7e257]
+          - cell "—" [ref=f7e258]
+          - cell "no" [ref=f7e259]
+          - cell [ref=f7e260]:
+            - group [ref=f7e261]:
+              - generic "2 +" [ref=f7e262] [cursor=pointer]
+          - cell "2" [ref=f7e263]
+        - row [ref=f7e264]:
+          - cell [ref=f7e265]:
+            - link "Mistral Medium 3.5" [ref=f7e266] [cursor=pointer]:
+              - /url: /inference-providers/models/mistral-mistral-medium-3-5/
+          - cell "mistral" [ref=f7e267]
+          - cell "mistral-medium" [ref=f7e268]
+          - cell "—" [ref=f7e269]
+          - cell "—" [ref=f7e270]
+          - cell "—" [ref=f7e271]
+          - cell "—" [ref=f7e272]
+          - cell [ref=f7e273]:
+            - group [ref=f7e274]:
+              - generic "1 +" [ref=f7e275] [cursor=pointer]
+          - cell "1" [ref=f7e276]
+        - row [ref=f7e277]:
+          - cell [ref=f7e278]:
+            - link "Mistral Small (latest)" [ref=f7e279] [cursor=pointer]:
+              - /url: /inference-providers/models/mistral-mistral-small-latest/
+          - cell "mistral" [ref=f7e280]
+          - cell "mistral-small" [ref=f7e281]
+          - cell "—" [ref=f7e282]
+          - cell "—" [ref=f7e283]
+          - cell "—" [ref=f7e284]
+          - cell "—" [ref=f7e285]
+          - cell [ref=f7e286]:
+            - group [ref=f7e287]:
+              - generic "1 +" [ref=f7e288] [cursor=pointer]
+          - cell "1" [ref=f7e289]
+        - row [ref=f7e290]:
+          - cell [ref=f7e291]:
+            - link "Kimi K2.5" [ref=f7e292] [cursor=pointer]:
+              - /url: /inference-providers/models/moonshot-kimi-k2-5/
+          - cell "moonshot" [ref=f7e293]
+          - cell "kimi" [ref=f7e294]
+          - cell "—" [ref=f7e295]
+          - cell "262,144" [ref=f7e296]
+          - cell "—" [ref=f7e297]
+          - cell "no" [ref=f7e298]
+          - cell [ref=f7e299]:
+            - group [ref=f7e300]:
+              - generic "1 +" [ref=f7e301] [cursor=pointer]
+          - cell "1" [ref=f7e302]
+        - row [ref=f7e303]:
+          - cell [ref=f7e304]:
+            - link "Kimi K2.6" [ref=f7e305] [cursor=pointer]:
+              - /url: /inference-providers/models/moonshot-kimi-k2-6/
+          - cell "moonshot" [ref=f7e306]
+          - cell "kimi" [ref=f7e307]
+          - cell "—" [ref=f7e308]
+          - cell "262,144" [ref=f7e309]
+          - cell "—" [ref=f7e310]
+          - cell "no" [ref=f7e311]
+          - cell [ref=f7e312]:
+            - group [ref=f7e313]:
+              - generic "3 +" [ref=f7e314] [cursor=pointer]
+          - cell "3" [ref=f7e315]
+        - row [ref=f7e316]:
+          - cell [ref=f7e317]:
+            - link "Kimi K2.7 Code" [ref=f7e318] [cursor=pointer]:
+              - /url: /inference-providers/models/moonshot-kimi-k2-7-code/
+          - cell "moonshot" [ref=f7e319]
+          - cell "kimi" [ref=f7e320]
+          - cell "—" [ref=f7e321]
+          - cell "262,144" [ref=f7e322]
+          - cell "—" [ref=f7e323]
+          - cell "no" [ref=f7e324]
+          - cell [ref=f7e325]:
+            - group [ref=f7e326]:
+              - generic "4 +" [ref=f7e327] [cursor=pointer]
+          - cell "7" [ref=f7e328]
+        - row [ref=f7e329]:
+          - cell [ref=f7e330]:
+            - link "Kimi K3" [ref=f7e331] [cursor=pointer]:
+              - /url: /inference-providers/models/moonshot-kimi-k3/
+          - cell "moonshot" [ref=f7e332]
+          - cell "kimi" [ref=f7e333]
+          - cell "—" [ref=f7e334]
+          - cell "1,048,576" [ref=f7e335]
+          - cell "—" [ref=f7e336]
+          - cell "no" [ref=f7e337]
+          - cell [ref=f7e338]:
+            - group [ref=f7e339]:
+              - generic "6 +" [ref=f7e340] [cursor=pointer]
+          - cell "7" [ref=f7e341]
+        - row [ref=f7e342]:
+          - cell [ref=f7e343]:
+            - link "Nemotron 3 Ultra" [ref=f7e344] [cursor=pointer]:
+              - /url: /inference-providers/models/nvidia-nemotron-3-ultra/
+          - cell "nvidia" [ref=f7e345]
+          - cell "nemotron" [ref=f7e346]
+          - cell "—" [ref=f7e347]
+          - cell "—" [ref=f7e348]
+          - cell "—" [ref=f7e349]
+          - cell "yes" [ref=f7e350]
+          - cell [ref=f7e351]:
+            - group [ref=f7e352]:
+              - generic "1 +" [ref=f7e353] [cursor=pointer]
+          - cell "1" [ref=f7e354]
+        - row [ref=f7e355]:
+          - cell [ref=f7e356]:
+            - link "GPT-5.1" [ref=f7e357] [cursor=pointer]:
+              - /url: /inference-providers/models/openai-gpt-5-1/
+          - cell "openai" [ref=f7e358]
+          - cell "gpt" [ref=f7e359]
+          - cell "2025-11-13" [ref=f7e360]
+          - cell "—" [ref=f7e361]
+          - cell "—" [ref=f7e362]
+          - cell "no" [ref=f7e363]
+          - cell [ref=f7e364]:
+            - group [ref=f7e365]:
+              - generic "1 +" [ref=f7e366] [cursor=pointer]
+          - cell "2" [ref=f7e367]
+        - row [ref=f7e368]:
+          - cell [ref=f7e369]:
+            - link "GPT-5.6" [ref=f7e370] [cursor=pointer]:
+              - /url: /inference-providers/models/openai-gpt-5-6/
+          - cell "openai" [ref=f7e371]
+          - cell "gpt" [ref=f7e372]
+          - cell "2026-06-25" [ref=f7e373]
+          - cell "—" [ref=f7e374]
+          - cell "—" [ref=f7e375]
+          - cell "no" [ref=f7e376]
+          - cell [ref=f7e377]:
+            - group [ref=f7e378]:
+              - generic "3 +" [ref=f7e379] [cursor=pointer]
+          - cell "7" [ref=f7e380]
+        - row [ref=f7e381]:
+          - cell [ref=f7e382]:
+            - link "GPT-OSS 120B" [ref=f7e383] [cursor=pointer]:
+              - /url: /inference-providers/models/openai-gpt-oss-120b/
+          - cell "openai" [ref=f7e384]
+          - cell "gpt-oss" [ref=f7e385]
+          - cell "2025-08-05" [ref=f7e386]
+          - cell "131,072" [ref=f7e387]
+          - cell "—" [ref=f7e388]
+          - cell "yes" [ref=f7e389]
+          - cell [ref=f7e390]:
+            - group [ref=f7e391]:
+              - generic "7 +" [ref=f7e392] [cursor=pointer]
+          - cell "7" [ref=f7e393]
+        - row [ref=f7e394]:
+          - cell [ref=f7e395]:
+            - link "GPT-OSS 20B" [ref=f7e396] [cursor=pointer]:
+              - /url: /inference-providers/models/openai-gpt-oss-20b/
+          - cell "openai" [ref=f7e397]
+          - cell "gpt-oss" [ref=f7e398]
+          - cell "2025-08-05" [ref=f7e399]
+          - cell "131,072" [ref=f7e400]
+          - cell "—" [ref=f7e401]
+          - cell "yes" [ref=f7e402]
+          - cell [ref=f7e403]:
+            - group [ref=f7e404]:
+              - generic "1 +" [ref=f7e405] [cursor=pointer]
+          - cell "1" [ref=f7e406]
+        - row [ref=f7e407]:
+          - cell [ref=f7e408]:
+            - link "Inkling" [ref=f7e409] [cursor=pointer]:
+              - /url: /inference-providers/models/thinkingmachines-inkling/
+          - cell "thinkingmachines" [ref=f7e410]
+          - cell "inkling" [ref=f7e411]
+          - cell "—" [ref=f7e412]
+          - cell "—" [ref=f7e413]
+          - cell "—" [ref=f7e414]
+          - cell "no" [ref=f7e415]
+          - cell "—" [ref=f7e416]
+          - cell "0" [ref=f7e417]
+        - row [ref=f7e418]:
+          - cell [ref=f7e419]:
+            - link "Inkling Small" [ref=f7e420] [cursor=pointer]:
+              - /url: /inference-providers/models/thinkingmachines-inkling-small/
+          - cell "thinkingmachines" [ref=f7e421]
+          - cell "inkling" [ref=f7e422]
+          - cell "—" [ref=f7e423]
+          - cell "—" [ref=f7e424]
+          - cell "—" [ref=f7e425]
+          - cell "no" [ref=f7e426]
+          - cell "—" [ref=f7e427]
+          - cell "0" [ref=f7e428]
+        - row [ref=f7e429]:
+          - cell [ref=f7e430]:
+            - link "Grok 4.5" [ref=f7e431] [cursor=pointer]:
+              - /url: /inference-providers/models/xai-grok-4-5/
+          - cell "xai" [ref=f7e432]
+          - cell "grok" [ref=f7e433]
+          - cell "—" [ref=f7e434]
+          - cell "—" [ref=f7e435]
+          - cell "—" [ref=f7e436]
+          - cell "no" [ref=f7e437]
+          - cell [ref=f7e438]:
+            - group [ref=f7e439]:
+              - generic "1 +" [ref=f7e440] [cursor=pointer]
+          - cell "2" [ref=f7e441]
+        - row [ref=f7e442]:
+          - cell [ref=f7e443]:
+            - link "Grok 4.6" [ref=f7e444] [cursor=pointer]:
+              - /url: /inference-providers/models/xai-grok-4-6/
+          - cell "xai" [ref=f7e445]
+          - cell "grok" [ref=f7e446]
+          - cell "—" [ref=f7e447]
+          - cell "—" [ref=f7e448]
+          - cell "—" [ref=f7e449]
+          - cell "no" [ref=f7e450]
+          - cell [ref=f7e451]:
+            - group [ref=f7e452]:
+              - generic "1 +" [ref=f7e453] [cursor=pointer]
+          - cell "2" [ref=f7e454]
+        - row [ref=f7e455]:
+          - cell [ref=f7e456]:
+            - link "Grok Build 0.1" [ref=f7e457] [cursor=pointer]:
+              - /url: /inference-providers/models/xai-grok-build-0-1/
+          - cell "xai" [ref=f7e458]
+          - cell "grok" [ref=f7e459]
+          - cell "—" [ref=f7e460]
+          - cell "256,000" [ref=f7e461]
+          - cell "—" [ref=f7e462]
+          - cell "no" [ref=f7e463]
+          - cell [ref=f7e464]:
+            - group [ref=f7e465]:
+              - generic "1 +" [ref=f7e466] [cursor=pointer]
+          - cell "1" [ref=f7e467]
+        - row [ref=f7e468]:
+          - cell [ref=f7e469]:
+            - link "GLM-4.6" [ref=f7e470] [cursor=pointer]:
+              - /url: /inference-providers/models/zai-glm-4-6/
+          - cell "zai" [ref=f7e471]
+          - cell "glm" [ref=f7e472]
+          - cell "2025-09-30" [ref=f7e473]
+          - cell "—" [ref=f7e474]
+          - cell "—" [ref=f7e475]
+          - cell "yes" [ref=f7e476]
+          - cell [ref=f7e477]:
+            - group [ref=f7e478]:
+              - generic "2 +" [ref=f7e479] [cursor=pointer]
+          - cell "2" [ref=f7e480]
+        - row [ref=f7e481]:
+          - cell [ref=f7e482]:
+            - link "GLM-4.7" [ref=f7e483] [cursor=pointer]:
+              - /url: /inference-providers/models/zai-glm-4-7/
+          - cell "zai" [ref=f7e484]
+          - cell "glm" [ref=f7e485]
+          - cell "—" [ref=f7e486]
+          - cell "—" [ref=f7e487]
+          - cell "—" [ref=f7e488]
+          - cell "yes" [ref=f7e489]
+          - cell [ref=f7e490]:
+            - group [ref=f7e491]:
+              - generic "1 +" [ref=f7e492] [cursor=pointer]
+          - cell "1" [ref=f7e493]
+        - row [ref=f7e494]:
+          - cell [ref=f7e495]:
+            - link "GLM-5.2" [ref=f7e496] [cursor=pointer]:
+              - /url: /inference-providers/models/zai-glm-5-2/
+          - cell "zai" [ref=f7e497]
+          - cell "glm" [ref=f7e498]
+          - cell "—" [ref=f7e499]
+          - cell "1,048,576" [ref=f7e500]
+          - cell "—" [ref=f7e501]
+          - cell "yes" [ref=f7e502]
+          - cell [ref=f7e503]:
+            - group [ref=f7e504]:
+              - generic "5 +" [ref=f7e505] [cursor=pointer]
+          - cell "5" [ref=f7e506]
+        - row [ref=f7e507]:
+          - cell [ref=f7e508]:
+            - link "GLM-5.3" [ref=f7e509] [cursor=pointer]:
+              - /url: /inference-providers/models/zai-glm-5-3/
+          - cell "zai" [ref=f7e510]
+          - cell "glm" [ref=f7e511]
+          - cell "—" [ref=f7e512]
+          - cell "—" [ref=f7e513]
+          - cell "—" [ref=f7e514]
+          - cell "no" [ref=f7e515]
+          - cell [ref=f7e516]:
+            - group [ref=f7e517]:
+              - generic "2 +" [ref=f7e518] [cursor=pointer]
+          - cell "2" [ref=f7e519]
+    - paragraph [ref=f7e520]: Unknown values are shown as —. Context and output limits are the maximum across the model's offerings that record limits. The Providers count is unique providers — open it for each provider's wire IDs; ×N marks a provider serving the model on N endpoints.
+  - contentinfo [ref=f7e521]:
+    - paragraph [ref=f7e523]: Every fact carries a source URL and verification date — see the repository.

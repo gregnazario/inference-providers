@@ -1,0 +1,31 @@
+id = "stepfun"
+name = "StepFun"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://platform.stepfun.ai"
+console = "https://platform.stepfun.com"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["STEPFUN_API_KEY"]
+getting_credentials = "Create a key on the StepFun platform console (EN platform stepfun.ai, CN stepfun.com)."
+docs = "https://platform.stepfun.ai"
+
+[[endpoints]]
+id = "chat-completions"
+base_url = "https://api.stepfun.ai"
+path = "/v1/chat/completions"
+protocol = "openai-chat"
+
+[[quirks]]
+text = "EN platform stepfun.ai, CN stepfun.com; step-3 (321B/38B VLM, Jul 2025) is the prior generation."
+docs = "https://platform.stepfun.ai"
+
+[[quirks]]
+text = "Parallel Thinking (PaCoRe) reasoning on 3.5-flash; 3.7-flash has three reasoning levels + Advisor Mode."
+docs = "https://static.stepfun.com/blog/step-3.7-flash/"
