@@ -14,7 +14,7 @@ must_round_trip = "reasoning_content"
 [reasoning.effort]
 param = "reasoning.effort"
 values = ["none", "low", "medium", "high", "xhigh", "max"]
-default = "medium"
+default = "high"
 
 [reasoning.source]
 url = "https://openrouter.ai/api/v1/models"

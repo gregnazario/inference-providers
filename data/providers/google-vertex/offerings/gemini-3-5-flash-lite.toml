@@ -1,5 +1,5 @@
 model = "google/gemini-3-5-flash-lite"
-wire_id = "gemini-3-5-flash-lite"
+wire_id = "gemini-3.5-flash-lite"
 endpoint = "generate-content"
 status = "ga"
 status_date = ""
@@ -20,7 +20,7 @@ source = { url = "https://cloud.google.com/vertex-ai/generative-ai/docs/models",
 style = "effort"
 mandatory = false
 default = "on"
-notes = "Clone of the Gemini API offering; Vertex id — verify. Default minimal; docs recommend medium/high for multi-step subagent work — minimal can terminate prematurely on complex tasks. thinkingLevel replaces thinkingBudget."
+notes = "Clone of the Gemini API offering; Vertex id — verify. Default minimal; docs recommend medium/high for multi-step subagent work — minimal can terminate prematurely on complex tasks. thinkingLevel replaces thinkingBudget; temperature/top_p/top_k deprecated on 3.6/3.7."
 returns = "thought_parts"
 must_round_trip = "thought_signature"
 

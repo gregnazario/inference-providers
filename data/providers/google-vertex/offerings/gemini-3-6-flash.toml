@@ -1,5 +1,5 @@
 model = "google/gemini-3-6-flash"
-wire_id = "gemini-3-6-flash"
+wire_id = "gemini-3.6-flash"
 endpoint = "generate-content"
 status = "ga"
 status_date = ""
