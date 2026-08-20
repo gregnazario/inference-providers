@@ -1,0 +1,250 @@
+---
+import Base from "../layouts/Base.astro"
+
+const base = import.meta.env.BASE_URL
+
+const sdkSnippet = `import {
+  loadCatalog,
+  resolveModel,
+  authHeaders,
+  buildReasoningParam,
+} from "@inference-providers/sdk"
+
+const catalog = loadCatalog()
+
+// Resolve a provider wire id to its canonical model + offering
+const { model, offering, provider } = resolveModel(
+  catalog,
+  "anthropic",
+  "claude-sonnet-4-6",
+)
+
+// Auth headers for the provider's first auth method
+const headers = authHeaders(provider, {
+  credential: process.env.ANTHROPIC_API_KEY!,
+})
+
+// The exact wire fragment for a 4096-token thinking budget
+const reasoning = buildReasoningParam(offering, {
+  kind: "budget",
+  budget: 4096,
+})
+// => { thinking: { budget_tokens: 4096 } }`
+---
+
+<Base title="Help — inference-providers" active="help" section="guides">
+  <h1>Help</h1>
+  <p>
+    How to read and use this registry. Every page here is generated from the
+    emitted catalog; nothing is hand-maintained. Start with{" "}
+    <a href={`${base}verify/`}>the verification methodology</a> if you care
+    about where the facts come from.
+  </p>
+
+  <section>
+    <h2>What this is</h2>
+    <p>
+      A provenance-tracked registry of AI model providers. Three layers:
+    </p>
+    <ul>
+      <li>
+        <strong>Providers</strong> — an API you can get a key for (Anthropic,
+        OpenRouter, AWS Bedrock, …): <a href={`${base}providers/`}>browse</a>.
+      </li>
+      <li>
+        <strong>Models</strong> — lab-owned canonical facts (release dates,
+        modalities, open weights): <a href={`${base}models/`}>browse</a>.
+      </li>
+      <li>
+        <strong>Offerings</strong> — the join: one provider serving one model
+        on one endpoint, with its own wire ID, prices, limits, and reasoning
+        spec. Facts attach to offerings, never to "the model in general" —
+        the same model can behave differently on two endpoints of one
+        provider.
+      </li>
+    </ul>
+    <p>
+      Every fact carries a source URL and a verification date; the rules are
+      on the <a href={`${base}verify/`}>Verify page</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Reading a provider page</h2>
+    <ul>
+      <li>
+        <strong>Getting credentials</strong> — every auth method the provider
+        accepts, with the exact header scheme (<code>Authorization: Bearer</code>{" "}
+        vs <code>x-api-key</code> vs <code>api-key</code>), key prefixes, env
+        vars, and required extra headers (<code>anthropic-version</code>, …).
+        OAuth entries record the flow (browser PKCE, device code) and the
+        token transport — note that OAuth tokens do not always ride
+        <code>Authorization</code> (Anthropic OAuth tokens go in{" "}
+        <code>x-api-key</code>). Request-signing auths (Bedrock SigV4) are
+        marked as such — they cannot be expressed as a static header.
+      </li>
+      <li>
+        <strong>Endpoints</strong> — every base URL + path with its protocol:
+        <code>openai-chat</code>, <code>openai-responses</code>,
+        <code>anthropic-messages</code>, <code>google-generate-content</code>,
+        or <code>bedrock-converse</code>. The practical compatibility test is
+        pointing the official SDK at the base URL; divergences land in
+        quirks.
+      </li>
+      <li>
+        <strong>API surfaces</strong> — which operation families exist at all
+        (text, streaming, embeddings, files, batch …). Absence is a fact: a
+        provider with no embeddings endpoint says so here.
+      </li>
+      <li>
+        <strong>Plan</strong> — subscription surfaces (coding plans, token
+        plans) have no per-token prices; their quota and price live in the
+        plan block instead.
+      </li>
+      <li>
+        <strong>Quirks</strong> — verified divergences from the protocol:
+        rejected parameters, silent ignores, fixed sampling params, rate-limit
+        behavior. Each links to the doc that proves it.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Reading a model page</h2>
+    <p>
+      The Offerings table lists every provider × endpoint serving the model,
+      with wire IDs (the exact string the API expects — often differing from
+      the canonical name), status, price, and the reasoning badge. On the
+      models list, the Providers count is unique providers; open the popover
+      for each provider's wire IDs (×N marks a provider serving the model on
+      N endpoints).
+    </p>
+
+    <h3>Reasoning chips</h3>
+    <p>The badge's first word is the control style the surface accepts:</p>
+    <ul class="legend">
+      <li><span class="chip chip-budget">budget</span> token-budget control — send a number (<code>thinking.budget_tokens</code>, <code>thinkingBudget</code>, <code>reasoning.max_tokens</code>, …).</li>
+      <li><span class="chip chip-effort">effort</span> enumerated effort — send one of none/minimal/low/medium/high/xhigh/max (<code>reasoning_effort</code>, <code>reasoning.effort</code>).</li>
+      <li><span class="chip chip-toggle">toggle</span> on/off object control (<code>thinking: {"{ type: enabled }"}</code>, <code>enable_thinking</code>, …).</li>
+      <li><span class="chip chip-adaptive">adaptive</span> the provider adapts the effort itself; optionally settable.</li>
+      <li><span class="chip chip-always_on">always_on</span> reasoning is permanently on — there is no control to send.</li>
+      <li><span class="chip chip-none">none</span> the surface takes no reasoning parameter at all.</li>
+    </ul>
+    <p>
+      <span class="chip">mandatory</span> — thinking cannot be disabled on
+      this surface; requesting "off" is an error, not a no-op.{" "}
+      <code>default</code> is the value the surface assumes when you send
+      nothing. <code>returns</code> says how the reasoning comes back:
+      <code>thinking_blocks</code> (Anthropic content blocks),
+      <code>reasoning_content</code> (DeepSeek-style field),
+      <code>reasoning_summary</code> (OpenAI Responses summaries),
+      <code>thought_parts</code> (Gemini parts), or <code>hidden</code> (you
+      pay for tokens you never see).
+    </p>
+    <p>
+      <code>round-trips</code> marks what you must send back unmodified in
+      later turns, or the API rejects the request:
+      <code>signature</code> (Anthropic thinking signatures),
+      <code>thought_signature</code> (Gemini thought signatures),
+      <code>encrypted_content</code> (OpenAI Responses reasoning items), and
+      <code>reasoning_content</code> (DeepSeek replay).
+    </p>
+
+    <h3>Status colors</h3>
+    <ul class="legend">
+      <li><span class="chip chip-ga">ga</span> generally available.</li>
+      <li><span class="chip chip-preview">preview</span> preview — behavior may change.</li>
+      <li><span class="chip chip-deprecated">deprecated</span> sunset announced; move off it.</li>
+      <li><span class="chip chip-retired">retired</span> no longer served.</li>
+    </ul>
+
+    <h3>The archived banner</h3>
+    <p>
+      <span class="chip chip-none">Archived — released more than 12 months ago</span>{" "}
+      marks models older than the rolling 12-month window (or retired). They
+      move to the <a href={`${base}models/archive/`}>archive</a> for
+      reference; offerings remain in the artifacts. Models with no successor
+      can be grandfathered back into the current list by explicit decision.
+    </p>
+  </section>
+
+  <section>
+    <h2>Using the data</h2>
+    <p>
+      Machine-readable artifacts live at{" "}
+      <a href={`${base}download/`}>the download page</a>:
+      <code>catalog.json</code> (the full join),{" "}
+      <code>providers.json</code> / <code>models.json</code> (normalized
+      layers), and per-entity files under{" "}
+      <code>artifacts/providers/</code> and <code>artifacts/models/</code>.
+    </p>
+    <p>The SDK turns them into wire-shaped calls:</p>
+    <pre><code>{sdkSnippet}</code></pre>
+    <p>
+      To check a live provider against the catalog, run the sync report
+      (needs credentials for some providers; several public model lists work
+      keyless):
+    </p>
+    <pre><code>pnpm --filter @inference-providers/sync run report</code></pre>
+  </section>
+
+  <section>
+    <h2>Staying current</h2>
+    <ul>
+      <li>
+        A daily sync enumerates live model lists and opens a drift issue for
+        every addition or removal — each report is a verification ticket, not
+        an auto-merge.
+      </li>
+      <li>
+        Staleness gates: CI fails any fact whose source is older than 180
+        days and warns after 90.
+      </li>
+      <li>
+        Archive policy: models older than 12 months (or retired) leave the
+        current lists; the full registry keeps them forever.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Troubleshooting / FAQ</h2>
+    <ul>
+      <li>
+        <strong>401 with a key you know is valid</strong> — wrong key type or
+        wrong key region. Coding-plan keys (Z.ai GLM Coding Plan, Kimi for
+        Coding) only work on coding-plan endpoints; Kimi's{" "}
+        <code>/anthropic</code> endpoint wants Open Platform keys, never Kimi
+        Code keys. Moonshot keys are bound to the console that issued them
+        (platform.kimi.com vs the China console). Baseten reads{" "}
+        <code>Authorization</code> only — the Anthropic SDK's default{" "}
+        <code>x-api-key</code> is ignored, override{" "}
+        <code>default_headers</code>.
+      </li>
+      <li>
+        <strong>Anthropic 400 on extended thinking</strong> —{" "}
+        <code>budget_tokens</code> must be smaller than{" "}
+        <code>max_tokens</code> (and at least 1024). The registry records the
+        constraint on the offering.
+      </li>
+      <li>
+        <strong>Prices show "—"</strong> — either the offering rides a
+        subscription (see the provider's plan block; usage is quota'd, not
+        metered) or the price is unverified. Unknown is not free: a price of
+        0 only appears with a source proving it.
+      </li>
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .legend {
+    list-style: none;
+    padding: 0;
+  }
+
+  .legend li {
+    margin: 0.4rem 0;
+    padding-left: 0;
+  }
+</style>
