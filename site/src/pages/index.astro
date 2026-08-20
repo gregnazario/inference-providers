@@ -1,10 +1,8 @@
 ---
 import { loadCatalog } from "@inference-providers/sdk"
 import Base from "../layouts/Base.astro"
-import { classify } from "../lib/freshness"
 
 const c = loadCatalog()
-const { current, archived } = classify(c.models)
 const totalOfferings = c.providers.reduce((n, p) => n + p.offerings.length, 0)
 const base = import.meta.env.BASE_URL
 ---
@@ -17,10 +15,7 @@ const base = import.meta.env.BASE_URL
     the emitted catalog; nothing here is hand-maintained.
   </p>
   <p class="stat-line">
-    {current.length} current models · {c.providers.length} providers · {totalOfferings} offerings
-  </p>
-  <p class="archived-line">
-    {archived.length} archived — <a href={`${base}models/archive/`}>view archive</a>
+    {c.models.length} models · {c.providers.length} providers · {totalOfferings} offerings
   </p>
 
   <h2>Providers</h2>
@@ -56,16 +51,6 @@ const base = import.meta.env.BASE_URL
     font-size: 1.05rem;
     font-variant-numeric: tabular-nums;
     color: var(--fg);
-  }
-
-  .stat-line + .archived-line {
-    margin: -1.25rem 0 1.5rem;
-  }
-
-  .archived-line {
-    color: var(--muted);
-    font-size: 0.9rem;
-    margin: 0 0 1.5rem;
   }
 
   .cards {

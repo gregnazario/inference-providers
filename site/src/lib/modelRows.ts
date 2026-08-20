@@ -12,7 +12,7 @@ export type ProviderRef = {
   endpoints: number
 }
 
-/** Everything the models index and archive tables render per model row. */
+/** Everything the models index table renders per model row. */
 export type ModelRow = {
   model: CatalogModel
   /** Total offerings of this model across all providers. */
@@ -25,10 +25,9 @@ export type ModelRow = {
 }
 
 /**
- * Build the table rows for a set of catalog models (current or archived) in
- * one pass over the providers: counts offerings, tracks limit maxima, and
- * collects each model's unique providers with their wire ids. Rows sort by
- * lab, then model name — the shared rendering for both tables.
+ * Build the table rows for a set of catalog models in one pass over the
+ * providers: counts offerings, tracks limit maxima, and collects each model's
+ * unique providers with their wire ids. Rows sort by lab, then model name.
  */
 export function modelRows(catalog: SdkCatalog, models: CatalogModel[]): ModelRow[] {
   const byModel = new Map<string, Omit<ModelRow, "model">>()

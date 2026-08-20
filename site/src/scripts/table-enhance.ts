@@ -1,5 +1,5 @@
 /**
- * Progressive enhancement for the index tables (models, archive, providers).
+ * Progressive enhancement for the index tables (models, providers).
  * Targets `.table-wrap[data-enhance]`; without JS the tables render exactly
  * as authored (no controls, default order). The module reads facet and sort
  * metadata from data attributes on the table, injects a controls bar (text
