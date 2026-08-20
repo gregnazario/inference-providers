@@ -4,10 +4,12 @@ import { catalog } from "../../lib/catalog"
 import Base from "../../layouts/Base.astro"
 import CurlExample from "../../components/CurlExample.astro"
 import ReasoningBadge from "../../components/ReasoningBadge.astro"
+import { variantToken } from "../../lib/reasoningSummary"
 
 type CatalogProvider = SdkCatalog["providers"][number]
 type CatalogOffering = CatalogProvider["offerings"][number]
 type CatalogEndpoint = CatalogProvider["endpoints"][number]
+type Reasoning = CatalogOffering["reasoning"]
 
 type ExampleInput = {
   provider: CatalogProvider
@@ -23,8 +25,33 @@ type OfferingRow = {
   protocol: string
   status: string
   cost: CatalogOffering["cost"]
-  reasoning: CatalogOffering["reasoning"]
+  limits: CatalogOffering["limits"]
+  reasoning: Reasoning
   example: ExampleInput | null
+}
+
+/** Structural shapes of the reasoning control blocks (schema reasoning.ts). */
+type EffortBlock = { param: string; values: string[]; default: string; notes?: string }
+type BudgetBlock = {
+  param: string
+  min?: number
+  max?: number
+  zero_means_off: boolean
+  special_values: Record<string, string>
+  constraint?: string
+}
+type ToggleBlock = { param: string; on: string; off: string }
+
+/** Static view model for one Reasoning-controls panel. */
+type ControlsPanel = {
+  providerId: string
+  providerName: string
+  wireId: string
+  endpoint: string
+  reasoning: Reasoning
+  effort: EffortBlock | null
+  budget: BudgetBlock | null
+  toggle: ToggleBlock | null
 }
 
 export function getStaticPaths() {
@@ -54,6 +81,7 @@ export function getStaticPaths() {
             protocol: endpoint?.protocol ?? "—",
             status: offering.status,
             cost: offering.cost,
+            limits: offering.limits ?? null,
             reasoning: offering.reasoning,
             example: endpoint ? { provider, offering, endpoint } : null,
           }
@@ -82,6 +110,22 @@ const price = (cost: CatalogOffering["cost"]) => {
   const part = (v: number | null) => (v == null ? "—" : v.toFixed(2))
   return `${part(cost.input)} / ${part(cost.output)}`
 }
+
+/** Hero maxima: limits always visible even when the tables scroll. */
+const maxContext = offerings.reduce((m, o) => Math.max(m, o.limits?.context ?? 0), 0)
+const maxOutput = offerings.reduce((m, o) => Math.max(m, o.limits?.output ?? 0), 0)
+const fmtLimit = (n: number) => (n > 0 ? n.toLocaleString("en-US") : "—")
+
+const panels: ControlsPanel[] = offerings.map((o) => ({
+  providerId: o.providerId,
+  providerName: o.providerName,
+  wireId: o.wireId,
+  endpoint: o.endpoint,
+  reasoning: o.reasoning,
+  effort: "effort" in o.reasoning ? (o.reasoning.effort ?? null) : null,
+  budget: "budget" in o.reasoning ? (o.reasoning.budget ?? null) : null,
+  toggle: "toggle" in o.reasoning ? (o.reasoning.toggle ?? null) : null,
+}))
 ---
 
 <Base title={`${model.name} — inference-providers`} active="models" section="models">
@@ -106,6 +150,14 @@ const price = (cost: CatalogOffering["cost"]) => {
           <tr>
             <th scope="row">Knowledge cutoff</th>
             <td>{model.knowledge_cutoff || "—"}</td>
+          </tr>
+          <tr>
+            <th scope="row">Context (max)</th>
+            <td>{fmtLimit(maxContext)}</td>
+          </tr>
+          <tr>
+            <th scope="row">Max output</th>
+            <td>{fmtLimit(maxOutput)}</td>
           </tr>
           <tr>
             <th scope="row">Modalities</th>
@@ -144,6 +196,16 @@ const price = (cost: CatalogOffering["cost"]) => {
     <p class="footnote">Unknown values are shown as —.</p>
   </section>
 
+  {
+    model.ranking && (
+      <p class="ranking-line">
+        <a href={model.ranking.url}>Intelligence Index v4.1.1: {model.ranking.aa_index}</a> ·{" "}
+        {model.ranking.aa_variant} · Source: Artificial Analysis (accessed{" "}
+        {model.ranking.verified})
+      </p>
+    )
+  }
+
   <section>
     <h2>Offerings</h2>
     {
@@ -156,6 +218,7 @@ const price = (cost: CatalogOffering["cost"]) => {
               <tr>
                 <th>Provider</th>
                 <th>Wire ID</th>
+                <th>Variant</th>
                 <th>Endpoint</th>
                 <th>Protocol</th>
                 <th>Status</th>
@@ -172,6 +235,13 @@ const price = (cost: CatalogOffering["cost"]) => {
                   <td>
                     <code>{o.wireId}</code>
                   </td>
+                  <td>
+                    {
+                      variantToken(o.wireId) && (
+                        <span class="chip chip-variant">{variantToken(o.wireId)}</span>
+                      )
+                    }
+                  </td>
                   <td>{o.endpoint}</td>
                   <td>{o.protocol}</td>
                   <td>
@@ -186,6 +256,77 @@ const price = (cost: CatalogOffering["cost"]) => {
             </tbody>
           </table>
         </div>
+      )
+    }
+  </section>
+
+  <section>
+    <h2>Reasoning controls</h2>
+    {
+      panels.length === 0 ? (
+        <p>No provider offerings cataloged for this model.</p>
+      ) : (
+        panels.map((p) => (
+          <div class="rc-panel">
+            <p class="rc-head">
+              <a href={`${base}providers/${p.providerId}/`}>{p.providerName}</a>
+              <span class="muted">·</span> <code>{p.wireId}</code>
+              <span class="muted">·</span> {p.endpoint}{" "}
+              <span class={`chip chip-${p.reasoning.style}`}>{p.reasoning.style}</span>
+            </p>
+
+            {p.effort && (
+              <p class="rc-line">
+                <code>{p.effort.param}</code>{" "}
+                <span class="pills">
+                  {p.effort.values.map((v) => (
+                    <span class={`pill${v === p.effort?.default ? " pill-default" : ""}`}>
+                      {v}
+                      {v === p.effort?.default && "●"}
+                    </span>
+                  ))}
+                </span>
+                {p.effort.notes && <span class="muted"> {p.effort.notes}</span>}
+              </p>
+            )}
+
+            {p.budget && (
+              <p class="rc-line">
+                <code>{p.budget.param}</code>{" "}
+                {p.budget.min !== undefined && p.budget.max !== undefined
+                  ? `${p.budget.min.toLocaleString("en-US")}–${p.budget.max.toLocaleString("en-US")} tokens`
+                  : p.budget.min !== undefined
+                    ? `from ${p.budget.min.toLocaleString("en-US")} tokens`
+                    : p.budget.max !== undefined
+                      ? `up to ${p.budget.max.toLocaleString("en-US")} tokens`
+                      : "range undocumented"}
+                {p.budget.zero_means_off && " · 0 disables"}
+                {p.budget.constraint && ` · ${p.budget.constraint}`}
+                {Object.entries(p.budget.special_values).map(([k, v]) => (
+                  <span class="muted">
+                    {" "}
+                    · {k} = {v}
+                  </span>
+                ))}
+              </p>
+            )}
+
+            {p.toggle && (
+              <p class="rc-line">
+                <code>{p.toggle.param}</code> on <code>{p.toggle.on}</code> · off{" "}
+                <code>{p.toggle.off}</code>
+              </p>
+            )}
+
+            <p class="rc-line">
+              <ReasoningBadge reasoning={p.reasoning} />
+            </p>
+
+            {p.reasoning.incompatible_with.length > 0 && (
+              <p class="rc-line muted">Incompatible with: {p.reasoning.incompatible_with.join(", ")}</p>
+            )}
+          </div>
+        ))
       )
     }
   </section>
@@ -212,5 +353,63 @@ const price = (cost: CatalogOffering["cost"]) => {
   .footnote {
     color: var(--muted);
     font-size: 0.9rem;
+  }
+
+  .ranking-line {
+    margin: 0.75rem 0 0;
+    font-size: 0.95rem;
+  }
+
+  /* Variant chip: purely derived from the wire id, never a data field. */
+  .chip-variant {
+    background: var(--chip-bg);
+    color: var(--muted);
+    font-size: 0.72rem;
+    padding: 0.05rem 0.45rem;
+  }
+
+  /* Reasoning-controls panels: static markup, one per offering. */
+  .rc-panel {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.75rem 0.9rem;
+    margin: 0.75rem 0;
+  }
+
+  .rc-head {
+    margin: 0 0 0.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .rc-line {
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
+  }
+
+  .pills {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .pill {
+    display: inline-block;
+    background: var(--chip-bg);
+    border-radius: 999px;
+    padding: 0.02rem 0.5rem;
+    font-size: 0.78rem;
+  }
+
+  .pill-default {
+    background: color-mix(in oklab, var(--accent) 14%, transparent);
+    color: var(--link);
+    font-weight: 600;
+  }
+
+  .muted {
+    color: var(--muted);
   }
 </style>
