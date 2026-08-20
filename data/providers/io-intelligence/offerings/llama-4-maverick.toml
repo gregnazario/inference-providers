@@ -4,6 +4,12 @@ endpoint = "chat"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 0.274
+output = 0.8992
+cache_read = 0.137
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-20" }
+
 [limits]
 context = 1_048_576
 source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-19" }

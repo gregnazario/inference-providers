@@ -4,6 +4,12 @@ endpoint = "chat-completions"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 0.03
+output = 0.17
+cache_read = 0.03
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-20" }
+
 [reasoning]
 style = "effort"
 mandatory = false
