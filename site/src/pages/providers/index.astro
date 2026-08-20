@@ -13,12 +13,17 @@ const base = import.meta.env.BASE_URL
     provider for credentials setup, endpoints, plans, quirks, and models.
   </p>
 
-  <div class="table-wrap">
-    <table>
+  <div class="table-wrap" data-enhance>
+    <table
+      data-facets={JSON.stringify([
+        { key: "kind", label: "Kind" },
+        { key: "protocol", label: "Protocol" },
+      ])}
+    >
       <thead>
         <tr>
-          <th>Provider</th>
-          <th>Kind</th>
+          <th data-sort-key="name" data-sort-type="text">Provider</th>
+          <th data-sort-key="kind" data-sort-type="text">Kind</th>
           <th>Auth</th>
           <th>Protocols</th>
         </tr>
@@ -26,11 +31,14 @@ const base = import.meta.env.BASE_URL
       <tbody>
         {
           c.providers.map((p) => (
-            <tr>
-              <td>
+            <tr
+              data-facet-kind={p.kind}
+              data-facet-protocol={[...new Set(p.endpoints.map((e) => e.protocol))].join(",")}
+            >
+              <td data-sort={p.name}>
                 <a href={`${base}providers/${p.id}/`}>{p.name}</a>
               </td>
-              <td>{p.kind}</td>
+              <td data-sort={p.kind}>{p.kind}</td>
               <td>{p.auth.map((a) => `${a.id} (${a.type})`).join(", ")}</td>
               <td>{[...new Set(p.endpoints.map((e) => e.protocol))].join(", ")}</td>
             </tr>
@@ -39,4 +47,6 @@ const base = import.meta.env.BASE_URL
       </tbody>
     </table>
   </div>
+
+  <script src="../../scripts/table-enhance.ts"></script>
 </Base>
