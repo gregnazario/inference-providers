@@ -1,0 +1,23 @@
+model = "moonshot/kimi-k2-7-code"
+wire_id = "kimi-k2.7-code"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = true
+default = "on"
+notes = "Reasoning follows the upstream wire format on this surface; cloned from Moonshot's native offering — thinking.type accepts ONLY enabled."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+incompatible_with = ["temperature", "top_p", "n", "presence_penalty", "frequency_penalty"]
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = ""
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-08-19"

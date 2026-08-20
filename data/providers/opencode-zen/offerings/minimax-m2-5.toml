@@ -1,0 +1,17 @@
+model = "minimax/minimax-m2-5"
+wire_id = "minimax-m2.5"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "always_on"
+mandatory = true
+default = "on"
+notes = "Reasoning follows the upstream wire format on this surface; cloned from MiniMax's native M2.x offering — thinking cannot be turned off."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-08-19"

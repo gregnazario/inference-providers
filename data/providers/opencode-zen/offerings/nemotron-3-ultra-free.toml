@@ -1,0 +1,22 @@
+model = "nvidia/nemotron-3-ultra"
+wire_id = "nemotron-3-ultra-free"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "Reasoning follows the upstream wire format on this surface; upstream NIM wire is chat_template_kwargs.enable_thinking — verify. Free tier on Zen."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "chat_template_kwargs.enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-08-19"
