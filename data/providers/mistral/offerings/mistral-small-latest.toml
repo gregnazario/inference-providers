@@ -4,6 +4,11 @@ endpoint = "v1-chat-completions"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 0.15
+output = 0.6
+source = { url = "https://mistral.ai/pricing/api/", verified = "2026-08-20" }
+
 [limits]
 context = 256_000
 source = { url = "https://docs.mistral.ai/models/", verified = "2026-08-19" }

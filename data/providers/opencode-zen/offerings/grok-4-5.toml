@@ -4,6 +4,13 @@ endpoint = "responses"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 2.0
+output = 6.0
+cache_read = 0.3
+notes = "Doubles for prompts over 200k."
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-08-20" }
+
 [reasoning]
 style = "effort"
 mandatory = true

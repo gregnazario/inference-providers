@@ -4,6 +4,13 @@ endpoint = "chat-completions"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 0.3
+output = 1.2
+cache_read = 0.06
+notes = "50% off ≤512k promo made permanent; >512k doubles; Priority tier 1.5x."
+source = { url = "https://platform.minimax.io/docs/guides/pricing-paygo", verified = "2026-08-20" }
+
 [limits]
 context = 1_000_000
 source = { url = "https://www.minimax.io/blog/minimax-m3", verified = "2026-08-19" }

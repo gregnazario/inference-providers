@@ -4,6 +4,12 @@ endpoint = "chat-completions"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 1.4
+output = 4.4
+cache_read = 0.26
+source = { url = "https://docs.z.ai/guides/overview/pricing", verified = "2026-08-20" }
+
 [limits]
 context = 1_048_576
 output = 128_000

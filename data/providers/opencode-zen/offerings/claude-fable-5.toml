@@ -4,6 +4,13 @@ endpoint = "messages"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 10.0
+output = 50.0
+cache_read = 1.0
+cache_write = 12.5
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-08-20" }
+
 [reasoning]
 style = "adaptive"
 mandatory = true

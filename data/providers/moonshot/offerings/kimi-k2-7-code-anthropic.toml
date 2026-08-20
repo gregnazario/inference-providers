@@ -4,6 +4,13 @@ endpoint = "anthropic"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 0.95
+output = 4.0
+cache_read = 0.19
+notes = "Same as native rates (Claude Code guide links the native pricing page)."
+source = { url = "https://platform.kimi.ai/docs/pricing/chat-k27-code", verified = "2026-08-20" }
+
 [reasoning]
 style = "toggle"
 mandatory = true

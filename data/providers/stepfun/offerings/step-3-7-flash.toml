@@ -4,6 +4,12 @@ endpoint = "chat-completions"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 0.2
+output = 1.15
+cache_read = 0.04
+source = { url = "https://platform.stepfun.ai/docs/en/guides/pricing/details", verified = "2026-08-20" }
+
 [limits]
 context = 262_144
 source = { url = "https://static.stepfun.com/blog/step-3.7-flash/", verified = "2026-08-20" }

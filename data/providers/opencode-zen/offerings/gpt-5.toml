@@ -4,6 +4,13 @@ endpoint = "responses"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 1.07
+output = 8.5
+cache_read = 0.107
+notes = "Below OpenAI direct — Zen at-cost pass-through."
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-08-20" }
+
 [reasoning]
 style = "effort"
 mandatory = true

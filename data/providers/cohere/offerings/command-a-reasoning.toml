@@ -13,7 +13,7 @@ source = { url = "https://docs.cohere.com/docs/models", verified = "2026-08-20" 
 style = "effort"
 mandatory = false
 default = "on"
-notes = "Compat maps reasoning_effort none|high to the native thinking parameter (budget_tokens on the native v2 API); compat return shape for thinking not documented — verify."
+notes = "Compat maps reasoning_effort none|high to the native thinking parameter (budget_tokens on the native v2 API); compat return shape for thinking not documented — verify. Free until rate limits; no published PAYG price."
 returns = "hidden"
 must_round_trip = ""
 

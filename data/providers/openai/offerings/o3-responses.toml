@@ -4,6 +4,12 @@ endpoint = "v1-responses"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 2.0
+output = 8.0
+cache_read = 0.5
+source = { url = "https://developers.openai.com/api/docs/pricing", verified = "2026-08-20" }
+
 [limits]
 context = 200_000
 output = 100_000

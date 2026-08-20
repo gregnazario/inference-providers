@@ -4,6 +4,12 @@ endpoint = "chat-completions"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 0.3
+output = 1.2
+cache_read = 0.06
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-08-20" }
+
 [limits]
 context = 204_800
 source = { url = "https://platform.minimax.io/docs/guides/text-generation", verified = "2026-08-20" }

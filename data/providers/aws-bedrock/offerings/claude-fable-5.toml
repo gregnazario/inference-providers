@@ -4,6 +4,14 @@ endpoint = "invoke-anthropic"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 10.0
+output = 50.0
+cache_read = 1.0
+cache_write = 12.5
+notes = "US East on-demand."
+source = { url = "https://aws.amazon.com/bedrock/pricing/", verified = "2026-08-20" }
+
 [features]
 vision = true
 

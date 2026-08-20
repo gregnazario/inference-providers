@@ -4,6 +4,12 @@ endpoint = "compatible-mode-chat"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 0.4
+output = 1.6
+notes = "≤256k tier; 256k–1M is 1.20/4.80; cache hits billed at 10% of input (rule-based); limited-time promos may apply."
+source = { url = "https://www.alibabacloud.com/help/en/model-studio/model-pricing", verified = "2026-08-20" }
+
 [limits]
 context = 1_048_576
 output = 65_536

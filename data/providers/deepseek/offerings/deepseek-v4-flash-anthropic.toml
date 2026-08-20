@@ -4,6 +4,13 @@ endpoint = "anthropic"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 0.44
+output = 1.32
+cache_read = 0.014
+notes = "Same rates as the native endpoint (no separate /anthropic pricing published). Peak hours; off-peak is half. Cache hit = input cache-read."
+source = { url = "https://api-docs.deepseek.com/quick_start/pricing", verified = "2026-08-20" }
+
 [reasoning]
 style = "toggle"
 mandatory = false

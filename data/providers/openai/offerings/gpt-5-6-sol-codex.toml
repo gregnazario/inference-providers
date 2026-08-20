@@ -4,6 +4,13 @@ endpoint = "codex-backend"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 5.0
+output = 30.0
+cache_read = 0.5
+notes = "Short-ctx tier; long-ctx doubles."
+source = { url = "https://developers.openai.com/api/docs/pricing", verified = "2026-08-20" }
+
 [reasoning]
 style = "effort"
 mandatory = false

@@ -12,7 +12,7 @@ source = { url = "https://deepmind.google/models/gemma", verified = "2026-08-20"
 style = "adaptive"
 mandatory = false
 default = "on"
-notes = "Gemma 4 has configurable thinking modes (think token in the chat template); the Gemini API control parameter is not documented — verify. Serves the 31B dense variant."
+notes = "Gemma 4 has configurable thinking modes (think token in the chat template); the Gemini API control parameter is not documented — verify. Serves the 31B dense variant. Free tier only; no paid tier."
 returns = "hidden"
 must_round_trip = ""
 

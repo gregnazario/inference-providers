@@ -17,6 +17,7 @@ export const CostSchema = z
     cache_read: price,
     cache_write: price,
     free: z.boolean().default(false),
+    notes: z.string().optional(),
     source: SourceSchema,
   })
   .refine((c) => (c.output === 0 || c.input === 0 || c.cache_read === 0 || c.cache_write === 0) ? c.free : true, {
