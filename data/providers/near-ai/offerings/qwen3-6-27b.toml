@@ -4,6 +4,10 @@ endpoint = "chat"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 262_144
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-19" }
+
 [reasoning]
 style = "toggle"
 mandatory = false

@@ -4,6 +4,10 @@ endpoint = "v1-responses"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 500_000
+source = { url = "https://docs.x.ai/docs/models", verified = "2026-08-19" }
+
 [reasoning]
 style = "effort"
 mandatory = true

@@ -10,6 +10,11 @@ output = 2.20
 cache_read = 0.30
 source = { url = "https://docs.fireworks.ai/serverless/pricing", verified = "2026-08-19" }
 
+[limits]
+context = 200_000
+output = 128_000
+source = { url = "https://docs.z.ai/guides/llm/glm-4.7", verified = "2026-08-19" }
+
 [reasoning]
 style = "adaptive"
 mandatory = false
