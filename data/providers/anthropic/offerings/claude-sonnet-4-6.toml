@@ -8,8 +8,9 @@ status_date = ""
 source = { url = "https://platform.claude.com/docs/en/docs/about-claude/models", verified = "2026-08-18" }
 
 [limits]
-context = 200_000
-source = { url = "https://platform.claude.com/docs/en/docs/about-claude/models", verified = "2026-08-18" }
+context = 1_000_000
+output = 128_000
+source = { url = "https://www.anthropic.com/news/claude-sonnet-4-6", verified = "2026-08-19" }
 
 [reasoning]
 style = "budget"

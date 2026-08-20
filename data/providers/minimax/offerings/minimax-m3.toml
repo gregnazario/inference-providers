@@ -4,6 +4,10 @@ endpoint = "chat-completions"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 1_000_000
+source = { url = "https://www.minimax.io/blog/minimax-m3", verified = "2026-08-19" }
+
 [reasoning]
 style = "toggle"
 mandatory = false

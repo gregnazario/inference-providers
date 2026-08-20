@@ -4,6 +4,10 @@ endpoint = "v1-chat-completions"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 131_072
+source = { url = "https://docs.api.nvidia.com/nim/reference/meta-llama-3-3-70b-instruct", verified = "2026-08-19" }
+
 [reasoning]
 style = "none"
 mandatory = false

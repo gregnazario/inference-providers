@@ -11,6 +11,11 @@ cache_read = 0.13
 free = false
 source = { url = "https://developers.openai.com/api/docs/guides/latest-model", verified = "2026-08-18" }
 
+[limits]
+context = 400_000
+output = 128_000
+source = { url = "https://developers.openai.com/api/docs/models", verified = "2026-08-19" }
+
 [reasoning]
 style = "effort"
 mandatory = true

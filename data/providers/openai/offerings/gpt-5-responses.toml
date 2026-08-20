@@ -4,6 +4,11 @@ endpoint = "v1-responses"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 400_000
+output = 128_000
+source = { url = "https://developers.openai.com/api/docs/models", verified = "2026-08-19" }
+
 [reasoning]
 style = "effort"
 mandatory = true

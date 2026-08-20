@@ -4,6 +4,10 @@ endpoint = "v1-chat-completions"
 status = "ga"
 status_date = ""
 
+[limits]
+context = 256_000
+source = { url = "https://docs.mistral.ai/models/", verified = "2026-08-19" }
+
 [reasoning]
 style = "effort"
 mandatory = false

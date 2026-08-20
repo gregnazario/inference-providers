@@ -1,32 +1,33 @@
-model = "zai/glm-5-2"
-wire_id = "zai-org/GLM-5.2"
+model = "thinkingmachines/inkling"
+wire_id = "thinkingmachines/inkling"
 endpoint = "chat-completions"
 status = "ga"
 status_date = ""
 
 [cost]
-input = 1.40
-output = 4.40
-cache_read = 0.14
+input = 1.00
+output = 4.05
+cache_read = 0.17
 source = { url = "https://www.baseten.co/pricing/", verified = "2026-08-19" }
 
 [limits]
 context = 1_048_576
-output = 128_000
+output = 32_768
 source = { url = "https://docs.baseten.co/inference/model-apis/overview", verified = "2026-08-19" }
 
 [reasoning]
 style = "effort"
 mandatory = false
 default = "on"
+notes = "Billed as completion tokens; enable_thinking unvalidated per Baseten docs."
 returns = "reasoning_content"
-must_round_trip = ""
+must_round_trip = "reasoning_content"
 
 [reasoning.effort]
 param = "reasoning_effort"
-values = ["none", "high", "max"]
+values = ["none", "low", "high"]
 default = "high"
-notes = "Default not documented — verify."
+notes = "Default high; none disables reasoning."
 
 [reasoning.source]
 url = "https://docs.baseten.co/inference/model-apis/reasoning"
