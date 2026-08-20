@@ -1,0 +1,22 @@
+model = "alibaba/qwen3-6-27b"
+wire_id = "Qwen/Qwen3.6-27B-FP8"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "NEAR docs rule: Qwen models take chat_template_kwargs.enable_thinking."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "chat_template_kwargs.enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://docs.near.ai/cloud/reasoning-models/"
+verified = "2026-08-19"

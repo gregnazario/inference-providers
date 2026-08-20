@@ -1,0 +1,17 @@
+model = "meta/llama-4-maverick"
+wire_id = "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "none"
+mandatory = false
+default = "off"
+notes = "Llama 4 is not a reasoning model; no reasoning parameter on this surface."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://io.net/docs/guides/intelligence/reasoning-for-chat-completions"
+verified = "2026-08-19"

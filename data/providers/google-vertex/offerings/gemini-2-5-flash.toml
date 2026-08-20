@@ -1,0 +1,24 @@
+model = "google/gemini-2-5-flash"
+wire_id = "gemini-2.5-flash"
+endpoint = "generate-content"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "budget"
+mandatory = false
+default = "on"
+notes = "Thinking budget clone of the Gemini API offering for this model."
+returns = "thought_parts"
+must_round_trip = "thought_signature"
+
+[reasoning.budget]
+param = "generationConfig.thinkingConfig.thinkingBudget"
+min = 1
+max = 24_576
+zero_means_off = true
+special_values = { "-1" = "dynamic" }
+
+[reasoning.source]
+url = "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/thinking"
+verified = "2026-08-19"

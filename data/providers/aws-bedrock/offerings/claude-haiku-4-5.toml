@@ -1,0 +1,32 @@
+model = "anthropic/claude-haiku-4-5"
+wire_id = "anthropic.claude-haiku-4-5-20251001-v1:0"
+endpoint = "invoke-anthropic"
+status = "ga"
+status_date = ""
+
+[features]
+vision = true
+
+[reasoning]
+style = "budget"
+mandatory = false
+default = "on"
+notes = "Extended thinking via the native Anthropic surface; budget clone of the Bedrock sonnet-4-6 offering."
+returns = "thinking_blocks"
+must_round_trip = "signature"
+incompatible_with = ["temperature", "top_p", "top_k"]
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = "disabled"
+
+[reasoning.budget]
+param = "thinking.budget_tokens"
+min = 1024
+zero_means_off = false
+constraint = "must be < max_tokens"
+
+[reasoning.source]
+url = "https://docs.aws.amazon.com/bedrock/latest/userguide/claude-messages-extended-thinking.html"
+verified = "2026-08-19"
