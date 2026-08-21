@@ -15,7 +15,9 @@ const totalOfferings = c.providers.reduce((n, p) => n + p.offerings.length, 0)
 const proseJoin = (items: string[]) =>
   items.length <= 1
     ? items[0] ?? ""
-    : `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`
+    : items.length === 2
+      ? `${items[0]} and ${items[1]}`
+      : `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`
 
 // --- Genuinely free ---
 const hetzner = byId("hetzner")
@@ -80,8 +82,8 @@ const subscriptions = c.providers
       Production requires deploying NIM yourself or NVIDIA AI Enterprise. Keys
       (<code>nvapi-</code> prefix) are generated at build.nvidia.com — free
       with the free NVIDIA Developer Program. The hosted lineup spans a broad
-      open-model catalog; the {nvidia?.offerings.length ?? 0} models tracked
-      here include Nemotron, DeepSeek, and Llama families.
+      open-model catalog; the models tracked here include Nemotron, DeepSeek,
+      and Llama families.
     </p>
 
     <h3>
@@ -194,7 +196,8 @@ const subscriptions = c.providers
         <strong>
           <a href={providerHref("google-gemini")}>Gemini 3.6 Flash intro pricing</a>
         </strong>{" "}
-        — 50% off through 2026-12-31.
+        — 50% off through 2026-12-31 (3.7 Flash carries the same list prices
+        but no published end date).
       </li>
       <li>
         <strong>
