@@ -13,10 +13,19 @@ const entryFileName = (chunk) =>
     ? "_astro/table-enhance.[hash].js"
     : "_astro/[name].[hash].js"
 
+const BASE = "/inference-providers/"
+
 export default defineConfig({
-  base: "/inference-providers/",
+  base: BASE,
   outDir: "dist",
   trailingSlash: "ignore",
+  // The models list is the landing page: / redirects there. On a static
+  // build Astro emits a meta-refresh page at dist/index.html for this. The
+  // destination includes the base — Astro uses `to` verbatim, and GitHub
+  // Pages serves this site under /inference-providers/.
+  redirects: {
+    "/": `${BASE}models/`,
+  },
   // The site CSS is small; inlining it keeps every page self-contained (the
   // design tokens, header, and @font-face rules ship in the HTML itself).
   build: {
