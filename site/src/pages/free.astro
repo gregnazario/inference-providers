@@ -1,0 +1,227 @@
+---
+import { catalog as c } from "../lib/catalog"
+import Base from "../layouts/Base.astro"
+
+const base = import.meta.env.BASE_URL
+const providerHref = (id: string) => `${base}providers/${id}/`
+
+const byId = (id: string) => c.providers.find((p) => p.id === id)
+const modelsById = new Map(c.models.map((m) => [m.id, m]))
+const modelSlug = (modelId: string) => modelId.split("/")[1]
+
+const totalOfferings = c.providers.reduce((n, p) => n + p.offerings.length, 0)
+
+/** Join inline code items as prose: "a", "a and b", "a, b, and c". */
+const proseJoin = (items: string[]) =>
+  items.length <= 1
+    ? items[0] ?? ""
+    : items.length === 2
+      ? `${items[0]} and ${items[1]}`
+      : `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`
+
+// --- Genuinely free ---
+const hetzner = byId("hetzner")
+const hetznerFree = (hetzner?.offerings ?? []).filter((o) => o.cost?.free)
+const hetznerContext = Math.max(0, ...hetznerFree.map((o) => o.limits?.context ?? 0))
+
+const nvidia = byId("nvidia")
+
+const cohere = byId("cohere")
+const cohereModels = (cohere?.offerings ?? []).map((o) => modelsById.get(o.model))
+const cohereOpenWeights = cohereModels.every((m) => m?.open_weights === true)
+
+const gemini = byId("google-gemini")
+const gemma = gemini?.offerings.find((o) => o.model === "google/gemma-4")
+
+const zen = byId("opencode-zen")
+const zenFree = (zen?.offerings ?? []).filter((o) => o.wire_id.endsWith("-free"))
+
+const poolside = byId("poolside")
+
+// --- Subscription table: every provider with a plan block, cheapest first ---
+const subscriptions = c.providers
+  .filter((p) => p.kind === "subscription" || p.plan)
+  .filter((p) => p.plan)
+  .sort((a, b) => (a.plan!.price_usd ?? Infinity) - (b.plan!.price_usd ?? Infinity))
+---
+
+<Base title="Free — inference-providers" active="free" section="guides">
+  <h1>Free</h1>
+  <p>
+    What actually costs nothing across the {c.providers.length} providers in
+    this registry ({c.models.length} models, {totalOfferings} offerings) — and
+    what to pay for when the free options run out. Every fact below is drawn
+    from the catalog and carries a source URL on the linked page; a price of 0
+    only appears there with a source proving it.
+  </p>
+
+  <section>
+    <h2>Genuinely free (no payment)</h2>
+
+    <h3>
+      <a href={providerHref("hetzner")}>{hetzner?.name ?? "Hetzner Inference"}</a>
+    </h3>
+    <p>
+      Free while experimental — an "as is" program launched ~2026-07, EU-based,
+      no SLA, with email notice before changes. Currently serving{" "}
+      {proseJoin(hetznerFree.map((o) => o.wire_id))}{" "}
+      ({hetznerFree.length} model{hetznerFree.length === 1 ? "" : "s"} tracked
+      here, all flagged free; the live <code>GET /api/v1/models</code> lineup is
+      definitive). {hetznerContext > 0 && (
+        <>A {hetznerContext.toLocaleString("en-US")}-token context window.</>
+      )}{" "}
+      Limits per key: 10 requests per 60 seconds, 4M input and 100k output
+      tokens per 60 seconds.
+    </p>
+
+    <h3>
+      <a href={providerHref("nvidia")}>{nvidia?.name ?? "NVIDIA NIM"}</a>
+    </h3>
+    <p>
+      No pay-as-you-go: hosted access is free-tier rate limited (~40 RPM soft).
+      Production requires deploying NIM yourself or NVIDIA AI Enterprise. Keys
+      (<code>nvapi-</code> prefix) are generated at build.nvidia.com — free
+      with the free NVIDIA Developer Program. The hosted lineup spans a broad
+      open-model catalog; the models tracked here include Nemotron, DeepSeek,
+      and Llama families.
+    </p>
+
+    <h3>
+      <a href={providerHref("cohere")}>{cohere?.name ?? "Cohere"}</a>
+    </h3>
+    <p>
+      <code>{proseJoin(cohereModels.map((m) => modelSlug(m?.id ?? "")))}</code>{" "}
+      are free until rate limits on the platform — no per-token price is
+      cataloged for either.{" "}
+      {cohereOpenWeights &&
+        <>
+          Both are open weights (command-a-plus is Apache-2.0 licensed), so you
+          can also serve them yourself when the limit bites.
+        </>}
+    </p>
+
+    <h3>
+      <a href={providerHref("google-gemini")}>{gemini?.name ?? "Google Gemini API"}</a>
+    </h3>
+    <p>
+      <code>{gemma?.wire_id ?? "gemma-4-31b-it"}</code> is free-tier only — no
+      paid tier exists for it. The Gemini API also has a general free tier for
+      Gemini models with per-model rate limits — see the{" "}
+      <a href="https://ai.google.dev/gemini-api/docs/rate-limits">
+        rate limits page
+      </a>
+      .
+    </p>
+
+    <h3>
+      <a href={providerHref("opencode-zen")}>{zen?.name ?? "OpenCode Zen"}</a>
+    </h3>
+    <p>
+      Free tiers sit alongside the paid catalog: several models are served on
+      dedicated free wire IDs —{" "}
+      <code>{proseJoin(zenFree.map((o) => o.wire_id))}</code> — next to ~90+
+      curated pay-as-you-go models billed at cost.
+    </p>
+
+    <h3>
+      <a href={providerHref("poolside")}>{poolside?.name ?? "poolside"}</a>
+    </h3>
+    <p>
+      Inference at <code>inference.poolside.ai</code> is free for a limited
+      time. Model ids are prefixed <code>poolside/</code> — currently{" "}
+      <code>{proseJoin((poolside?.offerings ?? []).map((o) => o.wire_id))}</code>
+      .
+    </p>
+  </section>
+
+  <section>
+    <h2>Cheapest subscriptions</h2>
+    <p>
+      Every provider in the catalog with a plan block — subscription surfaces
+      have no per-token prices; the quota and price live in the plan. Sorted
+      cheapest first.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>Price</th>
+            <th>Quota</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            subscriptions.map((p) => (
+              <tr>
+                <td>
+                  <a href={providerHref(p.id)}>{p.name}</a>
+                </td>
+                <td class="price">
+                  {p.plan!.price_usd === null
+                    ? "unknown"
+                    : `$${p.plan!.price_usd} / ${p.plan!.period}`}
+                </td>
+                <td>{p.plan!.quota}</td>
+                <td>{p.plan!.notes}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Standing deals to know</h2>
+    <ul>
+      <li>
+        <strong>
+          <a href={providerHref("alibaba-token-plan")}>
+            Alibaba Token Plan night pricing
+          </a>
+        </strong>{" "}
+        — qwen3.8-max-preview gets a 10x credit discount during night pricing,
+        22:00–08:00 UTC+8.
+      </li>
+      <li>
+        <strong>
+          <a href={providerHref("opencode-go")}>OpenCode Go first month</a>
+        </strong>{" "}
+        — $5 for the first month, then $10/month, for open coding models on top
+        of the Zen console.
+      </li>
+      <li>
+        <strong>
+          <a href={providerHref("google-gemini")}>Gemini 3.6 Flash intro pricing</a>
+        </strong>{" "}
+        — 50% off through 2026-12-31 (3.7 Flash carries the same list prices
+        but no published end date).
+      </li>
+      <li>
+        <strong>
+          <a href={providerHref("minimax")}>MiniMax M3</a>
+        </strong>{" "}
+        — the ≤512k-input 50% discount was made permanent; prompts above 512k
+        double.
+      </li>
+    </ul>
+    <p class="footnote">
+      Free things change without notice — each claim above is source-linked on
+      its provider page, with a verification date.
+    </p>
+  </section>
+</Base>
+
+<style>
+  .price {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .footnote {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+</style>

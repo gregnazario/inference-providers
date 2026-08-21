@@ -15,6 +15,8 @@ const fmtWeights = (openWeights: SdkCatalog["models"][number]["open_weights"]) =
   openWeights === undefined ? "—" : openWeights ? "yes" : "no"
 
 const rows = modelRows(c, c.models)
+
+const totalOfferings = c.providers.reduce((n, p) => n + p.offerings.length, 0)
 ---
 
 <Base title="Models — inference-providers" active="models" section="models">
@@ -22,6 +24,9 @@ const rows = modelRows(c, c.models)
   <p>
     {c.models.length} models, rendered from the emitted catalog. Open a model
     for its facts and every provider offering.
+  </p>
+  <p class="stat-line">
+    {c.models.length} models · {c.providers.length} providers · {totalOfferings} offerings
   </p>
 
   <div class="table-wrap table-wrap--open" data-enhance>
@@ -129,6 +134,19 @@ const rows = modelRows(c, c.models)
 </Base>
 
 <style>
+  /* Kept as one contiguous text line — it doubles as the site's stat marker
+     (carried over from the former homepage). */
+  .stat-line {
+    margin: 0 0 1.5rem;
+    padding: 0.6rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-weight: 650;
+    font-variant-numeric: tabular-nums;
+    color: var(--fg);
+  }
+
   .num {
     text-align: right;
     font-variant-numeric: tabular-nums;
