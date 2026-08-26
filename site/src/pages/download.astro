@@ -81,6 +81,28 @@ const base = import.meta.env.BASE_URL
     was built from). Any fact can be traced back to the exact data revision.
   </p>
 
+  <h2>For agents and crawlers</h2>
+  <p>
+    Machine discovery surfaces are published alongside the artifacts:
+    <a href="/inference-providers/robots.txt"><code>robots.txt</code></a>
+    (open crawl policy + Content Signals),
+    <a href="/inference-providers/sitemap.xml"><code>sitemap.xml</code></a>,
+    a RFC 9727 API catalog at
+    <a href="/inference-providers/.well-known/api-catalog"
+      ><code>.well-known/api-catalog</code></a
+    >, an ARD manifest at
+    <a href="/inference-providers/.well-known/ai-catalog.json"
+      ><code>.well-known/ai-catalog.json</code></a
+    >, an agent-skills index at
+    <a href="/inference-providers/.well-known/agent-skills/index.json"
+      ><code>.well-known/agent-skills/index.json</code></a
+    >
+    pointing at a ready-made{" "}
+    <a href="/inference-providers/skills/catalog-skill/SKILL.md"><code>SKILL.md</code></a>{" "}
+    for querying this registry, and consumer auth instructions at{" "}
+    <a href="/inference-providers/auth.md"><code>auth.md</code></a>.
+  </p>
+
   <h2>Generating them yourself</h2>
   <p>
     The artifacts are produced by <code>pnpm emit</code>, which reads the TOML

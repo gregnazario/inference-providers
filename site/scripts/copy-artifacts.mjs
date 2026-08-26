@@ -1,7 +1,18 @@
 // Copies the emitted JSON artifacts from the repo-root dist/ into the built
 // site so they are downloadable at <base>artifacts/... alongside the HTML.
+// Also generates .well-known payloads whose contents depend on built files:
+// the agent-skills index hashes the served SKILL.md at build time so the
+// published digest can never drift from the served skill.
 // Node builtins only — no workspace or node_modules dependencies.
-import { copyFileSync, existsSync, mkdirSync, readdirSync } from "node:fs"
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs"
+import { createHash } from "node:crypto"
 import { join, resolve } from "node:path"
 
 const sourceDir = resolve(import.meta.dirname, "../../dist")
@@ -66,3 +77,34 @@ for (const dir of perEntityDirs) {
 }
 
 console.log(`copy-artifacts: copied ${count} files to ${targetDir}`)
+
+// ---------- agent discovery (.well-known) ----------
+
+const skillFile = resolve(import.meta.dirname, "../public/skills/catalog-skill/SKILL.md")
+if (!existsSync(skillFile)) {
+  fail([`agent skill file not found: ${skillFile}`])
+}
+const skillDigest = createHash("sha256").update(readFileSync(skillFile)).digest("hex")
+
+const skillIndex = {
+  $schema:
+    "https://raw.githubusercontent.com/cloudflare/agent-skills-discovery-rfc/main/schema/index.schema.json",
+  skills: [
+    {
+      name: "catalog-query",
+      type: "text/markdown",
+      description:
+        "Query the inference-providers registry for model facts, per-provider offerings, pricing, and wire-level reasoning parameter shapes.",
+      url: "https://gregnazario.github.io/inference-providers/skills/catalog-skill/SKILL.md",
+      sha256: skillDigest,
+    },
+  ],
+}
+
+const wellKnownDir = resolve(import.meta.dirname, "../dist/.well-known")
+mkdirSync(join(wellKnownDir, "agent-skills"), { recursive: true })
+writeFileSync(
+  join(wellKnownDir, "agent-skills", "index.json"),
+  JSON.stringify(skillIndex, null, 2) + "\n",
+)
+console.log(`copy-artifacts: wrote .well-known/agent-skills/index.json (sha256 ${skillDigest.slice(0, 12)}…)`)

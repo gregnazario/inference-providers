@@ -1,0 +1,41 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://gregnazario.github.io/inference-providers/",
+      "service-desc": [
+        {
+          "href": "https://gregnazario.github.io/inference-providers/artifacts/catalog.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://gregnazario.github.io/inference-providers/models/",
+          "type": "text/html"
+        },
+        {
+          "href": "https://gregnazario.github.io/inference-providers/help/",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://github.com/gregnazario/inference-providers/actions",
+          "type": "text/html"
+        }
+      ],
+      "source-code": [
+        {
+          "href": "https://github.com/gregnazario/inference-providers",
+          "type": "text/html"
+        }
+      ],
+      "license": [
+        {
+          "href": "https://github.com/gregnazario/inference-providers/blob/main/LICENSE",
+          "type": "text/html"
+        }
+      ]
+    }
+  ]
+}

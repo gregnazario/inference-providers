@@ -1,0 +1,46 @@
+{
+  "specVersion": "0.1",
+  "host": {
+    "name": "gregnazario.github.io",
+    "pathPrefix": "/inference-providers"
+  },
+  "entries": [
+    {
+      "urn": "urn:air:gregnazario.github.io:inference-providers:model-catalog",
+      "displayName": "inference-providers model catalog",
+      "description": "Full denormalized join of canonical model facts and per-provider offerings: pricing, context/output limits, auth methods, endpoint protocols, and wire-level reasoning parameter specs for every listed AI inference provider.",
+      "type": "application/json",
+      "url": "https://gregnazario.github.io/inference-providers/artifacts/catalog.json",
+      "representativeQueries": [
+        "Which providers serve GLM-5.3 Flash and what does it cost per million tokens?",
+        "How do I request high reasoning effort on Claude Opus via Bedrock?",
+        "What is the cheapest live surface for DeepSeek V4 and what is its context limit?",
+        "Does any offering of Qwen3.8 Flash support vision input?",
+        "What reasoning parameter style does MiniMax use on its Anthropic-compatible endpoint?"
+      ]
+    },
+    {
+      "urn": "urn:air:gregnazario.github.io:inference-providers:providers-layer",
+      "displayName": "Provider registry (auth + endpoints)",
+      "description": "Normalized provider records: authentication methods with exact header shapes (api_key, OAuth device/authorization-code flows, SigV4, Entra), protocol-tagged endpoints, api_surfaces inventory, and wire quirks.",
+      "type": "application/json",
+      "url": "https://gregnazario.github.io/inference-providers/artifacts/providers.json",
+      "representativeQueries": [
+        "How do I authenticate to xAI with OAuth instead of an API key?",
+        "Which Bedrock auth headers does the Anthropic Messages protocol need?",
+        "What endpoints does OpenRouter expose beyond chat completions?"
+      ]
+    },
+    {
+      "urn": "urn:air:gregnazario.github.io:inference-providers:browse-ui",
+      "displayName": "Models browser",
+      "description": "Sortable, searchable HTML tables of every cataloged model and provider, with free-tier deals and subscription plans surfaced.",
+      "type": "text/html",
+      "url": "https://gregnazario.github.io/inference-providers/models/",
+      "representativeQueries": [
+        "Show all current-generation models from Z.ai with pricing",
+        "List providers that offer free tiers or standing free deals"
+      ]
+    }
+  ]
+}
