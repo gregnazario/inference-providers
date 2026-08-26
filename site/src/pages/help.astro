@@ -196,6 +196,37 @@ const reasoning = buildReasoningParam(offering, {
   </section>
 
   <section>
+    <h2>Agent discovery</h2>
+    <ul>
+      <li>
+        Crawlers and AI agents are explicitly welcome: robots.txt allows all
+        agents with Content Signals
+        <code>ai-train=yes, search=yes, ai-input=yes</code>, and a sitemap
+        lists every page.
+      </li>
+      <li>
+        Machine-readable entry points live under{" "}
+        <code>.well-known/</code> (RFC 9727 API catalog, ARD manifest,
+        agent-skills index) plus <code>auth.md</code> — see the{" "}
+        <a href="/inference-providers/download/">Download</a> page for the
+        full list.
+      </li>
+      <li>
+        Two auditor suggestions are platform-limited here: response{" "}
+        <code>Link</code> headers and <code>Accept: text/markdown</code>{" "}
+        negotiation need origin-server control GitHub Pages doesn't offer.
+        The equivalent pointers ship as HTML{" "}
+        <code>&lt;link rel=…&gt;</code> tags on every page instead, and the
+        artifacts are already plain JSON. DNS-based agent discovery needs a
+        custom domain; the same files are all that is required once one is
+        attached. WebMCP tool exposure and OAuth server metadata do not
+        apply — this site serves public static data and runs no protected
+        API or MCP server.
+      </li>
+    </ul>
+  </section>
+
+  <section>
     <h2>Troubleshooting / FAQ</h2>
     <ul>
       <li>
