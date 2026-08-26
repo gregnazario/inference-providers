@@ -1,0 +1,17 @@
+model = "allenai/olmo-3-32b-think"
+wire_id = "olmo-3-32b-think"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "always_on"
+mandatory = true
+default = "on"
+notes = "Reasoning follows the upstream wire format on this surface; OLMo 3 Think is an always-thinking long-CoT model — round-trip rule not documented; verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-08-21"

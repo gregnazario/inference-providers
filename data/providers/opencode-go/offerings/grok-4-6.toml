@@ -1,0 +1,22 @@
+model = "xai/grok-4-6"
+wire_id = "grok-4.6"
+endpoint = "go-responses"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "Reasoning follows the upstream wire format on this surface; cloned from xAI's native offering."
+returns = "reasoning_content"
+must_round_trip = "encrypted_content"
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high", "xhigh"]
+default = "high"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/go/v1/models"
+verified = "2026-08-21"

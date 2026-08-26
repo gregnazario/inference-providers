@@ -1,8 +1,8 @@
 model = "meta/llama-3-3-70b"
 wire_id = "meta/llama-3.3-70b-instruct"
 endpoint = "v1-chat-completions"
-status = "ga"
-status_date = ""
+status = "retired"
+status_date = "2026-08-21"
 
 [limits]
 context = 131_072
@@ -12,7 +12,7 @@ source = { url = "https://docs.api.nvidia.com/nim/reference/meta-llama-3-3-70b-i
 style = "none"
 mandatory = false
 default = "off"
-notes = "Llama 3.3 is not a reasoning model; no reasoning parameter on this surface."
+notes = "Llama 3.3 is not a reasoning model; no reasoning parameter on this surface. Removed from the live NIM catalog 2026-08-21."
 returns = "hidden"
 must_round_trip = ""
 

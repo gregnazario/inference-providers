@@ -1,0 +1,29 @@
+model = "google/gemini-3-flash"
+wire_id = "gemini-3-flash"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.5
+output = 3.0
+cache_read = 0.05
+free = false
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-08-21" }
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "Reasoning follows the upstream wire format on this surface; cloned from Google's native offering — thinkingLevel pass-through on the OpenAI-chat surface is not documented; verify."
+returns = "thought_parts"
+must_round_trip = "thought_signature"
+
+[reasoning.effort]
+param = "thinkingLevel"
+values = ["minimal", "low", "medium", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-08-21"

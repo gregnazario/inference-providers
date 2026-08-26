@@ -1,0 +1,15 @@
+id = "nvidia/nemotron-3-super"
+name = "Nemotron 3 Super"
+family = "nemotron"
+lab = "nvidia"
+release_date = "2026-03-11"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16"
+license = ""
+description = "120.6B/12.7B-active hybrid Mamba-Transformer MoE; up to 1M context (256K default); reasoning + tool calling."
+aliases = ["nemotron-3-super-120b-a12b"]
+[modalities]
+input = ["text"]
+output = ["text"]
