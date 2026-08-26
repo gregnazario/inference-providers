@@ -4,6 +4,13 @@ endpoint = "chat-completions"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 2.0
+output = 12.0
+cache_read = 0.2
+free = false
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-08-21" }
+
 [reasoning]
 style = "effort"
 mandatory = true

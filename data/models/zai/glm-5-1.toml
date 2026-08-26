@@ -8,7 +8,7 @@ knowledge_cutoff = ""
 open_weights = true
 hf_repo = "zai-org/GLM-5.1"
 license = ""
-description = "744B/40B-active MoE (MIT); thinking default enabled; superseded by 5.2/5.3 but still listed and priced."
+description = "744B/40B-active MoE (MIT); thinking default enabled; 200K context; superseded by 5.2/5.3 but still listed and priced."
 aliases = ["glm-5.1"]
 [modalities]
 input = ["text"]

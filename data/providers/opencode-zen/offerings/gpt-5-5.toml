@@ -4,6 +4,13 @@ endpoint = "responses"
 status = "ga"
 status_date = ""
 
+[cost]
+input = 5.0
+output = 30.0
+cache_read = 0.5
+free = false
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-08-21" }
+
 [reasoning]
 style = "effort"
 mandatory = false

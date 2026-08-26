@@ -19,5 +19,5 @@ default = "high"
 notes = "Default level not documented; verify."
 
 [reasoning.source]
-url = "https://ollama.com/v1/models"
+url = "https://docs.ollama.com/cloud"
 verified = "2026-08-21"
