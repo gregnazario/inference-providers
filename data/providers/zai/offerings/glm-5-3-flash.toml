@@ -1,0 +1,33 @@
+model = "zai/glm-5-3-flash"
+wire_id = "glm-5.3-flash"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.075
+output = 0.25
+cache_read = 0.015
+notes = "Launch promo 50% off until Sep 9 2026 UTC+8; regular rates $0.15/$0.50/$0.03."
+source = { url = "https://docs.z.ai/guides/overview/pricing", verified = "2026-08-26" }
+
+[limits]
+context = 1_048_576
+source = { url = "https://docs.z.ai/guides/vlm/glm-5.3-flash", verified = "2026-08-26" }
+
+[reasoning]
+style = "toggle"
+mandatory = true
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = ""
+notes = "Only thinking.type = enabled is accepted; omitted/other values error."
+
+[reasoning.source]
+url = "https://docs.z.ai/guides/vlm/glm-5.3-flash"
+verified = "2026-08-26"

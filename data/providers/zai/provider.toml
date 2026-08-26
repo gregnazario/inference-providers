@@ -26,3 +26,7 @@ protocol = "openai-chat"
 [[quirks]]
 text = "clear_thinking: false preserves reasoning_content across turns (Preserved Thinking); disabled by default on this endpoint."
 docs = "https://docs.z.ai/guides/capabilities/thinking-mode"
+
+[[quirks]]
+text = "GLM-5.3-Flash is the first multimodal GLM-5-series model: chat-completions accepts image/video/file inputs alongside text."
+docs = "https://docs.z.ai/guides/vlm/glm-5.3-flash"

@@ -1,0 +1,15 @@
+id = "alibaba/qwen3-8-flash"
+name = "Qwen3.8 Flash"
+family = "qwen"
+lab = "alibaba"
+release_date = "2026-08-26"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "Qwen/Qwen3.8-Flash-Next"
+license = ""
+description = "Production vision-language MoE (125B LM params / 6B active); 262K context extensible to 1M via YaRN; API coming soon on QwenCloud — preview architecture for Qwen4."
+aliases = ["qwen3.8-flash", "Qwen3.8-Flash"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

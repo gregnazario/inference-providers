@@ -1,0 +1,15 @@
+id = "zai/glm-5-3-flash"
+name = "GLM-5.3 Flash"
+family = "glm"
+lab = "zai"
+release_date = "2026-08-26"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "zai-org/GLM-5.3-Flash"
+license = ""
+description = "First natively multimodal GLM-5-series (image/video/file in); 320B/18B-active sparse+linear attention; 1M context; thinking cannot be disabled."
+aliases = ["glm-5.3-flash"]
+[modalities]
+input = ["text", "image", "video"]
+output = ["text"]
