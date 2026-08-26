@@ -1,0 +1,22 @@
+model = "google/gemini-3-1-pro"
+wire_id = "gemini-3.1-pro"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "Reasoning follows the upstream wire format on this surface; cloned from Google's native offering — thinkingLevel pass-through on the OpenAI-chat surface is not documented; verify."
+returns = "thought_parts"
+must_round_trip = "thought_signature"
+
+[reasoning.effort]
+param = "thinkingLevel"
+values = ["low", "medium", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-08-21"

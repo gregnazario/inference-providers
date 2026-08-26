@@ -1,0 +1,15 @@
+id = "allenai/olmo-3-32b-think"
+name = "OLMo 3 32B Think"
+family = "olmo"
+lab = "allenai"
+release_date = "2025-11-20"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "allenai/Olmo-3-32B-Think"
+license = ""
+description = "Fully open (Apache 2.0, all data + code + logs) 32B dense long-CoT reasoning model; 64K context."
+aliases = ["olmo-3-32b-think"]
+[modalities]
+input = ["text"]
+output = ["text"]

@@ -1,0 +1,22 @@
+model = "moonshot/kimi-k2-5"
+wire_id = "kimi-k2.5"
+endpoint = "go-chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "Reasoning follows the upstream wire format on this surface; cloned from Moonshot's native offering. k2.5 has no keep param — round-trip rule not documented."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = "disabled"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/go/v1/models"
+verified = "2026-08-21"

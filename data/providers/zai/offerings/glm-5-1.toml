@@ -1,0 +1,33 @@
+model = "zai/glm-5-1"
+wire_id = "glm-5.1"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 1.4
+output = 4.4
+cache_read = 0.26
+source = { url = "https://docs.z.ai/guides/llm/glm-5.1", verified = "2026-08-21" }
+
+[limits]
+context = 204_800
+output = 131_072
+source = { url = "https://docs.z.ai/guides/llm/glm-5.1", verified = "2026-08-21" }
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "Thinking default enabled; thinking.type toggles."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = "disabled"
+
+[reasoning.source]
+url = "https://docs.z.ai/guides/llm/glm-5.1"
+verified = "2026-08-21"
