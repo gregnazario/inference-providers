@@ -1,0 +1,33 @@
+model = "kwaipilot/kat-coder-pro-v2-5"
+wire_id = "kwaipilot/kat-coder-pro-v2.5"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.74
+output = 2.96
+cache_read = 0.15
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+
+[limits]
+context = 262144
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = false
+
+[reasoning]
+style = "none"
+mandatory = false
+default = "off"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"

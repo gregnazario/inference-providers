@@ -1,0 +1,15 @@
+id = "sakana/fugu-ultra"
+name = "Fugu Ultra"
+family = "fugu"
+lab = "sakana"
+release_date = "2026-06-24"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Sakana AI's multi-agent-as-a-model entry: 1M context, text+image input, reasoning_effort control. $5/$30 per Mtok on OpenRouter. Weights gated/not public."
+aliases = ["fugu-ultra"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

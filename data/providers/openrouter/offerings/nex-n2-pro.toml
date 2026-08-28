@@ -1,0 +1,39 @@
+model = "nex-agi/nex-n2-pro"
+wire_id = "nex-agi/nex-n2-pro"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.25
+output = 1.0
+cache_read = 0.025
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+
+[limits]
+context = 262144
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+notes = "Qwen3.5-architecture lineage; reasoning via OR unified parameter — verify."
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"

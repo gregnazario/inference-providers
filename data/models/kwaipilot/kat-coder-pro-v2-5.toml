@@ -1,0 +1,15 @@
+id = "kwaipilot/kat-coder-pro-v2-5"
+name = "KAT-Coder Pro v2.5"
+family = "kat"
+lab = "kwaipilot"
+release_date = "2026-07-10"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Kwai's flagship agentic coding model: 262K context, text-only, no thinking mode. $0.74/$2.96 per Mtok on OpenRouter."
+aliases = ["kat-coder-pro-v2.5"]
+[modalities]
+input = ["text"]
+output = ["text"]
