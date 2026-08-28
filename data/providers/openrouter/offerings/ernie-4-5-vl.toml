@@ -1,0 +1,34 @@
+model = "baidu/ernie-4-5-vl"
+wire_id = "baidu/ernie-4.5-vl-424b-a47b"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.42
+output = 1.25
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 123000
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = true
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Open weights use the enable_thinking chat-template flag (default on); OR normalizes. Served by NovitaAI."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"

@@ -1,0 +1,35 @@
+model = "openai/gpt-5-4-mini"
+wire_id = "openai/gpt-5.4-mini"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.75
+output = 4.5
+cache_read = 0.075
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 400000
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+[reasoning]
+style = "effort"
+mandatory = false
+default = "off"
+notes = "Default effort is none."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high", "xhigh"]
+default = "none"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"

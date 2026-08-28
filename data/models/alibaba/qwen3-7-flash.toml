@@ -1,0 +1,15 @@
+id = "alibaba/qwen3-7-flash"
+name = "Qwen3.7 Flash"
+family = "qwen3"
+lab = "alibaba"
+release_date = "2026-07-27"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Cheapest 1M-context vision tier: native text+image+video input, 131K output. $0.03/$0.13 per Mtok on OpenRouter (Alibaba tiered CNY 0.2/0.8 up to 32K in Beijing). Params undisclosed; API-only. A Thinking Mode exists but the control parameter is undocumented."
+aliases = ["qwen3.7-flash"]
+[modalities]
+input = ["text", "image", "video"]
+output = ["text"]

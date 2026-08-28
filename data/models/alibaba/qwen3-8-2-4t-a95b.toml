@@ -1,0 +1,15 @@
+id = "alibaba/qwen3-8-2-4t-a95b"
+name = "Qwen3.8 2.4T A95B"
+family = "qwen3"
+lab = "alibaba"
+release_date = "2026-08-12"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "Qwen/Qwen3.8-2.4T-A95B"
+license = "Qwen3.8-Max (custom)"
+description = "Open-weight Max-class flagship: 2.4T total / 95B active MoE (512 experts, hybrid Gated DeltaNet/Attention), 262K native context extensible past 1M, 131K output. Thinking is mandatory (enable_thinking=false errors); reasoning_effort xhigh (default)/medium/low, preserve_thinking on. $2.00/$6.00 per Mtok."
+aliases = ["qwen3.8-2.4t-a95b", "qwen3.8-2.4t"]
+[modalities]
+input = ["text"]
+output = ["text"]

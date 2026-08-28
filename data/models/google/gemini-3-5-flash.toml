@@ -1,0 +1,15 @@
+id = "google/gemini-3-5-flash"
+name = "Gemini 3.5 Flash"
+family = "gemini"
+lab = "google"
+release_date = "2026-05-19"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "GA Flash generation (migrated from gemini-3-flash-preview); 1M context, 65K output, text+image+video+audio+PDF input. $1.50/$9.00 per Mtok flat (output price includes thinking); caching $0.15. Controlled via thinking_level minimal/low/medium/high, default medium; thinking_budget is deprecated and sending both returns 400."
+aliases = ["gemini-3.5-flash"]
+[modalities]
+input = ["text", "image", "video", "audio"]
+output = ["text"]

@@ -1,0 +1,15 @@
+id = "nvidia/nemotron-3-nano"
+name = "Nemotron 3 Nano 30B A3B"
+family = "nemotron"
+lab = "nvidia"
+release_date = "2025-12-15"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16"
+license = "NVIDIA Nemotron Open Model License"
+description = "Fully open 30B/3.5B-active hybrid Mamba-2/MoE with released training data and recipes; 262K context (1M-capable config), up to 228K output. chat_template_kwargs.enable_thinking toggles thinking, default on (off mode uses greedy decoding). $0.05/$0.20 per Mtok."
+aliases = ["nemotron-3-nano-30b-a3b"]
+[modalities]
+input = ["text"]
+output = ["text"]

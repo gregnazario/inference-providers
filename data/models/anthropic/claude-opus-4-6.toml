@@ -1,0 +1,15 @@
+id = "anthropic/claude-opus-4-6"
+name = "Claude Opus 4.6"
+family = "claude"
+lab = "anthropic"
+release_date = "2026-02-04"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "February 2026 Opus release, $5/$25 per Mtok with 1M context and 128K output — same price as Opus 5; part of the 4.x line Anthropic ships alongside the 5-series."
+aliases = ["claude-opus-4.6"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

@@ -1,0 +1,26 @@
+model = "google/gemini-3-5-flash"
+wire_id = "gemini-3.5-flash"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 1.5
+output = 9
+cache_read = 0.15
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-08-28" }
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Gemini 3.5 uses thinking_level upstream (minimal/low/medium/high, default medium); thinking_budget deprecated — sending both returns 400. Zen wire behavior — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["minimal", "low", "medium", "high"]
+default = "medium"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-08-28"

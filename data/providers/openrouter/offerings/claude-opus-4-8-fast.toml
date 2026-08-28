@@ -1,0 +1,35 @@
+model = "anthropic/claude-opus-4-8"
+wire_id = "anthropic/claude-opus-4.8-fast"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 10
+output = 50
+cache_read = 1
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 1000000
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Fast serving mode of Opus 4.8."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "high"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"

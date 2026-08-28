@@ -1,0 +1,15 @@
+id = "amazon/nova-2-lite"
+name = "Nova 2 Lite"
+family = "nova"
+lab = "amazon"
+release_date = "2025-12-02"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "AWS re:Invent 2025 next-gen Nova; 1M context, text+image+video+file input. Reasoning via Bedrock reasoningConfig (type enabled/disabled + maxReasoningEffort low/medium/high, default disabled). $0.30/$2.50 per Mtok; more capable than Nova Premier at ~7x lower cost."
+aliases = ["nova-2-lite-v1"]
+[modalities]
+input = ["text", "image", "video"]
+output = ["text"]

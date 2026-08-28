@@ -1,0 +1,15 @@
+id = "bytedance/seed-2-0-mini"
+name = "Seed 2.0 Mini"
+family = "seed"
+lab = "bytedance"
+release_date = "2026-02-14"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Seed 2.0 latency/cost tier; 262K context, multimodal input, 131K output. Tiered $0.10/$0.40 per Mtok up to 128K prompt, 2x above. Effort modes minimal/low/medium/high."
+aliases = ["seed-2.0-mini"]
+[modalities]
+input = ["text", "image", "video"]
+output = ["text"]

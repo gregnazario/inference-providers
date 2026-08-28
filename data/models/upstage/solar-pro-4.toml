@@ -1,0 +1,15 @@
+id = "upstage/solar-pro-4"
+name = "Solar Pro 4"
+family = "solar"
+lab = "upstage"
+release_date = "2026-08-10"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Upstage's current flagship reasoning model (Korean-optimized); 524K context, 131K output, tool calling. List $0.30/$1.20 per Mtok with a 90%-off promo ($0.03/$0.12) through ~2026-09-10; cache read $0.006. Reasoning supported; native control parameter undocumented. Params undisclosed; open sibling is Solar-Open2-250B."
+aliases = ["solar-pro4", "solar-pro4-20260810"]
+[modalities]
+input = ["text"]
+output = ["text"]

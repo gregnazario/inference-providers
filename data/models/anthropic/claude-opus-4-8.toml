@@ -1,0 +1,15 @@
+id = "anthropic/claude-opus-4-8"
+name = "Claude Opus 4.8"
+family = "claude"
+lab = "anthropic"
+release_date = "2026-05-27"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "May 2026 Opus release and latest of the 4.x line; $5/$25 per Mtok standard with 1M context and 128K output, fast mode $10/$50, ~$10/$37.50 premium above 200K prompt tokens."
+aliases = ["claude-opus-4.8", "claude-opus-4-8-fast"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

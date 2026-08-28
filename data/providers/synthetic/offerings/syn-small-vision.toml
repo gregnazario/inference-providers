@@ -1,0 +1,24 @@
+model = "alibaba/qwen3-8-27b"
+wire_id = "syn:small:vision"
+endpoint = "openai-chat"
+status = "ga"
+status_date = ""
+[limits]
+context = 262144
+source = { url = "https://dev.synthetic.new/docs/api/models", verified = "2026-08-28" }
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Permanent category alias that routes to the current recommended upstream open-weight model (rotation possible). reasoning_effort low/medium/high documented; default undocumented — verify. Subscription-priced ($1/day or $30/mo, 500 requests/5h)."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://dev.synthetic.new/docs/openai/chat-completions"
+verified = "2026-08-28"

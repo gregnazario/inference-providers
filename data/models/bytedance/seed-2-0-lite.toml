@@ -1,0 +1,15 @@
+id = "bytedance/seed-2-0-lite"
+name = "Seed 2.0 Lite"
+family = "seed"
+lab = "bytedance"
+release_date = "2026-02-14"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Seed 2.0 Lite tier; 262K context, multimodal input, 131K output. Tiered $0.25/$2.00 per Mtok up to 128K prompt, 2x above; post-April 2026 update added native audio understanding."
+aliases = ["seed-2.0-lite"]
+[modalities]
+input = ["text", "image", "video"]
+output = ["text"]
