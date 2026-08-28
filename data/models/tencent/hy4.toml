@@ -1,0 +1,15 @@
+id = "tencent/hy4"
+name = "Hy4 Preview"
+family = "hy4"
+lab = "tencent"
+release_date = "2026-08-28"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "tencent/Hy4-preview"
+license = ""
+description = "Tencent's next-gen Hunyuan flagship, open-sourced as a preview on 2026-08-28: 770B total / 49B-active MoE with a 1M context window, FP8 variant shipped alongside. Successor to Hy3 (295B/21B)."
+aliases = ["hy4-preview", "hy4"]
+[modalities]
+input = ["text"]
+output = ["text"]
