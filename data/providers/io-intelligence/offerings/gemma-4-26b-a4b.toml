@@ -1,0 +1,35 @@
+model = "google/gemma-4"
+wire_id = "google/gemma-4-26b-a4b-it"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.11
+output = 0.408
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 262142
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = false
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Gemma 4 thinking is configurable upstream (enable_thinking, default on); io.net lists reasoning support without a documented control — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high"]
+default = "high"
+notes = "Default not documented — verify."
+
+[reasoning.source]
+url = "https://api.intelligence.io.solutions/api/v1/models"
+verified = "2026-08-28"

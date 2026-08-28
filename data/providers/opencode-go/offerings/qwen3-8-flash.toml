@@ -1,0 +1,21 @@
+model = "alibaba/qwen3-8-flash"
+wire_id = "qwen3.8-flash"
+endpoint = "go-chat-completions"
+status = "ga"
+status_date = ""
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "off"
+notes = "Qwen flash tiers default thinking off; NEAR documents chat_template_kwargs.enable_thinking for Qwen — verify on this gateway."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "chat_template_kwargs.enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/go/v1/models"
+verified = "2026-08-28"

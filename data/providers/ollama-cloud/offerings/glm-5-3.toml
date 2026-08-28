@@ -1,0 +1,22 @@
+model = "zai/glm-5-3"
+wire_id = "glm-5.3"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "GLM-5.3 thinks always (thinking.type disabled errors upstream); effort sets depth. Native API returns message.thinking; /v1 return shape varies — verify."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high"]
+default = "high"
+notes = "Default level not documented; verify."
+
+[reasoning.source]
+url = "https://docs.ollama.com/cloud"
+verified = "2026-08-28"

@@ -1,0 +1,16 @@
+model = "alibaba/qwen3-7-max"
+wire_id = "qwen3.7-max"
+endpoint = "go-chat-completions"
+status = "ga"
+status_date = ""
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Reasoning follows the upstream wire format on this surface; thinking mode exists upstream, control undocumented — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://opencode.ai/zen/go/v1/models"
+verified = "2026-08-28"
