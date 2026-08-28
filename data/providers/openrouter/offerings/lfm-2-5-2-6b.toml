@@ -1,0 +1,40 @@
+model = "liquid/lfm-2-5-2-6b"
+wire_id = "liquid/lfm-2.5-2.6b:free"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0
+output = 0
+free = true
+notes = "OR-served free tier of the open 2.6B edge model."
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+
+[limits]
+context = 65536
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = false
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+notes = "LFM2.5 always reasons (cannot be disabled)."
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"

@@ -1,0 +1,15 @@
+id = "nex-agi/nex-n2-pro"
+name = "Nex N2 Pro"
+family = "nex"
+lab = "nex-agi"
+release_date = "2026-06-08"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "nex-agi/Nex-N2-Pro"
+license = ""
+description = "Agentic MoE flagship on the Qwen3.5 architecture: 397B total / 17B active, 262K context, text+image input. Open weights; $0.25/$1.00 per Mtok on OpenRouter."
+aliases = ["nex-n2-pro"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

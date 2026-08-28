@@ -1,0 +1,15 @@
+id = "nex-agi/nex-n2-mini"
+name = "Nex N2 Mini"
+family = "nex"
+lab = "nex-agi"
+release_date = "2026-06-24"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "nex-agi/Nex-N2-mini"
+license = ""
+description = "Compact multimodal sibling of Nex N2 Pro; 262K context, text+image input, $0.025/$0.10 per Mtok on OpenRouter."
+aliases = ["nex-n2-mini"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

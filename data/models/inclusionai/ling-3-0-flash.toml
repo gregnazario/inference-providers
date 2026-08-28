@@ -1,0 +1,15 @@
+id = "inclusionai/ling-3-0-flash"
+name = "Ling 3.0 Flash"
+family = "ling"
+lab = "inclusionai"
+release_date = "2026-07-23"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "inclusionAI/Ling-3.0-flash"
+license = ""
+description = "Ant Group's Ling 3.0-Flash: 124B total / 5.1B-active MoE, 262K context, open-sourced 2026-08-05. $0.021/$0.063 per Mtok on OpenRouter — among the cheapest frontier-adjacent listings."
+aliases = ["ling-3.0-flash"]
+[modalities]
+input = ["text"]
+output = ["text"]
