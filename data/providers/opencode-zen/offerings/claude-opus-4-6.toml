@@ -1,0 +1,27 @@
+model = "anthropic/claude-opus-4-6"
+wire_id = "claude-opus-4-6"
+endpoint = "messages"
+status = "ga"
+status_date = ""
+[cost]
+input = 5
+output = 25
+cache_read = 0.5
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-08-28" }
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "adaptive"
+notes = "Reasoning follows the upstream wire format on this surface; cloned from Anthropic's native offering. 4.x Opus accepts thinking.type disabled at effort ≤ high like the 5-series — verify."
+returns = "thinking_blocks"
+must_round_trip = "signature"
+incompatible_with = ["temperature", "top_p", "top_k", "prefill"]
+
+[reasoning.effort]
+param = "output_config.effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "high"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-08-28"

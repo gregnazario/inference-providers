@@ -1,0 +1,15 @@
+id = "bytedance/seed-2-0-code"
+name = "Seed 2.0 Code"
+family = "seed"
+lab = "bytedance"
+release_date = "2026-02-14"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Agentic-coding flagship of the Seed 2.0 launch (Pro/Lite/Mini + Code); 262K context, multimodal input, 131K output. Tiered $0.50/$3.00 per Mtok up to 128K prompt, 2x above. Ark thinking object enabled/disabled/auto plus reasoning_effort."
+aliases = ["seed-2.0-code"]
+[modalities]
+input = ["text", "image", "video"]
+output = ["text"]

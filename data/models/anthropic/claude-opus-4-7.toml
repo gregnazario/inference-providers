@@ -1,0 +1,15 @@
+id = "anthropic/claude-opus-4-7"
+name = "Claude Opus 4.7"
+family = "claude"
+lab = "anthropic"
+release_date = "2026-04-16"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "April 2026 Opus release, $5/$25 per Mtok with 1M context and 128K output."
+aliases = ["claude-opus-4.7"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

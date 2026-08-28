@@ -1,0 +1,15 @@
+id = "baidu/ernie-4-5-vl"
+name = "ERNIE 4.5 VL 424B A47B"
+family = "ernie"
+lab = "baidu"
+release_date = "2025-06-30"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "baidu/ERNIE-4.5-VL-424B-A47B-PT"
+license = "Apache-2.0"
+description = "Baidu's largest open-weights ERNIE: heterogeneous 424B/47B-active MoE with modality-isolated routing, text+image input, 131K context. Chat-template enable_thinking (default on). Still the current open ERNIE flagship."
+aliases = ["ernie-4.5-vl-424b-a47b"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

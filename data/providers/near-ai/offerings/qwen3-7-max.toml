@@ -1,0 +1,30 @@
+model = "alibaba/qwen3-7-max"
+wire_id = "qwen/qwen3.7-max"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+[cost]
+input = 2.8
+output = 7.5
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-28" }
+[limits]
+context = 1000000
+output = 16384
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = false
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Thinking mode exists upstream (Alibaba Model Studio); NEAR does not list reasoning in supported features and the gateway control is undocumented — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://docs.near.ai/cloud/reasoning-models/"
+verified = "2026-08-28"

@@ -1,0 +1,15 @@
+id = "alibaba/qwen3-7-max"
+name = "Qwen3.7 Max"
+family = "qwen3"
+lab = "alibaba"
+release_date = "2026-05-20"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Qwen's most capable proprietary model at the 3.7 generation (snapshot 2026-05-20); 1M context, 131K output, text input, thinking mode supported. CNY 12/36 per Mtok (Beijing); the 2026-06-08 snapshot adds vision."
+aliases = ["qwen3.7-max"]
+[modalities]
+input = ["text"]
+output = ["text"]

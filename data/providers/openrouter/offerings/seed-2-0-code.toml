@@ -1,0 +1,34 @@
+model = "bytedance/seed-2-0-code"
+wire_id = "bytedance-seed/seed-2.0-code"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.5
+output = 3
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 262144
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = true
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Ark thinking object enabled/disabled/auto plus reasoning_effort upstream; OR normalizes. Tiered 2x above 128K prompt tokens."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"

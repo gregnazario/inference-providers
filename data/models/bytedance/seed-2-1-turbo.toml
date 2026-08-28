@@ -1,0 +1,15 @@
+id = "bytedance/seed-2-1-turbo"
+name = "Seed 2.1 Turbo"
+family = "seed"
+lab = "bytedance"
+release_date = "2026-06-23"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Newest Seed generation (Volcengine FORCE, June 23-24 2026), positioned for coding and long-horizon agents; 262K context, multimodal input, up to 262K output (235,929 enforced). $0.50/$2.50 per Mtok. Ark thinking object enabled/disabled/auto."
+aliases = ["seed-2.1-turbo"]
+[modalities]
+input = ["text", "image", "video"]
+output = ["text"]

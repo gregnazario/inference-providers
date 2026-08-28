@@ -1,0 +1,15 @@
+id = "inception/mercury-2"
+name = "Mercury 2"
+family = "mercury"
+lab = "inception"
+release_date = "2026-03-04"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "First commercial reasoning diffusion LLM (dLLM): parallel generate-and-refine decoding, 1000+ tok/s on H100-class hardware, ~300ms reasoning latency. 128K context, up to 50K output. $0.25/$0.75 per Mtok, cache $0.025. reasoning_effort instant/low/medium/high."
+aliases = ["mercury-2"]
+[modalities]
+input = ["text"]
+output = ["text"]

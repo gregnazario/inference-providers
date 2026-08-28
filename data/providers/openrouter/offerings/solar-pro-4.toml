@@ -1,0 +1,30 @@
+model = "upstage/solar-pro-4"
+wire_id = "upstage/solar-pro4"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.3
+output = 1.2
+cache_read = 0.006
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 524288
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = false
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Upstage's flagship reasoning model; native control parameter undocumented — verify. List pricing shown; 90%-off promo ($0.03/$0.12) through ~2026-09-10."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"
