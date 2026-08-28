@@ -1,0 +1,26 @@
+model = "nvidia/nemotron-3-super"
+wire_id = "hf:nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4"
+endpoint = "openai-chat"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 262144
+source = { url = "https://dev.synthetic.new/docs/api/models", verified = "2026-08-28" }
+
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "Pinned to the Nemotron-3-Super NVFP4 build; upstream toggles thinking via chat_template_kwargs.enable_thinking (default on) — verify on this host."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "chat_template_kwargs.enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://dev.synthetic.new/docs/api/models"
+verified = "2026-08-28"

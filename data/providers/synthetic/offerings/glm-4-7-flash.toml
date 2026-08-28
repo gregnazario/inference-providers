@@ -1,0 +1,26 @@
+model = "zai/glm-4-7-flash"
+wire_id = "hf:zai-org/GLM-4.7-Flash"
+endpoint = "openai-chat"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 196608
+source = { url = "https://dev.synthetic.new/docs/api/models", verified = "2026-08-28" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Pinned to the GLM-4.7-Flash open weights (MIT). reasoning_effort low/medium/high documented; default undocumented — verify. Subscription-priced."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://dev.synthetic.new/docs/openai/chat-completions"
+verified = "2026-08-28"

@@ -1,0 +1,15 @@
+id = "zai/glm-4-7-flash"
+name = "GLM-4.7 Flash"
+family = "glm"
+lab = "zai"
+release_date = "2026-01-19"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "zai-org/GLM-4.7-Flash"
+license = "MIT"
+description = "Small fast open-weight sibling of GLM-4.7 (MIT weights); ~200K context, text-only. $0.06/$0.40 per Mtok on OpenRouter; serves as Synthetic's syn:small:text default."
+aliases = ["glm-4.7-flash"]
+[modalities]
+input = ["text"]
+output = ["text"]

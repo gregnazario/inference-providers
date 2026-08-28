@@ -1,0 +1,22 @@
+model = "tencent/hy4"
+wire_id = "hy4-preview"
+endpoint = "go-chat-completions"
+status = "preview"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Hy3 uses a no-think default with low/high CoT modes upstream; Hy4 preview control undocumented — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["none", "low", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/go/v1/models"
+verified = "2026-08-28"
