@@ -1,0 +1,35 @@
+model = "alibaba/qwen3-8-flash"
+wire_id = "qwen/qwen3.8-flash"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.15
+output = 0.47
+cache_read = 0.016
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 1000000
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Qwen flash defaults thinking off upstream; OR default not documented — verify."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"

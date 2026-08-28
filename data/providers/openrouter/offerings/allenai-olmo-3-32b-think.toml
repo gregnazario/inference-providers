@@ -1,0 +1,34 @@
+model = "allenai/olmo-3-32b-think"
+wire_id = "allenai/olmo-3-32b-think"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.15
+output = 0.5
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 65536
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = false
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "OLMo 3 Think always thinks; effort none is not offered on this listing."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "high"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"

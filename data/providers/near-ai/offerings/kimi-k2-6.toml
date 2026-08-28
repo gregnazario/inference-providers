@@ -1,0 +1,36 @@
+model = "moonshot/kimi-k2-6"
+wire_id = "moonshotai/kimi-k2.6"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.81
+output = 3.85
+cache_read = 0.41
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-28" }
+[limits]
+context = 262144
+output = 8192
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "NEAR documents chat_template_kwargs.thinking for Kimi (not enable_thinking)."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "chat_template_kwargs.thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://docs.near.ai/cloud/reasoning-models/"
+verified = "2026-08-28"

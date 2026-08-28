@@ -1,0 +1,36 @@
+model = "minimax/minimax-m2-5"
+wire_id = "MiniMaxAI/MiniMax-M2.5"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.348
+output = 1.366
+cache_read = 0.174
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 196600
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = false
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "MiniMax M-series cannot disable thinking upstream."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high"]
+default = "high"
+notes = "Default not documented — verify."
+
+[reasoning.source]
+url = "https://api.intelligence.io.solutions/api/v1/models"
+verified = "2026-08-28"

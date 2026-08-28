@@ -1,0 +1,35 @@
+model = "moonshot/kimi-k2-6"
+wire_id = "moonshotai/Kimi-K2.6"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.685
+output = 3.312
+cache_read = 0.343
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 262142
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high"]
+default = "high"
+notes = "Default not documented — verify."
+
+[reasoning.source]
+url = "https://api.intelligence.io.solutions/api/v1/models"
+verified = "2026-08-28"

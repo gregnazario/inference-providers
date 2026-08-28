@@ -1,0 +1,36 @@
+model = "zai/glm-5-1"
+wire_id = "zai-org/GLM-5.1"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+[cost]
+input = 1.314
+output = 4.268
+cache_read = 0.657
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 202750
+output = 32768
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = false
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high"]
+default = "high"
+notes = "Default not documented — verify."
+
+[reasoning.source]
+url = "https://api.intelligence.io.solutions/api/v1/models"
+verified = "2026-08-28"

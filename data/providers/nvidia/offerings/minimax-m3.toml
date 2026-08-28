@@ -1,0 +1,28 @@
+model = "minimax/minimax-m3"
+wire_id = "minimaxai/minimax-m3"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = false
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "MiniMax M-series cannot disable thinking upstream; NIM control not documented — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "medium"
+notes = "Values follow upstream; NIM docs — verify."
+
+[reasoning.source]
+url = "https://build.nvidia.com/minimaxai/minimax-m3"
+verified = "2026-08-28"

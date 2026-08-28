@@ -1,0 +1,26 @@
+model = "moonshot/kimi-k2-5"
+wire_id = "kimi-k2.5"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.6
+output = 3
+cache_read = 0.1
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-08-28" }
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "Reasoning follows the upstream wire format on this surface; cloned from Moonshot's native offering."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.toggle]
+param = "thinking.type"
+on = "enabled"
+off = "disabled"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-08-28"

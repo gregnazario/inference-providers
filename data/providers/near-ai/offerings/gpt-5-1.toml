@@ -1,0 +1,35 @@
+model = "openai/gpt-5-1"
+wire_id = "openai/gpt-5.1"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+[cost]
+input = 1.25
+output = 10
+cache_read = 0.125
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-28" }
+[limits]
+context = 400000
+output = 16384
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = false
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["none", "low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://cloud-api.near.ai/v1/models"
+verified = "2026-08-28"

@@ -1,0 +1,31 @@
+model = "zai/glm-5-3-flash"
+wire_id = "zai-org/GLM-5.3-Flash"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.15
+output = 0.5
+cache_read = 0.075
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 262144
+output = 131072
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+[reasoning]
+style = "always_on"
+mandatory = true
+default = "on"
+notes = "GLM-5.3 Flash thinks always; enabled-only upstream — verify gateway behavior."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://api.intelligence.io.solutions/api/v1/models"
+verified = "2026-08-28"
