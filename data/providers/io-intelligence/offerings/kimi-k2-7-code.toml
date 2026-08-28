@@ -1,0 +1,36 @@
+model = "moonshot/kimi-k2-7-code"
+wire_id = "moonshotai/Kimi-K2.7-Code"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+[cost]
+input = 1.008
+output = 4.51
+cache_read = 0.504
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 262144
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "Kimi K2.7 Code toggles thinking enabled-only upstream (off sends empty string)."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high"]
+default = "high"
+notes = "Default not documented — verify."
+
+[reasoning.source]
+url = "https://api.intelligence.io.solutions/api/v1/models"
+verified = "2026-08-28"

@@ -1,0 +1,31 @@
+model = "anthropic/claude-opus-5"
+wire_id = "anthropic/claude-opus-5"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+[cost]
+input = 5
+output = 25
+cache_read = 0.5
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-28" }
+[limits]
+context = 1000000
+output = 128000
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Claude 5-series adaptive effort upstream (output_config.effort); gateway control undocumented — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://docs.near.ai/cloud/reasoning-models/"
+verified = "2026-08-28"

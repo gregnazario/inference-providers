@@ -1,0 +1,27 @@
+model = "nvidia/nemotron-3-super"
+wire_id = "nvidia/nemotron-3-super-120b-a12b"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = false
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "chat_template_kwargs.medium_effort: true adds a medium effort tier."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "chat_template_kwargs.enable_thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://build.nvidia.com/nvidia/nemotron-3-super-120b-a12b"
+verified = "2026-08-28"

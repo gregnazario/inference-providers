@@ -1,0 +1,27 @@
+model = "moonshot/kimi-k2-6"
+wire_id = "moonshotai/kimi-k2.6"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = false
+[reasoning]
+style = "toggle"
+mandatory = false
+default = "on"
+notes = "Kimi chat-template thinking flag; NIM per-model docs — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.toggle]
+param = "chat_template_kwargs.thinking"
+on = "true"
+off = "false"
+
+[reasoning.source]
+url = "https://build.nvidia.com/moonshotai/kimi-k2.6"
+verified = "2026-08-28"

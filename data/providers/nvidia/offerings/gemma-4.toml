@@ -1,0 +1,22 @@
+model = "google/gemma-4"
+wire_id = "google/gemma-4-31b-it"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = false
+[reasoning]
+style = "adaptive"
+mandatory = false
+default = "on"
+notes = "Gemma 4 thinking is configurable upstream (think token); NIM control not documented — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://build.nvidia.com/google/gemma-4-31b-it"
+verified = "2026-08-28"

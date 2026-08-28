@@ -1,0 +1,35 @@
+model = "deepseek/deepseek-v4-flash"
+wire_id = "deepseek/deepseek-v4-flash-0731"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.05
+output = 0.1
+cache_read = 0.01
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 1310720
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = false
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Dated 0731 snapshot of deepseek-v4-flash."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"

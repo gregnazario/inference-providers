@@ -1,0 +1,35 @@
+model = "zai/glm-5-3-flash"
+wire_id = "z-ai/glm-5.3-flash"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.075
+output = 0.25
+cache_read = 0.015
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 1310720
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "GLM-5.3 Flash cannot disable thinking upstream (enabled-only); OR effort maps to thinking depth."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"

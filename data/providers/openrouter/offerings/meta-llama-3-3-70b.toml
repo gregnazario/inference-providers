@@ -1,0 +1,29 @@
+model = "meta/llama-3-3-70b"
+wire_id = "meta-llama/llama-3.3-70b-instruct"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.71
+output = 0.71
+cache_read = 0.71
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 131072
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = false
+[reasoning]
+style = "none"
+mandatory = false
+default = "off"
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-08-28"

@@ -1,0 +1,27 @@
+model = "stepfun/step-3-7-flash"
+wire_id = "stepfun-ai/step-3.7-flash"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = false
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "Upstream has three reasoning levels + Advisor Mode; NIM control not documented — verify."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high"]
+default = "medium"
+
+[reasoning.source]
+url = "https://build.nvidia.com/stepfun-ai/step-3.7-flash"
+verified = "2026-08-28"

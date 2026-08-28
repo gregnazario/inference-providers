@@ -1,0 +1,31 @@
+model = "zai/glm-5-3"
+wire_id = "zai-org/GLM-5.3"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+[cost]
+input = 1.4
+output = 4.4
+cache_read = 0.7
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[limits]
+context = 1048576
+output = 131072
+source = { url = "https://api.intelligence.io.solutions/api/v1/models", verified = "2026-08-28" }
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = false
+[reasoning]
+style = "always_on"
+mandatory = true
+default = "on"
+notes = "GLM-5.3 thinks always; thinking.type disabled errors upstream — verify gateway behavior."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.source]
+url = "https://api.intelligence.io.solutions/api/v1/models"
+verified = "2026-08-28"
