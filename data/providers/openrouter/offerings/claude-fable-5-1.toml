@@ -1,16 +1,16 @@
-model = "anthropic/claude-opus-4-8"
-wire_id = "anthropic/claude-opus-4.8-fast"
+model = "anthropic/claude-fable-5-1"
+wire_id = "anthropic/claude-fable-5.1"
 endpoint = "chat-completions"
-status = "retired"
-status_date = "2026-09-04"
+status = "ga"
+status_date = ""
 [cost]
 input = 10
 output = 50
-cache_read = 1
-source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+cache_read = 0.25
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-04" }
 [limits]
 context = 1000000
-source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-04" }
 [features]
 streaming = true
 tools = true
@@ -19,9 +19,9 @@ prompt_caching = true
 vision = true
 [reasoning]
 style = "effort"
-mandatory = false
+mandatory = true
 default = "on"
-notes = "Fast serving mode of Opus 4.8."
+notes = "Fable line cannot disable thinking (effort none errored on 5.0); cache hits cut to $0.25 on 5.1."
 returns = "reasoning_content"
 must_round_trip = "reasoning_content"
 
@@ -32,4 +32,4 @@ default = "high"
 
 [reasoning.source]
 url = "https://openrouter.ai/api/v1/models"
-verified = "2026-08-28"
+verified = "2026-09-04"

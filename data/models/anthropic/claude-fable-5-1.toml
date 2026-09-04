@@ -1,0 +1,15 @@
+id = "anthropic/claude-fable-5-1"
+name = "Claude Fable 5.1"
+family = "claude"
+lab = "anthropic"
+release_date = "2026-09-01"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "GA refresh of Fable 5 (Sep 1, 2026): same $10/$50 per Mtok with prompt-cache hits cut from $1.00 to $0.25; 1M context, 128K output, text+image input. Fable line still cannot disable thinking."
+aliases = ["claude-fable-5.1"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]
