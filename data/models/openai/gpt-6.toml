@@ -1,0 +1,15 @@
+id = "openai/gpt-6"
+name = "GPT-6 Astra"
+family = "gpt"
+lab = "openai"
+release_date = "2026-09-03"
+retired_date = ""
+knowledge_cutoff = "2026-04-30"
+open_weights = false
+hf_repo = ""
+license = ""
+description = "OpenAI's next-generation flagship, launched Sep 3 2026 (wire id gpt-6-astra; no plain gpt-6). 1.05M context (922K max input), 128K output, text+image input. $10/$50 per Mtok short-context ($20/$75 over 272K), cached input $1.00, cache writes $12.50; Batch/Flex $5/$25; fast mode $20/$100 (unavailable with EU data residency). Effort low-medium-high-xhigh-max with no none (thinking cannot be disabled); default undocumented. Chat Completions, Responses, and Batch only. Rolling out first to enterprises in the Trusted Access Program with API and plan access 'coming in the coming days' — not yet listed on any aggregator surface. OpenAI reports Astra as its first model to reach the 'Critical' cyber capability level; the strongest cyber features are restricted to vetted testers."
+aliases = ["gpt-6-astra", "gpt-6"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]
