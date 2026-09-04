@@ -1,0 +1,26 @@
+model = "meta/muse-spark-1-3"
+wire_id = "muse-spark-1.3-contributor-free"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 0
+output = 0
+free = true
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-09-04" }
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+notes = "Free tier of the Contributor SKU; cloned from Meta's native offering (always-on reasoning)."
+returns = "hidden"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-09-04"

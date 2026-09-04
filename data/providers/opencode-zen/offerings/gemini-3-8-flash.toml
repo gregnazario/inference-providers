@@ -1,0 +1,26 @@
+model = "google/gemini-3-8-flash"
+wire_id = "gemini-3.8-flash"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+[cost]
+input = 1.5
+output = 7.5
+cache_read = 0.15
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-09-04" }
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Fourth Flash generation; thinking_level upstream."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-09-04"

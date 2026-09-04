@@ -1,0 +1,27 @@
+model = "anthropic/claude-fable-5-1"
+wire_id = "claude-fable-5-1"
+endpoint = "messages"
+status = "ga"
+status_date = ""
+[cost]
+input = 10
+output = 50
+cache_read = 0.25
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-09-04" }
+[reasoning]
+style = "adaptive"
+mandatory = true
+default = "adaptive"
+notes = "Cloned from Anthropic's native offering. thinking.type disabled errors on the fable line; effort changes invalidate prompt-cache breakpoints."
+returns = "thinking_blocks"
+must_round_trip = "signature"
+incompatible_with = ["temperature", "top_p", "top_k", "prefill"]
+
+[reasoning.effort]
+param = "output_config.effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "high"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-09-04"

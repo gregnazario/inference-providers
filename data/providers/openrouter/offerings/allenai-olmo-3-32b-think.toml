@@ -1,8 +1,8 @@
 model = "allenai/olmo-3-32b-think"
 wire_id = "allenai/olmo-3-32b-think"
 endpoint = "chat-completions"
-status = "ga"
-status_date = ""
+status = "retired"
+status_date = "2026-09-04"
 [cost]
 input = 0.15
 output = 0.5

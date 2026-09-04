@@ -1,0 +1,35 @@
+model = "google/gemini-3-8-flash"
+wire_id = "google/gemini-3.8-flash"
+endpoint = "chat"
+status = "ga"
+status_date = ""
+[cost]
+input = 0.75
+output = 3.75
+cache_read = 0.075
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-09-04" }
+[limits]
+context = 1000000
+source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-09-04" }
+[features]
+streaming = true
+tools = false
+structured_output = false
+prompt_caching = true
+vision = true
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "NEAR does not list reasoning in supported features; upstream control is thinking_level — verify gateway support."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["minimal", "low", "medium", "high"]
+default = "medium"
+
+[reasoning.source]
+url = "https://cloud-api.near.ai/v1/models"
+verified = "2026-09-04"

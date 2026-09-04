@@ -1,0 +1,15 @@
+id = "google/gemini-3-8-flash"
+name = "Gemini 3.8 Flash"
+family = "gemini"
+lab = "google"
+release_date = "2026-09-03"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Fourth Flash generation (Sep 3, 2026): 1M context, text+image+audio+video input, $0.75/$3.75 per Mtok on OpenRouter (Google list $1.50/$7.50, cache $0.15). thinking_level control like the 3.5+ Flash line."
+aliases = ["gemini-3.8-flash"]
+[modalities]
+input = ["text", "image", "audio", "video"]
+output = ["text"]
