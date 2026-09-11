@@ -19,17 +19,12 @@ structured_output = true
 prompt_caching = true
 vision = false
 [reasoning]
-style = "effort"
+style = "adaptive"
 mandatory = false
 default = "on"
-notes = "NEAR does not list reasoning in supported features; upstream control is thinking_level (minimal/low/medium/high, default medium) — verify gateway support."
 returns = "reasoning_content"
 must_round_trip = ""
-
-[reasoning.effort]
-param = "reasoning_effort"
-values = ["minimal", "low", "medium", "high"]
-default = "medium"
+notes = "NEAR does not list reasoning in supported features; upstream control is thinking_level (minimal/low/medium/high, default medium). No gateway control documented — verify before relying."
 
 [reasoning.source]
 url = "https://cloud-api.near.ai/v1/models"

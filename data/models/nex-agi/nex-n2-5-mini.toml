@@ -8,8 +8,8 @@ knowledge_cutoff = ""
 open_weights = false
 hf_repo = ""
 license = ""
-description = "Nex N2.5 Mini succeeds N2 Pro, the compact tier of the N2.5 generation: 262K context, text+image input, reasoning-capable. Currently served only as OpenRouter's :free SKU; weights not yet public."
-aliases = ["nex-n2.5-pro"]
+description = "Compact tier of the N2.5 generation: 262K context, text+image input, reasoning-capable. Currently served only as OpenRouter's :free SKU; weights not yet public."
+aliases = ["nex-n2.5-mini"]
 [modalities]
 input = ["text", "image"]
 output = ["text"]

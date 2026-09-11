@@ -8,7 +8,7 @@ status_date = ""
 input = 0.15
 output = 0.5
 cache_read = 0.035
-notes = "Matches Z.ai's launch-promo pricing."
+notes = "Near’s own cache-read price (0.035) sits just above Z.ai’s 0.03 list; input/output match the launch promo."
 source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-09-10" }
 
 [limits]

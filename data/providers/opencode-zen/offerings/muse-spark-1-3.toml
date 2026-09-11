@@ -23,7 +23,7 @@ mandatory = true
 default = "on"
 returns = "hidden"
 must_round_trip = ""
-notes = "Reasoning follows the upstream wire format on this surface; cloned from Meta's native offering (always-on reasoning)."
+notes = "Muse Spark 1.3 reasons always (thinking cannot be disabled upstream); effort sets depth. Cloned from Meta's native offering — verify on this gateway."
 
 [reasoning.effort]
 param = "reasoning_effort"
