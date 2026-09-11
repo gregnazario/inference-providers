@@ -12,5 +12,5 @@
     "report": "tsx src/cli.ts"
   },
   "dependencies": { "@inference-providers/sdk": "workspace:*", "@inference-providers/schema": "workspace:*" },
-  "devDependencies": { "@types/node": "^22.0.0", "typescript": "^5.6.0", "vitest": "^3.0.0", "tsx": "^4.19.0" }
+  "devDependencies": { "@types/node": "^22.0.0", "typescript": "^5.6.0", "vitest": "^4.1.11", "tsx": "^4.19.0" }
 }

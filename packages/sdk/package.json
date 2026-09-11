@@ -11,5 +11,5 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": { "@inference-providers/schema": "workspace:*" },
-  "devDependencies": { "@types/node": "^22.0.0", "typescript": "^5.6.0", "vitest": "^3.0.0" }
+  "devDependencies": { "@types/node": "^22.0.0", "typescript": "^5.6.0", "vitest": "^4.1.11" }
 }
