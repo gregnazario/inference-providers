@@ -23,3 +23,7 @@ overrides:
   # platform publishes and satisfies markdown-satteri's ^0.10.3 range; drop
   # this once a markdown-satteri depends on >=0.10.5.
   satteri: 0.10.5
+
+  # svgo >= 4.1.0 fixes removeScripts sanitization bypasses (Dependabot #19/#20).
+  # astro 7.2.x pins svgo 4.0.2; drop this override once astro bumps.
+  svgo: ^4.1.0
