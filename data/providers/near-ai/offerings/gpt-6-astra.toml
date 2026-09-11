@@ -8,6 +8,7 @@ status_date = ""
 input = 10
 output = 50
 cache_read = 1
+notes = "Short-context tier; over 272K tokens $20/$75 (OpenAI list; NEAR pricing shown)."
 source = { url = "https://cloud-api.near.ai/v1/models", verified = "2026-09-10" }
 
 [limits]

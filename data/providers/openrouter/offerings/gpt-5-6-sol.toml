@@ -4,13 +4,13 @@ endpoint = "chat-completions"
 status = "ga"
 status_date = ""
 [cost]
-input = 4
-output = 20
+input = 2
+output = 10
 cache_read = 0.2
-source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-04" }
 [limits]
 context = 1050000
-source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-08-28" }
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-04" }
 [features]
 streaming = true
 tools = true
