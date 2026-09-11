@@ -1,8 +1,8 @@
 model = "minimax/minimax-m3"
 wire_id = "minimaxai/minimax-m3"
 endpoint = "v1-chat-completions"
-status = "ga"
-status_date = ""
+status = "retired"
+status_date = "2026-09-10"
 [features]
 streaming = true
 tools = true

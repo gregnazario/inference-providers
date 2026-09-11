@@ -1,0 +1,15 @@
+id = "nex-agi/nex-n2-5-mini"
+name = "Nex N2.5 Mini"
+family = "nex"
+lab = "nex-agi"
+release_date = "2026-09-08"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Nex N2.5 Mini succeeds N2 Pro, the compact tier of the N2.5 generation: 262K context, text+image input, reasoning-capable. Currently served only as OpenRouter's :free SKU; weights not yet public."
+aliases = ["nex-n2.5-pro"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]
