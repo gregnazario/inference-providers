@@ -1,0 +1,31 @@
+model = "zai/glm-5-3-flash"
+wire_id = "glm-5.3-flash"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.15
+output = 0.5
+cache_read = 0.03
+notes = "Matches Z.ai's launch-promo pricing."
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-09-10" }
+
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+
+[reasoning]
+style = "always_on"
+mandatory = true
+default = "on"
+notes = "GLM-5.3 Flash thinks always (enabled-only upstream); cloned from Z.ai's native offering — verify on this gateway."
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-09-10"

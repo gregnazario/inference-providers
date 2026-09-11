@@ -1,5 +1,5 @@
 model = "alibaba/qwen3-8-max"
-wire_id = "qwen/qwen3.8-max"
+wire_id = "qwen/qwen3.8-max-0902"
 endpoint = "chat-completions"
 status = "ga"
 status_date = ""
