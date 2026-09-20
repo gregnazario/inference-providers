@@ -31,3 +31,7 @@ overrides:
   # js-yaml >= 4.3.2 caps merge-key CPU use (Dependabot #28); a transitive
   # pin elsewhere still resolves 4.3.1. Drop when upstream bumps.
   js-yaml: ^4.3.2
+
+  # devalue >= 5.9.2 fixes malformed-input DoS (Dependabot #29); astro 7.2.x
+  # pins an older 5.x. Drop when astro bumps.
+  devalue: ^5.9.2
