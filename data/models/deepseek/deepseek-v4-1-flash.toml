@@ -1,0 +1,15 @@
+id = "deepseek/deepseek-v4-1-flash"
+name = "DeepSeek V4.1 Flash"
+family = "deepseek"
+lab = "deepseek"
+release_date = "2026-09-10"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = "deepseek-ai/DeepSeek-V4.1-Flash"
+license = "MIT"
+description = "DeepSeek's consolidation release (Sep 10, 2026): the first model on their Causal Encoder-Decoder (CED) architecture, sparse MoE with 8B active on input and 16B on output, 1M context, text+image input, MIT weights. Absorbs the V4 line: from Sep 14 all deepseek-v4-pro requests route to V4.1-Flash at its rates as V4 Pro sunsets. $0.15/$0.60 per Mtok on OpenRouter."
+aliases = ["deepseek-v4.1-flash"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]

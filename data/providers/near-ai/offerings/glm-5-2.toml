@@ -1,8 +1,8 @@
 model = "zai/glm-5-2"
 wire_id = "z-ai/glm-5.2"
 endpoint = "chat"
-status = "ga"
-status_date = ""
+status = "retired"
+status_date = "2026-09-20"
 
 [cost]
 input = 1.40

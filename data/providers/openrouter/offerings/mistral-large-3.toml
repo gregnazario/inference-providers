@@ -1,8 +1,8 @@
 model = "mistral/mistral-large-3"
 wire_id = "mistralai/mistral-large-2512"
 endpoint = "chat-completions"
-status = "ga"
-status_date = ""
+status = "retired"
+status_date = "2026-09-20"
 
 [cost]
 input = 0.5

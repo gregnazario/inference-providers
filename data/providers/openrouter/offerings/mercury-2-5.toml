@@ -1,0 +1,39 @@
+model = "inception/mercury-2-5"
+wire_id = "inception/mercury-2.5"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.04
+output = 0.15
+cache_read = 0.004
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-20" }
+
+[limits]
+context = 260000
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-20" }
+
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = false
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+notes = "Diffusion LLM: parallel generate-and-refine. Also accepts instant (near-zero reasoning latency) — outside our effort vocabulary."
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-09-20"
