@@ -1,0 +1,15 @@
+id = "inception/mercury-2-5"
+name = "Mercury 2.5"
+family = "mercury"
+lab = "inception"
+release_date = "2026-09-08"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Inception's latest diffusion LLM (dLLM): parallel token generation and refinement, positioned as the fastest reasoning LLM; 260K context (up from Mercury 2's 128K) at $0.04/$0.15 per Mtok — about a quarter of Mercury 2's price. reasoning_effort control including the out-of-vocabulary instant value."
+aliases = ["mercury-2.5"]
+[modalities]
+input = ["text"]
+output = ["text"]

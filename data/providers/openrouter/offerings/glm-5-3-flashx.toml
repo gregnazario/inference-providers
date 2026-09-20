@@ -1,0 +1,39 @@
+model = "zai/glm-5-3-flashx"
+wire_id = "z-ai/glm-5.3-flashx"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.37
+output = 1.25
+cache_read = 0.075
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-20" }
+
+[limits]
+context = 1048576
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-20" }
+
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+notes = "High-speed variant of GLM-5.3-Flash (up to 200 tok/s); thinking cannot be disabled on the 5.3 line — effort maps to depth."
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-09-20"

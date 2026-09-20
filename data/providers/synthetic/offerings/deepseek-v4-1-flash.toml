@@ -1,0 +1,26 @@
+model = "deepseek/deepseek-v4-1-flash"
+wire_id = "hf:deepseek-ai/DeepSeek-V4.1-Flash"
+endpoint = "openai-chat"
+status = "ga"
+status_date = ""
+
+[limits]
+context = 262144
+source = { url = "https://dev.synthetic.new/docs/api/models", verified = "2026-09-20" }
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+notes = "Pinned to the DeepSeek V4.1-Flash open weights (MIT). reasoning_effort low/medium/high documented; default undocumented — verify. Subscription-priced."
+returns = "reasoning_content"
+must_round_trip = ""
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["low", "medium", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://dev.synthetic.new/docs/openai/chat-completions"
+verified = "2026-09-20"
