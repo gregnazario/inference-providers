@@ -38,7 +38,7 @@ export const AuthType = z.enum([
   "api_key", "oauth", "oauth_device", "sigv4", "entra_bearer", "adc", "workload_federation",
 ])
 export const Protocol = z.enum([
-  "anthropic-messages", "openai-chat", "openai-responses", "google-generate-content", "bedrock-converse",
+  "anthropic-messages", "openai-chat", "openai-responses", "google-generate-content", "bedrock-converse", "systemone",
 ])
 export const Surface = z.enum([
   "text", "streaming", "embeddings", "files", "batch", "count_tokens", "prompt_caching",

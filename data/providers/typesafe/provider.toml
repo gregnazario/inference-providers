@@ -1,0 +1,27 @@
+id = "typesafe"
+name = "TypeSafe AI"
+kind = "first_party"
+api_surfaces = ["text", "streaming"]
+
+[urls]
+docs = "https://docs.typesafe.ai/concepts/system-one"
+console = "https://typesafe.ai"
+
+[[auth]]
+id = "api-key"
+type = "api_key"
+transport = "header"
+header = "Authorization: Bearer"
+env = ["TYPESAFE_API_KEY"]
+getting_credentials = "API keys from the TypeSafe console; early access opened 2026-09-15."
+docs = "https://docs.typesafe.ai/concepts/system-one"
+
+[[endpoints]]
+id = "systemone"
+base_url = "https://api.typesafe.ai"
+path = "/v1/systemone"
+protocol = "systemone"
+
+[[quirks]]
+text = "System One models take a state plus typed questions (noul true/false, choice, score) and return values with calibrated probabilities and confidence — never freeform text. Multiple questions in one request are evaluated in parallel; the SDK default alias is jev-latest."
+docs = "https://docs.typesafe.ai/concepts/system-one"

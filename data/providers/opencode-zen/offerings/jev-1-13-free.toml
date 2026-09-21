@@ -1,0 +1,35 @@
+model = "typesafe/jev-1-13"
+wire_id = "jev-1.13-free"
+endpoint = "systemone"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0
+output = 0
+free = true
+notes = "Free tier of Jev 1.13 on OpenCode Zen (limited time)."
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-09-20" }
+
+[limits]
+context = 32000
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-09-20" }
+
+[features]
+streaming = false
+tools = false
+structured_output = true
+prompt_caching = false
+vision = false
+
+[reasoning]
+style = "none"
+mandatory = false
+default = "off"
+returns = "hidden"
+must_round_trip = ""
+notes = "System One model: typed decisions (noul/choice/score) with calibrated probabilities — never freeform text or reasoning. Zen serves it on the systemone protocol at /v1/systemone."
+
+[reasoning.source]
+url = "https://opencode.ai/docs/zen"
+verified = "2026-09-20"

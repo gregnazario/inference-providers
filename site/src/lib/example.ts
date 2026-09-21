@@ -112,6 +112,13 @@ export function computeExample(
     case "bedrock-converse":
       body = { modelId: offering.wire_id, messages: [message] }
       break
+    case "systemone":
+      body = {
+        model: offering.wire_id,
+        state: PROMPT,
+        questions: { is_relevant: { type: "noul", instructions: "Does this state mention pricing or models?" } },
+      }
+      break
   }
 
   const fragment = reasoningFragment(offering)
