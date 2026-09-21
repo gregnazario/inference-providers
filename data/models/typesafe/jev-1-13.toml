@@ -1,0 +1,15 @@
+id = "typesafe/jev-1-13"
+name = "Jev 1.13"
+family = "jev"
+lab = "typesafe"
+release_date = "2026-09-15"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "First 'System One' model (TypeSafe AI, founded by a ChatGPT co-creator): accepts natural-language state like an LLM but returns typed, calibrated decisions instead of text — choice, score, and noul (true/false + probability) primitives with confidence for act-vs-escalate. No freeform text, code, or reasoning explanations ever. Custom POST /v1/systemone protocol (state + parallel questions), not chat completions; ~70-500ms end-to-end latency. Text-only input (strings, JSON objects, arrays); 32K context. $0.042 per Mtok input, output free."
+aliases = ["jev-1.13", "jev", "jev-latest"]
+[modalities]
+input = ["text"]
+output = ["text"]
