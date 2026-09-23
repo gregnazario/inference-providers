@@ -1,0 +1,36 @@
+model = "xiaomi/mimo-v2-6-flash"
+wire_id = "mimo-v2.6-flash-free"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0
+output = 0
+free = true
+notes = "Free tier of MiMo V2.6 Flash on OpenCode Zen (limited time; collected data may be used to improve the model)."
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-09-23" }
+
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = true
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+notes = "MiMo v2.5 lineage reasoning via chat — verify on this surface."
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["none", "low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-09-23"

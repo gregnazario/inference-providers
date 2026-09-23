@@ -1,0 +1,15 @@
+id = "xai/grok-4-7"
+name = "Grok 4.7"
+family = "grok"
+lab = "xai"
+release_date = "2026-09-21"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "xAI's flagship (Sep 21, 2026), succeeding Grok 4.6: 500K context with up to 450K output, strong at long-running software engineering with self-verification. $1.60/$4.80 per Mtok on OpenRouter (xAI list $2/$6 up to 200K, $4/$12 above); reasoning_effort control per the 4.5+ line."
+aliases = ["grok-4.7"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]
