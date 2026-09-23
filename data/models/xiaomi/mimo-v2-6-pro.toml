@@ -1,0 +1,15 @@
+id = "xiaomi/mimo-v2-6-pro"
+name = "MiMo V2.6 Pro"
+family = "mimo"
+lab = "xiaomi"
+release_date = "2026-09-21"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = ""
+description = "Xiaomi's flagship foundation model at over 1T parameters (Sep 21, 2026): 1M context, native text+image+audio+video input, $0.435/$0.87 per Mtok on OpenRouter. An ultraspeed serving tier runs 10x the price ($4.35/$8.70). HF listing gated at publication."
+aliases = ["mimo-v2.6-pro"]
+[modalities]
+input = ["text", "image", "audio", "video"]
+output = ["text"]

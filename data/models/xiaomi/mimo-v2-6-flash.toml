@@ -1,0 +1,15 @@
+id = "xiaomi/mimo-v2-6-flash"
+name = "MiMo V2.6 Flash"
+family = "mimo"
+lab = "xiaomi"
+release_date = "2026-09-21"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = true
+hf_repo = ""
+license = ""
+description = "Xiaomi's fast MiMo V2.6 tier (Sep 21, 2026): same 1M context and native text+image+audio+video input as Pro at $0.14/$0.28 per Mtok on OpenRouter — a third of Pro's price. OpenCode Zen also serves a free tier."
+aliases = ["mimo-v2.6-flash"]
+[modalities]
+input = ["text", "image", "audio", "video"]
+output = ["text"]

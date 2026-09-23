@@ -1,0 +1,15 @@
+id = "anthropic/claude-opus-5-5"
+name = "Claude Opus 5.5"
+family = "claude"
+lab = "anthropic"
+release_date = "2026-09-22"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Anthropic's flagship (Sep 22, 2026), succeeding Opus 5 with a price cut to $4/$20 per Mtok (cache $0.20) — Anthropic's first sub-$5 Opus. 1M context, 128K output, text+image input. Tuned for multi-step changes in large codebases and long-horizon agentic work; keeps the 5-series adaptive effort line (output_config.effort)."
+aliases = ["claude-opus-5.5"]
+[modalities]
+input = ["text", "image"]
+output = ["text"]
