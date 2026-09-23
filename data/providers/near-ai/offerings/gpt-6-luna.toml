@@ -28,7 +28,7 @@ mandatory = true
 default = "on"
 returns = "reasoning_content"
 must_round_trip = ""
-notes = "GPT-6 family: effort low-max with no none; NEAR gateway default undocumented — verify."
+notes = "GPT-6 family: effort low-max with no none; NEAR gateway default undocumented — verify. tools=false recorded verbatim from NEAR metadata (structured_outputs/json_mode present, tools absent)."
 
 [reasoning.effort]
 param = "reasoning_effort"
