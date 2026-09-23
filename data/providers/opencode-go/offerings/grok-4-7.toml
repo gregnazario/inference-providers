@@ -1,0 +1,22 @@
+model = "xai/grok-4-7"
+wire_id = "grok-4.7"
+endpoint = "go-chat-completions"
+status = "ga"
+status_date = ""
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = "reasoning_content"
+notes = "Cloned from xAI's native offering — verify on this gateway."
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high", "xhigh"]
+default = "low"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/go/v1/models"
+verified = "2026-09-23"

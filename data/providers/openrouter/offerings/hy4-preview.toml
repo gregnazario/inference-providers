@@ -1,16 +1,16 @@
-model = "nex-agi/nex-n2-5-pro"
-wire_id = "nex-agi/nex-n2.5-pro"
+model = "tencent/hy4"
+wire_id = "tencent/hy4-preview"
 endpoint = "chat-completions"
-status = "ga"
+status = "preview"
 status_date = ""
 
 [cost]
-input = 0.075
-output = 0.25
+input = 0.834
+output = 2.501
 source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-23" }
 
 [limits]
-context = 262144
+context = 1048576
 source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-23" }
 
 [features]
@@ -18,7 +18,7 @@ streaming = true
 tools = true
 structured_output = true
 prompt_caching = false
-vision = true
+vision = false
 
 [reasoning]
 style = "effort"
@@ -26,12 +26,12 @@ mandatory = false
 default = "on"
 returns = "reasoning_content"
 must_round_trip = "reasoning_content"
-notes = "Paid listing alongside the :free SKU; agentic coding in a visual feedback loop."
+notes = "Hy3 lineage: no-think default with low/high CoT modes upstream — preview control undocumented — verify."
 
 [reasoning.effort]
 param = "reasoning.effort"
-values = ["none", "low", "medium", "high", "xhigh", "max"]
-default = "medium"
+values = ["none", "low", "high"]
+default = "high"
 
 [reasoning.source]
 url = "https://openrouter.ai/api/v1/models"

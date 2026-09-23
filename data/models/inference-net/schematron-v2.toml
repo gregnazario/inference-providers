@@ -1,0 +1,15 @@
+id = "inference-net/schematron-v2"
+name = "Schematron V2"
+family = "schematron"
+lab = "inference-net"
+release_date = "2026-09-12"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Inference.net's 3B-parameter HTML-to-JSON extraction model: reads a page and returns schema-constrained JSON — extraction instructions go in response_format, not the prompt. 128K context, $0.03-$0.05 in / $0.15-$0.23 out per Mtok depending on SKU. Not a chat model; Specialist extraction (small = quality on complex schemas/long pages, turbo = throughput)."
+aliases = ["schematron-v2", "schematron"]
+[modalities]
+input = ["text"]
+output = ["text"]

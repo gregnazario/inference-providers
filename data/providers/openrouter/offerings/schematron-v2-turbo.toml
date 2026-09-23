@@ -1,0 +1,33 @@
+model = "inference-net/schematron-v2"
+wire_id = "inference-net/schematron-v2-turbo"
+endpoint = "chat-completions"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 0.03
+output = 0.15
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-23" }
+
+[limits]
+context = 128000
+source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-23" }
+
+[features]
+streaming = true
+tools = false
+structured_output = true
+prompt_caching = false
+vision = false
+
+[reasoning]
+style = "none"
+mandatory = false
+default = "off"
+returns = "hidden"
+must_round_trip = ""
+notes = "Extraction specialist: HTML in, schema-constrained JSON out via response_format (not a chat model). Turbo SKU prioritizes throughput for high-volume extraction."
+
+[reasoning.source]
+url = "https://openrouter.ai/api/v1/models"
+verified = "2026-09-23"

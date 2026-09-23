@@ -1,0 +1,42 @@
+model = "openai/gpt-6"
+wire_id = "gpt-6-sol"
+endpoint = "responses"
+status = "ga"
+status_date = ""
+
+[cost]
+input = 2
+output = 10
+cache_read = 0.2
+cache_write = 2.5
+notes = "Cost-efficient high-end GPT-6 tier; over 272K tokens $4/$15."
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-09-23" }
+
+[limits]
+context = 1050000
+source = { url = "https://opencode.ai/docs/zen", verified = "2026-09-23" }
+
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = true
+vision = true
+
+[reasoning]
+style = "effort"
+mandatory = true
+default = "on"
+returns = "reasoning_summary"
+must_round_trip = "encrypted_content"
+incompatible_with = ["temperature", "top_p"]
+notes = "GPT-6 family: effort low-max with no none; default undocumented — verify."
+
+[reasoning.effort]
+param = "reasoning.effort"
+values = ["low", "medium", "high", "xhigh", "max"]
+default = "medium"
+
+[reasoning.source]
+url = "https://opencode.ai/zen/v1/models"
+verified = "2026-09-23"
