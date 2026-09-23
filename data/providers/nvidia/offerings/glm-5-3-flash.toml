@@ -1,0 +1,24 @@
+model = "zai/glm-5-3-flash"
+wire_id = "z-ai/glm-5.3-flash"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = true
+
+[reasoning]
+style = "always_on"
+mandatory = true
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+notes = "GLM-5.3 Flash thinks always (enabled-only upstream); NIM gateway control undocumented — verify."
+
+[reasoning.source]
+url = "https://build.nvidia.com/z-ai/glm-5.3-flash"
+verified = "2026-09-23"

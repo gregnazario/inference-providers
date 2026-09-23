@@ -8,7 +8,7 @@ knowledge_cutoff = ""
 open_weights = false
 hf_repo = ""
 license = ""
-description = "Compact tier of the N2.5 generation: 262K context, text+image input, reasoning-capable. Currently served only as OpenRouter's :free SKU; weights not yet public."
+description = "Compact tier of the N2.5 generation: 262K context, text+image input, reasoning-capable. OpenRouter serves paid listings ($0.075/$0.25 Pro, $0.025/$0.10 Mini) alongside :free SKUs; weights not yet public."
 aliases = ["nex-n2.5-mini"]
 [modalities]
 input = ["text", "image"]

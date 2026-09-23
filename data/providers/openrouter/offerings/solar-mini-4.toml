@@ -1,16 +1,16 @@
-model = "nex-agi/nex-n2-5-pro"
-wire_id = "nex-agi/nex-n2.5-pro"
+model = "upstage/solar-mini-4"
+wire_id = "upstage/solar-mini4"
 endpoint = "chat-completions"
 status = "ga"
 status_date = ""
 
 [cost]
-input = 0.075
-output = 0.25
+input = 0.05
+output = 0.2
 source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-23" }
 
 [limits]
-context = 262144
+context = 524288
 source = { url = "https://openrouter.ai/api/v1/models", verified = "2026-09-23" }
 
 [features]
@@ -18,20 +18,15 @@ streaming = true
 tools = true
 structured_output = true
 prompt_caching = false
-vision = true
+vision = false
 
 [reasoning]
-style = "effort"
+style = "adaptive"
 mandatory = false
 default = "on"
 returns = "reasoning_content"
-must_round_trip = "reasoning_content"
-notes = "Paid listing alongside the :free SKU; agentic coding in a visual feedback loop."
-
-[reasoning.effort]
-param = "reasoning.effort"
-values = ["none", "low", "medium", "high", "xhigh", "max"]
-default = "medium"
+must_round_trip = ""
+notes = "Built for latency-sensitive agentic use; native control parameter undocumented — verify (matches Solar Pro 4 treatment)."
 
 [reasoning.source]
 url = "https://openrouter.ai/api/v1/models"

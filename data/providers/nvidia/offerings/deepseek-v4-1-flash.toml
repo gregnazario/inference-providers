@@ -1,0 +1,29 @@
+model = "deepseek/deepseek-v4-1-flash"
+wire_id = "deepseek-ai/deepseek-v4.1-flash"
+endpoint = "v1-chat-completions"
+status = "ga"
+status_date = ""
+
+[features]
+streaming = true
+tools = true
+structured_output = true
+prompt_caching = false
+vision = true
+
+[reasoning]
+style = "effort"
+mandatory = false
+default = "on"
+returns = "reasoning_content"
+must_round_trip = ""
+notes = "CED-architecture lineage; NIM effort control undocumented — verify."
+
+[reasoning.effort]
+param = "reasoning_effort"
+values = ["none", "low", "medium", "high"]
+default = "high"
+
+[reasoning.source]
+url = "https://build.nvidia.com/deepseek-ai/deepseek-v4.1-flash"
+verified = "2026-09-23"

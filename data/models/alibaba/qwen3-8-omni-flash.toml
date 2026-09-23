@@ -1,0 +1,15 @@
+id = "alibaba/qwen3-8-omni-flash"
+name = "Qwen3.8 Omni Flash"
+family = "qwen3"
+lab = "alibaba"
+release_date = "2026-09-21"
+retired_date = ""
+knowledge_cutoff = ""
+open_weights = false
+hf_repo = ""
+license = ""
+description = "Alibaba's first omni-modal Qwen built around agentic capabilities (Sep 21, 2026): native audio+video understanding and analysis on top of text+image, 1M context, $0.15/$0.47 per Mtok — the same price as Qwen3.8 Flash."
+aliases = ["qwen3.8-omni-flash"]
+[modalities]
+input = ["text", "image", "audio", "video"]
+output = ["text"]
